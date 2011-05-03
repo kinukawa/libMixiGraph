@@ -20,6 +20,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "MGClientBase.h"
 #import "MGVoice.h"
 #import "MGUserDefaults.h"
 #import "MGHttpClient.h"
@@ -30,16 +31,16 @@
 
 @protocol MGVoiceClientDelegate;
 
-@interface MGVoiceClient : NSObject {
+@interface MGVoiceClient : MGClientBase {
 @public	
 	id <MGVoiceClientDelegate> delegate;
-    NSString * identifier;
+    //NSString * identifier;
 @private
-	MGHttpClient * httpClient;
+	//MGHttpClient * httpClient;
 }
 @property (nonatomic,assign) id delegate;
-@property (nonatomic,retain) NSString * identifier;
-@property (nonatomic,retain) MGHttpClient * httpClient;
+//@property (nonatomic,retain) NSString * identifier;
+//@property (nonatomic,retain) MGHttpClient * httpClient;
 
 //あるユーザのつぶやき一覧の取得
 -(void)requestUserVoicesByUserID:(NSString *)userId 

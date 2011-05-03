@@ -24,8 +24,8 @@
 @implementation MGVoiceClient
 
 @synthesize delegate;
-@synthesize identifier;
-@synthesize httpClient;
+//@synthesize identifier;
+//@synthesize httpClient;
 
 -(id)init{
 	if((self = [super init])){
