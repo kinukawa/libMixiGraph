@@ -21,6 +21,7 @@
 #import <Foundation/Foundation.h>
 #import "MGHttpClient.h"
 #import "MGClientBase.h"
+#import "MGParams.h"
 #import "MGUtil.h"
 #import "MGPhoto.h"
 
@@ -33,6 +34,8 @@
 }
 
 @property (nonatomic,assign) id delegate;
+
+-(void)getAlbumListByUserId:(NSString*)userId withAlbumId:(NSString*)albumId;
 
 
 @end

@@ -36,13 +36,27 @@
 	[super dealloc];
 }
 
+//アルバム一覧の取得
+-(void)getAlbumListByUserId:(NSString*)userId withAlbumId:(NSString*)albumId{
+	
+	NSURL * url = [MGUtil buildAPIURL:PHOTO_BASE_URL
+                                 path:[NSArray arrayWithObjects:
+                                       @"albums",
+                                       userId,
+                                       @"@self",
+                                       albumId,
+                                       nil]
+                                query:nil];
+    httpClient.identifier = @"getAlbumListByUserId";
+	[httpClient get:url];
+	
+}
+
 //マイミクのフォトを取得
 -(void)getFriendsRecentPhotos:(NSString*)groupID{
 	
-	NSURL * url = [MGUtil buildAPIURL:@"http://api.mixi-platform.com/" 
+	NSURL * url = [MGUtil buildAPIURL:PHOTO_BASE_URL
 							   path:[NSArray arrayWithObjects:
-									 @"2",
-									 @"photo",
 									 @"mediaItems",
 									 @"@me",
 									 groupID,

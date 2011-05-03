@@ -11,6 +11,8 @@
 		10303135135C840900C17326 /* VoiceTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10303133135C840900C17326 /* VoiceTableViewController.xib */; };
 		10303138135C897700C17326 /* image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 10303137135C897700C17326 /* image.jpg */; };
 		1030313B135DD2A200C17326 /* MGOAuthKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 1030313A135DD2A200C17326 /* MGOAuthKey.m */; };
+		10315B64136FF9A90077E490 /* PhotoTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10315B62136FF9A90077E490 /* PhotoTestViewController.m */; };
+		10315B65136FF9A90077E490 /* PhotoTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10315B63136FF9A90077E490 /* PhotoTestViewController.xib */; };
 		1062C8001344D2AF005901A9 /* VoiceTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1062C7FE1344D2AF005901A9 /* VoiceTestViewController.m */; };
 		1062C8011344D2AF005901A9 /* VoiceTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1062C7FF1344D2AF005901A9 /* VoiceTestViewController.xib */; };
 		109AFCC0136BCE51006F5E6D /* MGFavorite.m in Sources */ = {isa = PBXBuildFile; fileRef = 109AFCBF136BCE51006F5E6D /* MGFavorite.m */; };
@@ -57,6 +59,9 @@
 		10303137135C897700C17326 /* image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image.jpg; sourceTree = "<group>"; };
 		10303139135DD2A200C17326 /* MGOAuthKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGOAuthKey.h; path = libMixiGraph/lib/OAuth/MGOAuthKey.h; sourceTree = SOURCE_ROOT; };
 		1030313A135DD2A200C17326 /* MGOAuthKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MGOAuthKey.m; path = libMixiGraph/lib/OAuth/MGOAuthKey.m; sourceTree = SOURCE_ROOT; };
+		10315B61136FF9A90077E490 /* PhotoTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoTestViewController.h; sourceTree = "<group>"; };
+		10315B62136FF9A90077E490 /* PhotoTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoTestViewController.m; sourceTree = "<group>"; };
+		10315B63136FF9A90077E490 /* PhotoTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoTestViewController.xib; sourceTree = "<group>"; };
 		1062C7FD1344D2AF005901A9 /* VoiceTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoiceTestViewController.h; sourceTree = "<group>"; };
 		1062C7FE1344D2AF005901A9 /* VoiceTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoiceTestViewController.m; sourceTree = "<group>"; };
 		1062C7FF1344D2AF005901A9 /* VoiceTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VoiceTestViewController.xib; sourceTree = "<group>"; };
@@ -160,6 +165,9 @@
 				10F3A3C1136D2EA7004702C4 /* PeopleTestViewController.h */,
 				10F3A3C2136D2EA7004702C4 /* PeopleTestViewController.m */,
 				10F3A3C3136D2EA8004702C4 /* PeopleTestViewController.xib */,
+				10315B61136FF9A90077E490 /* PhotoTestViewController.h */,
+				10315B62136FF9A90077E490 /* PhotoTestViewController.m */,
+				10315B63136FF9A90077E490 /* PhotoTestViewController.xib */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -364,6 +372,7 @@
 				10303135135C840900C17326 /* VoiceTableViewController.xib in Resources */,
 				10303138135C897700C17326 /* image.jpg in Resources */,
 				10F3A3C5136D2EA8004702C4 /* PeopleTestViewController.xib in Resources */,
+				10315B65136FF9A90077E490 /* PhotoTestViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,6 +413,7 @@
 				109AFCC0136BCE51006F5E6D /* MGFavorite.m in Sources */,
 				10F3A3C4136D2EA8004702C4 /* PeopleTestViewController.m in Sources */,
 				10F3A3C9136D3D77004702C4 /* MGContentBase.m in Sources */,
+				10315B64136FF9A90077E490 /* PhotoTestViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

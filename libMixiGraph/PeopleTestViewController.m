@@ -42,8 +42,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    peopleClient = [[MGPeopleClient alloc]init];
-    peopleClient.delegate = self;
+    self.peopleClient = [[[MGPeopleClient alloc]init]autorelease];
+    self.peopleClient.delegate = self;
 }
 
 - (void)viewDidUnload
