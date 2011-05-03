@@ -68,8 +68,12 @@
     album.created        = [dict objectForKey:@"created"];
     album.description    = [dict objectForKey:@"description"];
     album.albumId        = [dict objectForKey:@"id"];
-    album.mediaItemCount = [[dict objectForKey:@"mediaItemCount"] intValue]; 
-    album.numComments    = [[dict objectForKey:@"numComments"] intValue];
+    if (![[dict objectForKey:@"mediaItemCount"] isEqual:[NSNull null]]) {
+        album.mediaItemCount = [[dict objectForKey:@"mediaItemCount"] intValue]; 
+    }
+    if (![[dict objectForKey:@"numComments"] isEqual:[NSNull null]]) {
+        album.numComments    = [[dict objectForKey:@"numComments"] intValue];
+    }
     NSDictionary * owner = [dict objectForKey:@"owner"];
     if (![owner isEqual:[NSNull null]]) {
         album.ownerDisplayName	= [owner objectForKey:@"displayName"];

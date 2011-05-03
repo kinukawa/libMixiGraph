@@ -36,8 +36,11 @@
 
 @property (nonatomic,assign) id delegate;
 
--(void)getAlbumListByUserId:(NSString*)userId withAlbumId:(NSString*)albumId;
-
+//アルバム一覧の取得
+-(void)getAlbumListByUserId:(NSString*)userId 
+                withAlbumId:(NSString*)albumId 
+                 startIndex:(int)startIndex
+                      count:(int)count;
 
 @end
 

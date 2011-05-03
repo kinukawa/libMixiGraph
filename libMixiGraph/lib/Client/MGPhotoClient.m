@@ -37,8 +37,17 @@
 }
 
 //アルバム一覧の取得
--(void)getAlbumListByUserId:(NSString*)userId withAlbumId:(NSString*)albumId{
-	
+-(void)getAlbumListByUserId:(NSString*)userId 
+                withAlbumId:(NSString*)albumId 
+                 startIndex:(int)startIndex
+                      count:(int)count{
+	NSMutableDictionary * queryDict = [NSMutableDictionary dictionary];
+    if (startIndex>0) {
+		[queryDict setObject:[NSString stringWithFormat:@"%d",startIndex] forKey:@"startIndex"];
+	} 
+    if (count>0) {
+		[queryDict setObject:[NSString stringWithFormat:@"%d",count] forKey:@"count"];
+	}   
 	NSURL * url = [MGUtil buildAPIURL:PHOTO_BASE_URL
                                  path:[NSArray arrayWithObjects:
                                        @"albums",
@@ -46,7 +55,7 @@
                                        @"@self",
                                        albumId,
                                        nil]
-                                query:nil];
+                                query:queryDict];
     httpClient.identifier = @"getAlbumListByUserId";
 	[httpClient get:url];
 	

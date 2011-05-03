@@ -61,7 +61,7 @@
 
 -(IBAction)pressGetAlbumButton{
     photoClient.identifier = @"pressGetAlbumButton";
-    [photoClient getAlbumListByUserId:@"5fbcb9i8ysmdg" withAlbumId:nil];
+    [photoClient getAlbumListByUserId:@"5fbcb9i8ysmdg" withAlbumId:nil startIndex:0 count:2];
 }
 
 
