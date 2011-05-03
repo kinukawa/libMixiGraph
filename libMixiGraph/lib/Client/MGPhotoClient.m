@@ -61,6 +61,29 @@
 	
 }
 
+//最近友人が作成したアルバム一覧の取得
+-(void)getRecentCreatedMyAlbumListByGroupId:(NSString*)groupId 
+                                 startIndex:(int)startIndex
+                                      count:(int)count{
+	NSMutableDictionary * queryDict = [NSMutableDictionary dictionary];
+    if (startIndex>0) {
+		[queryDict setObject:[NSString stringWithFormat:@"%d",startIndex] forKey:@"startIndex"];
+	} 
+    if (count>0) {
+		[queryDict setObject:[NSString stringWithFormat:@"%d",count] forKey:@"count"];
+	}   
+	NSURL * url = [MGUtil buildAPIURL:PHOTO_BASE_URL
+                                 path:[NSArray arrayWithObjects:
+                                       @"albums",
+                                       @"@me",
+                                       groupId,
+                                       nil]
+                                query:queryDict];
+    httpClient.identifier = @"getRecentCreatedAlbumListByUserId";
+	[httpClient get:url];
+}
+
+
 //マイミクのフォトを取得
 -(void)getFriendsRecentPhotos:(NSString*)groupID{
 	
@@ -155,7 +178,8 @@
     
     id result = data;
     
-    if(httpClient.identifier==@"getAlbumListByUserId"){
+    if([self.httpClient.identifier isEqualToString:@"getAlbumListByUserId"] || 
+       [self.httpClient.identifier isEqualToString:@"getRecentCreatedAlbumListByUserId"]){
         NSDictionary * entryDict = [contents JSONValue];
         NSArray * albumArray = [MGAlbum makeContentArrayFromEntryArray:[entryDict objectForKey:@"entry"]];        
         NSDictionary * responseDict = [NSDictionary dictionaryWithObjectsAndKeys:

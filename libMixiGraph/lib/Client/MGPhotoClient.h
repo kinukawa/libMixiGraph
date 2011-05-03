@@ -42,6 +42,11 @@
                  startIndex:(int)startIndex
                       count:(int)count;
 
+//最近友人が作成したアルバム一覧の取得
+-(void)getRecentCreatedMyAlbumListByGroupId:(NSString*)groupId 
+                                 startIndex:(int)startIndex
+                                      count:(int)count;
+
 @end
 
 @protocol MGPhotoClientDelegate<NSObject>

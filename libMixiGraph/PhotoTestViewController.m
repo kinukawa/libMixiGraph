@@ -64,17 +64,25 @@
     [photoClient getAlbumListByUserId:@"5fbcb9i8ysmdg" withAlbumId:nil startIndex:0 count:2];
 }
 
+//最近友人が作成したアルバム一覧の取得
+-(IBAction)pressGetRecentCreatedAlbumButton{
+    photoClient.identifier = @"pressGetRecentCreatedAlbumButton";
+    [photoClient getRecentCreatedMyAlbumListByGroupId:@"@friends" startIndex:0 count:0];
+}
+
 
 
 -(void)mgPhotoClient:(NSURLConnection *)conn didFailWithError:(NSError*)error{
     
 }
 -(void)mgPhotoClient:(NSURLConnection *)conn didFailWithAPIError:(MGApiError*)error{
+    NSLog(@"mgPhotoClient didFailWithAPIError : %@",error.body);
     
 }
 -(void)mgPhotoClient:(NSURLConnection *)conn didFinishLoading:(id)result{
     NSLog(@"mgPhotoClient didFinishLoading : %@",result);
-    if([photoClient.identifier isEqualToString:@"pressGetAlbumButton"]){
+    if([photoClient.identifier isEqualToString:@"pressGetAlbumButton"]||
+       [photoClient.identifier isEqualToString:@"pressGetRecentCreatedAlbumButton"]){
         NSArray * albumArray = (NSArray*)[result objectForKey:@"entry"];
         for (MGAlbum*album in albumArray) {
             NSLog(@"%@",album.ownerDisplayName);

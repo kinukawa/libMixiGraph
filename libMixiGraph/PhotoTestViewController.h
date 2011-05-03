@@ -14,6 +14,8 @@
 }
 
 -(IBAction)pressGetAlbumButton;
+//最近友人が作成したアルバム一覧の取得
+-(IBAction)pressGetRecentCreatedAlbumButton;
 
 @property (nonatomic,retain) MGPhotoClient * photoClient;
 @end
