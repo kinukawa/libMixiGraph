@@ -74,7 +74,14 @@
 }
 -(void)mgPhotoClient:(NSURLConnection *)conn didFinishLoading:(id)result{
     NSLog(@"mgPhotoClient didFinishLoading : %@",result);
-    if([photoClient.identifier isEqualToString:@"hogehuga"]){
+    if([photoClient.identifier isEqualToString:@"pressGetAlbumButton"]){
+        NSArray * albumArray = (NSArray*)[result objectForKey:@"entry"];
+        for (MGAlbum*album in albumArray) {
+            NSLog(@"%@",album.ownerDisplayName);
+            NSLog(@"%@",album.url);
+            NSLog(@"%d",album.numComments);
+            NSLog(@"%@",album.title);
+        }
     } 
 }
 

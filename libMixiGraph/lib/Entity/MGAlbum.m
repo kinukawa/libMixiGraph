@@ -32,10 +32,10 @@
 @synthesize ownerProfileUrl;
 @synthesize ownerThumbnailUrl;
 @synthesize privacyVisibility;
-@synthesize albumThumbnailUrl;
-@synthesize albumTitle;
-@synthesize albumUrl;
-@synthesize albumViewPageUrl;
+@synthesize thumbnailUrl;
+@synthesize title;
+@synthesize url;
+@synthesize viewPageUrl;
 
 -(id)init{
 	if((self = [super init])){
@@ -54,12 +54,39 @@
     self.ownerProfileUrl = nil;
     self.ownerThumbnailUrl = nil;
     self.privacyVisibility = nil;
-    self.albumThumbnailUrl = nil;
-    self.albumTitle = nil;
-    self.albumUrl = nil;
-    self.albumViewPageUrl = nil;
+    self.thumbnailUrl = nil;
+    self.title = nil;
+    self.url = nil;
+    self.viewPageUrl = nil;
     
 	[super dealloc];
+}
+
++(MGAlbum *)makeContentFromDict:(NSDictionary*)dict{
+    MGAlbum * album = [[[MGAlbum alloc] init] autorelease];
+    
+    album.created        = [dict objectForKey:@"created"];
+    album.description    = [dict objectForKey:@"description"];
+    album.albumId        = [dict objectForKey:@"id"];
+    album.mediaItemCount = [[dict objectForKey:@"mediaItemCount"] intValue]; 
+    album.numComments    = [[dict objectForKey:@"numComments"] intValue];
+    NSDictionary * owner = [dict objectForKey:@"owner"];
+    if (![owner isEqual:[NSNull null]]) {
+        album.ownerDisplayName	= [owner objectForKey:@"displayName"];
+        album.ownerId           = [owner objectForKey:@"id"];
+        album.ownerProfileUrl   = [owner objectForKey:@"profileUrl"];
+        album.ownerThumbnailUrl = [owner objectForKey:@"thumbnailUrl"];
+    }
+    NSDictionary * privacy = [dict objectForKey:@"privacy"];
+    if (![privacy isEqual:[NSNull null]]) {
+        album.privacyVisibility = [privacy objectForKey:@"visibility"];
+    }
+    album.thumbnailUrl     = [dict objectForKey:@"thumbnailUrl"];
+    album.title = [dict objectForKey:@"title"];
+    album.url = [dict objectForKey:@"url"];
+    album.viewPageUrl = [dict objectForKey:@"viewPageUrl"];
+
+    return album;
 }
 
 @end

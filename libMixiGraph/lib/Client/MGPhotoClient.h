@@ -23,6 +23,7 @@
 #import "MGClientBase.h"
 #import "MGParams.h"
 #import "MGUtil.h"
+#import "MGAlbum.h"
 #import "MGPhoto.h"
 
 @protocol MGPhotoClientDelegate;

@@ -145,11 +145,18 @@
 	NSLog(@"mgPhotoClient didFinishLoading %@:%@",httpClient.identifier,contents);
     
     id result = data;
-    /*
-    if(httpClient.identifier==@"requestUserVoices"){
-        NSArray * entryArray = [contents JSONValue];
-        result = [MGVoice makeContentArrayFromEntryArray:entryArray];
-    }else if(httpClient.identifier==@"requestUserVoicesUsingSinceId"){
+    
+    if(httpClient.identifier==@"getAlbumListByUserId"){
+        NSDictionary * entryDict = [contents JSONValue];
+        NSArray * albumArray = [MGAlbum makeContentArrayFromEntryArray:[entryDict objectForKey:@"entry"]];        
+        NSDictionary * responseDict = [NSDictionary dictionaryWithObjectsAndKeys:
+                                       albumArray,@"entry",
+                                       [entryDict objectForKey:@"itemsPerPage"], @"itemsPerPage", 
+                                       [entryDict objectForKey:@"startIndex"], @"startIndex", 
+                                       [entryDict objectForKey:@"totalResults"], @"totalResults", 
+                                       nil];
+        result = responseDict;
+    }/*else if(httpClient.identifier==@"requestUserVoicesUsingSinceId"){
         NSArray * entryArray = [contents JSONValue];
         result = [MGVoice makeContentArrayFromEntryArray:entryArray];
     }else if(httpClient.identifier==@"requestFriendsVoices"){

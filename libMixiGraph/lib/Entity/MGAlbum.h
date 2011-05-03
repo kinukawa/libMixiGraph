@@ -33,10 +33,10 @@
     NSString * ownerProfileUrl;
     NSString * ownerThumbnailUrl;
     NSString * privacyVisibility;
-    NSString * albumThumbnailUrl;
-    NSString * albumTitle;
-    NSString * albumUrl;
-    NSString * albumViewPageUrl;
+    NSString * thumbnailUrl;
+    NSString * title;
+    NSString * url;
+    NSString * viewPageUrl;
 }
 @property (nonatomic,retain) NSString * created;
 @property (nonatomic,retain) NSString * description;
@@ -48,9 +48,9 @@
 @property (nonatomic,retain) NSString * ownerProfileUrl;
 @property (nonatomic,retain) NSString * ownerThumbnailUrl;
 @property (nonatomic,retain) NSString * privacyVisibility;
-@property (nonatomic,retain) NSString * albumThumbnailUrl;
-@property (nonatomic,retain) NSString * albumTitle;
-@property (nonatomic,retain) NSString * albumUrl;
-@property (nonatomic,retain) NSString * albumViewPageUrl;
+@property (nonatomic,retain) NSString * thumbnailUrl;
+@property (nonatomic,retain) NSString * title;
+@property (nonatomic,retain) NSString * url;
+@property (nonatomic,retain) NSString * viewPageUrl;
 
 @end
