@@ -13,6 +13,7 @@
 		1030313B135DD2A200C17326 /* MGOAuthKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 1030313A135DD2A200C17326 /* MGOAuthKey.m */; };
 		10315B64136FF9A90077E490 /* PhotoTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10315B62136FF9A90077E490 /* PhotoTestViewController.m */; };
 		10315B65136FF9A90077E490 /* PhotoTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10315B63136FF9A90077E490 /* PhotoTestViewController.xib */; };
+		10315B69137000FA0077E490 /* MGAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 10315B68137000F80077E490 /* MGAlbum.m */; };
 		1062C8001344D2AF005901A9 /* VoiceTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1062C7FE1344D2AF005901A9 /* VoiceTestViewController.m */; };
 		1062C8011344D2AF005901A9 /* VoiceTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1062C7FF1344D2AF005901A9 /* VoiceTestViewController.xib */; };
 		109AFCC0136BCE51006F5E6D /* MGFavorite.m in Sources */ = {isa = PBXBuildFile; fileRef = 109AFCBF136BCE51006F5E6D /* MGFavorite.m */; };
@@ -62,6 +63,8 @@
 		10315B61136FF9A90077E490 /* PhotoTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoTestViewController.h; sourceTree = "<group>"; };
 		10315B62136FF9A90077E490 /* PhotoTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoTestViewController.m; sourceTree = "<group>"; };
 		10315B63136FF9A90077E490 /* PhotoTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoTestViewController.xib; sourceTree = "<group>"; };
+		10315B67137000F60077E490 /* MGAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGAlbum.h; sourceTree = "<group>"; };
+		10315B68137000F80077E490 /* MGAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGAlbum.m; sourceTree = "<group>"; };
 		1062C7FD1344D2AF005901A9 /* VoiceTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoiceTestViewController.h; sourceTree = "<group>"; };
 		1062C7FE1344D2AF005901A9 /* VoiceTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoiceTestViewController.m; sourceTree = "<group>"; };
 		1062C7FF1344D2AF005901A9 /* VoiceTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VoiceTestViewController.xib; sourceTree = "<group>"; };
@@ -281,6 +284,8 @@
 				9AD548881341E65D0072BDA6 /* MGComment.m */,
 				109AFCBE136BCE51006F5E6D /* MGFavorite.h */,
 				109AFCBF136BCE51006F5E6D /* MGFavorite.m */,
+				10315B67137000F60077E490 /* MGAlbum.h */,
+				10315B68137000F80077E490 /* MGAlbum.m */,
 				9AD5488B1341E65D0072BDA6 /* MGPeople.h */,
 				9AD5488C1341E65D0072BDA6 /* MGPeople.m */,
 				9AD5488D1341E65D0072BDA6 /* MGPhoto.h */,
@@ -414,6 +419,7 @@
 				10F3A3C4136D2EA8004702C4 /* PeopleTestViewController.m in Sources */,
 				10F3A3C9136D3D77004702C4 /* MGContentBase.m in Sources */,
 				10315B64136FF9A90077E490 /* PhotoTestViewController.m in Sources */,
+				10315B69137000FA0077E490 /* MGAlbum.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
