@@ -37,4 +37,29 @@
 @synthesize albumUrl;
 @synthesize albumViewPageUrl;
 
+-(id)init{
+	if((self = [super init])){
+		//initialize
+        
+    }
+	return self;
+}
+
+- (void) dealloc {
+    self.created = nil;
+    self.description = nil;
+    self.albumId = nil;
+    self.ownerDisplayName = nil;
+    self.ownerId = nil;
+    self.ownerProfileUrl = nil;
+    self.ownerThumbnailUrl = nil;
+    self.privacyVisibility = nil;
+    self.albumThumbnailUrl = nil;
+    self.albumTitle = nil;
+    self.albumUrl = nil;
+    self.albumViewPageUrl = nil;
+    
+	[super dealloc];
+}
+
 @end
