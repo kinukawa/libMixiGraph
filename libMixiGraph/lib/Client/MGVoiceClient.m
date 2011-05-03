@@ -30,16 +30,16 @@
 -(id)init{
 	if((self = [super init])){
 		//initialize
-		self.httpClient = [[[MGHttpClient alloc] init]autorelease];
-		self.httpClient.delegate = self;
+		//self.httpClient = [[[MGHttpClient alloc] init]autorelease];
+		//self.httpClient.delegate = self;
 	}
 	return self;
 }
 
 - (void) dealloc {
     self.delegate = nil;
-	self.httpClient = nil;
-	self.identifier = nil;
+	//self.httpClient = nil;
+	//self.identifier = nil;
     [super dealloc];
 }
 
