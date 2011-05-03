@@ -236,14 +236,6 @@
 
 //////////////MGHttpClientDelegate/////////////////////
 
--(void)mgHttpClient:(NSURLConnection *)conn didReceiveResponse:(NSURLResponse *)res{
-	NSLog(@"MGVoiceClient didReceiveResponse");
-}
-
--(void)mgHttpClient:(NSURLConnection *)conn didReceiveData:(NSData *)receivedData{
-	NSLog(@"MGVoiceClient didReceiveData");
-}
-
 -(void)mgHttpClient:(NSURLConnection *)conn didFailWithError:(NSError*)error{
 	NSLog(@"MGVoiceClient didFailWithError");
 	if([delegate respondsToSelector:@selector(mgVoiceClient:didFailWithError:)]){
