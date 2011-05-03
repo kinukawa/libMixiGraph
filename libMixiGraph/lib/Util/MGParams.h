@@ -24,6 +24,9 @@
 #define VOICE_FAVORITES_URL @"http://api.mixi-platform.com/2/voice/favorites/"
 
 #define PEOPLE_BASE_URL     @"http://api.mixi-platform.com/2/people/"
+
+#define PHOTO_BASE_URL      @"http://api.mixi-platform.com/2/photo/"
+
 @interface MGParams : NSObject {
     
 }

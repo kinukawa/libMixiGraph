@@ -27,11 +27,13 @@
 -(id)init{
 	if((self = [super init])){
 		//initialize
-		httpClient = [[MGHttpClient alloc] init];
-		
-		httpClient.delegate = self;
 	}
 	return self;
+}
+
+- (void) dealloc {
+    self.delegate = nil;
+	[super dealloc];
 }
 
 //マイミクのフォトを取得
@@ -108,26 +110,55 @@
 }
 
 
--(void)mgHttpClient:(NSURLConnection *)conn didReceiveResponseError:(MGApiError *)error{
-	NSLog(@"didReceiveResponseError");
-	if([delegate respondsToSelector:@selector(MGPhotoClient:didReceiveResponseError:)]){
-		[delegate MGPhotoClient:conn didReceiveResponseError:error];
+//////////////MGHttpClientDelegate/////////////////////
+
+-(void)mgHttpClient:(NSURLConnection *)conn didFailWithError:(NSError*)error{
+	NSLog(@"mgPhotoClient didFailWithError");
+	if([delegate respondsToSelector:@selector(mgPhotoClient:didFailWithError:)]){
+		[delegate mgPhotoClient:conn didFailWithError:error];
 	}
 }
 
--(void)mgHttpClient:(NSURLConnection *)conn didReceiveResponse:(NSURLResponse *)res{
-	NSLog(@"didReceiveResponse");
+-(void)mgHttpClient:(NSURLConnection *)conn didFailWithAPIError:(MGApiError*)error{
+	NSLog(@"mgPhotoClient didFailWithAPIError");
+	if([delegate respondsToSelector:@selector(mgPhotoClient:didFailWithAPIError:)]){
+		[delegate mgPhotoClient:conn didFailWithAPIError:error];
+	}    
 }
 
--(void)mgHttpClient:(NSURLConnection *)conn didReceiveData:(NSData *)receivedData{
-	NSLog(@"didReceiveData");
+-(void)mgHttpClient:(NSURLConnection *)conn didFinishLoading:(NSMutableData *)data{
+	NSString *contents = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+	NSLog(@"mgPhotoClient didFinishLoading %@:%@",httpClient.identifier,contents);
+    
+    id result = data;
+    /*
+    if(httpClient.identifier==@"requestUserVoices"){
+        NSArray * entryArray = [contents JSONValue];
+        result = [MGVoice makeContentArrayFromEntryArray:entryArray];
+    }else if(httpClient.identifier==@"requestUserVoicesUsingSinceId"){
+        NSArray * entryArray = [contents JSONValue];
+        result = [MGVoice makeContentArrayFromEntryArray:entryArray];
+    }else if(httpClient.identifier==@"requestFriendsVoices"){
+        NSArray * entryArray = [contents JSONValue];
+        result = [MGVoice makeContentArrayFromEntryArray:entryArray];
+    }else if(httpClient.identifier==@"requestFriendsVoicesUsingSinceId"){
+        NSArray * entryArray = [contents JSONValue];
+        result = [MGVoice makeContentArrayFromEntryArray:entryArray];
+    }else if(httpClient.identifier==@"requestVoiceInfo"){
+        result = [MGVoice makeContentFromResponseData:data];
+    }else if(httpClient.identifier==@"requestPostVoice"){
+        result = [MGVoice makeContentFromResponseData:data];
+    }else if(httpClient.identifier==@"requestPostPhotoVoice"){
+        result = [MGVoice makeContentFromResponseData:data];
+    }
+    */
+	if([delegate respondsToSelector:@selector(mgPhotoClient:didFinishLoading:)]){
+        [delegate mgPhotoClient:conn didFinishLoading:result];
+    }
 }
 
--(void)mgHttpClient:(NSURLConnection *)conn didFailWithError:(NSError*)error{
-	NSLog(@"didFailWithError");
-}
-
--(void)mgHttpClient:(NSURLConnection *)conn didFinishLoadingGet:(NSMutableData *)data{
+/*
+ -(void)mgHttpClient:(NSURLConnection *)conn didFinishLoadingGet:(NSMutableData *)data{
 	NSLog(@"didFinishLoading");
 	
 	NSString *contents = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
@@ -165,35 +196,7 @@
 		
 		[delegate MGPhotoClient:conn didFinishGetting:photos];
 	}
-/*		NSMutableArray * voiceArray = [NSMutableArray array];
-		NSArray * voiceJsonArray = [contents JSONValue];
-		for(NSDictionary * voiceContentDict in voiceJsonArray){
-			MGVoice * voice = [[[MGVoice alloc] init] autorelease];
-			for (id key in voiceContentDict){
-				NSLog(@"key=[%@] value=[%@] type=[%@]",key,[voiceContentDict objectForKey:key],[[voiceContentDict objectForKey:key] class]);	 
-			}
-			NSDictionary * user = [voiceContentDict objectForKey:@"user"];
-			voice.postId = [voiceContentDict objectForKey:@"id"];
-			voice.createdAt = [voiceContentDict objectForKey:@"created_at"];
-			voice.voiceText = [voiceContentDict objectForKey:@"text"];
-			voice.userId = [user objectForKey:@"id"];
-			voice.userScreeName = [user objectForKey:@"screen_name"];
-			voice.userProfileImageUrl = [user objectForKey:@"profile_image_url"];
-			voice.userUrl = [user objectForKey:@"url"];
-			voice.replyCount = [voiceContentDict objectForKey:@"reply_count"];
-			voice.favoriteCount = [voiceContentDict objectForKey:@"favorite_count"];
-			voice.source = [voiceContentDict objectForKey:@"source"];
-			voice.favorited = [voiceContentDict objectForKey:@"favorited"];
-			NSArray * photoArr =[voiceContentDict objectForKey:@"photo"];
-			if (photoArr) {
-				if ([photoArr count]>0) {
-					voice.photoImageUrl = [[photoArr objectAtIndex:0] objectForKey:@"image_url"];
-					voice.photoThumbnailUrl = [[photoArr objectAtIndex:0] objectForKey:@"thumbnail_url"];
-				}
-			}
-			[voiceArray addObject:voice];
-		}
-*/		
+
 }
 
 -(void)mgHttpClient:(NSURLConnection *)conn didFinishLoadingPost:(NSMutableData *)data{
@@ -204,10 +207,6 @@
 		[delegate MGPhotoClient:conn didFinishPosting:contents];
 	}
 }
-
-- (void) dealloc {
-	[httpClient release];
-	[super dealloc];
-}
+*/
 
 @end

@@ -24,23 +24,17 @@
 @implementation MGVoiceClient
 
 @synthesize delegate;
-//@synthesize identifier;
-//@synthesize httpClient;
 
 -(id)init{
 	if((self = [super init])){
 		//initialize
-		//self.httpClient = [[[MGHttpClient alloc] init]autorelease];
-		//self.httpClient.delegate = self;
 	}
 	return self;
 }
 
 - (void) dealloc {
     self.delegate = nil;
-	//self.httpClient = nil;
-	//self.identifier = nil;
-    [super dealloc];
+	[super dealloc];
 }
 
 //あるユーザのつぶやき一覧の取得
