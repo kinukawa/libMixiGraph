@@ -264,19 +264,23 @@
     
     id result = data;
     if(httpClient.identifier==@"requestUserVoices"){
-        result = [MGVoice makeVoiceArrayFromResponseData:data];
+        NSArray * entryArray = [contents JSONValue];
+        result = [MGVoice makeContentArrayFromEntryArray:entryArray];
     }else if(httpClient.identifier==@"requestUserVoicesUsingSinceId"){
-        result = [MGVoice makeVoiceArrayFromResponseData:data];
+        NSArray * entryArray = [contents JSONValue];
+        result = [MGVoice makeContentArrayFromEntryArray:entryArray];
     }else if(httpClient.identifier==@"requestFriendsVoices"){
-        result = [MGVoice makeVoiceArrayFromResponseData:data];
+        NSArray * entryArray = [contents JSONValue];
+        result = [MGVoice makeContentArrayFromEntryArray:entryArray];
     }else if(httpClient.identifier==@"requestFriendsVoicesUsingSinceId"){
-        result = [MGVoice makeVoiceArrayFromResponseData:data];
+        NSArray * entryArray = [contents JSONValue];
+        result = [MGVoice makeContentArrayFromEntryArray:entryArray];
     }else if(httpClient.identifier==@"requestVoiceInfo"){
-        result = [MGVoice makeVoiceFromResponseData:data];
+        result = [MGVoice makeContentFromResponseData:data];
     }else if(httpClient.identifier==@"requestPostVoice"){
-        result = [MGVoice makeVoiceFromResponseData:data];
+        result = [MGVoice makeContentFromResponseData:data];
     }else if(httpClient.identifier==@"requestPostPhotoVoice"){
-        result = [MGVoice makeVoiceFromResponseData:data];
+        result = [MGVoice makeContentFromResponseData:data];
     }
     
 	if([delegate respondsToSelector:@selector(mgVoiceClient:didFinishLoading:)]){

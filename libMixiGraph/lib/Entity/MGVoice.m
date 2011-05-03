@@ -74,7 +74,7 @@
 	[super dealloc];
 }
 
-+(MGVoice *)makeVoiceFromDict:(NSDictionary*)dict{
++(id)makeContentFromDict:(NSDictionary*)dict{
     MGVoice * voice = [[[MGVoice alloc] init] autorelease];
     /*for (id key in voiceContentDict){
      NSLog(@"key=[%@] value=[%@] type=[%@]",key,[voiceContentDict objectForKey:key],[[voiceContentDict objectForKey:key] class]);	 
@@ -100,27 +100,6 @@
     }
     return voice;
 }
-
-+(MGVoice *)makeVoiceFromResponseData:(NSData*)data{
-    NSString *contents = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
-	//NSLog(@"%@",contents);
-    NSDictionary * voiceContentDict = [contents JSONValue];
-    MGVoice * voice = [self makeVoiceFromDict:voiceContentDict];
-    return voice;
-}
-
-+(NSArray *)makeVoiceArrayFromResponseData:(NSData*)data{
-    NSString *contents = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
-	//NSLog(@"%@",contents);
-    NSMutableArray * voiceArray = [NSMutableArray array];
-    NSArray * voiceJsonArray = [contents JSONValue];
-    for(NSDictionary * voiceContentDict in voiceJsonArray){
-        MGVoice * voice = [self makeVoiceFromDict:voiceContentDict];
-        [voiceArray addObject:voice];
-    }
-    return voiceArray;
-}
-
 
 -(void)getComments{
     NSURL * url = [MGUtil buildAPIURL:VOICE_REPLYS_URL
@@ -222,7 +201,7 @@
     }else if(self.httpClient.identifier==@"getFavorites"){
         result = [MGFavorite makeFavoriteArrayFromResponseData:data];
     }else if(self.httpClient.identifier==@"postFavorite"){
-        result = [MGVoice makeVoiceFromResponseData:data];
+        result = [MGVoice makeContentFromResponseData:data];
     }else if(self.httpClient.identifier==@"deleteFavorite"){
         result = [MGFavorite makeFavoriteFromResponseData:data];
         self.favoriteCount--;

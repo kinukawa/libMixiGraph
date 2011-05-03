@@ -52,9 +52,6 @@
 	//MGHttpClient * httpClient;
 }
 
-+(MGVoice *)makeVoiceFromResponseData:(NSData*)data;
-+(NSArray *)makeVoiceArrayFromResponseData:(NSData*)data;
-
 -(void)getComments;
 -(void)postComment:(NSString *)comment;
 -(void)deleteCommentByComment:(MGComment *)comment;
