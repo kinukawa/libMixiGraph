@@ -20,6 +20,8 @@
 -(IBAction)pressGetPhotoListButton;
 //あるフォトの情報を取得
 -(IBAction)pressGetPhotoButton;
+//最近友人が作成したフォト一覧の取得
+-(IBAction)pressGetRecentCreatedPhotoButton;
 
 @property (nonatomic,retain) MGPhotoClient * photoClient;
 @end

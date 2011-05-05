@@ -66,6 +66,15 @@
              startIndex:(int)startIndex
                   count:(int)count;
 
+//最近グループメンバーが作成したフォト一覧の取得
+-(void)getRecentCreatedPhotoListByGroupId:(NSString*)groupId 
+                               startIndex:(int)startIndex
+                                    count:(int)count;
+
+//最近友人が作成したフォト一覧の取得
+-(void)getRecentCreatedFriendsPhotoListWithStartIndex:(int)startIndex 
+                                                count:(int)count;
+    
 @end
 
 @protocol MGPhotoClientDelegate<NSObject>

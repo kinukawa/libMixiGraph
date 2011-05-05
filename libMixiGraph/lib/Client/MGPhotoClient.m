@@ -146,6 +146,33 @@
 	[httpClient get:url];
 }
 
+//最近グループメンバーが作成したフォト一覧の取得
+-(void)getRecentCreatedPhotoListByGroupId:(NSString*)groupId 
+                               startIndex:(int)startIndex
+                                    count:(int)count{
+	NSMutableDictionary * queryDict = [NSMutableDictionary dictionary];
+    if (startIndex>0) {
+		[queryDict setObject:[NSString stringWithFormat:@"%d",startIndex] forKey:@"startIndex"];
+	} 
+    if (count>0) {
+		[queryDict setObject:[NSString stringWithFormat:@"%d",count] forKey:@"count"];
+	}   
+	NSURL * url = [MGUtil buildAPIURL:PHOTO_BASE_URL
+                                 path:[NSArray arrayWithObjects:
+                                       @"mediaItems",
+                                       @"@me",
+                                       groupId,
+                                       nil]
+                                query:queryDict];
+    httpClient.identifier = @"getRecentCreatedPhotoListByGroupId";
+	[httpClient get:url];
+}
+
+//最近友人が作成したフォト一覧の取得
+-(void)getRecentCreatedFriendsPhotoListWithStartIndex:(int)startIndex count:(int)count{
+    [self getRecentCreatedPhotoListByGroupId:@"@friends" startIndex:startIndex count:count];
+}
+
 
 //////////////MGHttpClientDelegate/////////////////////
 
@@ -180,7 +207,8 @@
                                        [entryDict objectForKey:@"totalResults"], @"totalResults", 
                                        nil];
         result = responseDict;
-    }else if(httpClient.identifier==@"getPhotoListByUserId"){
+    }else if([self.httpClient.identifier isEqualToString:@"getPhotoListByUserId"] ||
+             [self.httpClient.identifier isEqualToString:@"getRecentCreatedPhotoListByGroupId"]){
         NSDictionary * entryDict = [contents JSONValue];
         NSArray * photoArray = [MGPhoto makeContentArrayFromEntryArray:[entryDict objectForKey:@"entry"]];        
         NSDictionary * responseDict = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -190,7 +218,7 @@
                                        [entryDict objectForKey:@"totalResults"], @"totalResults", 
                                        nil];
         result = responseDict;
-    }else if(httpClient.identifier==@"getPhotoByUserId"){
+    }else if([self.httpClient.identifier isEqualToString:@"getPhotoByUserId"]){
         NSDictionary * entryDict = [contents JSONValue];
         NSArray * photoArray = [MGPhoto makeContentArrayFromEntryArray:[entryDict objectForKey:@"entry"]];        
         NSDictionary * responseDict = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -200,17 +228,8 @@
                                        [entryDict objectForKey:@"totalResults"], @"totalResults", 
                                        nil];
         result = responseDict;
-    }/*else if(httpClient.identifier==@"requestFriendsVoicesUsingSinceId"){
-        NSArray * entryArray = [contents JSONValue];
-        result = [MGVoice makeContentArrayFromEntryArray:entryArray];
-    }else if(httpClient.identifier==@"requestVoiceInfo"){
-        result = [MGVoice makeContentFromResponseData:data];
-    }else if(httpClient.identifier==@"requestPostVoice"){
-        result = [MGVoice makeContentFromResponseData:data];
-    }else if(httpClient.identifier==@"requestPostPhotoVoice"){
-        result = [MGVoice makeContentFromResponseData:data];
     }
-    */
+    
 	if([delegate respondsToSelector:@selector(mgPhotoClient:didFinishLoading:)]){
         [delegate mgPhotoClient:conn didFinishLoading:result];
     }

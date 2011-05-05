@@ -82,6 +82,12 @@
     [photoClient getPhotoByUserId:@"5fbcb9i8ysmdg" albumId:@"@default" mediaItemId:@"1078227913" accessKey:nil startIndex:0 count:0];
 }
 
+//最近友人が作成したフォト一覧の取得
+-(IBAction)pressGetRecentCreatedPhotoButton{
+    photoClient.identifier = @"pressGetRecentCreatedPhotoButton";
+    [photoClient getRecentCreatedFriendsPhotoListWithStartIndex:0 count:0];
+}
+
 
 -(void)mgPhotoClient:(NSURLConnection *)conn didFailWithError:(NSError*)error{
     
@@ -101,7 +107,8 @@
             NSLog(@"%d",album.numComments);
             NSLog(@"%@",album.title);
         }
-    }else if([photoClient.identifier isEqualToString:@"pressGetPhotoListButton"]){
+    }else if([photoClient.identifier isEqualToString:@"pressGetPhotoListButton"] ||
+             [photoClient.identifier isEqualToString:@"pressGetRecentCreatedPhotoButton"]){
         NSArray * photoArray = (NSArray*)[result objectForKey:@"entry"];
         for (MGPhoto * photo in photoArray) {
             NSLog(@"%@",photo.ownerDisplayName);
