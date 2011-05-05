@@ -42,10 +42,14 @@
                  startIndex:(int)startIndex
                       count:(int)count;
 
+//最近グループメンバーが作成したアルバム一覧の取得
+-(void)getRecentCreatedAlbumListByGroupId:(NSString*)groupId 
+                               startIndex:(int)startIndex
+                                    count:(int)count;
+
 //最近友人が作成したアルバム一覧の取得
--(void)getRecentCreatedMyAlbumListByGroupId:(NSString*)groupId 
-                                 startIndex:(int)startIndex
-                                      count:(int)count;
+-(void)getRecentCreatedFriendsAlbumListWithStartIndex:(int)startIndex 
+                                                count:(int)count;
 
 @end
 

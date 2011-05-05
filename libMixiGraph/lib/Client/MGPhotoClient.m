@@ -61,8 +61,8 @@
 	
 }
 
-//最近友人が作成したアルバム一覧の取得
--(void)getRecentCreatedMyAlbumListByGroupId:(NSString*)groupId 
+//最近グループメンバーが作成したアルバム一覧の取得
+-(void)getRecentCreatedAlbumListByGroupId:(NSString*)groupId 
                                  startIndex:(int)startIndex
                                       count:(int)count{
 	NSMutableDictionary * queryDict = [NSMutableDictionary dictionary];
@@ -81,6 +81,11 @@
                                 query:queryDict];
     httpClient.identifier = @"getRecentCreatedAlbumListByUserId";
 	[httpClient get:url];
+}
+
+//最近友人が作成したアルバム一覧の取得
+-(void)getRecentCreatedFriendsAlbumListWithStartIndex:(int)startIndex count:(int)count{
+    [self getRecentCreatedAlbumListByGroupId:@"@friends" startIndex:startIndex count:count];
 }
 
 

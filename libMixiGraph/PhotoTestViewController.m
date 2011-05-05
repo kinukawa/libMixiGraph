@@ -67,7 +67,7 @@
 //最近友人が作成したアルバム一覧の取得
 -(IBAction)pressGetRecentCreatedAlbumButton{
     photoClient.identifier = @"pressGetRecentCreatedAlbumButton";
-    [photoClient getRecentCreatedMyAlbumListByGroupId:@"@friends" startIndex:0 count:0];
+    [photoClient getRecentCreatedFriendsAlbumListWithStartIndex:0 count:0];
 }
 
 
