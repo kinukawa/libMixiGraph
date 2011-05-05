@@ -51,6 +51,13 @@
 -(void)getRecentCreatedFriendsAlbumListWithStartIndex:(int)startIndex 
                                                 count:(int)count;
 
+//あるアルバムに登録されているフォトの一覧を取得
+-(void)getPhotoListByUserId:(NSString*)userId 
+                    albumId:(NSString*)albumId
+                  accessKey:(NSString*)accessKey
+                 startIndex:(int)startIndex
+                      count:(int)count;
+
 @end
 
 @protocol MGPhotoClientDelegate<NSObject>

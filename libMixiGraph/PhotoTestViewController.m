@@ -70,6 +70,11 @@
     [photoClient getRecentCreatedFriendsAlbumListWithStartIndex:0 count:0];
 }
 
+//あるアルバムに登録されているフォトの一覧を取得
+-(IBAction)pressGetPhotoListButton{
+    photoClient.identifier = @"pressGetPhotoListButton";
+    [photoClient getPhotoListByUserId:@"5fbcb9i8ysmdg" albumId:@"@default" accessKey:nil startIndex:0 count:0];
+}
 
 
 -(void)mgPhotoClient:(NSURLConnection *)conn didFailWithError:(NSError*)error{

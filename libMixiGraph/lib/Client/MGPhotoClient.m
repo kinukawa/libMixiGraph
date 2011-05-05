@@ -88,76 +88,32 @@
     [self getRecentCreatedAlbumListByGroupId:@"@friends" startIndex:startIndex count:count];
 }
 
-
-//マイミクのフォトを取得
--(void)getFriendsRecentPhotos:(NSString*)groupID{
-	
-	NSURL * url = [MGUtil buildAPIURL:PHOTO_BASE_URL
-							   path:[NSArray arrayWithObjects:
-									 @"mediaItems",
-									 @"@me",
-									 groupID,
-									 nil]
-							  query:nil];
-	[httpClient get:url];
-	
-}
-
-//すべてのマイミクのフォトを取得
--(void)getAllFriendsRecentPhotos{
-	[self getFriendsRecentPhotos:@"@friends"];
-}
-
-//フォトの投稿
--(void)postPhoto:(UIImage *)photo userId:(NSString*)userId albumId:(NSString *)albumId title:(NSString*)title{
-	
+//あるアルバムに登録されているフォトの一覧を取得
+-(void)getPhotoListByUserId:(NSString*)userId 
+                    albumId:(NSString*)albumId
+                  accessKey:(NSString*)accessKey
+                 startIndex:(int)startIndex
+                      count:(int)count{
 	NSMutableDictionary * queryDict = [NSMutableDictionary dictionary];
-	if (title) {
-		[queryDict setObject:[title stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] forKey:@"title"];
-	}
-	
-	NSURL * url = [MGUtil buildAPIURL:@"http://api.mixi-platform.com/" 
-							   path:[NSArray arrayWithObjects:
-									 @"2",
-									 @"photo",
-									 @"mediaItems",
-									 userId,
-									 @"@self",
-									 albumId,
-									 nil]
-							  query:queryDict];
-	
-	
-	[httpClient imagePost:url image:photo];
-}
-
-//自分の簡単公開アルバムにフォトを投稿
--(void)postPhotoToMyEasyAlbum:(UIImage *)photo title:(NSString*)title{
-    [self postPhoto:photo userId:@"@me" albumId:@"@default" title:title];
-}
-
-//アルバムの作成
--(void)makeAlbum:(NSString*)userId title:(NSString*)title body:(NSString*)body visibility:(NSString *)visibility accessKey:(NSString *)accessKey{
-	NSURL * url = [MGUtil buildAPIURL:@"http://api.mixi-platform.com/" 
-							   path:[NSArray arrayWithObjects:
-									 @"2",
-									 @"photo",
-									 @"albums",
-									 @"@me",
-									 @"@self",
-									 nil]
-							  query:nil];
-    
-    NSString * json;
-    if(accessKey){
-        json = [NSString stringWithFormat:@"{\"title\":\"%@\",\"description\":\"%@\",\"privacy\":{\"visibility\":\"%@\",\"accessKey\":\"%@\"}}",title,body,visibility,accessKey];
-	}else{
-        json = [NSString stringWithFormat:@"{\"title\":\"%@\",\"description\":\"%@\",\"privacy\":{\"visibility\":\"%@\"}}",title,body,visibility,accessKey];
-	}
-    NSLog(@"%@",json);
-	NSData * postData = [json dataUsingEncoding:NSUTF8StringEncoding];
-	[httpClient post:url param:[NSDictionary dictionaryWithObjectsAndKeys:
-								@"application/json",@"Content-type",nil] body:postData];
+    if (accessKey) {
+		[queryDict setObject:accessKey forKey:@"accessKey"];
+	} 
+    if (startIndex>0) {
+		[queryDict setObject:[NSString stringWithFormat:@"%d",startIndex] forKey:@"startIndex"];
+	} 
+    if (count>0) {
+		[queryDict setObject:[NSString stringWithFormat:@"%d",count] forKey:@"count"];
+	}   
+	NSURL * url = [MGUtil buildAPIURL:PHOTO_BASE_URL
+                                 path:[NSArray arrayWithObjects:
+                                       @"mediaItems",
+                                       userId,
+                                       @"@self",
+                                       albumId,
+                                       nil]
+                                query:queryDict];
+    httpClient.identifier = @"getRecentCreatedFriendsAlbumListWithStartIndex";
+	[httpClient get:url];
 }
 
 
