@@ -38,6 +38,14 @@
     NSString * url;
     NSString * viewPageUrl;
 }
+
+-(void)getComments;
+-(void)postComment:(NSString *)comment;
+-(void)deleteCommentByComment:(MGComment *)comment;
+-(void)getFavorites;
+-(void)postFavorite;
+-(void)deleteFavoriteByUserId:(NSString *)uId;
+
 @property (nonatomic,retain) NSString * created;
 @property (nonatomic,retain) NSString * description;
 @property (nonatomic,retain) NSString * albumId; 
