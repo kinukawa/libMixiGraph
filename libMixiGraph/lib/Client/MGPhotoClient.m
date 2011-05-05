@@ -116,6 +116,36 @@
 	[httpClient get:url];
 }
 
+//あるフォトの情報を取得
+-(void)getPhotoByUserId:(NSString*)userId 
+                albumId:(NSString*)albumId
+            mediaItemId:(NSString*)mediaItemId
+              accessKey:(NSString*)accessKey
+             startIndex:(int)startIndex
+                  count:(int)count{
+	NSMutableDictionary * queryDict = [NSMutableDictionary dictionary];
+    if (accessKey) {
+		[queryDict setObject:accessKey forKey:@"accessKey"];
+	} 
+    if (startIndex>0) {
+		[queryDict setObject:[NSString stringWithFormat:@"%d",startIndex] forKey:@"startIndex"];
+	} 
+    if (count>0) {
+		[queryDict setObject:[NSString stringWithFormat:@"%d",count] forKey:@"count"];
+	}   
+	NSURL * url = [MGUtil buildAPIURL:PHOTO_BASE_URL
+                                 path:[NSArray arrayWithObjects:
+                                       @"mediaItems",
+                                       userId,
+                                       @"@self",
+                                       albumId,
+                                       mediaItemId,
+                                       nil]
+                                query:queryDict];
+    httpClient.identifier = @"getPhotoByUserId";
+	[httpClient get:url];
+}
+
 
 //////////////MGHttpClientDelegate/////////////////////
 
@@ -160,10 +190,17 @@
                                        [entryDict objectForKey:@"totalResults"], @"totalResults", 
                                        nil];
         result = responseDict;
-    }/*else if(httpClient.identifier==@"requestFriendsVoices"){
-        NSArray * entryArray = [contents JSONValue];
-        result = [MGVoice makeContentArrayFromEntryArray:entryArray];
-    }else if(httpClient.identifier==@"requestFriendsVoicesUsingSinceId"){
+    }else if(httpClient.identifier==@"getPhotoByUserId"){
+        NSDictionary * entryDict = [contents JSONValue];
+        NSArray * photoArray = [MGPhoto makeContentArrayFromEntryArray:[entryDict objectForKey:@"entry"]];        
+        NSDictionary * responseDict = [NSDictionary dictionaryWithObjectsAndKeys:
+                                       [photoArray objectAtIndex:0],@"entry",
+                                       [entryDict objectForKey:@"itemsPerPage"], @"itemsPerPage", 
+                                       [entryDict objectForKey:@"startIndex"], @"startIndex", 
+                                       [entryDict objectForKey:@"totalResults"], @"totalResults", 
+                                       nil];
+        result = responseDict;
+    }/*else if(httpClient.identifier==@"requestFriendsVoicesUsingSinceId"){
         NSArray * entryArray = [contents JSONValue];
         result = [MGVoice makeContentArrayFromEntryArray:entryArray];
     }else if(httpClient.identifier==@"requestVoiceInfo"){

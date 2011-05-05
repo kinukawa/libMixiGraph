@@ -76,6 +76,12 @@
     [photoClient getPhotoListByUserId:@"5fbcb9i8ysmdg" albumId:@"@default" accessKey:nil startIndex:0 count:0];
 }
 
+//あるフォトの情報を取得
+-(IBAction)pressGetPhotoButton{
+    photoClient.identifier = @"pressGetPhotoButton";
+    [photoClient getPhotoByUserId:@"5fbcb9i8ysmdg" albumId:@"@default" mediaItemId:@"1078227913" accessKey:nil startIndex:0 count:0];
+}
+
 
 -(void)mgPhotoClient:(NSURLConnection *)conn didFailWithError:(NSError*)error{
     
@@ -100,9 +106,15 @@
         for (MGPhoto * photo in photoArray) {
             NSLog(@"%@",photo.ownerDisplayName);
             NSLog(@"%@",photo.url);
-            NSLog(@"%d",photo.numComments);
+            NSLog(@"%@",photo.photoId);
             NSLog(@"%@",photo.title);
         }
+    }else if([photoClient.identifier isEqualToString:@"pressGetPhotoButton"]){
+        MGPhoto * photo = (MGPhoto*)[result objectForKey:@"entry"];
+        NSLog(@"%@",photo.ownerDisplayName);
+        NSLog(@"%@",photo.url);
+        NSLog(@"%@",photo.photoId);
+        NSLog(@"%@",photo.title);
     } 
 }
 

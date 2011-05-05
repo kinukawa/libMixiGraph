@@ -58,6 +58,14 @@
                  startIndex:(int)startIndex
                       count:(int)count;
 
+//あるフォトの情報を取得
+-(void)getPhotoByUserId:(NSString*)userId 
+                albumId:(NSString*)albumId
+            mediaItemId:(NSString*)mediaItemId
+              accessKey:(NSString*)accessKey
+             startIndex:(int)startIndex
+                  count:(int)count;
+
 @end
 
 @protocol MGPhotoClientDelegate<NSObject>

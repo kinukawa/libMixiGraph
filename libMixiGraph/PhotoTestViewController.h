@@ -18,6 +18,8 @@
 -(IBAction)pressGetRecentCreatedAlbumButton;
 //あるアルバムに登録されているフォトの一覧を取得
 -(IBAction)pressGetPhotoListButton;
+//あるフォトの情報を取得
+-(IBAction)pressGetPhotoButton;
 
 @property (nonatomic,retain) MGPhotoClient * photoClient;
 @end
