@@ -89,11 +89,19 @@
     if([photoClient.identifier isEqualToString:@"pressGetAlbumButton"]||
        [photoClient.identifier isEqualToString:@"pressGetRecentCreatedAlbumButton"]){
         NSArray * albumArray = (NSArray*)[result objectForKey:@"entry"];
-        for (MGAlbum*album in albumArray) {
+        for (MGAlbum * album in albumArray) {
             NSLog(@"%@",album.ownerDisplayName);
             NSLog(@"%@",album.url);
             NSLog(@"%d",album.numComments);
             NSLog(@"%@",album.title);
+        }
+    }else if([photoClient.identifier isEqualToString:@"pressGetPhotoListButton"]){
+        NSArray * photoArray = (NSArray*)[result objectForKey:@"entry"];
+        for (MGPhoto * photo in photoArray) {
+            NSLog(@"%@",photo.ownerDisplayName);
+            NSLog(@"%@",photo.url);
+            NSLog(@"%d",photo.numComments);
+            NSLog(@"%@",photo.title);
         }
     } 
 }

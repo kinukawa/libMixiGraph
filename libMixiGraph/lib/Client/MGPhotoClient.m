@@ -112,7 +112,7 @@
                                        albumId,
                                        nil]
                                 query:queryDict];
-    httpClient.identifier = @"getRecentCreatedFriendsAlbumListWithStartIndex";
+    httpClient.identifier = @"getPhotoListByUserId";
 	[httpClient get:url];
 }
 
@@ -150,10 +150,17 @@
                                        [entryDict objectForKey:@"totalResults"], @"totalResults", 
                                        nil];
         result = responseDict;
-    }/*else if(httpClient.identifier==@"requestUserVoicesUsingSinceId"){
-        NSArray * entryArray = [contents JSONValue];
-        result = [MGVoice makeContentArrayFromEntryArray:entryArray];
-    }else if(httpClient.identifier==@"requestFriendsVoices"){
+    }else if(httpClient.identifier==@"getPhotoListByUserId"){
+        NSDictionary * entryDict = [contents JSONValue];
+        NSArray * photoArray = [MGPhoto makeContentArrayFromEntryArray:[entryDict objectForKey:@"entry"]];        
+        NSDictionary * responseDict = [NSDictionary dictionaryWithObjectsAndKeys:
+                                       photoArray,@"entry",
+                                       [entryDict objectForKey:@"itemsPerPage"], @"itemsPerPage", 
+                                       [entryDict objectForKey:@"startIndex"], @"startIndex", 
+                                       [entryDict objectForKey:@"totalResults"], @"totalResults", 
+                                       nil];
+        result = responseDict;
+    }/*else if(httpClient.identifier==@"requestFriendsVoices"){
         NSArray * entryArray = [contents JSONValue];
         result = [MGVoice makeContentArrayFromEntryArray:entryArray];
     }else if(httpClient.identifier==@"requestFriendsVoicesUsingSinceId"){
