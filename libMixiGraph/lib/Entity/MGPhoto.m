@@ -31,108 +31,87 @@
 @synthesize numComments;
 @synthesize numFavorites;
 @synthesize thumbnailUrl;
-@synthesize photoTitle;
-@synthesize photoType;
+@synthesize title;
+@synthesize type;
 @synthesize url;
 @synthesize viewPageUrl;
 @synthesize ownerThumbnailUrl;
 @synthesize ownerId;
 @synthesize ownerDisplayName;
 @synthesize ownerProfileUrl;
-//@synthesize ownerThumbnailImage;
-
--(UIImage *)ownerThumbnailImage
-{
-    if (ownerThumbnailImage) {
-        return ownerThumbnailImage;
-        
-    }else{
-        NSURL * otu =[NSURL URLWithString:ownerThumbnailUrl];
-        NSMutableURLRequest* otReq = [[[NSMutableURLRequest alloc] initWithURL:otu] autorelease];
-        NSHTTPURLResponse* otRes;
-        NSError* otErr;
-        NSData * otData = [NSURLConnection sendSynchronousRequest:otReq returningResponse:&otRes error:&otErr];      
-        ownerThumbnailImage = [[UIImage alloc] initWithData:otData];
-        return ownerThumbnailImage;        
-    }
-}
-
-- (void)setOwnerThumbnailImage:(UIImage *)oti
-{
-    ownerThumbnailImage = oti;
-    [ownerThumbnailImage retain];
-}
-
--(UIImage *)getPhoto{
-	NSURL * photoUrl =[NSURL URLWithString:self.url];
-	NSMutableURLRequest* photoReq = [[[NSMutableURLRequest alloc] initWithURL:photoUrl] autorelease];
-	NSHTTPURLResponse* photoRes;
-	NSError* photoErr;
-	NSData * photoData = [NSURLConnection sendSynchronousRequest:photoReq returningResponse:&photoRes error:&photoErr];      
-	return [[[UIImage alloc] initWithData:photoData] autorelease];
-}
+@synthesize ownerThumbnailImage;
 
 -(id)init{
 	if((self = [super init])){
 		//initialize
-		//commentClient = [[MGCommentClient alloc] init];
-		//feedbackClient = [[MGFeedbackClient alloc] init];
-		
-		//commentClient.delegate = self;
-		//feedbackClient.delegate = self;
-	}
+    }
 	return self;
 }
 
-
-
-//このフォトに、いいねをする
--(id)getFeedback{
-    /*[feedbackClient getPhotoFeedbacks:self.ownerId 
-                              albumId:self.albumId 
-                          mediaItemId:photoId];*/
-    
-    NSURL * favUrl = [MGUtil buildAPIURL:@"http://api.mixi-platform.com/" 
-								 path:[NSArray arrayWithObjects:
-									   @"2",
-									   @"photo",
-									   @"favorites",
-									   @"mediaItems",
-									   self.ownerId,
-                                       @"@self",
-                                       self.albumId,
-                                       self.photoId,
-									   nil]
-								query:nil];
-
-	NSMutableURLRequest* req = [[[NSMutableURLRequest alloc] initWithURL:favUrl] autorelease];
-	NSHTTPURLResponse* res;
-	NSError* err;
-	NSData * favData = [NSURLConnection sendSynchronousRequest:req returningResponse:&res error:&err];      
-	return [[[UIImage alloc] initWithData:favData] autorelease];
-}
-
--(void)mgFeedbackClient:(NSURLConnection *)conn didFinishGetting:(NSArray *)feedbackArray{
-    if([delegate respondsToSelector:@selector(mgPhoto:didFinishGettingFeedbacks:)]){
-		[delegate mgPhoto:conn didFinishGettingFeedbacks:feedbackArray];
-	}
-}
-
--(void)mgFeedbackClient:(NSURLConnection *)conn didFinishPosting:(id)reply{
-    NSString *contents = [[[NSString alloc] initWithData:reply encoding:NSUTF8StringEncoding] autorelease];
-	if([delegate respondsToSelector:@selector(mgPhoto:didFinishPostingFeedback:)]){
-		[delegate mgPhoto:conn didFinishPostingFeedback:contents];
-	}
-}
-
--(void)mgFeedbackClient:(NSURLConnection *)conn didReceiveResponseError:(MGApiError *)error{
-    
-}
-
 - (void) dealloc {
-	//[commentClient release];
-	//[feedbackClient release];
+    self.delegate = nil;
+    
+    self.albumId = nil;
+    self.created = nil;
+    self.photoId = nil;
+    self.largeImageUrl = nil;
+    self.mimeType = nil;
+    self.numComments = 0;
+    self.numFavorites = 0;
+    self.thumbnailUrl = nil;
+    self.title = nil;
+    self.type = nil;
+    self.url = nil;
+    self.viewPageUrl = nil;
+    self.ownerThumbnailUrl = nil;
+    self.ownerId = nil;
+    self.ownerDisplayName = nil;
+    self.ownerProfileUrl = nil;
+    self.ownerThumbnailImage = nil;
+    
 	[super dealloc];
+}
+
+//////////////MGHttpClientDelegate/////////////////////
+-(void)mgHttpClient:(NSURLConnection *)conn didFailWithError:(NSError*)error{
+	NSLog(@"mgPhoto didFailWithError");
+	if([delegate respondsToSelector:@selector(mgPhoto:didFailWithError:)]){
+		[delegate mgPhoto:conn didFailWithError:error];
+	}
+}
+
+-(void)mgHttpClient:(NSURLConnection *)conn didFailWithAPIError:(MGApiError*)error{
+	NSLog(@"mgPhoto didFailWithError : %@",error);
+	if([delegate respondsToSelector:@selector(mgPhoto:didFailWithAPIError:)]){
+		[delegate mgPhoto:conn didFailWithAPIError:error];
+	}
+}
+
+-(void)mgHttpClient:(NSURLConnection *)conn didFinishLoading:(NSData *)data{
+    NSString *contents = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+	NSLog(@"mgPhoto didFinishLoading %@:%@",self.httpClient.identifier,contents);
+    id result = data;
+    if(self.httpClient.identifier==@"getComments"){
+        result = [MGComment makeCommentArrayFromResponseData:data];
+    }
+    /*else if(self.httpClient.identifier==@"postComment"){
+        result = [MGComment makeCommentFromResponseData:data];
+        self.replyCount++;
+    }else if(self.httpClient.identifier==@"deleteComment"){
+        result = [MGComment makeCommentFromResponseData:data];
+        self.replyCount--;
+    }else if(self.httpClient.identifier==@"getFavorites"){
+        result = [MGFavorite makeFavoriteArrayFromResponseData:data];
+    }else if(self.httpClient.identifier==@"postFavorite"){
+        result = [MGVoice makeContentFromResponseData:data];
+    }else if(self.httpClient.identifier==@"deleteFavorite"){
+        result = [MGFavorite makeFavoriteFromResponseData:data];
+        self.favoriteCount--;
+    }
+    */
+	if([delegate respondsToSelector:@selector(mgPhoto:didFinishLoading:)]){
+        [delegate mgPhoto:conn didFinishLoading:data];
+    }
 }
 
 @end

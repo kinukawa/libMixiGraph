@@ -20,24 +20,25 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-//#import "MGCommentClient.h"
 #import "MGComment.h"
 #import "MGFavorite.h"
+#import "MGContentBase.h"
+#import "MGApiError.h"
 
 @protocol MGPhotoDelegate;
 
-@interface MGPhoto : NSObject {
+@interface MGPhoto : MGContentBase {
     id <MGPhotoDelegate> delegate;
 	NSString * albumId;
 	NSString * created;
 	NSString * photoId;
-	NSString * largeImageUrl;
 	NSString * mimeType;
-	NSString * numComments;
-	NSString * numFavorites;
+	int numComments;
+	int numFavorites;
 	NSString * thumbnailUrl;
-	NSString * photoTitle;
-	NSString * photoType;
+	NSString * title;
+	NSString * type;
+	NSString * largeImageUrl;
 	NSString * url;
 	NSString * viewPageUrl;
 	NSString * ownerThumbnailUrl;
@@ -46,13 +47,15 @@
 	NSString * ownerProfileUrl;
     UIImage * ownerThumbnailImage;
 @private
-	//MGCommentClient * commentClient;
-	//MGFeedbackClient * feedbackClient;
-
 }
 -(UIImage *)getPhoto;
-//-(void)postFeedback;
--(id)getFeedback;
+
+-(void)getComments;
+-(void)postComment:(NSString *)comment;
+-(void)deleteCommentByComment:(MGComment *)comment;
+-(void)getFavorites;
+-(void)postFavorite;
+-(void)deleteFavoriteByUserId:(NSString *)uId;
 
 @property (nonatomic,assign) id delegate;
 
@@ -61,11 +64,11 @@
 @property (nonatomic,retain) NSString * photoId;
 @property (nonatomic,retain) NSString * largeImageUrl;
 @property (nonatomic,retain) NSString * mimeType;
-@property (nonatomic,retain) NSString * numComments;
-@property (nonatomic,retain) NSString * numFavorites;
+@property (nonatomic) int numComments;
+@property (nonatomic) int numFavorites;
 @property (nonatomic,retain) NSString * thumbnailUrl;
-@property (nonatomic,retain) NSString * photoTitle;
-@property (nonatomic,retain) NSString * photoType;
+@property (nonatomic,retain) NSString * title;
+@property (nonatomic,retain) NSString * type;
 @property (nonatomic,retain) NSString * url;
 @property (nonatomic,retain) NSString * viewPageUrl;
 @property (nonatomic,retain) NSString * ownerThumbnailUrl;
@@ -77,11 +80,7 @@
 @end
 
 @protocol MGPhotoDelegate<NSObject>
-//-(void)mgVoice:(NSURLConnection *)conn didReceiveResponseError:(NSString *)error;
-//-(void)mgVoiceClient:(NSURLConnection *)conn didFailWithError:(NSError*)error;
--(void)mgPhoto:(NSURLConnection *)conn didFinishGettingComments:(NSArray *)commentArray;
--(void)mgPhoto:(NSURLConnection *)conn didFinishPostingComment:(id)reply;
--(void)mgPhoto:(NSURLConnection *)conn didFinishGettingFeedbacks:(NSArray *)feedbackArray;
--(void)mgPhoto:(NSURLConnection *)conn didFinishPostingFeedback:(id)reply;
-//-(void)mgVoiceClient:(NSURLConnection *)conn didFinishPosting:(MGVoice *)voice;
+-(void)mgPhoto:(NSURLConnection *)conn didFailWithError:(NSError*)error;
+-(void)mgPhoto:(NSURLConnection *)conn didFailWithAPIError:(MGApiError*)error;
+-(void)mgPhoto:(NSURLConnection *)conn didFinishLoading:(id)result;
 @end
