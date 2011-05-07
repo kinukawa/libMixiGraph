@@ -26,6 +26,8 @@
 #define PEOPLE_BASE_URL     @"http://api.mixi-platform.com/2/people/"
 
 #define PHOTO_BASE_URL      @"http://api.mixi-platform.com/2/photo/"
+#define PHOTO_REPLYS_URL    @"http://api.mixi-platform.com/2/photo/comments/"
+#define PHOTO_FAVORITES_URL @"http://api.mixi-platform.com/2/photo/favorites/"
 
 @interface MGParams : NSObject {
     
