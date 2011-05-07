@@ -12,6 +12,7 @@
 @interface PhotoTestViewController : UIViewController {
     MGPhotoClient * photoClient;
     MGAlbum * testAlbum;
+    MGComment * testComment;
 }
 
 -(IBAction)pressGetAlbumButton;
@@ -27,7 +28,10 @@
 -(IBAction)pressGetAlbumCommentsButton;
 //アルバムにコメント投稿
 -(IBAction)pressPostAlbumCommentsButton;
+//アルバムコメント削除
+-(IBAction)pressDeleteAlbumCommentsButton;
 
 @property (nonatomic,retain) MGPhotoClient * photoClient;
 @property (nonatomic,retain) MGAlbum * testAlbum;
+@property (nonatomic,retain) MGComment * testComment;
 @end

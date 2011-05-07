@@ -90,6 +90,21 @@
 	return [self doRequest:request];
 }
 
+-(bool)delete:(NSURL*)url{
+	
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30];
+	[request setHTTPMethod:@"DELETE"];
+	
+	NSString * accessToken = [NSString stringWithFormat:@"OAuth %@",[MGUserDefaults loadAccessToken]];
+	[request setValue:accessToken forHTTPHeaderField:@"Authorization"];
+	
+	self.backupRequest = nil;
+	self.backupRequest = request;
+	
+	return [self doRequest:request];
+}
+
+
 -(void)imagePost:(NSURL*)url 
 		   image:(UIImage*)image{
 	

@@ -41,6 +41,7 @@
 -(bool)post:(NSURL*)url param:(NSDictionary *)param body:(NSData*)body;
 -(bool)get:(NSURL*)url;
 -(void)imagePost:(NSURL*)url image:(UIImage*)image;
+-(bool)delete:(NSURL*)url;
 
 @property (nonatomic,assign) id delegate;
 @property (nonatomic,retain) NSMutableURLRequest * backupRequest;

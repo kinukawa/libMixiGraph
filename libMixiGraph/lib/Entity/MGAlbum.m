@@ -138,20 +138,27 @@
 	[self.httpClient post:requestUrl param:nil body:body];
 } 
 
-/*
--(void)deleteCommentByComment:(MGComment *)comment{
-    NSURL * url = [MGUtil buildAPIURL:VOICE_REPLYS_URL
-                                 path:[NSArray arrayWithObjects:
-                                       @"destroy",
-                                       self.postId,
-                                       comment.commentId,
-                                       nil]
-                                query:nil];
+
+-(void)deleteCommentByComment:(MGComment *)comment withAccessKey:(NSString *)accessKey{
+    NSMutableDictionary * queryDict = [NSMutableDictionary dictionary];
+	if (accessKey) {
+		[queryDict setObject:accessKey forKey:@"accessKey"];
+	}
+    NSURL * requestUrl = [MGUtil buildAPIURL:PHOTO_REPLYS_URL
+                                        path:[NSArray arrayWithObjects:
+                                              @"albums",
+                                              self.ownerId,
+                                              @"@self",
+                                              self.albumId,
+                                              comment.commentId,
+                                              nil]
+                                       query:queryDict];
     self.httpClient.identifier = @"deleteComment";
-	[self.httpClient post:url param:nil body:nil];
+	[self.httpClient delete:requestUrl];
+    
 }
 
-
+/*
 -(void)getFavorites{
     NSURL * url = [MGUtil buildAPIURL:VOICE_FAVORITES_URL
                                  path:[NSArray arrayWithObjects:
@@ -223,10 +230,9 @@
         result = responseDict;
     }else if(self.httpClient.identifier==@"postComment"){
         //result = [MGComment makeCommentFromResponseData:data];
-    }/*
-    else if(self.httpClient.identifier==@"deleteComment"){
-        result = [MGComment makeCommentFromResponseData:data];
-    }else if(self.httpClient.identifier==@"getFavorites"){
+    }else if(self.httpClient.identifier==@"deleteComment"){
+        //result = [MGComment makeCommentFromResponseData:data];
+    }/*else if(self.httpClient.identifier==@"getFavorites"){
         result = [MGFavorite makeFavoriteArrayFromResponseData:data];
     }else if(self.httpClient.identifier==@"postFavorite"){
         result = [MGVoice makeContentFromResponseData:data];

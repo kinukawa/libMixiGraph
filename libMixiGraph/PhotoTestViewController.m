@@ -12,6 +12,7 @@
 @implementation PhotoTestViewController
 @synthesize photoClient;
 @synthesize testAlbum;
+@synthesize testComment;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -101,6 +102,11 @@
     [self.testAlbum postComment:@"ほげふが"];
 }
 
+//アルバムコメント削除
+-(IBAction)pressDeleteAlbumCommentsButton{
+    self.testAlbum.identifier = @"pressDeleteAlbumCommentsButton";
+    [self.testAlbum deleteCommentByComment:self.testComment withAccessKey:nil];
+}
 
 /////////////////////////////////
 -(void)mgPhotoClient:(NSURLConnection *)conn didFailWithError:(NSError*)error{
@@ -151,6 +157,10 @@
 -(void)mgAlbum:(NSURLConnection *)conn didFinishLoading:(id)result{
     NSLog(@"mgAlbum didFinishLoading : %@",result);
     if([testAlbum.identifier isEqualToString:@"pressGetAlbumCommentsButton"]){
+        NSArray * commentArray = [result objectForKey:@"entry"];
+        if ([commentArray count]>0) {
+            self.testComment = [commentArray objectAtIndex:0];            
+        }
     }
 }
 
