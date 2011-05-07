@@ -48,8 +48,8 @@
 -(void)getCommentsWithAccessKey:(NSString *)accessKey 
                      startIndex:(NSString *)startIndex
                           count:(NSString *)count;
-/*
 -(void)postComment:(NSString *)comment;
+/*
 -(void)deleteCommentByComment:(MGComment *)comment;
 -(void)getFavoritesWithStartIndex:(NSString *)startIndex
                             count:(NSString *)count;

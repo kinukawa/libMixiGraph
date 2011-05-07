@@ -121,20 +121,24 @@
     self.httpClient.identifier = @"getComments";
 	[self.httpClient get:requestUrl];
 }
-/*
+
 -(void)postComment:(NSString *)comment{
-    NSURL * url = [MGUtil buildAPIURL:VOICE_REPLYS_URL
+    NSURL * requestUrl = [MGUtil buildAPIURL:PHOTO_REPLYS_URL
                                  path:[NSArray arrayWithObjects:
-                                       self.postId,
+                                       @"albums",
+                                       self.ownerId,
+                                       @"@self",
+                                       self.albumId,
                                        nil]
                                 query:nil];
     NSData * body = [[[NSString stringWithFormat:@"text=%@",comment] 
                       stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] 
                      dataUsingEncoding:NSUTF8StringEncoding];
     self.httpClient.identifier = @"postComment";
-	[self.httpClient post:url param:nil body:body];
+	[self.httpClient post:requestUrl param:nil body:body];
 } 
 
+/*
 -(void)deleteCommentByComment:(MGComment *)comment{
     NSURL * url = [MGUtil buildAPIURL:VOICE_REPLYS_URL
                                  path:[NSArray arrayWithObjects:
@@ -217,11 +221,10 @@
                                        [jsonDict objectForKey:@"totalResults"], @"totalResults", 
                                        nil];
         result = responseDict;
-    }
-    /*
-    else if(self.httpClient.identifier==@"postComment"){
+    }else if(self.httpClient.identifier==@"postComment"){
         result = [MGComment makeCommentFromResponseData:data];
-    }else if(self.httpClient.identifier==@"deleteComment"){
+    }/*
+    else if(self.httpClient.identifier==@"deleteComment"){
         result = [MGComment makeCommentFromResponseData:data];
     }else if(self.httpClient.identifier==@"getFavorites"){
         result = [MGFavorite makeFavoriteArrayFromResponseData:data];

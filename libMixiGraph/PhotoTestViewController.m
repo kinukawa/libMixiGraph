@@ -95,6 +95,12 @@
     [self.testAlbum getCommentsWithAccessKey:nil startIndex:0 count:0];
 }
 
+//アルバムにコメント投稿
+-(IBAction)pressPostAlbumCommentsButton{
+    self.testAlbum.identifier = @"pressPostAlbumCommentsButton";
+    [self.testAlbum postComment:@"ほげふが"];
+}
+
 
 /////////////////////////////////
 -(void)mgPhotoClient:(NSURLConnection *)conn didFailWithError:(NSError*)error{

@@ -142,7 +142,7 @@
 						<string key="NSFrame">{{9, 109}, {120, 37}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="838730921"/>
+						<reference key="NSNextKeyView" ref="1065040037"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
@@ -157,10 +157,31 @@
 						</object>
 						<reference key="IBUINormalTitleShadowColor" ref="31324282"/>
 					</object>
-					<object class="IBUIButton" id="838730921">
+					<object class="IBUIButton" id="1065040037">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{137, 109}, {171, 37}}</string>
+						<reference key="NSSuperview" ref="191373211"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="67382386"/>
+						<bool key="IBUIOpaque">NO</bool>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<int key="IBUIContentHorizontalAlignment">0</int>
+						<int key="IBUIContentVerticalAlignment">0</int>
+						<reference key="IBUIFont" ref="564867608"/>
+						<int key="IBUIButtonType">1</int>
+						<string key="IBUINormalTitle">getAlbumComments</string>
+						<reference key="IBUIHighlightedTitleColor" ref="311194587"/>
+						<object class="NSColor" key="IBUINormalTitleColor">
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
+						</object>
+						<reference key="IBUINormalTitleShadowColor" ref="31324282"/>
+					</object>
+					<object class="IBUIButton" id="67382386">
+						<reference key="NSNextResponder" ref="191373211"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{9, 154}, {172, 37}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView"/>
@@ -170,7 +191,7 @@
 						<int key="IBUIContentVerticalAlignment">0</int>
 						<reference key="IBUIFont" ref="564867608"/>
 						<int key="IBUIButtonType">1</int>
-						<string key="IBUINormalTitle">getAlbumComments</string>
+						<string key="IBUINormalTitle">postAlbumComment</string>
 						<reference key="IBUIHighlightedTitleColor" ref="311194587"/>
 						<object class="NSColor" key="IBUINormalTitleColor">
 							<int key="NSColorSpace">1</int>
@@ -254,11 +275,20 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">pressGetAlbumCommentsButton</string>
-						<reference key="source" ref="838730921"/>
+						<reference key="source" ref="1065040037"/>
 						<reference key="destination" ref="372490531"/>
 						<int key="IBEventType">7</int>
 					</object>
 					<int key="connectionID">16</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">pressPostAlbumCommentsButton</string>
+						<reference key="source" ref="67382386"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">18</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -280,7 +310,8 @@
 							<reference ref="326725023"/>
 							<reference ref="200433844"/>
 							<reference ref="643618419"/>
-							<reference ref="838730921"/>
+							<reference ref="1065040037"/>
+							<reference ref="67382386"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -322,7 +353,12 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">14</int>
-						<reference key="object" ref="838730921"/>
+						<reference key="object" ref="1065040037"/>
+						<reference key="parent" ref="191373211"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">17</int>
+						<reference key="object" ref="67382386"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 				</object>
@@ -338,6 +374,7 @@
 					<string>10.IBPluginDependency</string>
 					<string>12.IBPluginDependency</string>
 					<string>14.IBPluginDependency</string>
+					<string>17.IBPluginDependency</string>
 					<string>4.IBPluginDependency</string>
 					<string>6.IBPluginDependency</string>
 					<string>8.IBPluginDependency</string>
@@ -347,6 +384,7 @@
 					<string>PhotoTestViewController</string>
 					<string>UIResponder</string>
 					<string>{{556, 412}, {320, 480}}</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -368,7 +406,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">16</int>
+			<int key="maxID">18</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -386,9 +424,11 @@
 							<string>pressGetPhotoListButton</string>
 							<string>pressGetRecentCreatedAlbumButton</string>
 							<string>pressGetRecentCreatedPhotoButton</string>
+							<string>pressPostAlbumCommentsButton</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -407,6 +447,7 @@
 							<string>pressGetPhotoListButton</string>
 							<string>pressGetRecentCreatedAlbumButton</string>
 							<string>pressGetRecentCreatedPhotoButton</string>
+							<string>pressPostAlbumCommentsButton</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -432,6 +473,10 @@
 							</object>
 							<object class="IBActionInfo">
 								<string key="name">pressGetRecentCreatedPhotoButton</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">pressPostAlbumCommentsButton</string>
 								<string key="candidateClassName">id</string>
 							</object>
 						</object>

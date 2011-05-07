@@ -25,6 +25,8 @@
 -(IBAction)pressGetRecentCreatedPhotoButton;
 //アルバムコメント一覧の取得
 -(IBAction)pressGetAlbumCommentsButton;
+//アルバムにコメント投稿
+-(IBAction)pressPostAlbumCommentsButton;
 
 @property (nonatomic,retain) MGPhotoClient * photoClient;
 @property (nonatomic,retain) MGAlbum * testAlbum;
