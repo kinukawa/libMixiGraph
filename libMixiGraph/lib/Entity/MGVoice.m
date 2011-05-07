@@ -101,12 +101,20 @@
     return voice;
 }
 
--(void)getComments{
+-(void)getCommentsWithStartIndex:(NSString *)startIndex
+                           count:(NSString *)count{
+    NSMutableDictionary * queryDict = [NSMutableDictionary dictionary];
+	if (startIndex) {
+		[queryDict setObject:startIndex forKey:@"startIndex"];
+	} 
+    if (count) {
+		[queryDict setObject:count forKey:@"count"];
+	}
     NSURL * url = [MGUtil buildAPIURL:VOICE_REPLYS_URL
                                  path:[NSArray arrayWithObjects:
                                        self.postId,
                                        nil]
-                                query:nil];
+                                query:queryDict];
     self.httpClient.identifier = @"getComments";
 	[self.httpClient get:url];
 }

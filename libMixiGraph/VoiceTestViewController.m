@@ -110,7 +110,7 @@
 
 -(IBAction)pressGetCommentsButton{
     self.testVoice.identifier = @"getComments";
-    [self.testVoice getComments];
+    [self.testVoice getCommentsWithStartIndex:0 count:0];
 }
 
 -(IBAction)pressDeleteCommentsButton{
