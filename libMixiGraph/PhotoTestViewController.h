@@ -11,6 +11,7 @@
 
 @interface PhotoTestViewController : UIViewController {
     MGPhotoClient * photoClient;
+    MGAlbum * testAlbum;
 }
 
 -(IBAction)pressGetAlbumButton;
@@ -22,6 +23,9 @@
 -(IBAction)pressGetPhotoButton;
 //最近友人が作成したフォト一覧の取得
 -(IBAction)pressGetRecentCreatedPhotoButton;
+//アルバムコメント一覧の取得
+-(IBAction)pressGetAlbumCommentsButton;
 
 @property (nonatomic,retain) MGPhotoClient * photoClient;
+@property (nonatomic,retain) MGAlbum * testAlbum;
 @end

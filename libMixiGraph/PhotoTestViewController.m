@@ -11,6 +11,7 @@
 
 @implementation PhotoTestViewController
 @synthesize photoClient;
+@synthesize testAlbum;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -88,7 +89,14 @@
     [photoClient getRecentCreatedFriendsPhotoListWithStartIndex:0 count:0];
 }
 
+//アルバムコメント一覧の取得
+-(IBAction)pressGetAlbumCommentsButton{
+    self.testAlbum.identifier = @"pressGetAlbumCommentsButton";
+    [self.testAlbum getCommentsWithAccessKey:nil];
+}
 
+
+/////////////////////////////////
 -(void)mgPhotoClient:(NSURLConnection *)conn didFailWithError:(NSError*)error{
     
 }
@@ -107,6 +115,8 @@
             NSLog(@"%d",album.numComments);
             NSLog(@"%@",album.title);
         }
+        self.testAlbum = [albumArray objectAtIndex:0];
+        self.testAlbum.delegate = self;
     }else if([photoClient.identifier isEqualToString:@"pressGetPhotoListButton"] ||
              [photoClient.identifier isEqualToString:@"pressGetRecentCreatedPhotoButton"]){
         NSArray * photoArray = (NSArray*)[result objectForKey:@"entry"];
@@ -125,5 +135,18 @@
     } 
 }
 
+-(void)mgAlbum:(NSURLConnection *)conn didFailWithError:(NSError*)error{
+    
+}
+-(void)mgAlbum:(NSURLConnection *)conn didFailWithAPIError:(MGApiError*)error{
+    NSLog(@"mgAlbum didFailWithAPIError : %@",error.body);
+    
+}
+-(void)mgAlbum:(NSURLConnection *)conn didFinishLoading:(id)result{
+    NSLog(@"mgAlbum didFinishLoading : %@",result);
+    if([testAlbum.identifier isEqualToString:@"pressGetAlbumCommentsButton"]){
+        
+    }
+}
 
 @end
