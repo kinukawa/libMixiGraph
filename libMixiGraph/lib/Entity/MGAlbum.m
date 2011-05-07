@@ -22,6 +22,9 @@
 
 
 @implementation MGAlbum
+
+@synthesize delegate;
+
 @synthesize created;
 @synthesize description;
 @synthesize albumId; 
@@ -91,6 +94,137 @@
     album.viewPageUrl = [dict objectForKey:@"viewPageUrl"];
 
     return album;
+}
+
+-(void)getCommentsWithAccessKey:(NSString *)accessKey{
+    NSMutableDictionary * queryDict = [NSMutableDictionary dictionary];
+	if (accessKey) {
+		[queryDict setObject:accessKey forKey:@"accessKey"];
+	}
+    NSURL * requestUrl = [MGUtil buildAPIURL:PHOTO_REPLYS_URL
+                                 path:[NSArray arrayWithObjects:
+                                       @"albums",
+                                       self.ownerId,
+                                       @"@self",
+                                       self.albumId,
+                                       nil]
+                                query:queryDict];
+    self.httpClient.identifier = @"getComments";
+	[self.httpClient get:requestUrl];
+}
+/*
+-(void)postComment:(NSString *)comment{
+    NSURL * url = [MGUtil buildAPIURL:VOICE_REPLYS_URL
+                                 path:[NSArray arrayWithObjects:
+                                       self.postId,
+                                       nil]
+                                query:nil];
+    NSData * body = [[[NSString stringWithFormat:@"text=%@",comment] 
+                      stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] 
+                     dataUsingEncoding:NSUTF8StringEncoding];
+    self.httpClient.identifier = @"postComment";
+	[self.httpClient post:url param:nil body:body];
+} 
+
+-(void)deleteCommentByComment:(MGComment *)comment{
+    NSURL * url = [MGUtil buildAPIURL:VOICE_REPLYS_URL
+                                 path:[NSArray arrayWithObjects:
+                                       @"destroy",
+                                       self.postId,
+                                       comment.commentId,
+                                       nil]
+                                query:nil];
+    self.httpClient.identifier = @"deleteComment";
+	[self.httpClient post:url param:nil body:nil];
+}
+
+
+-(void)getFavorites{
+    NSURL * url = [MGUtil buildAPIURL:VOICE_FAVORITES_URL
+                                 path:[NSArray arrayWithObjects:
+                                       @"show",
+                                       self.postId,
+                                       nil]
+                                query:nil];
+    self.httpClient.identifier = @"getFavorites";
+	[self.httpClient get:url];
+}
+
+-(void)postFavorite{
+    NSURL * url = [MGUtil buildAPIURL:VOICE_FAVORITES_URL
+                                 path:[NSArray arrayWithObjects:
+                                       @"create",
+                                       self.postId,
+                                       nil]
+                                query:nil];
+    self.httpClient.identifier = @"postFavorite";
+	[self.httpClient post:url param:nil body:nil];
+}
+
+-(void)deleteFavoriteByUserId:(NSString *)uId{
+    NSURL * url = [MGUtil buildAPIURL:VOICE_FAVORITES_URL
+                                 path:[NSArray arrayWithObjects:
+                                       @"destroy",
+                                       self.postId,
+                                       uId,
+                                       nil]
+                                query:nil];
+    self.httpClient.identifier = @"deleteFavorite";
+	[self.httpClient post:url param:nil body:nil];
+}
+*/
+
+//////////////MGHttpClientDelegate/////////////////////
+-(void)mgHttpClient:(NSURLConnection *)conn didFailWithError:(NSError*)error{
+	NSLog(@"mgAlbum didFailWithError");
+	if([delegate respondsToSelector:@selector(mgAlbum:didFailWithError:)]){
+		[delegate mgAlbum:conn didFailWithError:error];
+	}
+}
+
+-(void)mgHttpClient:(NSURLConnection *)conn didFailWithAPIError:(MGApiError*)error{
+	NSLog(@"mgAlbum didFailWithError : %@",error);
+	if([delegate respondsToSelector:@selector(mgAlbum:didFailWithAPIError:)]){
+		[delegate mgAlbum:conn didFailWithAPIError:error];
+	}
+}
+
+-(void)mgHttpClient:(NSURLConnection *)conn didFinishLoading:(NSData *)data{
+    NSString *contents = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+	NSLog(@"mgAlbum didFinishLoading %@:%@",self.httpClient.identifier,contents);
+    
+    id result = data;
+    if(self.httpClient.identifier==@"getComments"){
+        
+        NSDictionary * jsonDict = [contents JSONValue];
+        NSArray * commentsArray = [MGComment makeCommentArrayFromEntryArray:
+                                 [jsonDict objectForKey:@"entry"]];
+
+        
+        NSDictionary * responseDict = [NSDictionary dictionaryWithObjectsAndKeys:
+                                       commentsArray,@"entry",
+                                       [jsonDict objectForKey:@"itemsPerPage"], @"itemsPerPage", 
+                                       [jsonDict objectForKey:@"startIndex"], @"startIndex", 
+                                       [jsonDict objectForKey:@"totalResults"], @"totalResults", 
+                                       nil];
+        result = responseDict;
+    }
+    /*
+    else if(self.httpClient.identifier==@"postComment"){
+        result = [MGComment makeCommentFromResponseData:data];
+    }else if(self.httpClient.identifier==@"deleteComment"){
+        result = [MGComment makeCommentFromResponseData:data];
+    }else if(self.httpClient.identifier==@"getFavorites"){
+        result = [MGFavorite makeFavoriteArrayFromResponseData:data];
+    }else if(self.httpClient.identifier==@"postFavorite"){
+        result = [MGVoice makeContentFromResponseData:data];
+    }else if(self.httpClient.identifier==@"deleteFavorite"){
+        result = [MGFavorite makeFavoriteFromResponseData:data];
+    }
+    */
+	if([delegate respondsToSelector:@selector(mgAlbum:didFinishLoading:)]){
+        [delegate mgAlbum:conn didFinishLoading:result];
+    }
 }
 
 @end

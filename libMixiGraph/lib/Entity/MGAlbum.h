@@ -21,8 +21,14 @@
 #import <Foundation/Foundation.h>
 #import "MGContentBase.h"
 #import "JSON.h"
+#import "MGComment.h"
+#import "MGFavorite.h"
+
+@protocol MGAlbumDelegate;
 
 @interface MGAlbum : MGContentBase {
+    id <MGAlbumDelegate>delegate;
+    
     NSString * created;
     NSString * description;
     NSString * albumId; 
@@ -39,12 +45,15 @@
     NSString * viewPageUrl;
 }
 
--(void)getComments;
+-(void)getCommentsWithAccessKey:(NSString *)accessKey;
+/*
 -(void)postComment:(NSString *)comment;
 -(void)deleteCommentByComment:(MGComment *)comment;
 -(void)getFavorites;
 -(void)postFavorite;
 -(void)deleteFavoriteByUserId:(NSString *)uId;
+*/
+@property (nonatomic,assign) id delegate;
 
 @property (nonatomic,retain) NSString * created;
 @property (nonatomic,retain) NSString * description;
@@ -61,4 +70,10 @@
 @property (nonatomic,retain) NSString * url;
 @property (nonatomic,retain) NSString * viewPageUrl;
 
+@end
+
+@protocol MGAlbumDelegate<NSObject>
+-(void)mgAlbum:(NSURLConnection *)conn didFailWithError:(NSError*)error;
+-(void)mgAlbum:(NSURLConnection *)conn didFailWithAPIError:(MGApiError*)error;
+-(void)mgAlbum:(NSURLConnection *)conn didFinishLoading:(id)result;
 @end

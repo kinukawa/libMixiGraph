@@ -145,7 +145,6 @@
 -(void)mgAlbum:(NSURLConnection *)conn didFinishLoading:(id)result{
     NSLog(@"mgAlbum didFinishLoading : %@",result);
     if([testAlbum.identifier isEqualToString:@"pressGetAlbumCommentsButton"]){
-        
     }
 }
 

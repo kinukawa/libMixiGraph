@@ -55,14 +55,26 @@
     /*for (id key in voiceContentDict){
      NSLog(@"key=[%@] value=[%@] type=[%@]",key,[voiceContentDict objectForKey:key],[[voiceContentDict objectForKey:key] class]);	 
      }*/
-    NSDictionary * user = [dict objectForKey:@"user"];
     comment.commentId = [dict objectForKey:@"id"];
     comment.createdAt = [dict objectForKey:@"created_at"];
+    if (!comment.createdAt) {
+        comment.createdAt = [dict objectForKey:@"created"];
+    }
     comment.commentText = [dict objectForKey:@"text"];
+    NSDictionary * user = [dict objectForKey:@"user"];
     comment.userId = [user objectForKey:@"id"];
     comment.userScreeName = [user objectForKey:@"screen_name"];
+    if (!comment.userScreeName) {
+        comment.userScreeName = [user objectForKey:@"displayName"];
+    }
     comment.userProfileImageUrl = [user objectForKey:@"profile_image_url"];
+    if (!comment.userProfileImageUrl) {
+        comment.userProfileImageUrl = [user objectForKey:@"thumbnailUrl"];
+    }
     comment.userUrl = [user objectForKey:@"url"];
+    if (!comment.userUrl) {
+        comment.userUrl = [user objectForKey:@"profileUrl"];
+    }
     return comment;
 }
 
