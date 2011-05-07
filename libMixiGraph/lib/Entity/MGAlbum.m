@@ -96,10 +96,19 @@
     return album;
 }
 
--(void)getCommentsWithAccessKey:(NSString *)accessKey{
+-(void)getCommentsWithAccessKey:(NSString *)accessKey 
+                     startIndex:(NSString *)startIndex
+                          count:(NSString *)count{
+
     NSMutableDictionary * queryDict = [NSMutableDictionary dictionary];
 	if (accessKey) {
 		[queryDict setObject:accessKey forKey:@"accessKey"];
+	}
+    if (startIndex) {
+		[queryDict setObject:startIndex forKey:@"startIndex"];
+	} 
+    if (count) {
+		[queryDict setObject:count forKey:@"count"];
 	}
     NSURL * requestUrl = [MGUtil buildAPIURL:PHOTO_REPLYS_URL
                                  path:[NSArray arrayWithObjects:

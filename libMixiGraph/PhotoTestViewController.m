@@ -92,7 +92,7 @@
 //アルバムコメント一覧の取得
 -(IBAction)pressGetAlbumCommentsButton{
     self.testAlbum.identifier = @"pressGetAlbumCommentsButton";
-    [self.testAlbum getCommentsWithAccessKey:nil];
+    [self.testAlbum getCommentsWithAccessKey:nil startIndex:0 count:0];
 }
 
 
