@@ -198,7 +198,8 @@
         if([delegate respondsToSelector:@selector(mgHttpClient:didFailWithAPIError:)]){
             [delegate mgHttpClient:conn didFailWithAPIError:apiError];
         }
-    }else if([response statusCode]==200){
+    }else if([response statusCode]>=200 &&
+             [response statusCode]<400){
         if([delegate respondsToSelector:@selector(mgHttpClient:didFinishLoading:)]){
             [delegate mgHttpClient:conn didFinishLoading:buffer];
         }
