@@ -222,7 +222,7 @@
                                        nil];
         result = responseDict;
     }else if(self.httpClient.identifier==@"postComment"){
-        result = [MGComment makeCommentFromResponseData:data];
+        //result = [MGComment makeCommentFromResponseData:data];
     }/*
     else if(self.httpClient.identifier==@"deleteComment"){
         result = [MGComment makeCommentFromResponseData:data];
