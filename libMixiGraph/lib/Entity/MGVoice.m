@@ -145,13 +145,21 @@
 }
 
 
--(void)getFavorites{
+-(void)getFavoritesWithStartIndex:(NSString *)startIndex
+                            count:(NSString *)count{
+    NSMutableDictionary * queryDict = [NSMutableDictionary dictionary];
+	if (startIndex) {
+		[queryDict setObject:startIndex forKey:@"startIndex"];
+	} 
+    if (count) {
+		[queryDict setObject:count forKey:@"count"];
+	}
     NSURL * url = [MGUtil buildAPIURL:VOICE_FAVORITES_URL
                                  path:[NSArray arrayWithObjects:
                                        @"show",
                                        self.postId,
                                        nil]
-                                query:nil];
+                                query:queryDict];
     self.httpClient.identifier = @"getFavorites";
 	[self.httpClient get:url];
 }

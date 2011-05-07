@@ -56,7 +56,8 @@
                            count:(NSString *)count;
 -(void)postComment:(NSString *)comment;
 -(void)deleteCommentByComment:(MGComment *)comment;
--(void)getFavorites;
+-(void)getFavoritesWithStartIndex:(NSString *)startIndex
+                            count:(NSString *)count;
 -(void)postFavorite;
 -(void)deleteFavoriteByUserId:(NSString *)uId;
 

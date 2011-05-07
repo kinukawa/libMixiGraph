@@ -120,7 +120,7 @@
 
 -(IBAction)pressGetIineButton{
     self.testVoice.identifier = @"getIine";
-    [self.testVoice getFavorites];
+    [self.testVoice getFavoritesWithStartIndex:0 count:0];
 }
 -(IBAction)pressPostIineButton{
     self.testVoice.identifier = @"postIine";
