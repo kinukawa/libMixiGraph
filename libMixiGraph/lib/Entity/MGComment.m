@@ -73,12 +73,12 @@
     return comment;
 }
 
-+(NSMutableArray *)makeCommentArrayFromResponseData:(NSData*)data{
-    NSString *contents = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
++(NSMutableArray *)makeCommentArrayFromEntryArray:(NSArray*)dataArray{
+    //NSString *contents = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
 	//NSLog(@"%@",contents);
     NSMutableArray * commentArray = [NSMutableArray array];
-    NSArray * commentJsonArray = [contents JSONValue];
-    for(NSDictionary * commentContentDict in commentJsonArray){
+    //NSArray * commentJsonArray = [contents JSONValue];
+    for(NSDictionary * commentContentDict in dataArray){
         MGComment * comment = [self makeCommentFromDict:commentContentDict];
         [commentArray addObject:comment];
     }

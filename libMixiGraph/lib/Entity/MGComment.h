@@ -44,6 +44,6 @@
 @property (nonatomic,retain) NSString * userUrl;
 
 +(MGComment  *)makeCommentFromResponseData:(NSData*)data;
-+(NSMutableArray *)makeCommentArrayFromResponseData:(NSData*)data;
++(NSMutableArray *)makeCommentArrayFromEntryArray:(NSArray*)dataArray;
 
 @end
