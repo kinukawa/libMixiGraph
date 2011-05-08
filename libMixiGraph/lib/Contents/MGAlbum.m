@@ -135,8 +135,8 @@
                                        self.albumId,
                                        nil]
                                 query:queryDict];
-    NSData * body = [[[NSString stringWithFormat:@"text=%@",comment] 
-                      stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] 
+    NSString * escapedString = [comment encodeURIComponent];
+    NSData * body = [[NSString stringWithFormat:@"text=%@",escapedString] 
                      dataUsingEncoding:NSUTF8StringEncoding];
     self.httpClient.identifier = @"postComment";
 	[self.httpClient post:requestUrl param:nil body:body];

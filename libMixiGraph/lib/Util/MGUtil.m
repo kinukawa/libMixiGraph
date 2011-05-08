@@ -68,7 +68,7 @@
         }
         [retStr appendString:key];
         [retStr appendString:@"="];
-        [retStr appendString:[dict objectForKey:key]];
+        [retStr appendString:[[dict objectForKey:key] encodeURIComponent]];
     }
 	return retStr;
 }

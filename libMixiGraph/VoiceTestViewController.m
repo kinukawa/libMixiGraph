@@ -105,7 +105,7 @@
 
 -(IBAction)pressCommentToVoiceButton{
     self.testVoice.identifier = @"postComment";
-    [self.testVoice postComment:@"ほげふが"];
+    [self.testVoice postComment:@"ほげふが++"];
 }
 
 -(IBAction)pressGetCommentsButton{

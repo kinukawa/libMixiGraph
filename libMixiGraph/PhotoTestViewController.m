@@ -101,7 +101,7 @@
 //アルバムにコメント投稿
 -(IBAction)pressPostAlbumCommentsButton{
     self.testAlbum.identifier = @"pressPostAlbumCommentsButton";
-    [self.testAlbum postComment:@"ほげふが" withAccessKey:nil];
+    [self.testAlbum postComment:@"ほげふが++" withAccessKey:nil];
 }
 
 //アルバムコメント削除
@@ -119,7 +119,7 @@
 //フォトコメント投稿
 -(IBAction)pressPostPhotoCommentsButton{
     self.testPhoto.identifier = @"pressPostPhotoCommentsButton";
-    [self.testPhoto postComment:@"ほげふが" withAccessKey:nil];
+    [self.testPhoto postComment:@"ほげふが++" withAccessKey:nil];
 }
 
 //フォトコメント削除
@@ -148,7 +148,7 @@
 //アルバム作成
 -(IBAction)pressMakeAlbumButton{
     self.photoClient.identifier = @"pressMakeAlbumButton";
-    [self.photoClient makeAlbumWithTitle:@"ホゲアルバム" description:@"ほげほげ" visibility:@"everyone" accessKey:nil];
+    [self.photoClient makeAlbumWithTitle:@"ホゲアルバム+++" description:@"ほげほげ++" visibility:@"everyone" accessKey:nil];
 }
 
 //アルバム削除
@@ -160,7 +160,7 @@
 //フォト投稿
 -(IBAction)pressPostPhotoButton{
     self.photoClient.identifier = @"pressPostPhotoButton";
-    [self.photoClient postPhoto:photoView.image albumId:@"@default" title:@"ほげふが"];
+    [self.photoClient postPhoto:photoView.image albumId:@"@default" title:@"ほげふが++"];
 }
 
 //フォト削除

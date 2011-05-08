@@ -63,7 +63,7 @@
     peopleClient.identifier = @"pressMyFriendsButton";
     [peopleClient getMyFriendsWithSortBy:nil 
                                sortOrder:nil 
-                                  fields:@"status" startIndex:@"51" count:@"1000"];
+                                  fields:@"status" startIndex:@"0" count:@"0"];
 }
 
 -(IBAction)pressMyProfileButton{

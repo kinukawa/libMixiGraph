@@ -125,8 +125,8 @@
                                        self.postId,
                                        nil]
                                 query:nil];
-    NSData * body = [[[NSString stringWithFormat:@"text=%@",comment] 
-                      stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] 
+    NSString * escapedString = [comment encodeURIComponent];
+    NSData * body = [[NSString stringWithFormat:@"text=%@",escapedString] 
                      dataUsingEncoding:NSUTF8StringEncoding];
     self.httpClient.identifier = @"postComment";
 	[self.httpClient post:url param:nil body:body];

@@ -200,8 +200,8 @@
                                               nil]
                                        query:nil];
     NSString * bodyStr = [MGUtil buildPostBodyByDictionary:bodyDict];
-    NSData * body = [[bodyStr 
-                      stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] 
+    NSString * escapedString = [bodyStr encodeURIComponent];
+    NSData * body = [bodyStr 
                      dataUsingEncoding:NSUTF8StringEncoding];
     self.httpClient.identifier = @"makeAlbum";
 	[self.httpClient post:requestUrl param:nil body:body];
@@ -214,7 +214,7 @@
     
     NSMutableDictionary * queryDict = [NSMutableDictionary dictionary];
 	if (title) {
-		[queryDict setObject:[title stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] forKey:@"title"];
+		[queryDict setObject:title forKey:@"title"];
 	}
     
     NSURL * requestUrl = [MGUtil buildAPIURL:PHOTO_BASE_URL
