@@ -91,11 +91,11 @@
 
 -(IBAction)pressPostVoiceTestButton{
     voiceClient.identifier = @"post";
-    [voiceClient postVoice:@"ほげふが"];
+    [voiceClient postVoice:@"ほげふが+++"];
 }
 -(IBAction)pressImagePostVoiceTestButton{
     voiceClient.identifier = @"post";
-    [voiceClient postVoice:@"ほげふが" withUIImage:imageView.image];
+    [voiceClient postVoice:@"ほげふが+++" withUIImage:imageView.image];
 }
 
 -(IBAction)pressDeleteVoiceTestButton{
@@ -137,7 +137,9 @@
     NSLog(@"mgVoiceClient didFailWithError : %@",error);
     
 }
-
+-(void)mgVoiceClient:(NSURLConnection *)conn didFailWithAPIError:(MGApiError*)error{
+    NSLog(@"mgVoiceClient didFailWithAPIError : %@",error.body);        
+}
 -(void)mgVoiceClient:(NSURLConnection *)conn didFinishLoading:(id)result{
     NSLog(@"mgVoiceClient didFinishLoading : %@",result);
     

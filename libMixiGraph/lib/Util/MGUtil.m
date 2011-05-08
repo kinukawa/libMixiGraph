@@ -10,6 +10,7 @@
 
 
 @implementation MGUtil
+
 //API用のURLを生成する
 +(NSURL *)buildAPIURL:(NSString*)baseURL path:(NSArray *)path query:(NSDictionary*)query{
 	NSString *urlStr = baseURL;
@@ -17,10 +18,10 @@
 		bool first=YES;
 		for(NSString * p in path){
 			if(first){
-				urlStr = [NSString stringWithFormat:@"%@%@",urlStr,p];
+				urlStr = [NSString stringWithFormat:@"%@%@",urlStr,[p encodeURIComponent]];
 				first = NO;
 			}else{
-				urlStr = [NSString stringWithFormat:@"%@/%@",urlStr,p];
+				urlStr = [NSString stringWithFormat:@"%@/%@",urlStr,[p encodeURIComponent]];
 			}
 		}
 	}
@@ -33,7 +34,7 @@
 			}else{
 				urlStr = [NSString stringWithFormat:@"%@&",urlStr];
 			}
-			urlStr = [NSString stringWithFormat:@"%@%@=%@",urlStr,key,[query objectForKey:key]];		 
+			urlStr = [NSString stringWithFormat:@"%@%@=%@",urlStr,[key encodeURIComponent],[[query objectForKey:key] encodeURIComponent]];		 
 		}
 	}
 	return [NSURL URLWithString:urlStr];

@@ -10,6 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "JSON.h"
 #import "MGComment.h"
+#import "NSString+Util.h"
 
 @interface MGUtil : NSObject {
     

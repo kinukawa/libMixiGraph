@@ -20,6 +20,7 @@
 		1071995513768C6C004A1A67 /* MGPeople.m in Sources */ = {isa = PBXBuildFile; fileRef = 1071994C13768C6C004A1A67 /* MGPeople.m */; };
 		1071995613768C6C004A1A67 /* MGPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 1071994E13768C6C004A1A67 /* MGPhoto.m */; };
 		1071995713768C6C004A1A67 /* MGVoice.m in Sources */ = {isa = PBXBuildFile; fileRef = 1071995013768C6C004A1A67 /* MGVoice.m */; };
+		1071995D13769E12004A1A67 /* NSString+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 1071995C13769E0F004A1A67 /* NSString+Util.m */; };
 		10DB177D136AA0C800AA0670 /* MGClientBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 10DB177C136AA0C800AA0670 /* MGClientBase.m */; };
 		10F3A3C4136D2EA8004702C4 /* PeopleTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F3A3C2136D2EA7004702C4 /* PeopleTestViewController.m */; };
 		10F3A3C5136D2EA8004702C4 /* PeopleTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10F3A3C3136D2EA8004702C4 /* PeopleTestViewController.xib */; };
@@ -73,6 +74,8 @@
 		1071994E13768C6C004A1A67 /* MGPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGPhoto.m; sourceTree = "<group>"; };
 		1071994F13768C6C004A1A67 /* MGVoice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGVoice.h; sourceTree = "<group>"; };
 		1071995013768C6C004A1A67 /* MGVoice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGVoice.m; sourceTree = "<group>"; };
+		1071995B13769E0D004A1A67 /* NSString+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Util.h"; sourceTree = "<group>"; };
+		1071995C13769E0F004A1A67 /* NSString+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Util.m"; sourceTree = "<group>"; };
 		10DB177B136AA0C800AA0670 /* MGClientBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGClientBase.h; sourceTree = "<group>"; };
 		10DB177C136AA0C800AA0670 /* MGClientBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGClientBase.m; sourceTree = "<group>"; };
 		10F3A3C1136D2EA7004702C4 /* PeopleTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeopleTestViewController.h; sourceTree = "<group>"; };
@@ -302,6 +305,8 @@
 				9AD5489A1341E65D0072BDA6 /* MGUtil.m */,
 				9A4E727D1342FF6C00AEDB76 /* MGParams.h */,
 				9A4E727E1342FF6C00AEDB76 /* MGParams.m */,
+				1071995B13769E0D004A1A67 /* NSString+Util.h */,
+				1071995C13769E0F004A1A67 /* NSString+Util.m */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -400,6 +405,7 @@
 				1071995513768C6C004A1A67 /* MGPeople.m in Sources */,
 				1071995613768C6C004A1A67 /* MGPhoto.m in Sources */,
 				1071995713768C6C004A1A67 /* MGVoice.m in Sources */,
+				1071995D13769E12004A1A67 /* NSString+Util.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

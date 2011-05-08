@@ -189,8 +189,8 @@
                                  path:[NSArray arrayWithObjects:
                                        nil]
                                 query:nil];
-    NSData * body = [[[NSString stringWithFormat:@"status=%@",text] 
-                      stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] 
+    NSString * escapedString = [text encodeURIComponent];
+    NSData * body = [[NSString stringWithFormat:@"status=%@",escapedString] 
                      dataUsingEncoding:NSUTF8StringEncoding];
     httpClient.identifier = @"postVoice";
 	[httpClient post:url param:nil body:body];
@@ -201,7 +201,7 @@
 	
 	NSMutableDictionary * queryDict = [NSMutableDictionary dictionary];
 	if (text) {
-		[queryDict setObject:[text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] forKey:@"status"];
+		[queryDict setObject:text forKey:@"status"];
 	}
 	
 	NSURL * url = [MGUtil buildAPIURL:VOICE_BASE_URL
