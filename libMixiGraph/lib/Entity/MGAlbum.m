@@ -122,7 +122,11 @@
 	[self.httpClient get:requestUrl];
 }
 
--(void)postComment:(NSString *)comment{
+-(void)postComment:(NSString *)comment withAccessKey:(NSString *)accessKey {
+    NSMutableDictionary * queryDict = [NSMutableDictionary dictionary];
+	if (accessKey) {
+		[queryDict setObject:accessKey forKey:@"accessKey"];
+	}
     NSURL * requestUrl = [MGUtil buildAPIURL:PHOTO_REPLYS_URL
                                  path:[NSArray arrayWithObjects:
                                        @"albums",
@@ -130,7 +134,7 @@
                                        @"@self",
                                        self.albumId,
                                        nil]
-                                query:nil];
+                                query:queryDict];
     NSData * body = [[[NSString stringWithFormat:@"text=%@",comment] 
                       stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] 
                      dataUsingEncoding:NSUTF8StringEncoding];

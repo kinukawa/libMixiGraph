@@ -48,14 +48,10 @@
 -(void)getCommentsWithAccessKey:(NSString *)accessKey 
                      startIndex:(NSString *)startIndex
                           count:(NSString *)count;
--(void)postComment:(NSString *)comment;
+-(void)postComment:(NSString *)comment withAccessKey:(NSString *)accessKey;
 -(void)deleteCommentByComment:(MGComment *)comment 
                 withAccessKey:(NSString *)accessKey;
-/*-(void)getFavoritesWithStartIndex:(NSString *)startIndex
-                            count:(NSString *)count;
--(void)postFavorite;
--(void)deleteFavoriteByUserId:(NSString *)uId;
-*/
+
 @property (nonatomic,assign) id delegate;
 
 @property (nonatomic,retain) NSString * created;

@@ -99,7 +99,7 @@
 //アルバムにコメント投稿
 -(IBAction)pressPostAlbumCommentsButton{
     self.testAlbum.identifier = @"pressPostAlbumCommentsButton";
-    [self.testAlbum postComment:@"ほげふが"];
+    [self.testAlbum postComment:@"ほげふが" withAccessKey:nil];
 }
 
 //アルバムコメント削除
