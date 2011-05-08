@@ -10,6 +10,8 @@
 
 
 @implementation VoiceTableViewController
+@synthesize voiceClient;
+@synthesize voiceArray;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -22,6 +24,8 @@
 
 - (void)dealloc
 {
+    self.voiceClient = nil;
+    self.voiceArray = nil;
     [super dealloc];
 }
 
@@ -33,6 +37,28 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+-(void)pressReloadButton{
+    [self.voiceClient getFriendsVoicesByGroupID:nil trimUser:NO attachPhoto:YES startIndex:0 count:0 usingSinceId:nil];
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+}
+
+#pragma mark - MGVoiceClient delegate
+
+-(void)mgVoiceClient:(NSURLConnection *)conn didFailWithError:(NSError*)error{
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    
+}
+-(void)mgVoiceClient:(NSURLConnection *)conn didFailWithAPIError:(MGApiError*)error{
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    
+}
+-(void)mgVoiceClient:(NSURLConnection *)conn didFinishLoading:(id)result{
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    self.voiceArray = result;
+    [self.tableView reloadData];
+}
+
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
@@ -43,7 +69,16 @@
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    UIBarButtonItem *buttonR = [[UIBarButtonItem alloc] 
+								initWithTitle:@"更新" 
+								style:UIBarButtonItemStyleBordered
+								target:self 
+								action:@selector(pressReloadButton)
+								]; 
+	self.navigationItem.rightBarButtonItem = buttonR;
+	[buttonR release];
+    voiceClient = [[MGVoiceClient alloc] init];
+    voiceClient.delegate = self;
 }
 
 - (void)viewDidUnload
@@ -83,16 +118,14 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [voiceArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -105,7 +138,8 @@
     }
     
     // Configure the cell...
-    
+    MGVoice * voice = [voiceArray objectAtIndex:indexPath.row];
+    cell.textLabel.text = voice.voiceText;
     return cell;
 }
 

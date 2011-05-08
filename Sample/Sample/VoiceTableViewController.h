@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "MGVoiceClient.h"
 
 @interface VoiceTableViewController : UITableViewController {
-    
+    MGVoiceClient * voiceClient;
+    NSArray * voiceArray;
 }
+
+@property (nonatomic,retain) MGVoiceClient * voiceClient;
+@property (nonatomic,retain) NSArray * voiceArray;
 
 @end
