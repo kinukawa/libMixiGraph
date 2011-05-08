@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		10303134135C840900C17326 /* VoiceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10303132135C840900C17326 /* VoiceTableViewController.m */; };
-		10303135135C840900C17326 /* VoiceTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10303133135C840900C17326 /* VoiceTableViewController.xib */; };
 		10303138135C897700C17326 /* image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 10303137135C897700C17326 /* image.jpg */; };
 		1030313B135DD2A200C17326 /* MGOAuthKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 1030313A135DD2A200C17326 /* MGOAuthKey.m */; };
 		10315B64136FF9A90077E490 /* PhotoTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10315B62136FF9A90077E490 /* PhotoTestViewController.m */; };
@@ -27,8 +25,6 @@
 		10F3A3C5136D2EA8004702C4 /* PeopleTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10F3A3C3136D2EA8004702C4 /* PeopleTestViewController.xib */; };
 		9A4E72741342FD3700AEDB76 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4E72721342FD3700AEDB76 /* SettingsViewController.m */; };
 		9A4E72751342FD3700AEDB76 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A4E72731342FD3700AEDB76 /* SettingsViewController.xib */; };
-		9A4E727B1342FDBE00AEDB76 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4E72791342FDBE00AEDB76 /* TestViewController.m */; };
-		9A4E727C1342FDBE00AEDB76 /* TestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A4E727A1342FDBE00AEDB76 /* TestViewController.xib */; };
 		9A4E727F1342FF6C00AEDB76 /* MGParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4E727E1342FF6C00AEDB76 /* MGParams.m */; };
 		9AD548241341D28B0072BDA6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AD548231341D28B0072BDA6 /* UIKit.framework */; };
 		9AD548261341D28B0072BDA6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AD548251341D28B0072BDA6 /* Foundation.framework */; };
@@ -54,9 +50,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		10303131135C840900C17326 /* VoiceTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoiceTableViewController.h; sourceTree = "<group>"; };
-		10303132135C840900C17326 /* VoiceTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoiceTableViewController.m; sourceTree = "<group>"; };
-		10303133135C840900C17326 /* VoiceTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VoiceTableViewController.xib; sourceTree = "<group>"; };
 		10303137135C897700C17326 /* image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image.jpg; sourceTree = "<group>"; };
 		10303139135DD2A200C17326 /* MGOAuthKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGOAuthKey.h; path = libMixiGraph/lib/OAuth/MGOAuthKey.h; sourceTree = SOURCE_ROOT; };
 		1030313A135DD2A200C17326 /* MGOAuthKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MGOAuthKey.m; path = libMixiGraph/lib/OAuth/MGOAuthKey.m; sourceTree = SOURCE_ROOT; };
@@ -88,9 +81,6 @@
 		9A4E72711342FD3700AEDB76 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = ViewController/SettingsViewController.h; sourceTree = "<group>"; };
 		9A4E72721342FD3700AEDB76 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = ViewController/SettingsViewController.m; sourceTree = "<group>"; };
 		9A4E72731342FD3700AEDB76 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingsViewController.xib; path = ViewController/SettingsViewController.xib; sourceTree = "<group>"; };
-		9A4E72781342FDBE00AEDB76 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestViewController.h; path = ViewController/TestViewController.h; sourceTree = "<group>"; };
-		9A4E72791342FDBE00AEDB76 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestViewController.m; path = ViewController/TestViewController.m; sourceTree = "<group>"; };
-		9A4E727A1342FDBE00AEDB76 /* TestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TestViewController.xib; path = ViewController/TestViewController.xib; sourceTree = "<group>"; };
 		9A4E727D1342FF6C00AEDB76 /* MGParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGParams.h; sourceTree = "<group>"; };
 		9A4E727E1342FF6C00AEDB76 /* MGParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGParams.m; sourceTree = "<group>"; };
 		9AD5481F1341D28B0072BDA6 /* libMixiGraph.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = libMixiGraph.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -176,16 +166,10 @@
 				9A4E72711342FD3700AEDB76 /* SettingsViewController.h */,
 				9A4E72721342FD3700AEDB76 /* SettingsViewController.m */,
 				9A4E72731342FD3700AEDB76 /* SettingsViewController.xib */,
-				9A4E72781342FDBE00AEDB76 /* TestViewController.h */,
-				9A4E72791342FDBE00AEDB76 /* TestViewController.m */,
-				9A4E727A1342FDBE00AEDB76 /* TestViewController.xib */,
 				1062C7FD1344D2AF005901A9 /* VoiceTestViewController.h */,
 				1062C7FE1344D2AF005901A9 /* VoiceTestViewController.m */,
 				1062C7FF1344D2AF005901A9 /* VoiceTestViewController.xib */,
 				10303137135C897700C17326 /* image.jpg */,
-				10303131135C840900C17326 /* VoiceTableViewController.h */,
-				10303132135C840900C17326 /* VoiceTableViewController.m */,
-				10303133135C840900C17326 /* VoiceTableViewController.xib */,
 				10F3A3C1136D2EA7004702C4 /* PeopleTestViewController.h */,
 				10F3A3C2136D2EA7004702C4 /* PeopleTestViewController.m */,
 				10F3A3C3136D2EA8004702C4 /* PeopleTestViewController.xib */,
@@ -372,9 +356,7 @@
 				9AD5482E1341D28B0072BDA6 /* InfoPlist.strings in Resources */,
 				9AD548371341D28B0072BDA6 /* MainWindow.xib in Resources */,
 				9A4E72751342FD3700AEDB76 /* SettingsViewController.xib in Resources */,
-				9A4E727C1342FDBE00AEDB76 /* TestViewController.xib in Resources */,
 				1062C8011344D2AF005901A9 /* VoiceTestViewController.xib in Resources */,
-				10303135135C840900C17326 /* VoiceTableViewController.xib in Resources */,
 				10303138135C897700C17326 /* image.jpg in Resources */,
 				10F3A3C5136D2EA8004702C4 /* PeopleTestViewController.xib in Resources */,
 				10315B65136FF9A90077E490 /* PhotoTestViewController.xib in Resources */,
@@ -405,10 +387,8 @@
 				9AD548AE1341E65D0072BDA6 /* MGUserDefaults.m in Sources */,
 				9AD548AF1341E65D0072BDA6 /* MGUtil.m in Sources */,
 				9A4E72741342FD3700AEDB76 /* SettingsViewController.m in Sources */,
-				9A4E727B1342FDBE00AEDB76 /* TestViewController.m in Sources */,
 				9A4E727F1342FF6C00AEDB76 /* MGParams.m in Sources */,
 				1062C8001344D2AF005901A9 /* VoiceTestViewController.m in Sources */,
-				10303134135C840900C17326 /* VoiceTableViewController.m in Sources */,
 				1030313B135DD2A200C17326 /* MGOAuthKey.m in Sources */,
 				10DB177D136AA0C800AA0670 /* MGClientBase.m in Sources */,
 				10F3A3C4136D2EA8004702C4 /* PeopleTestViewController.m in Sources */,
