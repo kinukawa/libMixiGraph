@@ -207,6 +207,28 @@
 	[self.httpClient post:requestUrl param:nil body:body];
 } 
 
+//フォト投稿
+-(void)postPhoto:(UIImage *)image 
+         albumId:(NSString *)albumId 
+           title:(NSString *)title {
+    
+    NSMutableDictionary * queryDict = [NSMutableDictionary dictionary];
+	if (title) {
+		[queryDict setObject:[title stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] forKey:@"title"];
+	}
+    
+    NSURL * requestUrl = [MGUtil buildAPIURL:PHOTO_BASE_URL
+                                        path:[NSArray arrayWithObjects:
+                                              @"mediaItems",
+                                              @"@me",
+                                              @"@self",
+                                              albumId,
+                                              nil]
+                                       query:queryDict];
+    httpClient.identifier = @"postPhoto";
+	[httpClient imagePost:requestUrl image:image];
+} 
+
 
 //////////////MGHttpClientDelegate/////////////////////
 
@@ -263,6 +285,8 @@
                                        nil];
         result = responseDict;
     }else if([self.httpClient.identifier isEqualToString:@"makeAlbum"]){
+        result = [contents JSONValue];
+    }else if([self.httpClient.identifier isEqualToString:@"postPhoto"]){
         result = [contents JSONValue];
     }
     

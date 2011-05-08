@@ -14,6 +14,7 @@
 @synthesize testAlbum;
 @synthesize testComment;
 @synthesize testPhoto;
+@synthesize photoView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -152,8 +153,14 @@
 
 //アルバム削除
 -(IBAction)pressDeleteAlbumButton{
-    self.photoClient.identifier = @"pressDeleteAlbumButton";
+    self.testAlbum.identifier = @"pressDeleteAlbumButton";
     [self.testAlbum deleteAlbum];
+}
+
+//フォト投稿
+-(IBAction)pressPostPhotoButton{
+    self.photoClient.identifier = @"pressPostPhotoButton";
+    [self.photoClient postPhoto:photoView.image albumId:@"@default" title:@"ほげふが"];
 }
 
 /////////////////////////////////

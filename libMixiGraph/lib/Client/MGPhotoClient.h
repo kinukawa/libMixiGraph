@@ -81,6 +81,10 @@
                visibility:(NSString *)visibility
                 accessKey:(NSString *)accessKey;
 
+//フォト投稿
+-(void)postPhoto:(UIImage *)image 
+         albumId:(NSString *)albumId 
+           title:(NSString *)title ;
     
 @end
 

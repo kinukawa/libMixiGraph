@@ -14,6 +14,7 @@
     MGAlbum * testAlbum;
     MGPhoto * testPhoto;
     MGComment * testComment;
+    UIImageView * photoView;
 }
 
 -(IBAction)pressGetAlbumButton;
@@ -47,9 +48,12 @@
 -(IBAction)pressMakeAlbumButton;
 //アルバム削除
 -(IBAction)pressDeleteAlbumButton;
+//フォト投稿
+-(IBAction)pressPostPhotoButton;
 
 @property (nonatomic,retain) MGPhotoClient * photoClient;
 @property (nonatomic,retain) MGAlbum * testAlbum;
 @property (nonatomic,retain) MGComment * testComment;
 @property (nonatomic,retain) MGPhoto * testPhoto;
+@property (nonatomic,retain) IBOutlet UIImageView * photoView;
 @end
