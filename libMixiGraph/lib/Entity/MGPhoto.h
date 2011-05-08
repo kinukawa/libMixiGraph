@@ -48,15 +48,18 @@
     UIImage * ownerThumbnailImage;
 @private
 }
--(UIImage *)getPhoto;
+//-(UIImage *)getPhoto;
 
--(void)getComments;
--(void)postComment:(NSString *)comment;
--(void)deleteCommentByComment:(MGComment *)comment;
+-(void)getCommentsWithAccessKey:(NSString *)accessKey 
+                     startIndex:(NSString *)startIndex
+                          count:(NSString *)count;
+-(void)postComment:(NSString *)comment withAccessKey:(NSString *)accessKey;
+-(void)deleteCommentByComment:(MGComment *)comment withAccessKey:(NSString *)accessKey;
+/*
 -(void)getFavorites;
 -(void)postFavorite;
 -(void)deleteFavoriteByUserId:(NSString *)uId;
-
+*/
 @property (nonatomic,assign) id delegate;
 
 @property (nonatomic,retain) NSString * albumId;

@@ -102,6 +102,73 @@
     return photo;
 }
 
+-(void)getCommentsWithAccessKey:(NSString *)accessKey 
+                     startIndex:(NSString *)startIndex
+                          count:(NSString *)count{
+    
+    NSMutableDictionary * queryDict = [NSMutableDictionary dictionary];
+	if (accessKey) {
+		[queryDict setObject:accessKey forKey:@"accessKey"];
+	}
+    if (startIndex) {
+		[queryDict setObject:startIndex forKey:@"startIndex"];
+	} 
+    if (count) {
+		[queryDict setObject:count forKey:@"count"];
+	}
+    NSURL * requestUrl = [MGUtil buildAPIURL:PHOTO_REPLYS_URL
+                                        path:[NSArray arrayWithObjects:
+                                              @"mediaItems",
+                                              self.ownerId,
+                                              @"@self",
+                                              self.albumId,
+                                              self.photoId,
+                                              nil]
+                                       query:queryDict];
+    self.httpClient.identifier = @"getComments";
+	[self.httpClient get:requestUrl];
+}
+
+-(void)postComment:(NSString *)comment withAccessKey:(NSString *)accessKey {
+    NSMutableDictionary * queryDict = [NSMutableDictionary dictionary];
+	if (accessKey) {
+		[queryDict setObject:accessKey forKey:@"accessKey"];
+	}
+    NSURL * requestUrl = [MGUtil buildAPIURL:PHOTO_REPLYS_URL
+                                        path:[NSArray arrayWithObjects:
+                                              @"mediaItems",
+                                              self.ownerId,
+                                              @"@self",
+                                              self.albumId,
+                                              self.photoId,
+                                              nil]
+                                       query:queryDict];
+    NSData * body = [[[NSString stringWithFormat:@"text=%@",comment] 
+                      stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] 
+                     dataUsingEncoding:NSUTF8StringEncoding];
+    self.httpClient.identifier = @"postComment";
+	[self.httpClient post:requestUrl param:nil body:body];
+} 
+
+-(void)deleteCommentByComment:(MGComment *)comment withAccessKey:(NSString *)accessKey{
+    NSMutableDictionary * queryDict = [NSMutableDictionary dictionary];
+	if (accessKey) {
+		[queryDict setObject:accessKey forKey:@"accessKey"];
+	}
+    NSURL * requestUrl = [MGUtil buildAPIURL:PHOTO_REPLYS_URL
+                                        path:[NSArray arrayWithObjects:
+                                              @"mediaItems",
+                                              self.ownerId,
+                                              @"@self",
+                                              self.albumId,
+                                              self.photoId,
+                                              comment.commentId,
+                                              nil]
+                                       query:queryDict];
+    self.httpClient.identifier = @"deleteComment";
+	[self.httpClient delete:requestUrl];
+}
+
 //////////////MGHttpClientDelegate/////////////////////
 -(void)mgHttpClient:(NSURLConnection *)conn didFailWithError:(NSError*)error{
 	NSLog(@"mgPhoto didFailWithError");
@@ -122,7 +189,18 @@
 	NSLog(@"mgPhoto didFinishLoading %@:%@",self.httpClient.identifier,contents);
     id result = data;
     if(self.httpClient.identifier==@"getComments"){
-        result = [MGComment makeCommentArrayFromResponseData:data];
+        NSDictionary * jsonDict = [contents JSONValue];
+        NSArray * commentsArray = [MGComment makeCommentArrayFromEntryArray:
+                                   [jsonDict objectForKey:@"entry"]];
+        
+        
+        NSDictionary * responseDict = [NSDictionary dictionaryWithObjectsAndKeys:
+                                       commentsArray,@"entry",
+                                       [jsonDict objectForKey:@"itemsPerPage"], @"itemsPerPage", 
+                                       [jsonDict objectForKey:@"startIndex"], @"startIndex", 
+                                       [jsonDict objectForKey:@"totalResults"], @"totalResults", 
+                                       nil];
+        result = responseDict;
     }
     /*else if(self.httpClient.identifier==@"postComment"){
         result = [MGComment makeCommentFromResponseData:data];
