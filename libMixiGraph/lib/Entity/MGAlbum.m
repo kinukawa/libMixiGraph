@@ -158,42 +158,6 @@
     
 }
 
-/*
--(void)getFavorites{
-    NSURL * url = [MGUtil buildAPIURL:VOICE_FAVORITES_URL
-                                 path:[NSArray arrayWithObjects:
-                                       @"show",
-                                       self.postId,
-                                       nil]
-                                query:nil];
-    self.httpClient.identifier = @"getFavorites";
-	[self.httpClient get:url];
-}
-
--(void)postFavorite{
-    NSURL * url = [MGUtil buildAPIURL:VOICE_FAVORITES_URL
-                                 path:[NSArray arrayWithObjects:
-                                       @"create",
-                                       self.postId,
-                                       nil]
-                                query:nil];
-    self.httpClient.identifier = @"postFavorite";
-	[self.httpClient post:url param:nil body:nil];
-}
-
--(void)deleteFavoriteByUserId:(NSString *)uId{
-    NSURL * url = [MGUtil buildAPIURL:VOICE_FAVORITES_URL
-                                 path:[NSArray arrayWithObjects:
-                                       @"destroy",
-                                       self.postId,
-                                       uId,
-                                       nil]
-                                query:nil];
-    self.httpClient.identifier = @"deleteFavorite";
-	[self.httpClient post:url param:nil body:nil];
-}
-*/
-
 //////////////MGHttpClientDelegate/////////////////////
 -(void)mgHttpClient:(NSURLConnection *)conn didFailWithError:(NSError*)error{
 	NSLog(@"mgAlbum didFailWithError");
@@ -232,14 +196,8 @@
         //result = [MGComment makeCommentFromResponseData:data];
     }else if(self.httpClient.identifier==@"deleteComment"){
         //result = [MGComment makeCommentFromResponseData:data];
-    }/*else if(self.httpClient.identifier==@"getFavorites"){
-        result = [MGFavorite makeFavoriteArrayFromResponseData:data];
-    }else if(self.httpClient.identifier==@"postFavorite"){
-        result = [MGVoice makeContentFromResponseData:data];
-    }else if(self.httpClient.identifier==@"deleteFavorite"){
-        result = [MGFavorite makeFavoriteFromResponseData:data];
     }
-    */
+    
 	if([delegate respondsToSelector:@selector(mgAlbum:didFinishLoading:)]){
         [delegate mgAlbum:conn didFinishLoading:result];
     }
