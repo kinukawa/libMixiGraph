@@ -13,14 +13,18 @@
 		1030313B135DD2A200C17326 /* MGOAuthKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 1030313A135DD2A200C17326 /* MGOAuthKey.m */; };
 		10315B64136FF9A90077E490 /* PhotoTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10315B62136FF9A90077E490 /* PhotoTestViewController.m */; };
 		10315B65136FF9A90077E490 /* PhotoTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10315B63136FF9A90077E490 /* PhotoTestViewController.xib */; };
-		10315B69137000FA0077E490 /* MGAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 10315B68137000F80077E490 /* MGAlbum.m */; };
 		1062C8001344D2AF005901A9 /* VoiceTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1062C7FE1344D2AF005901A9 /* VoiceTestViewController.m */; };
 		1062C8011344D2AF005901A9 /* VoiceTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1062C7FF1344D2AF005901A9 /* VoiceTestViewController.xib */; };
-		109AFCC0136BCE51006F5E6D /* MGFavorite.m in Sources */ = {isa = PBXBuildFile; fileRef = 109AFCBF136BCE51006F5E6D /* MGFavorite.m */; };
+		1071995113768C6C004A1A67 /* MGAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 1071994413768C6C004A1A67 /* MGAlbum.m */; };
+		1071995213768C6C004A1A67 /* MGComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 1071994613768C6C004A1A67 /* MGComment.m */; };
+		1071995313768C6C004A1A67 /* MGContentBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 1071994813768C6C004A1A67 /* MGContentBase.m */; };
+		1071995413768C6C004A1A67 /* MGFavorite.m in Sources */ = {isa = PBXBuildFile; fileRef = 1071994A13768C6C004A1A67 /* MGFavorite.m */; };
+		1071995513768C6C004A1A67 /* MGPeople.m in Sources */ = {isa = PBXBuildFile; fileRef = 1071994C13768C6C004A1A67 /* MGPeople.m */; };
+		1071995613768C6C004A1A67 /* MGPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 1071994E13768C6C004A1A67 /* MGPhoto.m */; };
+		1071995713768C6C004A1A67 /* MGVoice.m in Sources */ = {isa = PBXBuildFile; fileRef = 1071995013768C6C004A1A67 /* MGVoice.m */; };
 		10DB177D136AA0C800AA0670 /* MGClientBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 10DB177C136AA0C800AA0670 /* MGClientBase.m */; };
 		10F3A3C4136D2EA8004702C4 /* PeopleTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F3A3C2136D2EA7004702C4 /* PeopleTestViewController.m */; };
 		10F3A3C5136D2EA8004702C4 /* PeopleTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10F3A3C3136D2EA8004702C4 /* PeopleTestViewController.xib */; };
-		10F3A3C9136D3D77004702C4 /* MGContentBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F3A3C8136D3D76004702C4 /* MGContentBase.m */; };
 		9A4E72741342FD3700AEDB76 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4E72721342FD3700AEDB76 /* SettingsViewController.m */; };
 		9A4E72751342FD3700AEDB76 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A4E72731342FD3700AEDB76 /* SettingsViewController.xib */; };
 		9A4E727B1342FDBE00AEDB76 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4E72791342FDBE00AEDB76 /* TestViewController.m */; };
@@ -43,10 +47,6 @@
 		9AD548A41341E65D0072BDA6 /* MGPeopleClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD548811341E65D0072BDA6 /* MGPeopleClient.m */; };
 		9AD548A51341E65D0072BDA6 /* MGPhotoClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD548831341E65D0072BDA6 /* MGPhotoClient.m */; };
 		9AD548A61341E65D0072BDA6 /* MGVoiceClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD548851341E65D0072BDA6 /* MGVoiceClient.m */; };
-		9AD548A71341E65D0072BDA6 /* MGComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD548881341E65D0072BDA6 /* MGComment.m */; };
-		9AD548A91341E65D0072BDA6 /* MGPeople.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD5488C1341E65D0072BDA6 /* MGPeople.m */; };
-		9AD548AA1341E65D0072BDA6 /* MGPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD5488E1341E65D0072BDA6 /* MGPhoto.m */; };
-		9AD548AB1341E65D0072BDA6 /* MGVoice.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD548901341E65D0072BDA6 /* MGVoice.m */; };
 		9AD548AC1341E65D0072BDA6 /* MGApiError.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD548921341E65D0072BDA6 /* MGApiError.m */; };
 		9AD548AD1341E65D0072BDA6 /* MGOAuthClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD548951341E65D0072BDA6 /* MGOAuthClient.m */; };
 		9AD548AE1341E65D0072BDA6 /* MGUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD548981341E65D0072BDA6 /* MGUserDefaults.m */; };
@@ -63,20 +63,28 @@
 		10315B61136FF9A90077E490 /* PhotoTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoTestViewController.h; sourceTree = "<group>"; };
 		10315B62136FF9A90077E490 /* PhotoTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoTestViewController.m; sourceTree = "<group>"; };
 		10315B63136FF9A90077E490 /* PhotoTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoTestViewController.xib; sourceTree = "<group>"; };
-		10315B67137000F60077E490 /* MGAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGAlbum.h; sourceTree = "<group>"; };
-		10315B68137000F80077E490 /* MGAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGAlbum.m; sourceTree = "<group>"; };
 		1062C7FD1344D2AF005901A9 /* VoiceTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoiceTestViewController.h; sourceTree = "<group>"; };
 		1062C7FE1344D2AF005901A9 /* VoiceTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoiceTestViewController.m; sourceTree = "<group>"; };
 		1062C7FF1344D2AF005901A9 /* VoiceTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VoiceTestViewController.xib; sourceTree = "<group>"; };
-		109AFCBE136BCE51006F5E6D /* MGFavorite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFavorite.h; sourceTree = "<group>"; };
-		109AFCBF136BCE51006F5E6D /* MGFavorite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGFavorite.m; sourceTree = "<group>"; };
+		1071994313768C6C004A1A67 /* MGAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGAlbum.h; sourceTree = "<group>"; };
+		1071994413768C6C004A1A67 /* MGAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGAlbum.m; sourceTree = "<group>"; };
+		1071994513768C6C004A1A67 /* MGComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGComment.h; sourceTree = "<group>"; };
+		1071994613768C6C004A1A67 /* MGComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGComment.m; sourceTree = "<group>"; };
+		1071994713768C6C004A1A67 /* MGContentBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGContentBase.h; sourceTree = "<group>"; };
+		1071994813768C6C004A1A67 /* MGContentBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGContentBase.m; sourceTree = "<group>"; };
+		1071994913768C6C004A1A67 /* MGFavorite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFavorite.h; sourceTree = "<group>"; };
+		1071994A13768C6C004A1A67 /* MGFavorite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGFavorite.m; sourceTree = "<group>"; };
+		1071994B13768C6C004A1A67 /* MGPeople.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGPeople.h; sourceTree = "<group>"; };
+		1071994C13768C6C004A1A67 /* MGPeople.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGPeople.m; sourceTree = "<group>"; };
+		1071994D13768C6C004A1A67 /* MGPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGPhoto.h; sourceTree = "<group>"; };
+		1071994E13768C6C004A1A67 /* MGPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGPhoto.m; sourceTree = "<group>"; };
+		1071994F13768C6C004A1A67 /* MGVoice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGVoice.h; sourceTree = "<group>"; };
+		1071995013768C6C004A1A67 /* MGVoice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGVoice.m; sourceTree = "<group>"; };
 		10DB177B136AA0C800AA0670 /* MGClientBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGClientBase.h; sourceTree = "<group>"; };
 		10DB177C136AA0C800AA0670 /* MGClientBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGClientBase.m; sourceTree = "<group>"; };
 		10F3A3C1136D2EA7004702C4 /* PeopleTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeopleTestViewController.h; sourceTree = "<group>"; };
 		10F3A3C2136D2EA7004702C4 /* PeopleTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeopleTestViewController.m; sourceTree = "<group>"; };
 		10F3A3C3136D2EA8004702C4 /* PeopleTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PeopleTestViewController.xib; sourceTree = "<group>"; };
-		10F3A3C7136D3D75004702C4 /* MGContentBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGContentBase.h; sourceTree = "<group>"; };
-		10F3A3C8136D3D76004702C4 /* MGContentBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGContentBase.m; sourceTree = "<group>"; };
 		9A4E72711342FD3700AEDB76 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = ViewController/SettingsViewController.h; sourceTree = "<group>"; };
 		9A4E72721342FD3700AEDB76 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = ViewController/SettingsViewController.m; sourceTree = "<group>"; };
 		9A4E72731342FD3700AEDB76 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingsViewController.xib; path = ViewController/SettingsViewController.xib; sourceTree = "<group>"; };
@@ -117,14 +125,6 @@
 		9AD548831341E65D0072BDA6 /* MGPhotoClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGPhotoClient.m; sourceTree = "<group>"; };
 		9AD548841341E65D0072BDA6 /* MGVoiceClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGVoiceClient.h; sourceTree = "<group>"; };
 		9AD548851341E65D0072BDA6 /* MGVoiceClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGVoiceClient.m; sourceTree = "<group>"; };
-		9AD548871341E65D0072BDA6 /* MGComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGComment.h; sourceTree = "<group>"; };
-		9AD548881341E65D0072BDA6 /* MGComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGComment.m; sourceTree = "<group>"; };
-		9AD5488B1341E65D0072BDA6 /* MGPeople.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGPeople.h; sourceTree = "<group>"; };
-		9AD5488C1341E65D0072BDA6 /* MGPeople.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGPeople.m; sourceTree = "<group>"; };
-		9AD5488D1341E65D0072BDA6 /* MGPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGPhoto.h; sourceTree = "<group>"; };
-		9AD5488E1341E65D0072BDA6 /* MGPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGPhoto.m; sourceTree = "<group>"; };
-		9AD5488F1341E65D0072BDA6 /* MGVoice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGVoice.h; sourceTree = "<group>"; };
-		9AD548901341E65D0072BDA6 /* MGVoice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGVoice.m; sourceTree = "<group>"; };
 		9AD548911341E65D0072BDA6 /* MGApiError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGApiError.h; sourceTree = "<group>"; };
 		9AD548921341E65D0072BDA6 /* MGApiError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGApiError.m; sourceTree = "<group>"; };
 		9AD548941341E65D0072BDA6 /* MGOAuthClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGOAuthClient.h; sourceTree = "<group>"; };
@@ -149,6 +149,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1071994213768C6B004A1A67 /* Contents */ = {
+			isa = PBXGroup;
+			children = (
+				1071994313768C6C004A1A67 /* MGAlbum.h */,
+				1071994413768C6C004A1A67 /* MGAlbum.m */,
+				1071994513768C6C004A1A67 /* MGComment.h */,
+				1071994613768C6C004A1A67 /* MGComment.m */,
+				1071994713768C6C004A1A67 /* MGContentBase.h */,
+				1071994813768C6C004A1A67 /* MGContentBase.m */,
+				1071994913768C6C004A1A67 /* MGFavorite.h */,
+				1071994A13768C6C004A1A67 /* MGFavorite.m */,
+				1071994B13768C6C004A1A67 /* MGPeople.h */,
+				1071994C13768C6C004A1A67 /* MGPeople.m */,
+				1071994D13768C6C004A1A67 /* MGPhoto.h */,
+				1071994E13768C6C004A1A67 /* MGPhoto.m */,
+				1071994F13768C6C004A1A67 /* MGVoice.h */,
+				1071995013768C6C004A1A67 /* MGVoice.m */,
+			);
+			path = Contents;
+			sourceTree = "<group>";
+		};
 		9A4E72771342FD6300AEDB76 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -248,8 +269,8 @@
 		9AD548761341E65D0072BDA6 /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				1071994213768C6B004A1A67 /* Contents */,
 				9AD548771341E65D0072BDA6 /* Client */,
-				9AD548861341E65D0072BDA6 /* Entity */,
 				9AD548911341E65D0072BDA6 /* MGApiError.h */,
 				9AD548921341E65D0072BDA6 /* MGApiError.m */,
 				9AD548931341E65D0072BDA6 /* OAuth */,
@@ -275,27 +296,6 @@
 				10DB177C136AA0C800AA0670 /* MGClientBase.m */,
 			);
 			path = Client;
-			sourceTree = "<group>";
-		};
-		9AD548861341E65D0072BDA6 /* Entity */ = {
-			isa = PBXGroup;
-			children = (
-				9AD548871341E65D0072BDA6 /* MGComment.h */,
-				9AD548881341E65D0072BDA6 /* MGComment.m */,
-				109AFCBE136BCE51006F5E6D /* MGFavorite.h */,
-				109AFCBF136BCE51006F5E6D /* MGFavorite.m */,
-				10315B67137000F60077E490 /* MGAlbum.h */,
-				10315B68137000F80077E490 /* MGAlbum.m */,
-				9AD5488B1341E65D0072BDA6 /* MGPeople.h */,
-				9AD5488C1341E65D0072BDA6 /* MGPeople.m */,
-				9AD5488D1341E65D0072BDA6 /* MGPhoto.h */,
-				9AD5488E1341E65D0072BDA6 /* MGPhoto.m */,
-				9AD5488F1341E65D0072BDA6 /* MGVoice.h */,
-				9AD548901341E65D0072BDA6 /* MGVoice.m */,
-				10F3A3C7136D3D75004702C4 /* MGContentBase.h */,
-				10F3A3C8136D3D76004702C4 /* MGContentBase.m */,
-			);
-			path = Entity;
 			sourceTree = "<group>";
 		};
 		9AD548931341E65D0072BDA6 /* OAuth */ = {
@@ -400,10 +400,6 @@
 				9AD548A41341E65D0072BDA6 /* MGPeopleClient.m in Sources */,
 				9AD548A51341E65D0072BDA6 /* MGPhotoClient.m in Sources */,
 				9AD548A61341E65D0072BDA6 /* MGVoiceClient.m in Sources */,
-				9AD548A71341E65D0072BDA6 /* MGComment.m in Sources */,
-				9AD548A91341E65D0072BDA6 /* MGPeople.m in Sources */,
-				9AD548AA1341E65D0072BDA6 /* MGPhoto.m in Sources */,
-				9AD548AB1341E65D0072BDA6 /* MGVoice.m in Sources */,
 				9AD548AC1341E65D0072BDA6 /* MGApiError.m in Sources */,
 				9AD548AD1341E65D0072BDA6 /* MGOAuthClient.m in Sources */,
 				9AD548AE1341E65D0072BDA6 /* MGUserDefaults.m in Sources */,
@@ -415,11 +411,15 @@
 				10303134135C840900C17326 /* VoiceTableViewController.m in Sources */,
 				1030313B135DD2A200C17326 /* MGOAuthKey.m in Sources */,
 				10DB177D136AA0C800AA0670 /* MGClientBase.m in Sources */,
-				109AFCC0136BCE51006F5E6D /* MGFavorite.m in Sources */,
 				10F3A3C4136D2EA8004702C4 /* PeopleTestViewController.m in Sources */,
-				10F3A3C9136D3D77004702C4 /* MGContentBase.m in Sources */,
 				10315B64136FF9A90077E490 /* PhotoTestViewController.m in Sources */,
-				10315B69137000FA0077E490 /* MGAlbum.m in Sources */,
+				1071995113768C6C004A1A67 /* MGAlbum.m in Sources */,
+				1071995213768C6C004A1A67 /* MGComment.m in Sources */,
+				1071995313768C6C004A1A67 /* MGContentBase.m in Sources */,
+				1071995413768C6C004A1A67 /* MGFavorite.m in Sources */,
+				1071995513768C6C004A1A67 /* MGPeople.m in Sources */,
+				1071995613768C6C004A1A67 /* MGPhoto.m in Sources */,
+				1071995713768C6C004A1A67 /* MGVoice.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
