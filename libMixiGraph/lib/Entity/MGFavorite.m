@@ -54,12 +54,12 @@
     return favorite;
 }
 
-+(NSMutableArray *)makeFavoriteArrayFromResponseData:(NSData*)data{
-    NSString *contents = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
-	//NSLog(@"%@",contents);
++(NSMutableArray *)makeCommentArrayFromEntryArray:(NSArray*)dataArray{
+    /*NSString *contents = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+	//NSLog(@"%@",contents);*/
     NSMutableArray * favoriteArray = [NSMutableArray array];
-    NSArray * favoriteJsonArray = [contents JSONValue];
-    for(NSDictionary * favoriteContentDict in favoriteJsonArray){
+    //NSArray * favoriteJsonArray = [contents JSONValue];
+    for(NSDictionary * favoriteContentDict in dataArray){
         MGFavorite * favorite = [self makeFavoriteFromDict:favoriteContentDict];
         [favoriteArray addObject:favorite];
     }

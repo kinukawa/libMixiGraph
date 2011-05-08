@@ -217,7 +217,9 @@
         result = [MGComment makeCommentFromResponseData:data];
         self.replyCount--;
     }else if(self.httpClient.identifier==@"getFavorites"){
-        result = [MGFavorite makeFavoriteArrayFromResponseData:data];
+        NSArray * entryArray = [contents JSONValue];
+        result = [MGFavorite makeCommentArrayFromEntryArray:entryArray];
+        //result = [MGFavorite makeFavoriteArrayFromResponseData:data];
     }else if(self.httpClient.identifier==@"postFavorite"){
         result = [MGVoice makeContentFromResponseData:data];
     }else if(self.httpClient.identifier==@"deleteFavorite"){

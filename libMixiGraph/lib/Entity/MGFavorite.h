@@ -34,6 +34,6 @@
 @property (nonatomic,retain) NSString * userUrl;
 
 +(MGFavorite *)makeFavoriteFromResponseData:(NSData*)data;
-+(NSMutableArray *)makeFavoriteArrayFromResponseData:(NSData*)data;
++(NSMutableArray *)makeCommentArrayFromEntryArray:(NSArray*)dataArray;
 
 @end
