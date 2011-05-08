@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "MGOAuthClient.h"
 
 @interface OAuthLoginViewController : UIViewController {
-    
+    MGOAuthClient * oauthClient;
 }
+
+@property (nonatomic,retain) MGOAuthClient * oauthClient;
 
 @end
