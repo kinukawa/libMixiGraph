@@ -228,7 +228,7 @@
     }
     
 	if([delegate respondsToSelector:@selector(mgVoice:didFinishLoading:)]){
-        [delegate mgVoice:conn didFinishLoading:data];
+        [delegate mgVoice:conn didFinishLoading:result];
     }
 }
 

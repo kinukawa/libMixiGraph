@@ -127,7 +127,7 @@
 }
 -(IBAction)pressDeelteIineButton{
     self.testVoice.identifier=@"deleteIine";
-    [self.testVoice deleteFavoriteByUserId:@"5fbcb9i8ysmdg"];
+    [self.testVoice deleteFavoriteByUserId:@"xweichp9oy7nb"];
 }
 
 
