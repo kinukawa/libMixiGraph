@@ -162,6 +162,19 @@
     
 }
 
+-(void)deleteAlbum{
+    NSURL * requestUrl = [MGUtil buildAPIURL:PHOTO_BASE_URL
+                                        path:[NSArray arrayWithObjects:
+                                              @"albums",
+                                              @"@me",
+                                              @"@self",
+                                              self.albumId,
+                                              nil]
+                                       query:nil];
+    self.httpClient.identifier = @"deleteAlbum";
+	[self.httpClient delete:requestUrl];
+}
+
 //////////////MGHttpClientDelegate/////////////////////
 -(void)mgHttpClient:(NSURLConnection *)conn didFailWithError:(NSError*)error{
 	NSLog(@"mgAlbum didFailWithError");
@@ -199,6 +212,8 @@
     }else if(self.httpClient.identifier==@"postComment"){
         //result = [MGComment makeCommentFromResponseData:data];
     }else if(self.httpClient.identifier==@"deleteComment"){
+        //result = [MGComment makeCommentFromResponseData:data];
+    }else if(self.httpClient.identifier==@"deleteAlbum"){
         //result = [MGComment makeCommentFromResponseData:data];
     }
     

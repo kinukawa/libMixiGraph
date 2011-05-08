@@ -51,6 +51,7 @@
 -(void)postComment:(NSString *)comment withAccessKey:(NSString *)accessKey;
 -(void)deleteCommentByComment:(MGComment *)comment 
                 withAccessKey:(NSString *)accessKey;
+-(void)deleteAlbum;
 
 @property (nonatomic,assign) id delegate;
 

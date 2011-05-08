@@ -150,6 +150,12 @@
     [self.photoClient makeAlbumWithTitle:@"ホゲアルバム" description:@"ほげほげ" visibility:@"everyone" accessKey:nil];
 }
 
+//アルバム削除
+-(IBAction)pressDeleteAlbumButton{
+    self.photoClient.identifier = @"pressDeleteAlbumButton";
+    [self.testAlbum deleteAlbum];
+}
+
 /////////////////////////////////
 -(void)mgPhotoClient:(NSURLConnection *)conn didFailWithError:(NSError*)error{
     

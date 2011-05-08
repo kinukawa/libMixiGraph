@@ -45,6 +45,8 @@
 -(IBAction)pressDeletePhotoFavosButton;
 //アルバム作成
 -(IBAction)pressMakeAlbumButton;
+//アルバム削除
+-(IBAction)pressDeleteAlbumButton;
 
 @property (nonatomic,retain) MGPhotoClient * photoClient;
 @property (nonatomic,retain) MGAlbum * testAlbum;
