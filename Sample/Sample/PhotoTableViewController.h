@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "MGPhotoClient.h"
 
 @interface PhotoTableViewController : UITableViewController {
-    
+    MGPhotoClient * photoClient;
 }
+
+@property (nonatomic,retain) MGPhotoClient * photoClient;
+@property (nonatomic,retain) NSArray * photoArray;
 
 @end

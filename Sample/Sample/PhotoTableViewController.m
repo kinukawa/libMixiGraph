@@ -10,6 +10,8 @@
 
 
 @implementation PhotoTableViewController
+@synthesize photoClient;
+@synthesize photoArray;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -22,6 +24,8 @@
 
 - (void)dealloc
 {
+    self.photoClient = nil;
+    self.photoArray = nil;
     [super dealloc];
 }
 
@@ -33,6 +37,27 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+-(void)pressReloadButton{
+    [self.photoClient getRecentCreatedFriendsPhotoListWithStartIndex:0 count:0];
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+}
+
+#pragma mark - MGVoiceClient delegate
+
+-(void)mgPhotoClient:(NSURLConnection *)conn didFailWithError:(NSError*)error{
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    
+}
+-(void)mgPhotoClient:(NSURLConnection *)conn didFailWithAPIError:(MGApiError*)error{
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    
+}
+-(void)mgPhotoClient:(NSURLConnection *)conn didFinishLoading:(id)result{
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    self.photoArray = [result objectForKey:@"entry"];
+    [self.tableView reloadData];
+}
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
@@ -42,8 +67,16 @@
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    UIBarButtonItem *buttonR = [[UIBarButtonItem alloc] 
+								initWithTitle:@"更新" 
+								style:UIBarButtonItemStyleBordered
+								target:self 
+								action:@selector(pressReloadButton)
+								]; 
+	self.navigationItem.rightBarButtonItem = buttonR;
+	[buttonR release];
+    photoClient = [[MGPhotoClient alloc] init];
+    photoClient.delegate = self;
 }
 
 - (void)viewDidUnload
@@ -83,16 +116,14 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [photoArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -105,7 +136,8 @@
     }
     
     // Configure the cell...
-    
+    MGPhoto * photo = [photoArray objectAtIndex:indexPath.row];
+    cell.textLabel.text = photo.url;
     return cell;
 }
 
