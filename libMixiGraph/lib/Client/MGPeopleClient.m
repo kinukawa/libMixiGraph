@@ -114,14 +114,6 @@
 	}    
 }
 
--(NSDictionary *)makeResponseObject{
-    int itemsPerPage = itemsPerPage; 
-    int startIndex = startIndex; 
-    int totalResults = totalResults;
-    NSDictionary * responseObject;
-    return responseObject;
-}
-
 -(void)mgHttpClient:(NSURLConnection *)conn didFinishLoading:(NSMutableData *)data{
 	//NSLog(@"MGPeopleClient didFinishLoading");
     id result = data;
