@@ -232,6 +232,19 @@
 	[self.httpClient delete:requestUrl];
 }
 
+-(void)deletePhoto{
+    NSURL * requestUrl = [MGUtil buildAPIURL:PHOTO_BASE_URL
+                                        path:[NSArray arrayWithObjects:
+                                              @"mediaItems",
+                                              @"@me",
+                                              @"@self",
+                                              self.albumId,
+                                              self.photoId,
+                                              nil]
+                                       query:nil];
+    self.httpClient.identifier = @"deletePhoto";
+	[self.httpClient delete:requestUrl];
+}
 
 //////////////MGHttpClientDelegate/////////////////////
 -(void)mgHttpClient:(NSURLConnection *)conn didFailWithError:(NSError*)error{
@@ -284,8 +297,11 @@
         //result = [MGVoice makeContentFromResponseData:data];
     }else if(self.httpClient.identifier==@"deleteFavorite"){
         //result = [MGFavorite makeFavoriteFromResponseData:data];
+    }else if(self.httpClient.identifier==@"deletePhoto"){
+        //result = [contents JSONValue];
     }
-	if([delegate respondsToSelector:@selector(mgPhoto:didFinishLoading:)]){
+    
+    if([delegate respondsToSelector:@selector(mgPhoto:didFinishLoading:)]){
         [delegate mgPhoto:conn didFinishLoading:result];
     }
 }

@@ -50,6 +50,8 @@
 -(IBAction)pressDeleteAlbumButton;
 //フォト投稿
 -(IBAction)pressPostPhotoButton;
+//フォト削除
+-(IBAction)pressDeletePhotoButton;
 
 @property (nonatomic,retain) MGPhotoClient * photoClient;
 @property (nonatomic,retain) MGAlbum * testAlbum;

@@ -163,6 +163,12 @@
     [self.photoClient postPhoto:photoView.image albumId:@"@default" title:@"ほげふが"];
 }
 
+//フォト削除
+-(IBAction)pressDeletePhotoButton{
+    self.testPhoto.identifier = @"pressDeletePhotoButton";
+    [self.testPhoto deletePhoto];
+}
+
 /////////////////////////////////
 -(void)mgPhotoClient:(NSURLConnection *)conn didFailWithError:(NSError*)error{
     

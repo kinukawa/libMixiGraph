@@ -60,6 +60,7 @@
                            count:(NSString *)count;
 -(void)postFavoriteWithAccessKey:(NSString *)accessKey;
 -(void)deleteFavoriteByUserId:(NSString *)uId withAccessKey:(NSString *)accessKey;
+-(void)deletePhoto;
 
 @property (nonatomic,assign) id delegate;
 
