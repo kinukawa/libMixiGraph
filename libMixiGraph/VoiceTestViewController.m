@@ -74,7 +74,7 @@
 -(IBAction)pressUsersVoicesTestButton{
     
     voiceClient.identifier = @"pressUsersVoicesTestButton";
-    [voiceClient getUserVoicesByUserID:@"@me" trimUser:NO attachPhoto:YES startIndex:@"0" count:@"3"];
+    [voiceClient getUserVoicesByUserID:@"@me" trimUser:NO attachPhoto:YES startIndex:@"0" count:@"0"];
     //[voiceClient requestUserVoicesByUserID:@"bgbj9n8rtg3wc" trimUser:NO attachPhoto:YES startIndex:nil count:nil usingSinceId:@"bgbj9n8rtg3wc-20110408225707"];
 }
 
@@ -86,16 +86,16 @@
 
 -(IBAction)pressVoiceDetailTestButton{
     voiceClient.identifier = @"pressVoiceDetailTestButton";
-    [voiceClient getVoiceInfoByPostID:@"5fbcb9i8ysmdg-20110430151456" trimUser:NO attachPhoto:YES];
+    [voiceClient getVoiceInfoByPostID:testVoice.postId trimUser:NO attachPhoto:YES];
 }
 
 -(IBAction)pressPostVoiceTestButton{
     voiceClient.identifier = @"post";
-    [voiceClient postVoice:voiceTextField.text];
+    [voiceClient postVoice:@"ほげふが"];
 }
 -(IBAction)pressImagePostVoiceTestButton{
     voiceClient.identifier = @"post";
-    [voiceClient postVoice:voiceTextField.text withUIImage:imageView.image];
+    [voiceClient postVoice:@"ほげふが" withUIImage:imageView.image];
 }
 
 -(IBAction)pressDeleteVoiceTestButton{
@@ -105,7 +105,7 @@
 
 -(IBAction)pressCommentToVoiceButton{
     self.testVoice.identifier = @"postComment";
-    [self.testVoice postComment:commentTextField.text];
+    [self.testVoice postComment:@"ほげふが"];
 }
 
 -(IBAction)pressGetCommentsButton{
@@ -115,7 +115,6 @@
 
 -(IBAction)pressDeleteCommentsButton{
     self.testVoice.identifier = @"deleteComments";
-    //[self.testVoice deleteCommentByIndex:<#(MGComment *)#>];
 }
 
 -(IBAction)pressGetIineButton{
@@ -128,7 +127,7 @@
 }
 -(IBAction)pressDeelteIineButton{
     self.testVoice.identifier=@"deleteIine";
-    //[self.testVoice deleteFavorite];
+    [self.testVoice deleteFavoriteByUserId:@"5fbcb9i8ysmdg"];
 }
 
 
@@ -142,21 +141,15 @@
 -(void)mgVoiceClient:(NSURLConnection *)conn didFinishLoading:(id)result{
     NSLog(@"mgVoiceClient didFinishLoading : %@",result);
     
-    if ([result isKindOfClass:[MGVoice class]]) {
-        //[result print];   
-    }else if([result isKindOfClass:[NSArray class]]){
-        //MGVoice * voice = [result objectAtIndex:0];
-        //[voice print];   
-    }
-    
-    if([voiceClient.identifier isEqualToString:@"post"]){
-        self.testVoice = result;
-        self.testVoice.delegate = self;
-        
+    if([voiceClient.identifier isEqualToString:@"pressUsersVoicesTestButton"] ||
+       [voiceClient.identifier isEqualToString:@"pressFriendsTestButton"]){
+        if([result count]>0){
+            self.testVoice = [result objectAtIndex:0];
+            self.testVoice.delegate = self;
+        }
     }else if([voiceClient.identifier isEqualToString:@"pressVoiceDetailTestButton"]){
         self.testVoice = result;
         self.testVoice.delegate = self;
-        
     }
 }
 
@@ -169,13 +162,14 @@
 -(void)mgVoice:(NSURLConnection *)conn didFinishLoading:(id)result{
     NSLog(@"mgVoice didFinishLoading : %@",result);
     if([self.testVoice.identifier isEqualToString:@"postComment"]){
-        //NSString *contents = [[[NSString alloc] initWithData:result encoding:NSUTF8StringEncoding] autorelease];
-        self.testComment = [MGComment makeCommentFromResponseData:result];
-        //self.testComment.delegate = self;
+    }else if([self.testVoice.identifier isEqualToString:@"getComments"]){
+        if([result count]>0){
+            self.testComment = [result objectAtIndex:0];
+        }
+    }else if([self.testVoice.identifier isEqualToString:@"getIine"]){
     }
 
 }
-
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
 	[textField resignFirstResponder];

@@ -99,6 +99,7 @@
     httpClient.identifier = @"getUserVoicesUsingSinceId";
 	[httpClient get:url];
 }
+
 //友人のつぶやき一覧の取得
 -(void)getFriendsVoicesByGroupID:(NSString *)groupID
                    trimUser:(bool)trimUser 
@@ -160,6 +161,7 @@
     httpClient.identifier = @"getFriendsVoicesUsingSinceId";
 	[httpClient get:url];
 }
+
 //ある特定のつぶやき情報の取得
 -(void)getVoiceInfoByPostID:(NSString *)postId
                trimUser:(bool)trimUser 
