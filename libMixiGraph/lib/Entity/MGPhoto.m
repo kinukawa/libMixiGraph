@@ -170,6 +170,69 @@
 	[self.httpClient delete:requestUrl];
 }
 
+-(void)getFavoritesWithAccessKey:(NSString *)accessKey 
+                     startIndex:(NSString *)startIndex
+                          count:(NSString *)count{
+    
+    NSMutableDictionary * queryDict = [NSMutableDictionary dictionary];
+	if (accessKey) {
+		[queryDict setObject:accessKey forKey:@"accessKey"];
+	}
+    if (startIndex) {
+		[queryDict setObject:startIndex forKey:@"startIndex"];
+	} 
+    if (count) {
+		[queryDict setObject:count forKey:@"count"];
+	}
+    NSURL * requestUrl = [MGUtil buildAPIURL:PHOTO_FAVORITES_URL
+                                        path:[NSArray arrayWithObjects:
+                                              self.ownerId,
+                                              @"@self",
+                                              self.albumId,
+                                              self.photoId,
+                                              nil]
+                                       query:queryDict];
+    self.httpClient.identifier = @"getFavorites";
+	[self.httpClient get:requestUrl];
+}
+
+-(void)postFavoriteWithAccessKey:(NSString *)accessKey {
+    NSMutableDictionary * queryDict = [NSMutableDictionary dictionary];
+	if (accessKey) {
+		[queryDict setObject:accessKey forKey:@"accessKey"];
+	}
+    NSURL * requestUrl = [MGUtil buildAPIURL:PHOTO_FAVORITES_URL
+                                        path:[NSArray arrayWithObjects:
+                                              self.ownerId,
+                                              @"@self",
+                                              self.albumId,
+                                              self.photoId,
+                                              nil]
+                                       query:queryDict];
+    self.httpClient.identifier = @"postFavorite";
+	[self.httpClient post:requestUrl param:nil body:nil];
+} 
+
+-(void)deleteFavoriteByUserId:(NSString *)uId withAccessKey:(NSString *)accessKey{
+    NSMutableDictionary * queryDict = [NSMutableDictionary dictionary];
+	if (accessKey) {
+		[queryDict setObject:accessKey forKey:@"accessKey"];
+	}
+    NSURL * requestUrl;
+    requestUrl = [MGUtil buildAPIURL:PHOTO_FAVORITES_URL
+                                path:[NSArray arrayWithObjects:
+                                      self.ownerId,
+                                      @"@self",
+                                      self.albumId,
+                                      self.photoId,
+                                      uId,
+                                      nil]
+                               query:queryDict];
+    self.httpClient.identifier = @"deleteFavorite";
+	[self.httpClient delete:requestUrl];
+}
+
+
 //////////////MGHttpClientDelegate/////////////////////
 -(void)mgHttpClient:(NSURLConnection *)conn didFailWithError:(NSError*)error{
 	NSLog(@"mgPhoto didFailWithError");
@@ -204,15 +267,24 @@
         result = responseDict;
     }else if(self.httpClient.identifier==@"postComment"){
     }else if(self.httpClient.identifier==@"deleteComment"){
-    }/*else if(self.httpClient.identifier==@"getFavorites"){
-        result = [MGFavorite makeFavoriteArrayFromResponseData:data];
+    }else if(self.httpClient.identifier==@"getFavorites"){
+        NSDictionary * jsonDict = [contents JSONValue];
+        NSArray * favoritesArray = [MGFavorite makeCommentArrayFromEntryArray:
+                                   [jsonDict objectForKey:@"entry"]];
+        
+        
+        NSDictionary * responseDict = [NSDictionary dictionaryWithObjectsAndKeys:
+                                       favoritesArray,@"entry",
+                                       [jsonDict objectForKey:@"itemsPerPage"], @"itemsPerPage", 
+                                       [jsonDict objectForKey:@"startIndex"], @"startIndex", 
+                                       [jsonDict objectForKey:@"totalResults"], @"totalResults", 
+                                       nil];
+        result = responseDict;
     }else if(self.httpClient.identifier==@"postFavorite"){
-        result = [MGVoice makeContentFromResponseData:data];
+        //result = [MGVoice makeContentFromResponseData:data];
     }else if(self.httpClient.identifier==@"deleteFavorite"){
-        result = [MGFavorite makeFavoriteFromResponseData:data];
-        self.favoriteCount--;
+        //result = [MGFavorite makeFavoriteFromResponseData:data];
     }
-    */
 	if([delegate respondsToSelector:@selector(mgPhoto:didFinishLoading:)]){
         [delegate mgPhoto:conn didFinishLoading:result];
     }

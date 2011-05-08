@@ -42,8 +42,17 @@
 	MGFavorite * favorite = [[[MGFavorite alloc]init]autorelease];
     favorite.userId = [dict objectForKey:@"id"];
     favorite.userScreeName = [dict objectForKey:@"screen_name"];
+    if (!favorite.userScreeName) {
+        favorite.userScreeName = [dict objectForKey:@"displayName"];
+    }
     favorite.userProfileImageUrl = [dict objectForKey:@"profile_image_url"];
+    if (!favorite.userProfileImageUrl) {
+        favorite.userProfileImageUrl = [dict objectForKey:@"thumbnailUrl"];
+    }
     favorite.userUrl = [dict objectForKey:@"url"];
+    if (!favorite.userUrl) {
+        favorite.userUrl = [dict objectForKey:@"profileUrl"];
+    }
     return favorite;
 }
 

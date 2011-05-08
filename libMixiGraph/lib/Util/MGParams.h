@@ -27,7 +27,7 @@
 
 #define PHOTO_BASE_URL      @"http://api.mixi-platform.com/2/photo/"
 #define PHOTO_REPLYS_URL    @"http://api.mixi-platform.com/2/photo/comments/"
-#define PHOTO_FAVORITES_URL @"http://api.mixi-platform.com/2/photo/favorites/"
+#define PHOTO_FAVORITES_URL @"http://api.mixi-platform.com/2/photo/favorites/mediaItems/"
 
 @interface MGParams : NSObject {
     

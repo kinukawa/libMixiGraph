@@ -37,6 +37,12 @@
 -(IBAction)pressPostPhotoCommentsButton;
 //フォトコメント削除
 -(IBAction)pressDeletePhotoCommentsButton;
+//フォトイイネ取得
+-(IBAction)pressGetPhotoFavosButton;
+//フォトイイネ投稿
+-(IBAction)pressPostPhotoFavosButton;
+//フォトイイネ削除
+-(IBAction)pressDeletePhotoFavosButton;
 
 @property (nonatomic,retain) MGPhotoClient * photoClient;
 @property (nonatomic,retain) MGAlbum * testAlbum;

@@ -55,11 +55,12 @@
                           count:(NSString *)count;
 -(void)postComment:(NSString *)comment withAccessKey:(NSString *)accessKey;
 -(void)deleteCommentByComment:(MGComment *)comment withAccessKey:(NSString *)accessKey;
-/*
--(void)getFavorites;
--(void)postFavorite;
--(void)deleteFavoriteByUserId:(NSString *)uId;
-*/
+-(void)getFavoritesWithAccessKey:(NSString *)accessKey 
+                      startIndex:(NSString *)startIndex
+                           count:(NSString *)count;
+-(void)postFavoriteWithAccessKey:(NSString *)accessKey;
+-(void)deleteFavoriteByUserId:(NSString *)uId withAccessKey:(NSString *)accessKey;
+
 @property (nonatomic,assign) id delegate;
 
 @property (nonatomic,retain) NSString * albumId;

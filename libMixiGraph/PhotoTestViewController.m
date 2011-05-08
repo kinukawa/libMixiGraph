@@ -126,6 +126,23 @@
     self.testPhoto.identifier = @"pressDeletePhotoCommentsButton";
     [self.testPhoto deleteCommentByComment:testComment withAccessKey:nil];
 }
+//フォトイイネ取得
+-(IBAction)pressGetPhotoFavosButton{
+    self.testPhoto.identifier = @"pressGetPhotoFavosButton";
+    [self.testPhoto getFavoritesWithAccessKey:nil startIndex:0 count:0];
+}
+
+//フォトイイネ投稿
+-(IBAction)pressPostPhotoFavosButton{
+    self.testPhoto.identifier = @"pressPostPhotoFavosButton";
+    [self.testPhoto postFavoriteWithAccessKey:nil];
+}
+
+//フォトイイネ削除
+-(IBAction)pressDeletePhotoFavosButton{
+    self.testPhoto.identifier = @"pressDeletePhotoFavosButton";
+    [self.testPhoto deleteFavoriteByUserId:@"5fbcb9i8ysmdg" withAccessKey:nil];
+}
 
 /////////////////////////////////
 -(void)mgPhotoClient:(NSURLConnection *)conn didFailWithError:(NSError*)error{
