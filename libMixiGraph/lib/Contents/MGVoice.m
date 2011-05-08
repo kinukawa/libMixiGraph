@@ -207,24 +207,19 @@
 	NSLog(@"MGVoice didFinishLoading %@:%@",self.httpClient.identifier,contents);
     id result = data;
     if(self.httpClient.identifier==@"getComments"){
-        //result = [MGComment makeCommentArrayFromResponseData:data];
         NSArray * entryArray = [contents JSONValue];
         result = [MGVoice makeContentArrayFromEntryArray:entryArray];
     }else if(self.httpClient.identifier==@"postComment"){
         result = [MGComment makeCommentFromResponseData:data];
-        self.replyCount++;
     }else if(self.httpClient.identifier==@"deleteComment"){
         result = [MGComment makeCommentFromResponseData:data];
-        self.replyCount--;
     }else if(self.httpClient.identifier==@"getFavorites"){
         NSArray * entryArray = [contents JSONValue];
         result = [MGFavorite makeCommentArrayFromEntryArray:entryArray];
-        //result = [MGFavorite makeFavoriteArrayFromResponseData:data];
     }else if(self.httpClient.identifier==@"postFavorite"){
         result = [MGVoice makeContentFromResponseData:data];
     }else if(self.httpClient.identifier==@"deleteFavorite"){
         result = [MGFavorite makeFavoriteFromResponseData:data];
-        self.favoriteCount--;
     }
     
 	if([delegate respondsToSelector:@selector(mgVoice:didFinishLoading:)]){
