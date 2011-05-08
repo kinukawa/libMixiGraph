@@ -13,6 +13,7 @@
 @synthesize photoClient;
 @synthesize testAlbum;
 @synthesize testComment;
+@synthesize testPhoto;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -108,6 +109,24 @@
     [self.testAlbum deleteCommentByComment:self.testComment withAccessKey:nil];
 }
 
+//フォトコメント取得
+-(IBAction)pressGetPhotoCommentsButton{
+    self.testPhoto.identifier = @"pressGetPhotoCommentsButton";
+    [self.testPhoto getCommentsWithAccessKey:nil startIndex:0 count:0];
+}
+
+//フォトコメント投稿
+-(IBAction)pressPostPhotoCommentsButton{
+    self.testPhoto.identifier = @"pressPostPhotoCommentsButton";
+    [self.testPhoto postComment:@"ほげふが" withAccessKey:nil];
+}
+
+//フォトコメント削除
+-(IBAction)pressDeletePhotoCommentsButton{
+    self.testPhoto.identifier = @"pressDeletePhotoCommentsButton";
+    [self.testPhoto deleteCommentByComment:testComment withAccessKey:nil];
+}
+
 /////////////////////////////////
 -(void)mgPhotoClient:(NSURLConnection *)conn didFailWithError:(NSError*)error{
     
@@ -138,6 +157,8 @@
             NSLog(@"%@",photo.photoId);
             NSLog(@"%@",photo.title);
         }
+        self.testPhoto = [[result objectForKey:@"entry"]objectAtIndex:0];
+        self.testPhoto.delegate = self;
     }else if([photoClient.identifier isEqualToString:@"pressGetPhotoButton"]){
         MGPhoto * photo = (MGPhoto*)[result objectForKey:@"entry"];
         NSLog(@"%@",photo.ownerDisplayName);
@@ -146,6 +167,24 @@
         NSLog(@"%@",photo.title);
     } 
 }
+
+-(void)mgPhoto:(NSURLConnection *)conn didFailWithError:(NSError*)error{
+    
+}
+-(void)mgPhoto:(NSURLConnection *)conn didFailWithAPIError:(MGApiError*)error{
+    NSLog(@"mgPhoto didFailWithAPIError : %@",error.body);
+ 
+}
+-(void)mgPhoto:(NSURLConnection *)conn didFinishLoading:(id)result{
+    NSLog(@"mgPhoto didFinishLoading : %@",result);
+    if([testPhoto.identifier isEqualToString:@"pressGetPhotoCommentsButton"]){
+        NSArray * commentArray = [result objectForKey:@"entry"];
+        if ([commentArray count]>0) {
+            self.testComment = [commentArray objectAtIndex:0];            
+        }
+    }
+}
+
 
 -(void)mgAlbum:(NSURLConnection *)conn didFailWithError:(NSError*)error{
     

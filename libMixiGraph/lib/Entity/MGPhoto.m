@@ -155,7 +155,8 @@
 	if (accessKey) {
 		[queryDict setObject:accessKey forKey:@"accessKey"];
 	}
-    NSURL * requestUrl = [MGUtil buildAPIURL:PHOTO_REPLYS_URL
+    NSURL * requestUrl;
+    requestUrl = [MGUtil buildAPIURL:PHOTO_REPLYS_URL
                                         path:[NSArray arrayWithObjects:
                                               @"mediaItems",
                                               self.ownerId,
@@ -201,14 +202,9 @@
                                        [jsonDict objectForKey:@"totalResults"], @"totalResults", 
                                        nil];
         result = responseDict;
-    }
-    /*else if(self.httpClient.identifier==@"postComment"){
-        result = [MGComment makeCommentFromResponseData:data];
-        self.replyCount++;
+    }else if(self.httpClient.identifier==@"postComment"){
     }else if(self.httpClient.identifier==@"deleteComment"){
-        result = [MGComment makeCommentFromResponseData:data];
-        self.replyCount--;
-    }else if(self.httpClient.identifier==@"getFavorites"){
+    }/*else if(self.httpClient.identifier==@"getFavorites"){
         result = [MGFavorite makeFavoriteArrayFromResponseData:data];
     }else if(self.httpClient.identifier==@"postFavorite"){
         result = [MGVoice makeContentFromResponseData:data];
@@ -218,7 +214,7 @@
     }
     */
 	if([delegate respondsToSelector:@selector(mgPhoto:didFinishLoading:)]){
-        [delegate mgPhoto:conn didFinishLoading:data];
+        [delegate mgPhoto:conn didFinishLoading:result];
     }
 }
 
