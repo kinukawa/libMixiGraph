@@ -220,7 +220,7 @@
                                        postId,
                                        nil]
                                 query:nil];
-    httpClient.identifier = @"deleteVoiceByPostId";
+    httpClient.identifier = @"deleteVoice";
 	[httpClient post:url param:nil body:nil];
 }
 
@@ -268,6 +268,8 @@
     }else if(httpClient.identifier==@"postVoice"){
         result = [MGVoice makeContentFromResponseData:data];
     }else if(httpClient.identifier==@"postPhotoVoice"){
+        result = [MGVoice makeContentFromResponseData:data];
+    }else if(httpClient.identifier==@"deleteVoice"){
         result = [MGVoice makeContentFromResponseData:data];
     }
     
