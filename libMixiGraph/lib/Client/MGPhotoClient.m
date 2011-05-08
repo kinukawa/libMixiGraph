@@ -200,7 +200,7 @@
                                               nil]
                                        query:nil];
     NSString * bodyStr = [MGUtil buildPostBodyByDictionary:bodyDict];
-    NSString * escapedString = [bodyStr encodeURIComponent];
+    //NSString * escapedString = [bodyStr encodeURIComponent];
     NSData * body = [bodyStr 
                      dataUsingEncoding:NSUTF8StringEncoding];
     self.httpClient.identifier = @"makeAlbum";

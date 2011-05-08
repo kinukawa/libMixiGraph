@@ -51,6 +51,16 @@
 		9AD548AF1341E65D0072BDA6 /* MGUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD5489A1341E65D0072BDA6 /* MGUtil.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		108067A81376D3D200FE71BA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 108067A41376D3CE00FE71BA /* Sample.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1080677A1376D3CE00FE71BA;
+			remoteInfo = Sample;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		10303137135C897700C17326 /* image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image.jpg; sourceTree = "<group>"; };
 		10303139135DD2A200C17326 /* MGOAuthKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGOAuthKey.h; path = libMixiGraph/lib/OAuth/MGOAuthKey.h; sourceTree = SOURCE_ROOT; };
@@ -78,6 +88,7 @@
 		1071995B13769E0D004A1A67 /* NSString+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Util.h"; sourceTree = "<group>"; };
 		1071995C13769E0F004A1A67 /* NSString+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Util.m"; sourceTree = "<group>"; };
 		1071995E1376C265004A1A67 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		108067A41376D3CE00FE71BA /* Sample.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Sample.xcodeproj; path = Sample/Sample.xcodeproj; sourceTree = "<group>"; };
 		10DB177B136AA0C800AA0670 /* MGClientBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGClientBase.h; sourceTree = "<group>"; };
 		10DB177C136AA0C800AA0670 /* MGClientBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGClientBase.m; sourceTree = "<group>"; };
 		10F3A3C1136D2EA7004702C4 /* PeopleTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeopleTestViewController.h; sourceTree = "<group>"; };
@@ -165,6 +176,14 @@
 			path = Contents;
 			sourceTree = "<group>";
 		};
+		108067A51376D3CE00FE71BA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				108067A91376D3D200FE71BA /* Sample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		9A4E72771342FD6300AEDB76 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -192,6 +211,7 @@
 				9AD548291341D28B0072BDA6 /* libMixiGraph */,
 				9AD548221341D28B0072BDA6 /* Frameworks */,
 				9AD548201341D28B0072BDA6 /* Products */,
+				108067A41376D3CE00FE71BA /* Sample.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -349,12 +369,28 @@
 			mainGroup = 9AD548141341D28B0072BDA6;
 			productRefGroup = 9AD548201341D28B0072BDA6 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 108067A51376D3CE00FE71BA /* Products */;
+					ProjectRef = 108067A41376D3CE00FE71BA /* Sample.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				9AD5481E1341D28B0072BDA6 /* libMixiGraph */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		108067A91376D3D200FE71BA /* Sample.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = Sample.app;
+			remoteRef = 108067A81376D3D200FE71BA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		9AD5481D1341D28B0072BDA6 /* Resources */ = {
