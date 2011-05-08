@@ -60,6 +60,8 @@
                             count:(NSString *)count;
 -(void)postFavorite;
 -(void)deleteFavoriteByUserId:(NSString *)uId;
+//ボイスの削除
+-(void)deleteVoice;
 
 @property (nonatomic,assign) id delegate;
 //@property (nonatomic,retain) NSString * identifier;

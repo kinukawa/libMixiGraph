@@ -187,6 +187,18 @@
 	[self.httpClient post:url param:nil body:nil];
 }
 
+//ボイスの削除
+-(void)deleteVoice{
+    NSURL * url = [MGUtil buildAPIURL:VOICE_BASE_URL
+                                 path:[NSArray arrayWithObjects:
+                                       @"destroy",
+                                       self.postId,
+                                       nil]
+                                query:nil];
+    self.httpClient.identifier = @"deleteVoice";
+	[self.httpClient post:url param:nil body:nil];
+}
+
 //////////////MGHttpClientDelegate/////////////////////
 -(void)mgHttpClient:(NSURLConnection *)conn didFailWithError:(NSError*)error{
 	NSLog(@"MGVoice didFailWithError");
@@ -220,6 +232,8 @@
         result = [MGVoice makeContentFromResponseData:data];
     }else if(self.httpClient.identifier==@"deleteFavorite"){
         result = [MGFavorite makeFavoriteFromResponseData:data];
+    }else if(self.httpClient.identifier==@"deleteVoice"){
+        result = [MGVoice makeContentFromResponseData:data];
     }
     
 	if([delegate respondsToSelector:@selector(mgVoice:didFinishLoading:)]){

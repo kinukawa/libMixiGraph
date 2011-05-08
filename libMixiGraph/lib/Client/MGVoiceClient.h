@@ -82,12 +82,6 @@
 //フォトボイスの投稿
 -(void)postVoice:(NSString*)text withUIImage:(UIImage *)image;
 
-//ボイスの削除
--(void)deleteVoiceByPostId:(NSString*)postId;
-
-//ボイスの削除
--(void)deleteVoiceByVoice:(MGVoice*)voice;
-
 @end
 
 @protocol MGVoiceClientDelegate<NSObject>

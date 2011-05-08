@@ -99,8 +99,8 @@
 }
 
 -(IBAction)pressDeleteVoiceTestButton{
-    voiceClient.identifier = @"delete";
-    [voiceClient deleteVoiceByPostId:testVoice.postId];
+    testVoice.identifier = @"delete";
+    [testVoice deleteVoice];
 }
 
 -(IBAction)pressCommentToVoiceButton{

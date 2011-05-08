@@ -212,24 +212,6 @@
 	[httpClient imagePost:url image:image];
 }
 
-//ボイスの削除
--(void)deleteVoiceByPostId:(NSString*)postId{
-    NSURL * url = [MGUtil buildAPIURL:VOICE_BASE_URL
-                                 path:[NSArray arrayWithObjects:
-                                       @"destroy",
-                                       postId,
-                                       nil]
-                                query:nil];
-    httpClient.identifier = @"deleteVoice";
-	[httpClient post:url param:nil body:nil];
-}
-
-//ボイスの削除
--(void)deleteVoiceByVoice:(MGVoice*)voice{
-    [self deleteVoiceByPostId:voice.postId];
-}
-
-
 //////////////MGHttpClientDelegate/////////////////////
 
 -(void)mgHttpClient:(NSURLConnection *)conn didFailWithError:(NSError*)error{
@@ -268,8 +250,6 @@
     }else if(httpClient.identifier==@"postVoice"){
         result = [MGVoice makeContentFromResponseData:data];
     }else if(httpClient.identifier==@"postPhotoVoice"){
-        result = [MGVoice makeContentFromResponseData:data];
-    }else if(httpClient.identifier==@"deleteVoice"){
         result = [MGVoice makeContentFromResponseData:data];
     }
     
