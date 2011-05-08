@@ -74,33 +74,33 @@
 -(IBAction)pressUsersVoicesTestButton{
     
     voiceClient.identifier = @"pressUsersVoicesTestButton";
-    [voiceClient requestUserVoicesByUserID:@"@me" trimUser:NO attachPhoto:YES startIndex:@"0" count:@"3"];
+    [voiceClient getUserVoicesByUserID:@"@me" trimUser:NO attachPhoto:YES startIndex:@"0" count:@"3"];
     //[voiceClient requestUserVoicesByUserID:@"bgbj9n8rtg3wc" trimUser:NO attachPhoto:YES startIndex:nil count:nil usingSinceId:@"bgbj9n8rtg3wc-20110408225707"];
 }
 
 -(IBAction)pressFriendsTestButton{
     
     voiceClient.identifier = @"pressFriendsTestButton";
-    [voiceClient requestFriendsVoicesByGroupID:nil trimUser:NO attachPhoto:YES startIndex:nil count:nil];
+    [voiceClient getFriendsVoicesByGroupID:nil trimUser:NO attachPhoto:YES startIndex:nil count:nil];
 }
 
 -(IBAction)pressVoiceDetailTestButton{
     voiceClient.identifier = @"pressVoiceDetailTestButton";
-    [voiceClient requestVoiceInfoByPostID:@"5fbcb9i8ysmdg-20110430151456" trimUser:NO attachPhoto:YES];
+    [voiceClient getVoiceInfoByPostID:@"5fbcb9i8ysmdg-20110430151456" trimUser:NO attachPhoto:YES];
 }
 
 -(IBAction)pressPostVoiceTestButton{
     voiceClient.identifier = @"post";
-    [voiceClient requestPostVoice:voiceTextField.text];
+    [voiceClient postVoice:voiceTextField.text];
 }
 -(IBAction)pressImagePostVoiceTestButton{
     voiceClient.identifier = @"post";
-    [voiceClient requestPostVoice:voiceTextField.text withUIImage:imageView.image];
+    [voiceClient postVoice:voiceTextField.text withUIImage:imageView.image];
 }
 
 -(IBAction)pressDeleteVoiceTestButton{
     voiceClient.identifier = @"delete";
-    [voiceClient requestDeleteVoiceByPostId:testVoice.postId];
+    [voiceClient deleteVoiceByPostId:testVoice.postId];
 }
 
 -(IBAction)pressCommentToVoiceButton{
@@ -167,10 +167,7 @@
     NSLog(@"mgVoice didFailWithAPIError : %@",error.body);        
 }
 -(void)mgVoice:(NSURLConnection *)conn didFinishLoading:(id)result{
-    //NSLog(@"mgVoiceClient didFinishLoading [%@]",result);
-    /*for (MGComment*comment in testVoice.commentList) {
-        NSLog(@"comment return : %@",comment.commentText);            
-    }*/
+    NSLog(@"mgVoice didFinishLoading : %@",result);
     if([self.testVoice.identifier isEqualToString:@"postComment"]){
         //NSString *contents = [[[NSString alloc] initWithData:result encoding:NSUTF8StringEncoding] autorelease];
         self.testComment = [MGComment makeCommentFromResponseData:result];

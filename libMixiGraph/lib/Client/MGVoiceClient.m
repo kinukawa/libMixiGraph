@@ -38,7 +38,7 @@
 }
 
 //あるユーザのつぶやき一覧の取得
--(void)requestUserVoicesByUserID:(NSString *)userId 
+-(void)getUserVoicesByUserID:(NSString *)userId 
                 trimUser:(bool)trimUser 
              attachPhoto:(bool)attachPhoto
               startIndex:(NSString *)startIndex
@@ -62,13 +62,13 @@
                                        @"user_timeline",
                                        nil]
                                 query:queryDict];
-    httpClient.identifier = @"requestUserVoices";
+    httpClient.identifier = @"getUserVoices";
 	[httpClient get:url];
 }
 
 
 //あるユーザのつぶやき一覧の取得
--(void)requestUserVoicesByUserID:(NSString *)userId 
+-(void)getUserVoicesByUserID:(NSString *)userId 
                 trimUser:(bool)trimUser 
              attachPhoto:(bool)attachPhoto
               startIndex:(NSString *)startIndex
@@ -96,11 +96,11 @@
                                        @"user_timeline",
                                        nil]
                                 query:queryDict];
-    httpClient.identifier = @"requestUserVoicesUsingSinceId";
+    httpClient.identifier = @"getUserVoicesUsingSinceId";
 	[httpClient get:url];
 }
 //友人のつぶやき一覧の取得
--(void)requestFriendsVoicesByGroupID:(NSString *)groupID
+-(void)getFriendsVoicesByGroupID:(NSString *)groupID
                    trimUser:(bool)trimUser 
                 attachPhoto:(bool)attachPhoto
                  startIndex:(NSString *)startIndex
@@ -124,12 +124,12 @@
                                        groupID,
                                        nil]
                                 query:queryDict];
-    httpClient.identifier = @"requestFriendsVoices";
+    httpClient.identifier = @"getFriendsVoices";
 	[httpClient get:url];
 }
 
 //友人のつぶやき一覧の取得
--(void)requestFriendsVoicesByGroupID:(NSString *)groupID
+-(void)getFriendsVoicesByGroupID:(NSString *)groupID
                 trimUser:(bool)trimUser 
              attachPhoto:(bool)attachPhoto
               startIndex:(NSString *)startIndex
@@ -157,11 +157,11 @@
                                        groupID,
                                        nil]
                                 query:queryDict];
-    httpClient.identifier = @"requestFriendsVoicesUsingSinceId";
+    httpClient.identifier = @"getFriendsVoicesUsingSinceId";
 	[httpClient get:url];
 }
 //ある特定のつぶやき情報の取得
--(void)requestVoiceInfoByPostID:(NSString *)postId
+-(void)getVoiceInfoByPostID:(NSString *)postId
                trimUser:(bool)trimUser 
             attachPhoto:(bool)attachPhoto{
     
@@ -177,12 +177,12 @@
                                        postId,
                                        nil]
                                 query:queryDict];
-    httpClient.identifier = @"requestVoiceInfo";
+    httpClient.identifier = @"getVoiceInfo";
 	[httpClient get:url];
 }
 
 //ボイスの投稿
--(void)requestPostVoice:(NSString*)text{
+-(void)postVoice:(NSString*)text{
 	NSURL * url = [MGUtil buildAPIURL:VOICE_BASE_URL
                                  path:[NSArray arrayWithObjects:
                                        nil]
@@ -190,12 +190,12 @@
     NSData * body = [[[NSString stringWithFormat:@"status=%@",text] 
                       stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] 
                      dataUsingEncoding:NSUTF8StringEncoding];
-    httpClient.identifier = @"requestPostVoice";
+    httpClient.identifier = @"postVoice";
 	[httpClient post:url param:nil body:body];
 }
 
 //フォトボイスの投稿
--(void)requestPostVoice:(NSString*)text withUIImage:(UIImage *)image{
+-(void)postVoice:(NSString*)text withUIImage:(UIImage *)image{
 	
 	NSMutableDictionary * queryDict = [NSMutableDictionary dictionary];
 	if (text) {
@@ -206,25 +206,25 @@
                                  path:[NSArray arrayWithObjects:
                                        nil]
 							  query:queryDict];
-	httpClient.identifier = @"requestPostVoice";
+	httpClient.identifier = @"postVoice";
 	[httpClient imagePost:url image:image];
 }
 
 //ボイスの削除
--(void)requestDeleteVoiceByPostId:(NSString*)postId{
+-(void)deleteVoiceByPostId:(NSString*)postId{
     NSURL * url = [MGUtil buildAPIURL:VOICE_BASE_URL
                                  path:[NSArray arrayWithObjects:
                                        @"destroy",
                                        postId,
                                        nil]
                                 query:nil];
-    httpClient.identifier = @"requestDeleteVoice";
+    httpClient.identifier = @"deleteVoiceByPostId";
 	[httpClient post:url param:nil body:nil];
 }
 
 //ボイスの削除
--(void)requestDeleteVoiceByVoice:(MGVoice*)voice{
-    [self requestDeleteVoiceByPostId:voice.postId];
+-(void)deleteVoiceByVoice:(MGVoice*)voice{
+    [self deleteVoiceByPostId:voice.postId];
 }
 
 
@@ -249,23 +249,23 @@
 	NSLog(@"MGVoiceClient didFinishLoading %@:%@",httpClient.identifier,contents);
     
     id result = data;
-    if(httpClient.identifier==@"requestUserVoices"){
+    if(httpClient.identifier==@"getUserVoices"){
         NSArray * entryArray = [contents JSONValue];
         result = [MGVoice makeContentArrayFromEntryArray:entryArray];
-    }else if(httpClient.identifier==@"requestUserVoicesUsingSinceId"){
+    }else if(httpClient.identifier==@"getUserVoicesUsingSinceId"){
         NSArray * entryArray = [contents JSONValue];
         result = [MGVoice makeContentArrayFromEntryArray:entryArray];
-    }else if(httpClient.identifier==@"requestFriendsVoices"){
+    }else if(httpClient.identifier==@"getFriendsVoices"){
         NSArray * entryArray = [contents JSONValue];
         result = [MGVoice makeContentArrayFromEntryArray:entryArray];
-    }else if(httpClient.identifier==@"requestFriendsVoicesUsingSinceId"){
+    }else if(httpClient.identifier==@"getFriendsVoicesUsingSinceId"){
         NSArray * entryArray = [contents JSONValue];
         result = [MGVoice makeContentArrayFromEntryArray:entryArray];
-    }else if(httpClient.identifier==@"requestVoiceInfo"){
+    }else if(httpClient.identifier==@"getVoiceInfo"){
         result = [MGVoice makeContentFromResponseData:data];
-    }else if(httpClient.identifier==@"requestPostVoice"){
+    }else if(httpClient.identifier==@"postVoice"){
         result = [MGVoice makeContentFromResponseData:data];
-    }else if(httpClient.identifier==@"requestPostPhotoVoice"){
+    }else if(httpClient.identifier==@"postPhotoVoice"){
         result = [MGVoice makeContentFromResponseData:data];
     }
     

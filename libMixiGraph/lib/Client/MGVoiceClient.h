@@ -43,13 +43,13 @@
 //@property (nonatomic,retain) MGHttpClient * httpClient;
 
 //あるユーザのつぶやき一覧の取得
--(void)requestUserVoicesByUserID:(NSString *)userId 
+-(void)getUserVoicesByUserID:(NSString *)userId 
                 trimUser:(bool)trimUser 
              attachPhoto:(bool)attachPhoto
               startIndex:(NSString *)startIndex
                    count:(NSString *)count;
 //あるユーザのつぶやき一覧の取得
--(void)requestUserVoicesByUserID:(NSString *)userId 
+-(void)getUserVoicesByUserID:(NSString *)userId 
                 trimUser:(bool)trimUser 
              attachPhoto:(bool)attachPhoto
               startIndex:(NSString *)startIndex
@@ -57,13 +57,13 @@
             usingSinceId:(NSString *)sinceId;
 
 //友人のつぶやき一覧の取得
--(void)requestFriendsVoicesByGroupID:(NSString *)groupID
+-(void)getFriendsVoicesByGroupID:(NSString *)groupID
                    trimUser:(bool)trimUser 
                 attachPhoto:(bool)attachPhoto
                  startIndex:(NSString *)startIndex
                       count:(NSString *)count;
 //友人のつぶやき一覧の取得
--(void)requestFriendsVoicesByGroupID:(NSString *)groupID
+-(void)getFriendsVoicesByGroupID:(NSString *)groupID
                    trimUser:(bool)trimUser 
                 attachPhoto:(bool)attachPhoto
                  startIndex:(NSString *)startIndex
@@ -71,22 +71,22 @@
                usingSinceId:(NSString *)sinceId;
 
 //ある特定のつぶやき情報の取得
--(void)requestVoiceInfoByPostID:(NSString *)postId
+-(void)getVoiceInfoByPostID:(NSString *)postId
                trimUser:(bool)trimUser 
             attachPhoto:(bool)attachPhoto;
 
 //ボイスの投稿
--(void)requestPostVoice:(NSString*)text;
+-(void)postVoice:(NSString*)text;
 
 
 //フォトボイスの投稿
--(void)requestPostVoice:(NSString*)text withUIImage:(UIImage *)image;
+-(void)postVoice:(NSString*)text withUIImage:(UIImage *)image;
 
 //ボイスの削除
--(void)requestDeleteVoiceByPostId:(NSString*)postId;
+-(void)deleteVoiceByPostId:(NSString*)postId;
 
 //ボイスの削除
--(void)requestDeleteVoiceByVoice:(MGVoice*)voice;
+-(void)deleteVoiceByVoice:(MGVoice*)voice;
 
 @end
 
