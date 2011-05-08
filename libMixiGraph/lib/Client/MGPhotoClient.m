@@ -173,6 +173,40 @@
     [self getRecentCreatedPhotoListByGroupId:@"@friends" startIndex:startIndex count:count];
 }
 
+//アルバム作成
+-(void)makeAlbumWithTitle:(NSString *)title 
+              description:(NSString *)description
+               visibility:(NSString *)visibility
+                accessKey:(NSString *)accessKey {
+    
+    NSMutableDictionary * bodyDict = [NSMutableDictionary dictionary];
+	if (title) {
+		[bodyDict setObject:title forKey:@"title"];
+	}
+    if (description) {
+		[bodyDict setObject:description forKey:@"description"];
+	}
+    if (visibility) {
+		[bodyDict setObject:visibility forKey:@"visibility"];
+	}
+    if (accessKey) {
+		[bodyDict setObject:accessKey forKey:@"accessKey"];
+	}
+    NSURL * requestUrl = [MGUtil buildAPIURL:PHOTO_BASE_URL
+                                        path:[NSArray arrayWithObjects:
+                                              @"albums",
+                                              @"@me",
+                                              @"@self",
+                                              nil]
+                                       query:nil];
+    NSString * bodyStr = [MGUtil buildPostBodyByDictionary:bodyDict];
+    NSData * body = [[bodyStr 
+                      stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] 
+                     dataUsingEncoding:NSUTF8StringEncoding];
+    self.httpClient.identifier = @"makeAlbum";
+	[self.httpClient post:requestUrl param:nil body:body];
+} 
+
 
 //////////////MGHttpClientDelegate/////////////////////
 
@@ -228,6 +262,8 @@
                                        [entryDict objectForKey:@"totalResults"], @"totalResults", 
                                        nil];
         result = responseDict;
+    }else if([self.httpClient.identifier isEqualToString:@"makeAlbum"]){
+        result = [contents JSONValue];
     }
     
 	if([delegate respondsToSelector:@selector(mgPhotoClient:didFinishLoading:)]){

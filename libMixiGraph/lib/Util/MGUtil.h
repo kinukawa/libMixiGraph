@@ -21,4 +21,5 @@
 +(void)ShowAuthorizationErrorAlert;
 +(void)ShowRefreshTokenExpiredAlert;
 +(NSDictionary *)parsePostBody:(NSString*)param;
++(NSString *)buildPostBodyByDictionary:(NSDictionary *)dict;
 @end

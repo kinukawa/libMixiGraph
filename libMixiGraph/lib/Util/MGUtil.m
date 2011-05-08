@@ -53,6 +53,25 @@
 	return retDict;
 }
 
++(NSString *)buildPostBodyByDictionary:(NSDictionary *)dict{
+    if (dict == nil || 
+        [dict isEqual:[NSNull null]]) {
+        return nil;
+    }
+	NSMutableString * retStr = nil;
+	for (NSString * key in dict) {
+        if (retStr) {
+            [retStr appendString:@"&"];            
+        }else{
+            retStr = [NSMutableString string];
+        }
+        [retStr appendString:key];
+        [retStr appendString:@"="];
+        [retStr appendString:[dict objectForKey:key]];
+    }
+	return retStr;
+}
+
 +(NSDictionary *)parseAuthenticateHeader:(NSString*)param{
 	NSMutableDictionary * retDict = [NSMutableDictionary dictionary];
 	NSArray *baseArr = [param componentsSeparatedByString:@" "];

@@ -144,6 +144,12 @@
     [self.testPhoto deleteFavoriteByUserId:@"5fbcb9i8ysmdg" withAccessKey:nil];
 }
 
+//アルバム作成
+-(IBAction)pressMakeAlbumButton{
+    self.photoClient.identifier = @"pressMakeAlbumButton";
+    [self.photoClient makeAlbumWithTitle:@"ホゲアルバム" description:@"ほげほげ" visibility:@"everyone" accessKey:nil];
+}
+
 /////////////////////////////////
 -(void)mgPhotoClient:(NSURLConnection *)conn didFailWithError:(NSError*)error{
     

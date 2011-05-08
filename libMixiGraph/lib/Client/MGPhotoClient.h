@@ -74,6 +74,13 @@
 //最近友人が作成したフォト一覧の取得
 -(void)getRecentCreatedFriendsPhotoListWithStartIndex:(int)startIndex 
                                                 count:(int)count;
+
+//アルバム作成
+-(void)makeAlbumWithTitle:(NSString *)title 
+              description:(NSString *)description
+               visibility:(NSString *)visibility
+                accessKey:(NSString *)accessKey;
+
     
 @end
 
