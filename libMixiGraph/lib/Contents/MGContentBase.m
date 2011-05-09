@@ -28,7 +28,7 @@
 -(id)init{
 	if((self = [super init])){
 		//initialize
-        self.httpClient = [[MGHttpClient alloc]init];
+        self.httpClient = [[[MGHttpClient alloc]init]autorelease];
         self.httpClient.delegate = self;
     }
 	return self;
