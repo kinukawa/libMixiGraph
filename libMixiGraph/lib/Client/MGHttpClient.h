@@ -36,6 +36,7 @@
 	NSMutableURLRequest * backupRequest;
     bool refresh;
     NSHTTPURLResponse *response;
+    NSURLConnection *connection;
 }
 
 -(bool)post:(NSURL*)url param:(NSDictionary *)param body:(NSData*)body;
@@ -49,6 +50,7 @@
 @property (nonatomic,retain) NSMutableData * buffer;
 @property (nonatomic,retain) NSHTTPURLResponse *response;
 @property (nonatomic,retain) NSString * identifier;
+@property (nonatomic,retain) NSURLConnection *connection;
 @end
 
 @protocol MGHttpCliendDelegate<NSObject>

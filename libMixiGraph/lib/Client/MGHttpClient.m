@@ -28,6 +28,7 @@
 @synthesize buffer;
 @synthesize response;
 @synthesize identifier;
+@synthesize connection;
 
 -(id)init{
 	if((self = [super init])){
@@ -37,6 +38,8 @@
 }
 
 - (void) dealloc {
+    [self.connection cancel];
+    self.connection = nil;
 	self.backupRequest = nil;
 	self.buffer = nil;
     self.identifier = nil;
@@ -44,8 +47,8 @@
 }
 
 -(bool)doRequest:(NSURLRequest*)req{
-	NSURLConnection *conn = [NSURLConnection connectionWithRequest:req delegate:self];
-    if (conn) {
+	self.connection = [NSURLConnection connectionWithRequest:req delegate:self];
+    if (self.connection) {
         self.buffer = [NSMutableData data];
 		return YES;
 	} else {
