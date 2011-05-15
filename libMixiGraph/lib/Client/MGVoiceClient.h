@@ -34,13 +34,8 @@
 @interface MGVoiceClient : MGClientBase {
 @public	
 	id <MGVoiceClientDelegate> delegate;
-    //NSString * identifier;
-@private
-	//MGHttpClient * httpClient;
 }
 @property (nonatomic,assign) id delegate;
-//@property (nonatomic,retain) NSString * identifier;
-//@property (nonatomic,retain) MGHttpClient * httpClient;
 
 //あるユーザのつぶやき一覧の取得
 -(void)getUserVoicesByUserID:(NSString *)userId 

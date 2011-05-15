@@ -11,6 +11,7 @@
 		1030313B135DD2A200C17326 /* MGOAuthKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 1030313A135DD2A200C17326 /* MGOAuthKey.m */; };
 		10315B64136FF9A90077E490 /* PhotoTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10315B62136FF9A90077E490 /* PhotoTestViewController.m */; };
 		10315B65136FF9A90077E490 /* PhotoTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10315B63136FF9A90077E490 /* PhotoTestViewController.xib */; };
+		1051AB82137FBD9D003EF53A /* MGHttpClientManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1051AB81137FBD9D003EF53A /* MGHttpClientManager.m */; };
 		1062C8001344D2AF005901A9 /* VoiceTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1062C7FE1344D2AF005901A9 /* VoiceTestViewController.m */; };
 		1062C8011344D2AF005901A9 /* VoiceTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1062C7FF1344D2AF005901A9 /* VoiceTestViewController.xib */; };
 		1071995113768C6C004A1A67 /* MGAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 1071994413768C6C004A1A67 /* MGAlbum.m */; };
@@ -68,6 +69,8 @@
 		10315B61136FF9A90077E490 /* PhotoTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoTestViewController.h; sourceTree = "<group>"; };
 		10315B62136FF9A90077E490 /* PhotoTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoTestViewController.m; sourceTree = "<group>"; };
 		10315B63136FF9A90077E490 /* PhotoTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoTestViewController.xib; sourceTree = "<group>"; };
+		1051AB80137FBD9D003EF53A /* MGHttpClientManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGHttpClientManager.h; sourceTree = "<group>"; };
+		1051AB81137FBD9D003EF53A /* MGHttpClientManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGHttpClientManager.m; sourceTree = "<group>"; };
 		1062C7FD1344D2AF005901A9 /* VoiceTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoiceTestViewController.h; sourceTree = "<group>"; };
 		1062C7FE1344D2AF005901A9 /* VoiceTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoiceTestViewController.m; sourceTree = "<group>"; };
 		1062C7FF1344D2AF005901A9 /* VoiceTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VoiceTestViewController.xib; sourceTree = "<group>"; };
@@ -304,6 +307,8 @@
 				9AD548851341E65D0072BDA6 /* MGVoiceClient.m */,
 				10DB177B136AA0C800AA0670 /* MGClientBase.h */,
 				10DB177C136AA0C800AA0670 /* MGClientBase.m */,
+				1051AB80137FBD9D003EF53A /* MGHttpClientManager.h */,
+				1051AB81137FBD9D003EF53A /* MGHttpClientManager.m */,
 			);
 			path = Client;
 			sourceTree = "<group>";
@@ -446,6 +451,7 @@
 				1071995613768C6C004A1A67 /* MGPhoto.m in Sources */,
 				1071995713768C6C004A1A67 /* MGVoice.m in Sources */,
 				1071995D13769E12004A1A67 /* NSString+Util.m in Sources */,
+				1051AB82137FBD9D003EF53A /* MGHttpClientManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
