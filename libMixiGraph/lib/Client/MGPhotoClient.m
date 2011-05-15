@@ -231,21 +231,21 @@
 
 //////////////MGHttpClientDelegate/////////////////////
 
--(void)mgHttpClient:(NSURLConnection *)conn didFailWithError:(NSError*)error{
+-(void)mgHttpClientManager:(NSURLConnection *)conn didFailWithError:(NSError*)error{
 	NSLog(@"mgPhotoClient didFailWithError");
 	if([delegate respondsToSelector:@selector(mgPhotoClient:didFailWithError:)]){
 		[delegate mgPhotoClient:conn didFailWithError:error];
 	}
 }
 
--(void)mgHttpClient:(NSURLConnection *)conn didFailWithAPIError:(MGApiError*)error{
+-(void)mgHttpClientManager:(NSURLConnection *)conn didFailWithAPIError:(MGApiError*)error{
 	NSLog(@"mgPhotoClient didFailWithAPIError");
 	if([delegate respondsToSelector:@selector(mgPhotoClient:didFailWithAPIError:)]){
 		[delegate mgPhotoClient:conn didFailWithAPIError:error];
 	}    
 }
 
--(void)mgHttpClient:(NSURLConnection *)conn didFinishLoading:(NSMutableData *)data{
+-(void)mgHttpClientManager:(NSURLConnection *)conn didFinishLoading:(NSMutableData *)data{
 	NSString *contents = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
 	NSLog(@"mgPhotoClient didFinishLoading %@:%@",httpClientManager.identifier,contents);
     

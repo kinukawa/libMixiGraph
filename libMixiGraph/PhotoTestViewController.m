@@ -188,8 +188,10 @@
             NSLog(@"%d",album.numComments);
             NSLog(@"%@",album.title);
         }
-        self.testAlbum = [albumArray objectAtIndex:0];
-        self.testAlbum.delegate = self;
+        if ([albumArray count]>0) {
+            self.testAlbum = [albumArray objectAtIndex:0];
+            self.testAlbum.delegate = self;
+        }
     }else if([photoClient.identifier isEqualToString:@"pressGetPhotoListButton"] ||
              [photoClient.identifier isEqualToString:@"pressGetRecentCreatedPhotoButton"]){
         NSArray * photoArray = (NSArray*)[result objectForKey:@"entry"];
