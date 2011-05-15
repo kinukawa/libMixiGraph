@@ -100,21 +100,21 @@
 
 
 ///////////////////
--(void)mgHttpClient:(NSURLConnection *)conn didFailWithError:(NSError*)error{
+-(void)mgHttpClientManager:(NSURLConnection *)conn didFailWithError:(NSError*)error{
 	NSLog(@"MGPeopleClient didFailWithError");
 	if([delegate respondsToSelector:@selector(mgVoiceClient:didFailWithError:)]){
 		[delegate mgPeopleClient:conn didFailWithError:error];
 	}
 }
 
--(void)mgHttpClient:(NSURLConnection *)conn didFailWithAPIError:(MGApiError*)error{
+-(void)mgHttpClientManager:(NSURLConnection *)conn didFailWithAPIError:(MGApiError*)error{
 	NSLog(@"MGPeopleClient didFailWithAPIError");
 	if([delegate respondsToSelector:@selector(mgVoiceClient:didFailWithAPIError:)]){
 		[delegate mgPeopleClient:conn didFailWithAPIError:error];
 	}    
 }
 
--(void)mgHttpClient:(NSURLConnection *)conn didFinishLoading:(NSMutableData *)data{
+-(void)mgHttpClientManager:(NSURLConnection *)conn didFinishLoading:(NSMutableData *)data{
 	//NSLog(@"MGPeopleClient didFinishLoading");
     id result = data;
     NSString *contents = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
