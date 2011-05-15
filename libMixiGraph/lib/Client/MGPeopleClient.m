@@ -114,7 +114,7 @@
 	}    
 }
 
--(void)mgHttpClientManager:(NSURLConnection *)conn didFinishLoading:(NSMutableData *)data{
+-(void)mgHttpClientManager:(NSURLConnection *)conn didFinishLoading:(NSDictionary *)reply{
 	//NSLog(@"MGPeopleClient didFinishLoading");
     id result = data;
     NSString *contents = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];

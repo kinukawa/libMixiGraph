@@ -10,7 +10,7 @@
 
 
 @implementation MGHttpClientManager
-@synthesize identifier;
+//@synthesize identifier;
 @synthesize delegate;
 @synthesize requestQueue;
 //@synthesize request;
@@ -123,9 +123,9 @@
 -(void)mgHttpClient:(NSURLConnection *)conn httpClient:(MGHttpClient*)client didFinishLoading:(NSMutableData *)data{
 	NSString *contents = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
 	NSLog(@"mgHttpClientManager didFinishLoading %@",contents);
-    
+    NSDictionary * reply = [NSDictionary dictionaryWithObjectsAndKeys:data,@"data",identifier,@"id",nil];
 	if([delegate respondsToSelector:@selector(mgHttpClientManager:didFinishLoading:)]){
-        [delegate mgHttpClientManager:conn didFinishLoading:data];
+        [delegate mgHttpClientManager:conn didFinishLoading:reply];
     }
     [self.requestQueue removeObject:client];
     //[client release];

@@ -114,7 +114,7 @@
 	NSLog(@"didFinishLoading");
 }
 
--(void)mghttpClientManager:(NSURLConnection *)conn didFinishLoadingPost:(NSMutableData *)data{
+-(void)mgHttpClientManager:(NSURLConnection *)conn didFinishLoading:(NSDictionary *)reply{
 	NSLog(@"didFinishLoading");
 	NSString *contents = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
 	NSLog(@"%@",contents);

@@ -262,7 +262,7 @@
 	}
 }
 
--(void)mgHttpClientManager:(NSURLConnection *)conn didFinishLoading:(NSData *)data{
+-(void)mgHttpClientManager:(NSURLConnection *)conn didFinishLoading:(NSDictionary *)reply{
     NSString *contents = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
 	NSLog(@"mgPhoto didFinishLoading %@:%@",self.httpClientManager.identifier,contents);
     id result = data;

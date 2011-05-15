@@ -190,7 +190,8 @@
 	}
 }
 
--(void)mgHttpClientManager:(NSURLConnection *)conn didFinishLoading:(NSData *)data{
+-(void)mgHttpClientManager:(NSURLConnection *)conn didFinishLoading:(NSDictionary *)reply{
+    NSData * data = [reply objectForKey:@"data"];
     NSString *contents = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
 	NSLog(@"mgAlbum didFinishLoading %@:%@",self.httpClientManager.identifier,contents);
     

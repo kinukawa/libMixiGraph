@@ -49,7 +49,7 @@
 	//NSLog(@"MGClientBase didFailWithAPIError");
 }
 
--(void)mgHttpClientManager:(NSURLConnection *)conn didFinishLoading:(NSMutableData *)data{
+-(void)mgHttpClientManager:(NSURLConnection *)conn didFinishLoading:(NSDictionary *)reply{
 	//NSLog(@"MGClientBase didFailWithAPIError");
 }
 
