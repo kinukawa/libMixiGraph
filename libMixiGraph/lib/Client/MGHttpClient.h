@@ -32,9 +32,7 @@
     NSString * identifier;
 @private
 	NSMutableData * buffer;
-	//NSString * method;
 	NSMutableURLRequest * backupRequest;
-    bool refresh;
     NSHTTPURLResponse *response;
     NSURLConnection *connection;
 }
@@ -46,7 +44,6 @@
 
 @property (nonatomic,assign) id delegate;
 @property (nonatomic,retain) NSMutableURLRequest * backupRequest;
-//@property (nonatomic,retain) NSString * method;
 @property (nonatomic,retain) NSMutableData * buffer;
 @property (nonatomic,retain) NSHTTPURLResponse *response;
 @property (nonatomic,retain) NSString * identifier;

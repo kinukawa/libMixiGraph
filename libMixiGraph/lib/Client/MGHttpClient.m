@@ -32,8 +32,7 @@
 
 -(id)init{
 	if((self = [super init])){
-        refresh = YES;
-	}
+    }
 	return self;
 }
 
@@ -140,11 +139,9 @@
 		  [error domain],
 		  [error code],
 		  [error localizedDescription]);
-	//[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 	self.buffer = nil;
 	
 	//ネットワークに接続されていない時
-	
     if ([delegate respondsToSelector:@selector(mgHttpClient:didFailWithError:)]) {
 		[delegate mgHttpClient:conn didFailWithError:error];
 	}
@@ -152,12 +149,10 @@
 
 -(void)retryRequest{
     NSLog(@"one more request!!!!!!");
-    self.buffer = nil;
     
     NSString * accessToken = [NSString stringWithFormat:@"OAuth %@",[MGUserDefaults loadAccessToken]];
     [self.backupRequest setValue:accessToken forHTTPHeaderField:@"Authorization"];
     [self doRequest:self.backupRequest];
-    //refresh = NO;
 }
 
 //レスポンスエラーチェック
@@ -186,8 +181,7 @@
 //受信終了
 - (void)connectionDidFinishLoading:(NSURLConnection *)conn {
 	NSLog(@"Succeed!! Received %d bytes of data", [buffer length]);
-	//NSLog(@"%@", [[[NSString alloc]initWithData:buffer encoding:NSASCIIStringEncoding]autorelease]);
-    
+	
     NSLog(@"Received Response. Status Code: %d", [response statusCode]);
 	NSLog(@"Expected ContentLength: %qi", [response expectedContentLength]);
 	NSLog(@"MIMEType: %@", [response MIMEType]);
@@ -205,6 +199,7 @@
             if([oauthClient refreshOAuthToken]){
                 NSLog(@"Refreshed and retry request.");
                 self.buffer = nil;
+                self.response = nil;
                 [self retryRequest];
                 return;
             }else{
