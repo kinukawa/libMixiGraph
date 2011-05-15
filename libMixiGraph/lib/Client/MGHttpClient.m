@@ -45,8 +45,8 @@
 	[super dealloc];
 }
 
--(bool)doRequest:(NSURLRequest*)req{
-	self.connection = [NSURLConnection connectionWithRequest:req delegate:self];
+-(bool)doRequest{
+	self.connection = [NSURLConnection connectionWithRequest:self.backupRequest delegate:self];
     if (self.connection) {
         self.buffer = [NSMutableData data];
 		return YES;
@@ -56,7 +56,7 @@
 }
 
 //get
--(bool)get:(NSURL*)url{
+-(void)get:(NSURL*)url{
 	//NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
     
@@ -67,11 +67,11 @@
 	
 	self.backupRequest = nil;
 	self.backupRequest = request;
-	return [self doRequest:request];
+	//return [self doRequest:request];
 }
 
 
--(bool)post:(NSURL*)url 
+-(void)post:(NSURL*)url 
 	   param:(NSDictionary *)param 
 	   body:(NSData*)body{
 	
@@ -89,10 +89,10 @@
 	self.backupRequest = nil;
 	self.backupRequest = request;
 	
-	return [self doRequest:request];
+	//return [self doRequest:request];
 }
 
--(bool)delete:(NSURL*)url{
+-(void)delete:(NSURL*)url{
 	
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30];
 	[request setHTTPMethod:@"DELETE"];
@@ -103,7 +103,7 @@
 	self.backupRequest = nil;
 	self.backupRequest = request;
 	
-	return [self doRequest:request];
+	//return [self doRequest:request];
 }
 
 
@@ -127,8 +127,8 @@
 //レスポンスデータ受信
 - (void)connection:(NSURLConnection *)conn didReceiveData:(NSData *)receivedData {
 	[self.buffer appendData:receivedData];
-	if ([delegate respondsToSelector:@selector(mgHttpClient:didReceiveData:)]) {
-		[delegate mgHttpClient:conn didReceiveData:receivedData];
+	if ([delegate respondsToSelector:@selector(mgHttpClient:httpClient:didReceiveData:)]) {
+		[delegate mgHttpClient:conn httpClient:self didReceiveData:receivedData];
 	}
 }
 
@@ -142,8 +142,8 @@
 	self.buffer = nil;
 	
 	//ネットワークに接続されていない時
-    if ([delegate respondsToSelector:@selector(mgHttpClient:didFailWithError:)]) {
-		[delegate mgHttpClient:conn didFailWithError:error];
+    if ([delegate respondsToSelector:@selector(mgHttpClient:httpClient:didFailWithError:)]) {
+		[delegate mgHttpClient:conn httpClient:self didFailWithError:error];
 	}
 }
 
@@ -152,7 +152,8 @@
     
     NSString * accessToken = [NSString stringWithFormat:@"OAuth %@",[MGUserDefaults loadAccessToken]];
     [self.backupRequest setValue:accessToken forHTTPHeaderField:@"Authorization"];
-    [self doRequest:self.backupRequest];
+    //[self doRequest:self.backupRequest];
+    [self doRequest];
 }
 
 //レスポンスエラーチェック
@@ -208,20 +209,20 @@
                 //エラーデリゲート呼ぶ
             }
         }
-        if([delegate respondsToSelector:@selector(mgHttpClient:didFailWithAPIError:)]){
-            [delegate mgHttpClient:conn didFailWithAPIError:apiError];
+        if([delegate respondsToSelector:@selector(mgHttpClient:httpClient:didFailWithAPIError:)]){
+            [delegate mgHttpClient:conn httpClient:self didFailWithAPIError:apiError];
         }
     }else if([response statusCode]>=200 &&
              [response statusCode]<400){
-        if([delegate respondsToSelector:@selector(mgHttpClient:didFinishLoading:)]){
-            [delegate mgHttpClient:conn didFinishLoading:buffer];
+        if([delegate respondsToSelector:@selector(mgHttpClient:httpClient:didFinishLoading:)]){
+            [delegate mgHttpClient:conn httpClient:self didFinishLoading:buffer];
         }
     }else{
-        if([delegate respondsToSelector:@selector(mgHttpClient:didFailWithAPIError:)]){
+        if([delegate respondsToSelector:@selector(mgHttpClient:httpClient:didFailWithAPIError:)]){
             MGApiError * apiError = [self checkResponseError:[response allHeaderFields]];
             apiError.response = response;
             apiError.errorType = MGApiErrorTypeOther;
-            [delegate mgHttpClient:conn didFailWithAPIError:apiError];
+            [delegate mgHttpClient:conn httpClient:self didFailWithAPIError:apiError];
         }
     }
     self.buffer = nil;

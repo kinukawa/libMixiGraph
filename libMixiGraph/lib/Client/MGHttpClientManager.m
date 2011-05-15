@@ -19,21 +19,21 @@
 }
 
 
--(void)mgHttpClient:(NSURLConnection *)conn didFailWithError:(NSError*)error{
+-(void)mgHttpClient:(NSURLConnection *)conn httpClient:(MGHttpClient*)client didFailWithError:(NSError*)error{
 	NSLog(@"mgHttpClientManager didFailWithError");
 	if([delegate respondsToSelector:@selector(mgHttpClientManager:didFailWithError:)]){
 		[delegate mgHttpClientManager:conn didFailWithError:error];
 	}
 }
 
--(void)mgHttpClient:(NSURLConnection *)conn didFailWithAPIError:(MGApiError*)error{
+-(void)mgHttpClient:(NSURLConnection *)conn httpClient:(MGHttpClient*)client didFailWithAPIError:(MGApiError*)error{
 	NSLog(@"mgHttpClientManager didFailWithAPIError");
 	if([delegate respondsToSelector:@selector(mgHttpClientManager:didFailWithAPIError:)]){
 		[delegate mgHttpClientManager:conn didFailWithAPIError:error];
 	}    
 }
 
--(void)mgHttpClient:(NSURLConnection *)conn didFinishLoading:(NSMutableData *)data{
+-(void)mgHttpClient:(NSURLConnection *)conn httpClient:(MGHttpClient*)client didFinishLoading:(NSMutableData *)data{
 	NSString *contents = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
 	NSLog(@"mgHttpClientManager didFinishLoading %@",contents);
     

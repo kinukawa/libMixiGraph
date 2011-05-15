@@ -37,10 +37,10 @@
     NSURLConnection *connection;
 }
 
--(bool)post:(NSURL*)url param:(NSDictionary *)param body:(NSData*)body;
--(bool)get:(NSURL*)url;
+-(void)post:(NSURL*)url param:(NSDictionary *)param body:(NSData*)body;
+-(void)get:(NSURL*)url;
 -(void)imagePost:(NSURL*)url image:(UIImage*)image;
--(bool)delete:(NSURL*)url;
+-(void)delete:(NSURL*)url;
 
 @property (nonatomic,assign) id delegate;
 @property (nonatomic,retain) NSMutableURLRequest * backupRequest;
@@ -51,10 +51,10 @@
 @end
 
 @protocol MGHttpCliendDelegate<NSObject>
--(void)mgHttpClient:(NSURLConnection *)conn didReceiveResponse:(NSURLResponse *)res;
--(void)mgHttpClient:(NSURLConnection *)conn didReceiveData:(NSData *)receivedData;
--(void)mgHttpClient:(NSURLConnection *)conn didFailWithError:(NSError*)error;
--(void)mgHttpClient:(NSURLConnection *)conn didFailWithAPIError:(MGApiError*)error;
--(void)mgHttpClient:(NSURLConnection *)conn didFinishLoading:(NSMutableData *)data;
+-(void)mgHttpClient:(NSURLConnection *)conn httpClient:(MGHttpClient*)client didReceiveResponse:(NSURLResponse *)res;
+-(void)mgHttpClient:(NSURLConnection *)conn httpClient:(MGHttpClient*)client didReceiveData:(NSData *)receivedData;
+-(void)mgHttpClient:(NSURLConnection *)conn httpClient:(MGHttpClient*)client didFailWithError:(NSError*)error;
+-(void)mgHttpClient:(NSURLConnection *)conn httpClient:(MGHttpClient*)client didFailWithAPIError:(MGApiError*)error;
+-(void)mgHttpClient:(NSURLConnection *)conn httpClient:(MGHttpClient*)client didFinishLoading:(NSMutableData *)data;
 @end
 

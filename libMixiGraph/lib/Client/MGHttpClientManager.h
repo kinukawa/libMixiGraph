@@ -20,7 +20,7 @@
 
 #import <Foundation/Foundation.h>
 #import "MGApiError.h"
-
+#import "MGHttpClient.h"
 @protocol MGHttpClientManagerDelegate;
 
 @interface MGHttpClientManager : NSObject {
