@@ -24,7 +24,7 @@
 @implementation MGHttpClient
 
 @synthesize delegate;
-@synthesize backupRequest;
+@synthesize request;
 @synthesize buffer;
 @synthesize response;
 @synthesize identifier;
@@ -36,17 +36,24 @@
 	return self;
 }
 
+-(MGHttpClient *)initWithURLRequest:(NSMutableURLRequest*)req{
+	if((self = [super init])){
+        self.request = req;
+    }
+	return self;
+}
+
 - (void) dealloc {
     [self.connection cancel];
     self.connection = nil;
-	self.backupRequest = nil;
+	self.request = nil;
 	self.buffer = nil;
     self.identifier = nil;
 	[super dealloc];
 }
 
 -(bool)doRequest{
-	self.connection = [NSURLConnection connectionWithRequest:self.backupRequest delegate:self];
+	self.connection = [NSURLConnection connectionWithRequest:self.request delegate:self];
     if (self.connection) {
         self.buffer = [NSMutableData data];
 		return YES;
@@ -54,69 +61,6 @@
 		return NO;		
 	}	
 }
-
-//get
--(void)get:(NSURL*)url{
-	//NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
-    
-	[request setHTTPMethod:@"GET"];
-    
-	NSString * accessToken = [NSString stringWithFormat:@"OAuth %@",[MGUserDefaults loadAccessToken]];
-	[request setValue:accessToken forHTTPHeaderField:@"Authorization"];
-	
-	self.backupRequest = nil;
-	self.backupRequest = request;
-	//return [self doRequest:request];
-}
-
-
--(void)post:(NSURL*)url 
-	   param:(NSDictionary *)param 
-	   body:(NSData*)body{
-	
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30];
-	[request setHTTPMethod:@"POST"];
-	
-	NSString * accessToken = [NSString stringWithFormat:@"OAuth %@",[MGUserDefaults loadAccessToken]];
-	[request setValue:accessToken forHTTPHeaderField:@"Authorization"];
-	
-	for (id key in param){
-		[request setValue:[param objectForKey:key] forHTTPHeaderField:key];		 
-	}
-	[request setHTTPBody:body];
-	
-	self.backupRequest = nil;
-	self.backupRequest = request;
-	
-	//return [self doRequest:request];
-}
-
--(void)delete:(NSURL*)url{
-	
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30];
-	[request setHTTPMethod:@"DELETE"];
-	
-	NSString * accessToken = [NSString stringWithFormat:@"OAuth %@",[MGUserDefaults loadAccessToken]];
-	[request setValue:accessToken forHTTPHeaderField:@"Authorization"];
-	
-	self.backupRequest = nil;
-	self.backupRequest = request;
-	
-	//return [self doRequest:request];
-}
-
-
--(void)imagePost:(NSURL*)url 
-		   image:(UIImage*)image{
-	
-	NSData* jpegData = UIImageJPEGRepresentation( image, 1.0 );
-	[self post:url
-		 param:[NSDictionary dictionaryWithObjectsAndKeys:
-				@"image/jpeg",@"Content-type",nil]
-		  body:jpegData];
-}
-
 
 //レスポンス受信時に呼ばれる
 - (void)connection:(NSURLConnection *)conn didReceiveResponse:(NSURLResponse *)res {
@@ -151,8 +95,8 @@
     NSLog(@"one more request!!!!!!");
     
     NSString * accessToken = [NSString stringWithFormat:@"OAuth %@",[MGUserDefaults loadAccessToken]];
-    [self.backupRequest setValue:accessToken forHTTPHeaderField:@"Authorization"];
-    //[self doRequest:self.backupRequest];
+    [self.request setValue:accessToken forHTTPHeaderField:@"Authorization"];
+    //[self doRequest:self.request];
     [self doRequest];
 }
 

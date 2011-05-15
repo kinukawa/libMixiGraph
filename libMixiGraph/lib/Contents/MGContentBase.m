@@ -22,20 +22,20 @@
 
 
 @implementation MGContentBase
-@synthesize httpClient;
+@synthesize httpClientManager;
 @synthesize identifier;
 
 -(id)init{
 	if((self = [super init])){
 		//initialize
-        self.httpClient = [[[MGHttpClient alloc]init]autorelease];
-        self.httpClient.delegate = self;
+        self.httpClientManager = [[[MGHttpClientManager alloc]init]autorelease];
+        self.httpClientManager.delegate = self;
     }
 	return self;
 }
 
 - (void) dealloc {
-    self.httpClient = nil;
+    self.httpClientManager = nil;
     self.identifier = nil;
     [super dealloc];
 }

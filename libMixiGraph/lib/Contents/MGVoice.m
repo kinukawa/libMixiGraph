@@ -24,7 +24,7 @@
 @implementation MGVoice
 
 @synthesize delegate;
-//@synthesize httpClient;
+//@synthesize httpClientManager;
 //@synthesize identifier;
 //@synthesize commentList;
 //@synthesize favoriteList;
@@ -46,15 +46,15 @@
 -(id)init{
 	if((self = [super init])){
 		//initialize
-        //self.httpClient = [[MGHttpClient alloc]init];
-        //self.httpClient.delegate = self;
+        //self.httpClientManager = [[mgHttpClientManager alloc]init];
+        //self.httpClientManager.delegate = self;
     }
 	return self;
 }
 
 - (void) dealloc {
     self.delegate = nil;
-    //self.httpClient = nil;
+    //self.httpClientManager = nil;
     //self.identifier = nil;
     
     self.postId = nil;
@@ -115,8 +115,8 @@
                                        self.postId,
                                        nil]
                                 query:queryDict];
-    self.httpClient.identifier = @"getComments";
-	[self.httpClient get:url];
+    self.httpClientManager.identifier = @"getComments";
+	[self.httpClientManager get:url];
 }
 
 -(void)postComment:(NSString *)comment{
@@ -128,8 +128,8 @@
     NSString * escapedString = [comment encodeURIComponent];
     NSData * body = [[NSString stringWithFormat:@"text=%@",escapedString] 
                      dataUsingEncoding:NSUTF8StringEncoding];
-    self.httpClient.identifier = @"postComment";
-	[self.httpClient post:url param:nil body:body];
+    self.httpClientManager.identifier = @"postComment";
+	[self.httpClientManager post:url param:nil body:body];
 } 
 
 -(void)deleteCommentByComment:(MGComment *)comment{
@@ -140,8 +140,8 @@
                                        comment.commentId,
                                        nil]
                                 query:nil];
-    self.httpClient.identifier = @"deleteComment";
-	[self.httpClient post:url param:nil body:nil];
+    self.httpClientManager.identifier = @"deleteComment";
+	[self.httpClientManager post:url param:nil body:nil];
 }
 
 
@@ -160,8 +160,8 @@
                                        self.postId,
                                        nil]
                                 query:queryDict];
-    self.httpClient.identifier = @"getFavorites";
-	[self.httpClient get:url];
+    self.httpClientManager.identifier = @"getFavorites";
+	[self.httpClientManager get:url];
 }
 
 -(void)postFavorite{
@@ -171,8 +171,8 @@
                                        self.postId,
                                        nil]
                                 query:nil];
-    self.httpClient.identifier = @"postFavorite";
-	[self.httpClient post:url param:nil body:nil];
+    self.httpClientManager.identifier = @"postFavorite";
+	[self.httpClientManager post:url param:nil body:nil];
 }
 
 -(void)deleteFavoriteByUserId:(NSString *)uId{
@@ -183,8 +183,8 @@
                                        uId,
                                        nil]
                                 query:nil];
-    self.httpClient.identifier = @"deleteFavorite";
-	[self.httpClient post:url param:nil body:nil];
+    self.httpClientManager.identifier = @"deleteFavorite";
+	[self.httpClientManager post:url param:nil body:nil];
 }
 
 //ボイスの削除
@@ -195,44 +195,44 @@
                                        self.postId,
                                        nil]
                                 query:nil];
-    self.httpClient.identifier = @"deleteVoice";
-	[self.httpClient post:url param:nil body:nil];
+    self.httpClientManager.identifier = @"deleteVoice";
+	[self.httpClientManager post:url param:nil body:nil];
 }
 
-//////////////MGHttpClientDelegate/////////////////////
--(void)mgHttpClient:(NSURLConnection *)conn didFailWithError:(NSError*)error{
+//////////////mgHttpClientManagerDelegate/////////////////////
+-(void)mgHttpClientManager:(NSURLConnection *)conn didFailWithError:(NSError*)error{
 	NSLog(@"MGVoice didFailWithError");
 	if([delegate respondsToSelector:@selector(mgVoice:didFailWithError:)]){
 		[delegate mgVoice:conn didFailWithError:error];
 	}
 }
 
--(void)mgHttpClient:(NSURLConnection *)conn didFailWithAPIError:(MGApiError*)error{
+-(void)mgHttpClientManager:(NSURLConnection *)conn didFailWithAPIError:(MGApiError*)error{
 	NSLog(@"MGVoice didFailWithError : %@",error);
 	if([delegate respondsToSelector:@selector(mgVoice:didFailWithAPIError:)]){
 		[delegate mgVoice:conn didFailWithAPIError:error];
 	}
 }
 
--(void)mgHttpClient:(NSURLConnection *)conn didFinishLoading:(NSData *)data{
+-(void)mgHttpClientManager:(NSURLConnection *)conn didFinishLoading:(NSData *)data{
     NSString *contents = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
-	NSLog(@"MGVoice didFinishLoading %@:%@",self.httpClient.identifier,contents);
+	NSLog(@"MGVoice didFinishLoading %@:%@",self.httpClientManager.identifier,contents);
     id result = data;
-    if(self.httpClient.identifier==@"getComments"){
+    if(self.httpClientManager.identifier==@"getComments"){
         NSArray * entryArray = [contents JSONValue];
         result = [MGVoice makeContentArrayFromEntryArray:entryArray];
-    }else if(self.httpClient.identifier==@"postComment"){
+    }else if(self.httpClientManager.identifier==@"postComment"){
         result = [MGComment makeCommentFromResponseData:data];
-    }else if(self.httpClient.identifier==@"deleteComment"){
+    }else if(self.httpClientManager.identifier==@"deleteComment"){
         result = [MGComment makeCommentFromResponseData:data];
-    }else if(self.httpClient.identifier==@"getFavorites"){
+    }else if(self.httpClientManager.identifier==@"getFavorites"){
         NSArray * entryArray = [contents JSONValue];
         result = [MGFavorite makeCommentArrayFromEntryArray:entryArray];
-    }else if(self.httpClient.identifier==@"postFavorite"){
+    }else if(self.httpClientManager.identifier==@"postFavorite"){
         result = [MGVoice makeContentFromResponseData:data];
-    }else if(self.httpClient.identifier==@"deleteFavorite"){
+    }else if(self.httpClientManager.identifier==@"deleteFavorite"){
         result = [MGFavorite makeFavoriteFromResponseData:data];
-    }else if(self.httpClient.identifier==@"deleteVoice"){
+    }else if(self.httpClientManager.identifier==@"deleteVoice"){
         result = [MGVoice makeContentFromResponseData:data];
     }
     

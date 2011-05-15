@@ -67,7 +67,7 @@
                                 query:queryDict];
     
 	//httpClient.identifier = @"getFriendsByUserId";
-    [httpClient get:url];
+    [httpClientManager get:url];
 }
 
 //自分の友人一欄取得
@@ -77,7 +77,7 @@
                    startIndex:(NSString *)startIndex
                         count:(NSString *)count{
     
-    httpClient.identifier = @"getMyFriendsWithSortBy";
+    httpClientManager.identifier = @"getMyFriendsWithSortBy";
     [self getFriendsByUserId:@"@me" 
                      groupId:@"@friends" 
                       sortBy:displayName 
@@ -88,7 +88,7 @@
 }
 
 -(void)getMyProfileWithFields:(NSString *)fields{
-    httpClient.identifier = @"getMyProfileWithSortBy";
+    httpClientManager.identifier = @"getMyProfileWithSortBy";
     [self getFriendsByUserId:@"@me" 
                      groupId:@"@self" 
                       sortBy:nil 
@@ -118,10 +118,10 @@
 	//NSLog(@"MGPeopleClient didFinishLoading");
     id result = data;
     NSString *contents = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
-	NSLog(@"MGPeopleClient didFinishLoading %@:%@",httpClient.identifier,contents);
+	NSLog(@"MGPeopleClient didFinishLoading %@:%@",httpClientManager.identifier,contents);
     
-    if(httpClient.identifier==@"getMyFriendsWithSortBy" ||
-       httpClient.identifier==@"getFriendsFriendsByUserId"){
+    if(httpClientManager.identifier==@"getMyFriendsWithSortBy" ||
+       httpClientManager.identifier==@"getFriendsFriendsByUserId"){
         NSDictionary * jsonDict = [contents JSONValue];
         NSArray * peopleArray = [MGPeople makeContentArrayFromEntryArray:[jsonDict objectForKey:@"entry"]];
         NSDictionary * responseDict = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -132,7 +132,7 @@
                                        nil];
         result = responseDict;
         //result = [MGVoice makeVoiceArrayFromResponseData:data];
-    }else if(httpClient.identifier==@"getMyProfileWithSortBy"){
+    }else if(httpClientManager.identifier==@"getMyProfileWithSortBy"){
         result = [MGPeople makeContentFromResponseData:data];
     }
     

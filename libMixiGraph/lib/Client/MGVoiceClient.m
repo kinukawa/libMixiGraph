@@ -62,8 +62,8 @@
                                        @"user_timeline",
                                        nil]
                                 query:queryDict];
-    httpClient.identifier = @"getUserVoices";
-	[httpClient get:url];
+    httpClientManager.identifier = @"getUserVoices";
+	[httpClientManager get:url];
 }
 
 
@@ -96,8 +96,8 @@
                                        @"user_timeline",
                                        nil]
                                 query:queryDict];
-    httpClient.identifier = @"getUserVoicesUsingSinceId";
-	[httpClient get:url];
+    httpClientManager.identifier = @"getUserVoicesUsingSinceId";
+	[httpClientManager get:url];
 }
 
 //友人のつぶやき一覧の取得
@@ -125,8 +125,8 @@
                                        groupID,
                                        nil]
                                 query:queryDict];
-    httpClient.identifier = @"getFriendsVoices";
-	[httpClient get:url];
+    httpClientManager.identifier = @"getFriendsVoices";
+	[httpClientManager get:url];
 }
 
 //友人のつぶやき一覧の取得
@@ -158,8 +158,8 @@
                                        groupID,
                                        nil]
                                 query:queryDict];
-    httpClient.identifier = @"getFriendsVoicesUsingSinceId";
-	[httpClient get:url];
+    httpClientManager.identifier = @"getFriendsVoicesUsingSinceId";
+	[httpClientManager get:url];
 }
 
 //ある特定のつぶやき情報の取得
@@ -179,8 +179,8 @@
                                        postId,
                                        nil]
                                 query:queryDict];
-    httpClient.identifier = @"getVoiceInfo";
-	[httpClient get:url];
+    httpClientManager.identifier = @"getVoiceInfo";
+	[httpClientManager get:url];
 }
 
 //ボイスの投稿
@@ -192,8 +192,8 @@
     NSString * escapedString = [text encodeURIComponent];
     NSData * body = [[NSString stringWithFormat:@"status=%@",escapedString] 
                      dataUsingEncoding:NSUTF8StringEncoding];
-    httpClient.identifier = @"postVoice";
-	[httpClient post:url param:nil body:body];
+    httpClientManager.identifier = @"postVoice";
+	[httpClientManager post:url param:nil body:body];
 }
 
 //フォトボイスの投稿
@@ -208,48 +208,48 @@
                                  path:[NSArray arrayWithObjects:
                                        nil]
 							  query:queryDict];
-	httpClient.identifier = @"postVoice";
-	[httpClient imagePost:url image:image];
+	httpClientManager.identifier = @"postVoice";
+	[httpClientManager imagePost:url image:image];
 }
 
-//////////////MGHttpClientDelegate/////////////////////
+//////////////MGhttpClientManagerDelegate/////////////////////
 
--(void)mgHttpClient:(NSURLConnection *)conn didFailWithError:(NSError*)error{
+-(void)mgHttpClientManager:(NSURLConnection *)conn didFailWithError:(NSError*)error{
 	NSLog(@"MGVoiceClient didFailWithError");
 	if([delegate respondsToSelector:@selector(mgVoiceClient:didFailWithError:)]){
 		[delegate mgVoiceClient:conn didFailWithError:error];
 	}
 }
 
--(void)mgHttpClient:(NSURLConnection *)conn didFailWithAPIError:(MGApiError*)error{
+-(void)mgHttpClientManager:(NSURLConnection *)conn didFailWithAPIError:(MGApiError*)error{
 	NSLog(@"MGVoiceClient didFailWithAPIError");
 	if([delegate respondsToSelector:@selector(mgVoiceClient:didFailWithAPIError:)]){
 		[delegate mgVoiceClient:conn didFailWithAPIError:error];
 	}    
 }
 
--(void)mgHttpClient:(NSURLConnection *)conn didFinishLoading:(NSMutableData *)data{
+-(void)mgHttpClientManager:(NSURLConnection *)conn didFinishLoading:(NSMutableData *)data{
 	NSString *contents = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
-	NSLog(@"MGVoiceClient didFinishLoading %@:%@",httpClient.identifier,contents);
+	NSLog(@"MGVoiceClient didFinishLoading %@:%@",httpClientManager.identifier,contents);
     
     id result = data;
-    if(httpClient.identifier==@"getUserVoices"){
+    if(httpClientManager.identifier==@"getUserVoices"){
         NSArray * entryArray = [contents JSONValue];
         result = [MGVoice makeContentArrayFromEntryArray:entryArray];
-    }else if(httpClient.identifier==@"getUserVoicesUsingSinceId"){
+    }else if(httpClientManager.identifier==@"getUserVoicesUsingSinceId"){
         NSArray * entryArray = [contents JSONValue];
         result = [MGVoice makeContentArrayFromEntryArray:entryArray];
-    }else if(httpClient.identifier==@"getFriendsVoices"){
+    }else if(httpClientManager.identifier==@"getFriendsVoices"){
         NSArray * entryArray = [contents JSONValue];
         result = [MGVoice makeContentArrayFromEntryArray:entryArray];
-    }else if(httpClient.identifier==@"getFriendsVoicesUsingSinceId"){
+    }else if(httpClientManager.identifier==@"getFriendsVoicesUsingSinceId"){
         NSArray * entryArray = [contents JSONValue];
         result = [MGVoice makeContentArrayFromEntryArray:entryArray];
-    }else if(httpClient.identifier==@"getVoiceInfo"){
+    }else if(httpClientManager.identifier==@"getVoiceInfo"){
         result = [MGVoice makeContentFromResponseData:data];
-    }else if(httpClient.identifier==@"postVoice"){
+    }else if(httpClientManager.identifier==@"postVoice"){
         result = [MGVoice makeContentFromResponseData:data];
-    }else if(httpClient.identifier==@"postPhotoVoice"){
+    }else if(httpClientManager.identifier==@"postPhotoVoice"){
         result = [MGVoice makeContentFromResponseData:data];
     }
     

@@ -56,8 +56,8 @@
                                        albumId,
                                        nil]
                                 query:queryDict];
-    httpClient.identifier = @"getAlbumListByUserId";
-	[httpClient get:url];
+    httpClientManager.identifier = @"getAlbumListByUserId";
+	[httpClientManager get:url];
 	
 }
 
@@ -79,8 +79,8 @@
                                        groupId,
                                        nil]
                                 query:queryDict];
-    httpClient.identifier = @"getRecentCreatedAlbumListByUserId";
-	[httpClient get:url];
+    httpClientManager.identifier = @"getRecentCreatedAlbumListByUserId";
+	[httpClientManager get:url];
 }
 
 //最近友人が作成したアルバム一覧の取得
@@ -112,8 +112,8 @@
                                        albumId,
                                        nil]
                                 query:queryDict];
-    httpClient.identifier = @"getPhotoListByUserId";
-	[httpClient get:url];
+    httpClientManager.identifier = @"getPhotoListByUserId";
+	[httpClientManager get:url];
 }
 
 //あるフォトの情報を取得
@@ -142,8 +142,8 @@
                                        mediaItemId,
                                        nil]
                                 query:queryDict];
-    httpClient.identifier = @"getPhotoByUserId";
-	[httpClient get:url];
+    httpClientManager.identifier = @"getPhotoByUserId";
+	[httpClientManager get:url];
 }
 
 //最近グループメンバーが作成したフォト一覧の取得
@@ -164,8 +164,8 @@
                                        groupId,
                                        nil]
                                 query:queryDict];
-    httpClient.identifier = @"getRecentCreatedPhotoListByGroupId";
-	[httpClient get:url];
+    httpClientManager.identifier = @"getRecentCreatedPhotoListByGroupId";
+	[httpClientManager get:url];
 }
 
 //最近友人が作成したフォト一覧の取得
@@ -202,8 +202,8 @@
     NSString * bodyStr = [MGUtil buildPostBodyByDictionary:bodyDict];
     NSData * body = [bodyStr 
                      dataUsingEncoding:NSUTF8StringEncoding];
-    self.httpClient.identifier = @"makeAlbum";
-	[self.httpClient post:requestUrl param:nil body:body];
+    self.httpClientManager.identifier = @"makeAlbum";
+	[self.httpClientManager post:requestUrl param:nil body:body];
 } 
 
 //フォト投稿
@@ -224,8 +224,8 @@
                                               albumId,
                                               nil]
                                        query:queryDict];
-    httpClient.identifier = @"postPhoto";
-	[httpClient imagePost:requestUrl image:image];
+    httpClientManager.identifier = @"postPhoto";
+	[httpClientManager imagePost:requestUrl image:image];
 } 
 
 
@@ -247,12 +247,12 @@
 
 -(void)mgHttpClient:(NSURLConnection *)conn didFinishLoading:(NSMutableData *)data{
 	NSString *contents = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
-	NSLog(@"mgPhotoClient didFinishLoading %@:%@",httpClient.identifier,contents);
+	NSLog(@"mgPhotoClient didFinishLoading %@:%@",httpClientManager.identifier,contents);
     
     id result = data;
     
-    if([self.httpClient.identifier isEqualToString:@"getAlbumListByUserId"] || 
-       [self.httpClient.identifier isEqualToString:@"getRecentCreatedAlbumListByUserId"]){
+    if([self.httpClientManager.identifier isEqualToString:@"getAlbumListByUserId"] || 
+       [self.httpClientManager.identifier isEqualToString:@"getRecentCreatedAlbumListByUserId"]){
         NSDictionary * entryDict = [contents JSONValue];
         NSArray * albumArray = [MGAlbum makeContentArrayFromEntryArray:[entryDict objectForKey:@"entry"]];        
         NSDictionary * responseDict = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -262,8 +262,8 @@
                                        [entryDict objectForKey:@"totalResults"], @"totalResults", 
                                        nil];
         result = responseDict;
-    }else if([self.httpClient.identifier isEqualToString:@"getPhotoListByUserId"] ||
-             [self.httpClient.identifier isEqualToString:@"getRecentCreatedPhotoListByGroupId"]){
+    }else if([self.httpClientManager.identifier isEqualToString:@"getPhotoListByUserId"] ||
+             [self.httpClientManager.identifier isEqualToString:@"getRecentCreatedPhotoListByGroupId"]){
         NSDictionary * entryDict = [contents JSONValue];
         NSArray * photoArray = [MGPhoto makeContentArrayFromEntryArray:[entryDict objectForKey:@"entry"]];        
         NSDictionary * responseDict = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -273,7 +273,7 @@
                                        [entryDict objectForKey:@"totalResults"], @"totalResults", 
                                        nil];
         result = responseDict;
-    }else if([self.httpClient.identifier isEqualToString:@"getPhotoByUserId"]){
+    }else if([self.httpClientManager.identifier isEqualToString:@"getPhotoByUserId"]){
         NSDictionary * entryDict = [contents JSONValue];
         NSArray * photoArray = [MGPhoto makeContentArrayFromEntryArray:[entryDict objectForKey:@"entry"]];        
         NSDictionary * responseDict = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -283,9 +283,9 @@
                                        [entryDict objectForKey:@"totalResults"], @"totalResults", 
                                        nil];
         result = responseDict;
-    }else if([self.httpClient.identifier isEqualToString:@"makeAlbum"]){
+    }else if([self.httpClientManager.identifier isEqualToString:@"makeAlbum"]){
         result = [contents JSONValue];
-    }else if([self.httpClient.identifier isEqualToString:@"postPhoto"]){
+    }else if([self.httpClientManager.identifier isEqualToString:@"postPhoto"]){
         result = [contents JSONValue];
     }
     

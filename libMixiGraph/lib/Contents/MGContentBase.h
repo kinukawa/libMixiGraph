@@ -20,20 +20,20 @@
 
 #import <Foundation/Foundation.h>
 #import "JSON.h"
-#import "MGHttpClient.h"
+#import "MGHttpClientManager.h"
 
 @interface MGContentBase : NSObject {
 @public	
     NSString * identifier;
 	
 @private
-	MGHttpClient * httpClient;
+	MGHttpClientManager * httpClientManager;
  
 }
     
 +(id)makeContentFromResponseData:(NSData*)data;
 +(NSArray *)makeContentArrayFromEntryArray:(NSArray*)dataArray;
 @property (nonatomic,retain) NSString * identifier;
-@property (nonatomic,retain) MGHttpClient * httpClient;
+@property (nonatomic,retain) MGHttpClientManager * httpClientManager;
 
 @end

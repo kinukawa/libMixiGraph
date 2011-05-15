@@ -23,42 +23,33 @@
 
 @implementation MGClientBase
 @synthesize identifier;
-@synthesize httpClient;
+@synthesize httpClientManager;
 
 -(id)init{
 	if((self = [super init])){
 		//initialize
-        self.httpClient = [[[MGHttpClient alloc]init]autorelease];
-        self.httpClient.delegate = self;
+        self.httpClientManager = [[[MGHttpClientManager alloc]init]autorelease];
+        self.httpClientManager.delegate = self;
     }
 	return self;
 }
 
 - (void) dealloc {
-    self.httpClient = nil;
+    self.httpClientManager = nil;
     self.identifier = nil;
     [super dealloc];
 }
 
 //////////////MGHttpClientDelegate/////////////////////
-
--(void)mgHttpClient:(NSURLConnection *)conn didReceiveResponse:(NSURLResponse *)res{
-	//NSLog(@"MGClientBase didReceiveResponse:%@",res);
-}
-
--(void)mgHttpClient:(NSURLConnection *)conn didReceiveData:(NSData *)receivedData{
-	//NSLog(@"MGClientBase didReceiveData");
-}
-
--(void)mgHttpClient:(NSURLConnection *)conn didFailWithError:(NSError*)error{
+-(void)mgHttpClientManager:(NSURLConnection *)conn didFailWithError:(NSError*)error{
 	//NSLog(@"MGClientBase didFailWithError");
 }
 
--(void)mgHttpClient:(NSURLConnection *)conn didFailWithAPIError:(MGApiError*)error{
+-(void)mgHttpClientManager:(NSURLConnection *)conn didFailWithAPIError:(MGApiError*)error{
 	//NSLog(@"MGClientBase didFailWithAPIError");
 }
 
--(void)mgHttpClient:(NSURLConnection *)conn didFinishLoading:(NSMutableData *)data{
+-(void)mgHttpClientManager:(NSURLConnection *)conn didFinishLoading:(NSMutableData *)data{
 	//NSLog(@"MGClientBase didFailWithAPIError");
 }
 

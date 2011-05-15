@@ -26,15 +26,24 @@
 @interface MGHttpClientManager : NSObject {
 @public	
 	id <MGHttpClientManagerDelegate> delegate;
+    NSString * identifier;
     NSMutableArray * requestQueue;
-    
+    //NSMutableURLRequest * request;
+
 }
+@property (nonatomic,retain) NSString * identifier;
 @property (nonatomic,assign) id delegate;
 @property (nonatomic,retain) NSMutableArray * requestQueue;
+//@property (nonatomic,retain) NSMutableURLRequest * request;
+
+-(void)post:(NSURL*)url param:(NSDictionary *)param body:(NSData*)body;
+-(void)get:(NSURL*)url;
+-(void)imagePost:(NSURL*)url image:(UIImage*)image;
+-(void)delete:(NSURL*)url;
 @end
 
 @protocol MGHttpClientManagerDelegate<NSObject>
 -(void)mgHttpClientManager:(NSURLConnection *)conn didFailWithError:(NSError*)error;
 -(void)mgHttpClientManager:(NSURLConnection *)conn didFailWithAPIError:(MGApiError*)error;
--(void)mgHttpClientManager:(NSURLConnection *)conn didFinishLoading:(id)result;
+-(void)mgHttpClientManager:(NSURLConnection *)conn didFinishLoading:(NSMutableData *)data;
 @end

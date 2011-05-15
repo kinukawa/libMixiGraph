@@ -19,12 +19,12 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 #import <Foundation/Foundation.h>
-#import "MGHttpClient.h"
+#import "MGClientBase.h"
 #import "MGUtil.h"
 
 @protocol MGDiaryClientDelegate;
 
-@interface MGDiaryClient : NSObject {
+@interface MGDiaryClient : MGClientBase {
 @public	
 	id <MGDiaryClientDelegate> delegate;
 @private

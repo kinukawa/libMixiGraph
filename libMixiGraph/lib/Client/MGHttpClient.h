@@ -32,18 +32,21 @@
     NSString * identifier;
 @private
 	NSMutableData * buffer;
-	NSMutableURLRequest * backupRequest;
+	NSMutableURLRequest * request;
     NSHTTPURLResponse *response;
     NSURLConnection *connection;
 }
+-(MGHttpClient *)initWithURLRequest:(NSMutableURLRequest*)req;
+-(bool)doRequest;
 
+/*
 -(void)post:(NSURL*)url param:(NSDictionary *)param body:(NSData*)body;
 -(void)get:(NSURL*)url;
 -(void)imagePost:(NSURL*)url image:(UIImage*)image;
 -(void)delete:(NSURL*)url;
-
+*/
 @property (nonatomic,assign) id delegate;
-@property (nonatomic,retain) NSMutableURLRequest * backupRequest;
+@property (nonatomic,retain) NSMutableURLRequest * request;
 @property (nonatomic,retain) NSMutableData * buffer;
 @property (nonatomic,retain) NSHTTPURLResponse *response;
 @property (nonatomic,retain) NSString * identifier;

@@ -125,8 +125,8 @@
                                               self.photoId,
                                               nil]
                                        query:queryDict];
-    self.httpClient.identifier = @"getComments";
-	[self.httpClient get:requestUrl];
+    self.httpClientManager.identifier = @"getComments";
+	[self.httpClientManager get:requestUrl];
 }
 
 -(void)postComment:(NSString *)comment withAccessKey:(NSString *)accessKey {
@@ -147,8 +147,8 @@
     NSData * body = [[NSString stringWithFormat:@"text=%@",escapedString] 
                      dataUsingEncoding:NSUTF8StringEncoding];
     
-    self.httpClient.identifier = @"postComment";
-	[self.httpClient post:requestUrl param:nil body:body];
+    self.httpClientManager.identifier = @"postComment";
+	[self.httpClientManager post:requestUrl param:nil body:body];
 } 
 
 -(void)deleteCommentByComment:(MGComment *)comment withAccessKey:(NSString *)accessKey{
@@ -167,8 +167,8 @@
                                               comment.commentId,
                                               nil]
                                        query:queryDict];
-    self.httpClient.identifier = @"deleteComment";
-	[self.httpClient delete:requestUrl];
+    self.httpClientManager.identifier = @"deleteComment";
+	[self.httpClientManager delete:requestUrl];
 }
 
 -(void)getFavoritesWithAccessKey:(NSString *)accessKey 
@@ -193,8 +193,8 @@
                                               self.photoId,
                                               nil]
                                        query:queryDict];
-    self.httpClient.identifier = @"getFavorites";
-	[self.httpClient get:requestUrl];
+    self.httpClientManager.identifier = @"getFavorites";
+	[self.httpClientManager get:requestUrl];
 }
 
 -(void)postFavoriteWithAccessKey:(NSString *)accessKey {
@@ -210,8 +210,8 @@
                                               self.photoId,
                                               nil]
                                        query:queryDict];
-    self.httpClient.identifier = @"postFavorite";
-	[self.httpClient post:requestUrl param:nil body:nil];
+    self.httpClientManager.identifier = @"postFavorite";
+	[self.httpClientManager post:requestUrl param:nil body:nil];
 } 
 
 -(void)deleteFavoriteByUserId:(NSString *)uId withAccessKey:(NSString *)accessKey{
@@ -229,8 +229,8 @@
                                       uId,
                                       nil]
                                query:queryDict];
-    self.httpClient.identifier = @"deleteFavorite";
-	[self.httpClient delete:requestUrl];
+    self.httpClientManager.identifier = @"deleteFavorite";
+	[self.httpClientManager delete:requestUrl];
 }
 
 -(void)deletePhoto{
@@ -243,30 +243,30 @@
                                               self.photoId,
                                               nil]
                                        query:nil];
-    self.httpClient.identifier = @"deletePhoto";
-	[self.httpClient delete:requestUrl];
+    self.httpClientManager.identifier = @"deletePhoto";
+	[self.httpClientManager delete:requestUrl];
 }
 
-//////////////MGHttpClientDelegate/////////////////////
--(void)mgHttpClient:(NSURLConnection *)conn didFailWithError:(NSError*)error{
+//////////////mgHttpClientManagerDelegate/////////////////////
+-(void)mgHttpClientManager:(NSURLConnection *)conn didFailWithError:(NSError*)error{
 	NSLog(@"mgPhoto didFailWithError");
 	if([delegate respondsToSelector:@selector(mgPhoto:didFailWithError:)]){
 		[delegate mgPhoto:conn didFailWithError:error];
 	}
 }
 
--(void)mgHttpClient:(NSURLConnection *)conn didFailWithAPIError:(MGApiError*)error{
+-(void)mgHttpClientManager:(NSURLConnection *)conn didFailWithAPIError:(MGApiError*)error{
 	NSLog(@"mgPhoto didFailWithError : %@",error);
 	if([delegate respondsToSelector:@selector(mgPhoto:didFailWithAPIError:)]){
 		[delegate mgPhoto:conn didFailWithAPIError:error];
 	}
 }
 
--(void)mgHttpClient:(NSURLConnection *)conn didFinishLoading:(NSData *)data{
+-(void)mgHttpClientManager:(NSURLConnection *)conn didFinishLoading:(NSData *)data{
     NSString *contents = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
-	NSLog(@"mgPhoto didFinishLoading %@:%@",self.httpClient.identifier,contents);
+	NSLog(@"mgPhoto didFinishLoading %@:%@",self.httpClientManager.identifier,contents);
     id result = data;
-    if(self.httpClient.identifier==@"getComments"){
+    if(self.httpClientManager.identifier==@"getComments"){
         NSDictionary * jsonDict = [contents JSONValue];
         NSArray * commentsArray = [MGComment makeCommentArrayFromEntryArray:
                                    [jsonDict objectForKey:@"entry"]];
@@ -279,9 +279,9 @@
                                        [jsonDict objectForKey:@"totalResults"], @"totalResults", 
                                        nil];
         result = responseDict;
-    }else if(self.httpClient.identifier==@"postComment"){
-    }else if(self.httpClient.identifier==@"deleteComment"){
-    }else if(self.httpClient.identifier==@"getFavorites"){
+    }else if(self.httpClientManager.identifier==@"postComment"){
+    }else if(self.httpClientManager.identifier==@"deleteComment"){
+    }else if(self.httpClientManager.identifier==@"getFavorites"){
         NSDictionary * jsonDict = [contents JSONValue];
         NSArray * favoritesArray = [MGFavorite makeCommentArrayFromEntryArray:
                                    [jsonDict objectForKey:@"entry"]];
@@ -294,11 +294,11 @@
                                        [jsonDict objectForKey:@"totalResults"], @"totalResults", 
                                        nil];
         result = responseDict;
-    }else if(self.httpClient.identifier==@"postFavorite"){
+    }else if(self.httpClientManager.identifier==@"postFavorite"){
         //result = [MGVoice makeContentFromResponseData:data];
-    }else if(self.httpClient.identifier==@"deleteFavorite"){
+    }else if(self.httpClientManager.identifier==@"deleteFavorite"){
         //result = [MGFavorite makeFavoriteFromResponseData:data];
-    }else if(self.httpClient.identifier==@"deletePhoto"){
+    }else if(self.httpClientManager.identifier==@"deletePhoto"){
         //result = [contents JSONValue];
     }
     

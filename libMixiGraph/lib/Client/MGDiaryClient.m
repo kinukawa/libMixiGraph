@@ -27,9 +27,6 @@
 -(id)init{
 	if((self = [super init])){
 		//initialize
-		httpClient = [[MGHttpClient alloc] init];
-		
-		httpClient.delegate = self;
 	}
 	return self;
 }
@@ -48,7 +45,7 @@
 	NSString * json = [NSString stringWithFormat:@"{\"title\":\"%@\",\"body\":\"%@\",\"privacy\":{\"visibility\":\"self\",\"show_users\":\"0\"}}",title,body];
 	NSLog(@"%@",json);
 	NSData * postData = [json dataUsingEncoding:NSUTF8StringEncoding];
-	[httpClient post:url param:[NSDictionary dictionaryWithObjectsAndKeys:
+	[self.httpClientManager post:url param:[NSDictionary dictionaryWithObjectsAndKeys:
 								@"application/json",@"Content-type",nil] body:postData];
 }
 
@@ -88,12 +85,12 @@
     [postBody appendData:imgData];
     [postBody appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n", stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]]; 
 	
-	[httpClient post:url param:[NSDictionary dictionaryWithObjectsAndKeys:
+	[httpClientManager post:url param:[NSDictionary dictionaryWithObjectsAndKeys:
 								contentType,@"Content-type",nil] body:postBody];
 }
 
 
--(void)mgHttpClient:(NSURLConnection *)conn didReceiveResponseError:(MGApiError *)error{
+-(void)mghttpClientManager:(NSURLConnection *)conn didReceiveResponseError:(MGApiError *)error{
 	NSLog(@"didReceiveResponseError");
 	/*if([delegate respondsToSelector:@selector(mgFeedbackClient:didReceiveResponseError:)]){
 		[delegate mgFeedbackClient:conn didReceiveResponseError:error];
@@ -101,23 +98,23 @@
 	
 }
 
--(void)mgHttpClient:(NSURLConnection *)conn didReceiveResponse:(NSURLResponse *)res{
+-(void)mghttpClientManager:(NSURLConnection *)conn didReceiveResponse:(NSURLResponse *)res{
 	NSLog(@"didReceiveResponse");
 }
 
--(void)mgHttpClient:(NSURLConnection *)conn didReceiveData:(NSData *)receivedData{
+-(void)mghttpClientManager:(NSURLConnection *)conn didReceiveData:(NSData *)receivedData{
 	NSLog(@"didReceiveData");
 }
 
--(void)mgHttpClient:(NSURLConnection *)conn didFailWithError:(NSError*)error{
+-(void)mghttpClientManager:(NSURLConnection *)conn didFailWithError:(NSError*)error{
 	NSLog(@"didFailWithError");
 }
 
--(void)mgHttpClient:(NSURLConnection *)conn didFinishLoadingGet:(NSMutableData *)data{
+-(void)mghttpClientManager:(NSURLConnection *)conn didFinishLoadingGet:(NSMutableData *)data{
 	NSLog(@"didFinishLoading");
 }
 
--(void)mgHttpClient:(NSURLConnection *)conn didFinishLoadingPost:(NSMutableData *)data{
+-(void)mghttpClientManager:(NSURLConnection *)conn didFinishLoadingPost:(NSMutableData *)data{
 	NSLog(@"didFinishLoading");
 	NSString *contents = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
 	NSLog(@"%@",contents);
@@ -127,7 +124,7 @@
 }
 
 - (void) dealloc {
-	[httpClient release];
+	[httpClientManager release];
 	[super dealloc];
 }
 
