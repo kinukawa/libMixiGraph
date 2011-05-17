@@ -36,10 +36,10 @@
 @property (nonatomic,retain) NSMutableArray * requestQueue;
 //@property (nonatomic,retain) NSMutableURLRequest * request;
 
--(void)post:(NSURL*)url param:(NSDictionary *)param body:(NSData*)body;
--(void)get:(NSURL*)url;
--(void)imagePost:(NSURL*)url image:(UIImage*)image;
--(void)delete:(NSURL*)url;
+-(void)post:(NSString *)identifier url:(NSURL*)url param:(NSDictionary *)param body:(NSData*)body;
+-(void)get:(NSString *)identifier url:(NSURL*)url;
+-(void)imagePost:(NSString *)identifier url:(NSURL*)url image:(UIImage*)image;
+-(void)delete:(NSString *)identifier url:(NSURL*)url;
 @end
 
 @protocol MGHttpClientManagerDelegate<NSObject>
