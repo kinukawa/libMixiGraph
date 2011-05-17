@@ -28,16 +28,17 @@
     [super dealloc];
 }
 
--(void)enqueue:(NSString *)identifier request:(NSMutableURLRequest *)req{
+-(void)enqueue:(NSString *)method identifier:(NSString *)identifier request:(NSMutableURLRequest *)req{
     MGHttpClient * httpClient = [[[MGHttpClient alloc]initWithURLRequest:req]autorelease];
     httpClient.delegate = self;
+    httpClient.method = method;
     httpClient.identifier = identifier;
     [httpClient doRequest];
     [self.requestQueue addObject:httpClient];
 }
 
 //get
--(void)get:(NSString *)identifier url:(NSURL*)url{
+-(void)get:(NSString *)method identifier:(NSString *)identifier url:(NSURL*)url{
 	//NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
     
@@ -46,7 +47,7 @@
 	NSString * accessToken = [NSString stringWithFormat:@"OAuth %@",[MGUserDefaults loadAccessToken]];
 	[req setValue:accessToken forHTTPHeaderField:@"Authorization"];
 	
-    [self enqueue:identifier request:req];
+    [self enqueue:method identifier:identifier request:req];
 	//self.request = nil;
 	//self.request = req;
     //httpClientつくって、実行、キューに入れる
@@ -54,7 +55,9 @@
 }
 
 
--(void)post:(NSString *)identifier url:(NSURL*)url 
+-(void)post:(NSString *)method 
+ identifier:(NSString *)identifier 
+        url:(NSURL*)url 
       param:(NSDictionary *)param 
 	   body:(NSData*)body{
 	
@@ -69,14 +72,15 @@
 	}
 	[req setHTTPBody:body];
 	
-	[self enqueue:identifier request:req];
+	[self enqueue:method identifier:identifier request:req];
 	//self.request = nil;
 	//self.request = req;
 	
 	//return [self doRequest:request];
 }
 
--(void)delete:(NSString *)identifier 
+-(void)delete:(NSString *)method
+   identifier:(NSString *)identifier 
           url:(NSURL*)url{
 	
     NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30];
@@ -85,7 +89,7 @@
 	NSString * accessToken = [NSString stringWithFormat:@"OAuth %@",[MGUserDefaults loadAccessToken]];
 	[req setValue:accessToken forHTTPHeaderField:@"Authorization"];
 	
-	[self enqueue:identifier request:req];
+	[self enqueue:method identifier:identifier request:req];
 	//self.request = nil;
 	//self.request = req;
 	
@@ -93,12 +97,14 @@
 }
 
 
--(void)imagePost:(NSString *)identifier 
+-(void)imagePost:(NSString *)method
+      identifier:(NSString *)identifier 
              url:(NSURL*)url 
 		   image:(UIImage*)image{
 	
 	NSData* jpegData = UIImageJPEGRepresentation( image, 1.0 );
-	[self post:identifier 
+	[self post:method 
+    identifier:identifier 
            url:url
 		 param:[NSDictionary dictionaryWithObjectsAndKeys:
 				@"image/jpeg",@"Content-type",nil]
@@ -127,7 +133,10 @@
 -(void)mgHttpClient:(NSURLConnection *)conn httpClient:(MGHttpClient*)client didFinishLoading:(NSMutableData *)data{
 	NSString *contents = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
 	NSLog(@"mgHttpClientManager didFinishLoading %@",contents);
-    NSDictionary * reply = [NSDictionary dictionaryWithObjectsAndKeys:data,@"data",client.identifier,@"id",nil];
+    NSDictionary * reply = [NSDictionary dictionaryWithObjectsAndKeys:
+                            data,@"data",
+                            client.method,@"method",
+                            client.identifier,@"id",nil];
 	if([delegate respondsToSelector:@selector(mgHttpClientManager:didFinishLoading:)]){
         [delegate mgHttpClientManager:conn didFinishLoading:reply];
     }

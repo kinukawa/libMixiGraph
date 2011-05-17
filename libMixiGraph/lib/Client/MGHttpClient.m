@@ -28,6 +28,7 @@
 @synthesize buffer;
 @synthesize response;
 @synthesize identifier;
+@synthesize method;
 @synthesize connection;
 
 -(id)init{
@@ -49,6 +50,7 @@
 	self.request = nil;
 	self.buffer = nil;
     self.identifier = nil;
+    self.method = nil;
 	[super dealloc];
 }
 

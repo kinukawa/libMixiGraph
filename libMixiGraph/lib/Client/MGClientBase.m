@@ -22,7 +22,7 @@
 
 
 @implementation MGClientBase
-@synthesize identifier;
+//@synthesize identifier;
 @synthesize httpClientManager;
 
 -(id)init{
@@ -36,7 +36,7 @@
 
 - (void) dealloc {
     self.httpClientManager = nil;
-    self.identifier = nil;
+    //self.identifier = nil;
     [super dealloc];
 }
 

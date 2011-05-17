@@ -30,6 +30,7 @@
 @public
 	id <MGHttpCliendDelegate> delegate;
     NSString * identifier;
+    NSString * method;
 @private
 	NSMutableData * buffer;
 	NSMutableURLRequest * request;
@@ -50,6 +51,7 @@
 @property (nonatomic,retain) NSMutableData * buffer;
 @property (nonatomic,retain) NSHTTPURLResponse *response;
 @property (nonatomic,retain) NSString * identifier;
+@property (nonatomic,retain) NSString * method;
 @property (nonatomic,retain) NSURLConnection *connection;
 @end
 
