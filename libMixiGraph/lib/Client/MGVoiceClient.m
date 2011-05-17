@@ -42,7 +42,8 @@
                 trimUser:(bool)trimUser 
              attachPhoto:(bool)attachPhoto
               startIndex:(NSString *)startIndex
-                   count:(NSString *)count{
+                       count:(NSString *)count
+                  identifier:(NSString *)identifier{
     NSMutableDictionary * queryDict = [NSMutableDictionary dictionary];
 	if (trimUser) {
 		[queryDict setObject:@"1" forKey:@"trim_user"];
@@ -63,7 +64,7 @@
                                        nil]
                                 query:queryDict];
     //httpClientManager.identifier = @"getUserVoices";
-	[httpClientManager get:@"getUserVoices" url:url];
+	[httpClientManager get:@"getUserVoices" identifier:identifier url:url];
 }
 
 
@@ -73,7 +74,8 @@
              attachPhoto:(bool)attachPhoto
               startIndex:(NSString *)startIndex
                    count:(NSString *)count
-                 usingSinceId:(NSString *)sinceId {
+                 usingSinceId:(NSString *)sinceId
+                  identifier:(NSString *)identifier{
     NSMutableDictionary * queryDict = [NSMutableDictionary dictionary];
 	if (trimUser) {
 		[queryDict setObject:@"1" forKey:@"trim_user"];
@@ -97,7 +99,7 @@
                                        nil]
                                 query:queryDict];
     //httpClientManager.identifier = @"getUserVoicesUsingSinceId";
-	[httpClientManager get:@"getUserVoicesUsingSinceId" url:url];
+	[httpClientManager get:@"getUserVoicesUsingSinceId" identifier:identifier url:url];
 }
 
 //友人のつぶやき一覧の取得
@@ -105,7 +107,9 @@
                    trimUser:(bool)trimUser 
                 attachPhoto:(bool)attachPhoto
                  startIndex:(NSString *)startIndex
-                      count:(NSString *)count{
+                      count:(NSString *)count
+                      identifier:(NSString *)identifier{
+
     NSMutableDictionary * queryDict = [NSMutableDictionary dictionary];
 	if (trimUser) {
 		[queryDict setObject:@"1" forKey:@"trim_user"];
@@ -126,7 +130,7 @@
                                        nil]
                                 query:queryDict];
     //httpClientManager.identifier = @"getFriendsVoices";
-	[httpClientManager get:@"getFriendsVoices" url:url];
+	[httpClientManager get:@"getFriendsVoices" identifier:identifier url:url];
 }
 
 //友人のつぶやき一覧の取得
@@ -135,7 +139,8 @@
              attachPhoto:(bool)attachPhoto
               startIndex:(NSString *)startIndex
                    count:(NSString *)count
-               usingSinceId:(NSString *)sinceId {
+               usingSinceId:(NSString *)sinceId
+                      identifier:(NSString *)identifier{
     NSMutableDictionary * queryDict = [NSMutableDictionary dictionary];
 	if (trimUser) {
 		[queryDict setObject:@"1" forKey:@"trim_user"];
@@ -159,13 +164,14 @@
                                        nil]
                                 query:queryDict];
     //httpClientManager.identifier = @"getFriendsVoicesUsingSinceId";
-	[httpClientManager get:@"getFriendsVoicesUsingSinceId" url:url];
+	[httpClientManager get:@"getFriendsVoicesUsingSinceId" identifier:identifier url:url];
 }
 
 //ある特定のつぶやき情報の取得
 -(void)getVoiceInfoByPostID:(NSString *)postId
                trimUser:(bool)trimUser 
-            attachPhoto:(bool)attachPhoto{
+            attachPhoto:(bool)attachPhoto
+                 identifier:(NSString *)identifier{
     
     NSMutableDictionary * queryDict = [NSMutableDictionary dictionary];
 	if (trimUser) {
@@ -180,11 +186,13 @@
                                        nil]
                                 query:queryDict];
     //httpClientManager.identifier = @"getVoiceInfo";
-	[httpClientManager get:@"getVoiceInfo" url:url];
+	[httpClientManager get:@"getVoiceInfo" identifier:identifier url:url];
 }
 
 //ボイスの投稿
--(void)postVoice:(NSString*)text{
+-(void)postVoice:(NSString*)text
+      identifier:(NSString *)identifier{
+
 	NSURL * url = [MGUtil buildAPIURL:VOICE_BASE_URL
                                  path:[NSArray arrayWithObjects:
                                        nil]
@@ -193,11 +201,12 @@
     NSData * body = [[NSString stringWithFormat:@"status=%@",escapedString] 
                      dataUsingEncoding:NSUTF8StringEncoding];
     //httpClientManager.identifier = @"postVoice";
-	[httpClientManager post:@"postVoice" url:url param:nil body:body];
+	[httpClientManager post:@"postVoice" identifier:identifier url:url param:nil body:body];
 }
 
 //フォトボイスの投稿
--(void)postVoice:(NSString*)text withUIImage:(UIImage *)image{
+-(void)postVoice:(NSString*)text withUIImage:(UIImage *)image
+      identifier:(NSString *)identifier{
 	
 	NSMutableDictionary * queryDict = [NSMutableDictionary dictionary];
 	if (text) {
@@ -209,7 +218,7 @@
                                        nil]
 							  query:queryDict];
 	//httpClientManager.identifier = @"postVoice";
-	[httpClientManager imagePost:@"postVoice" url:url image:image];
+	[httpClientManager imagePost:@"postVoice" identifier:identifier url:url image:image];
 }
 
 //////////////MGhttpClientManagerDelegate/////////////////////
@@ -230,30 +239,44 @@
 
 -(void)mgHttpClientManager:(NSURLConnection *)conn didFinishLoading:(NSDictionary *)reply{
 	NSData *data = [reply objectForKey:@"data"];
-    NSString *contents = [[[NSString alloc] initWithData:data
-                                                encoding:NSUTF8StringEncoding] autorelease];
+    NSString *contents = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
     NSString *identifier = [reply objectForKey:@"id"];
+    NSString *method = [reply objectForKey:@"method"];
 	NSLog(@"MGVoiceClient didFinishLoading %@:%@",identifier,contents);
     
-    id result;// = reply;
-    if(identifier==@"getUserVoices"){
+    id result = reply;
+    if(method==@"getUserVoices"){
         NSArray * entryArray = [contents JSONValue];
-        result = [MGVoice makeContentArrayFromEntryArray:entryArray];
-    }else if(identifier==@"getUserVoicesUsingSinceId"){
+        result = [NSDictionary dictionaryWithObjectsAndKeys:
+                                [MGVoice makeContentArrayFromEntryArray:entryArray],@"data",
+                                identifier,@"id",nil];
+    }else if(method==@"getUserVoicesUsingSinceId"){
         NSArray * entryArray = [contents JSONValue];
-        result = [MGVoice makeContentArrayFromEntryArray:entryArray];
-    }else if(identifier==@"getFriendsVoices"){
+        result = [NSDictionary dictionaryWithObjectsAndKeys:
+                  [MGVoice makeContentArrayFromEntryArray:entryArray],@"data",
+                  identifier,@"id",nil];
+    }else if(method==@"getFriendsVoices"){
         NSArray * entryArray = [contents JSONValue];
-        result = [MGVoice makeContentArrayFromEntryArray:entryArray];
-    }else if(identifier==@"getFriendsVoicesUsingSinceId"){
+        result = [NSDictionary dictionaryWithObjectsAndKeys:
+                  [MGVoice makeContentArrayFromEntryArray:entryArray],@"data",
+                  identifier,@"id",nil];
+    }else if(method==@"getFriendsVoicesUsingSinceId"){
         NSArray * entryArray = [contents JSONValue];
-        result = [MGVoice makeContentArrayFromEntryArray:entryArray];
-    }else if(identifier==@"getVoiceInfo"){
-        result = [MGVoice makeContentFromResponseData:data];
-    }else if(identifier==@"postVoice"){
-        result = [MGVoice makeContentFromResponseData:data];
-    }else if(identifier==@"postPhotoVoice"){
-        result = [MGVoice makeContentFromResponseData:data];
+        result = [NSDictionary dictionaryWithObjectsAndKeys:
+                  [MGVoice makeContentArrayFromEntryArray:entryArray],@"data",
+                  identifier,@"id",nil];
+    }else if(method==@"getVoiceInfo"){
+        result = [NSDictionary dictionaryWithObjectsAndKeys:
+                  [MGVoice makeContentFromResponseData:data],@"data",
+                  identifier,@"id",nil];
+    }else if(method==@"postVoice"){
+        result = [NSDictionary dictionaryWithObjectsAndKeys:
+                  [MGVoice makeContentFromResponseData:data],@"data",
+                  identifier,@"id",nil];
+    }else if(method==@"postPhotoVoice"){
+        result = [NSDictionary dictionaryWithObjectsAndKeys:
+                  [MGVoice makeContentFromResponseData:data],@"data",
+                  identifier,@"id",nil];
     }
     
 	if([delegate respondsToSelector:@selector(mgVoiceClient:didFinishLoading:)]){
