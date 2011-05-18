@@ -118,8 +118,8 @@
                                        self.albumId,
                                        nil]
                                 query:queryDict];
-    self.httpClientManager.identifier = @"getComments";
-	[self.httpClientManager get:requestUrl];
+    //self.httpClientManager.identifier = @"getComments";
+	[self.httpClientManager get:@"getComments" identifier:identifier url:requestUrl];
 }
 
 -(void)postComment:(NSString *)comment withAccessKey:(NSString *)accessKey {
@@ -138,8 +138,8 @@
     NSString * escapedString = [comment encodeURIComponent];
     NSData * body = [[NSString stringWithFormat:@"text=%@",escapedString] 
                      dataUsingEncoding:NSUTF8StringEncoding];
-    self.httpClientManager.identifier = @"postComment";
-	[self.httpClientManager post:requestUrl param:nil body:body];
+    //self.httpClientManager.identifier = @"postComment";
+	[self.httpClientManager post:@"postComment" identifier:identifier url:requestUrl param:nil body:body];
 } 
 
 
@@ -157,8 +157,8 @@
                                               comment.commentId,
                                               nil]
                                        query:queryDict];
-    self.httpClientManager.identifier = @"deleteComment";
-	[self.httpClientManager delete:requestUrl];
+    //self.httpClientManager.identifier = @"deleteComment";
+	[self.httpClientManager delete:@"deleteComment" identifier:identifier url:requestUrl];
     
 }
 
@@ -171,8 +171,8 @@
                                               self.albumId,
                                               nil]
                                        query:nil];
-    self.httpClientManager.identifier = @"deleteAlbum";
-	[self.httpClientManager delete:requestUrl];
+    //self.httpClientManager.identifier = @"deleteAlbum";
+	[self.httpClientManager delete:@"deleteAlbum" identifier:identifier url:requestUrl];
 }
 
 //////////////mgHttpClientManagerDelegate/////////////////////
@@ -191,12 +191,14 @@
 }
 
 -(void)mgHttpClientManager:(NSURLConnection *)conn didFinishLoading:(NSDictionary *)reply{
-    NSData * data = [reply objectForKey:@"data"];
+    NSData *data = [reply objectForKey:@"data"];
     NSString *contents = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
-	NSLog(@"mgAlbum didFinishLoading %@:%@",self.httpClientManager.identifier,contents);
+    NSString *identifier = [reply objectForKey:@"id"];
+    NSString *method = [reply objectForKey:@"method"];
+    NSLog(@"mgAlbum didFinishLoading %@:%@",identifier,contents);
     
-    id result = data;
-    if(self.httpClientManager.identifier==@"getComments"){
+    id result = reply;
+    if(method==@"getComments"){
         
         NSDictionary * jsonDict = [contents JSONValue];
         NSArray * commentsArray = [MGComment makeCommentArrayFromEntryArray:
@@ -208,13 +210,14 @@
                                        [jsonDict objectForKey:@"itemsPerPage"], @"itemsPerPage", 
                                        [jsonDict objectForKey:@"startIndex"], @"startIndex", 
                                        [jsonDict objectForKey:@"totalResults"], @"totalResults", 
+                                       identifier,@"id",
                                        nil];
         result = responseDict;
-    }else if(self.httpClientManager.identifier==@"postComment"){
+    }else if(method==@"postComment"){
         //result = [MGComment makeCommentFromResponseData:data];
-    }else if(self.httpClientManager.identifier==@"deleteComment"){
+    }else if(method==@"deleteComment"){
         //result = [MGComment makeCommentFromResponseData:data];
-    }else if(self.httpClientManager.identifier==@"deleteAlbum"){
+    }else if(method==@"deleteAlbum"){
         //result = [MGComment makeCommentFromResponseData:data];
     }
     

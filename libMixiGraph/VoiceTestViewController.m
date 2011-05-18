@@ -73,29 +73,29 @@
 /////////////IBActions/////////////////////////////////
 -(IBAction)pressUsersVoicesTestButton{
     
-    voiceClient.identifier = @"pressUsersVoicesTestButton";
-    [voiceClient getUserVoicesByUserID:@"@me" trimUser:NO attachPhoto:YES startIndex:@"0" count:@"0"];
+    //voiceClient.identifier = @"pressUsersVoicesTestButton";
+    [voiceClient getUserVoicesByUserID:@"@me" trimUser:NO attachPhoto:YES startIndex:@"0" count:@"0" identifier:@"pressUsersVoicesTestButton"];
     //[voiceClient requestUserVoicesByUserID:@"bgbj9n8rtg3wc" trimUser:NO attachPhoto:YES startIndex:nil count:nil usingSinceId:@"bgbj9n8rtg3wc-20110408225707"];
 }
 
 -(IBAction)pressFriendsTestButton{
     
-    voiceClient.identifier = @"pressFriendsTestButton";
-    [voiceClient getFriendsVoicesByGroupID:nil trimUser:NO attachPhoto:YES startIndex:nil count:nil];
+    //voiceClient.identifier = @"pressFriendsTestButton";
+    [voiceClient getFriendsVoicesByGroupID:nil trimUser:NO attachPhoto:YES startIndex:nil count:nil identifier: @"pressFriendsTestButton"];
 }
 
 -(IBAction)pressVoiceDetailTestButton{
-    voiceClient.identifier = @"pressVoiceDetailTestButton";
-    [voiceClient getVoiceInfoByPostID:testVoice.postId trimUser:NO attachPhoto:YES];
+    //voiceClient.identifier = @"pressVoiceDetailTestButton";
+    [voiceClient getVoiceInfoByPostID:testVoice.postId trimUser:NO attachPhoto:YES identifier:@"pressVoiceDetailTestButton"];
 }
 
 -(IBAction)pressPostVoiceTestButton{
-    voiceClient.identifier = @"post";
-    [voiceClient postVoice:@"ほげふが+++"];
+    //voiceClient.identifier = @"post";
+    [voiceClient postVoice:@"ほげふが+++" identifier:@"post"];
 }
 -(IBAction)pressImagePostVoiceTestButton{
-    voiceClient.identifier = @"post";
-    [voiceClient postVoice:@"ほげふが+++" withUIImage:imageView.image];
+    //voiceClient.identifier = @"post";
+    [voiceClient postVoice:@"ほげふが+++" withUIImage:imageView.image identifier:@"post"];
 }
 
 -(IBAction)pressDeleteVoiceTestButton{

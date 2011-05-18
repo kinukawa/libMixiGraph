@@ -23,7 +23,7 @@
 
 @implementation MGContentBase
 @synthesize httpClientManager;
-@synthesize identifier;
+//@synthesize identifier;
 
 -(id)init{
 	if((self = [super init])){
@@ -36,7 +36,7 @@
 
 - (void) dealloc {
     self.httpClientManager = nil;
-    self.identifier = nil;
+    //self.identifier = nil;
     [super dealloc];
 }
 

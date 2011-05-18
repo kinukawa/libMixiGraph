@@ -24,7 +24,7 @@
 
 @interface MGContentBase : NSObject {
 @public	
-    NSString * identifier;
+    //NSString * identifier;
 	
 @private
 	MGHttpClientManager * httpClientManager;
@@ -33,7 +33,7 @@
     
 +(id)makeContentFromResponseData:(NSData*)data;
 +(NSArray *)makeContentArrayFromEntryArray:(NSArray*)dataArray;
-@property (nonatomic,retain) NSString * identifier;
+//@property (nonatomic,retain) NSString * identifier;
 @property (nonatomic,retain) MGHttpClientManager * httpClientManager;
 
 @end
