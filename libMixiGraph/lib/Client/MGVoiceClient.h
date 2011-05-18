@@ -39,43 +39,52 @@
 
 //あるユーザのつぶやき一覧の取得
 -(void)getUserVoicesByUserID:(NSString *)userId 
-                trimUser:(bool)trimUser 
-             attachPhoto:(bool)attachPhoto
-              startIndex:(NSString *)startIndex
-                   count:(NSString *)count;
+                    trimUser:(bool)trimUser 
+                 attachPhoto:(bool)attachPhoto
+                  startIndex:(NSString *)startIndex
+                       count:(NSString *)count
+                  identifier:(NSString *)identifier;
 //あるユーザのつぶやき一覧の取得
 -(void)getUserVoicesByUserID:(NSString *)userId 
                 trimUser:(bool)trimUser 
              attachPhoto:(bool)attachPhoto
               startIndex:(NSString *)startIndex
                    count:(NSString *)count
-            usingSinceId:(NSString *)sinceId;
+            usingSinceId:(NSString *)sinceId
+                  identifier:(NSString *)identifier;
 
-//友人のつぶやき一覧の取得
--(void)getFriendsVoicesByGroupID:(NSString *)groupID
-                   trimUser:(bool)trimUser 
-                attachPhoto:(bool)attachPhoto
-                 startIndex:(NSString *)startIndex
-                      count:(NSString *)count;
 //友人のつぶやき一覧の取得
 -(void)getFriendsVoicesByGroupID:(NSString *)groupID
                    trimUser:(bool)trimUser 
                 attachPhoto:(bool)attachPhoto
                  startIndex:(NSString *)startIndex
                       count:(NSString *)count
-               usingSinceId:(NSString *)sinceId;
+                      identifier:(NSString *)identifier;
+
+//友人のつぶやき一覧の取得
+-(void)getFriendsVoicesByGroupID:(NSString *)groupID
+                   trimUser:(bool)trimUser 
+                attachPhoto:(bool)attachPhoto
+                 startIndex:(NSString *)startIndex
+                      count:(NSString *)count
+               usingSinceId:(NSString *)sinceId
+                      identifier:(NSString *)identifier;
 
 //ある特定のつぶやき情報の取得
 -(void)getVoiceInfoByPostID:(NSString *)postId
                trimUser:(bool)trimUser 
-            attachPhoto:(bool)attachPhoto;
+            attachPhoto:(bool)attachPhoto
+                 identifier:(NSString *)identifier;
 
 //ボイスの投稿
--(void)postVoice:(NSString*)text;
+-(void)postVoice:(NSString*)text
+      identifier:(NSString *)identifier;
 
 
 //フォトボイスの投稿
--(void)postVoice:(NSString*)text withUIImage:(UIImage *)image;
+-(void)postVoice:(NSString*)text withUIImage:(UIImage *)image
+      identifier:(NSString *)identifier;
+
 
 @end
 
