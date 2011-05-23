@@ -42,7 +42,8 @@
                 sortOrder:(NSString *)sortOrder
                    fields:(NSString *)fields
                startIndex:(NSString *)startIndex
-                    count:(NSString *)count{
+                    count:(NSString *)count
+               identifier:(NSString *)identifier{
     NSMutableDictionary * queryDict = [NSMutableDictionary dictionary];
 	if(displayName){
 		[queryDict setObject:displayName forKey:@"sortBy"];
@@ -67,7 +68,7 @@
                                 query:queryDict];
     
 	//httpClient.identifier = @"getFriendsByUserId";
-    [httpClientManager get:url];
+    [httpClientManager get:@"getFriendsByUserId" identifier:identifier url:url];
 }
 
 //自分の友人一欄取得
@@ -75,27 +76,45 @@
                     sortOrder:(NSString *)sortOrder
                        fields:(NSString *)fields
                    startIndex:(NSString *)startIndex
-                        count:(NSString *)count{
-    
-    httpClientManager.identifier = @"getMyFriendsWithSortBy";
+                        count:(NSString *)count
+                   identifier:(NSString *)identifier{
+
     [self getFriendsByUserId:@"@me" 
                      groupId:@"@friends" 
                       sortBy:displayName 
                    sortOrder:sortOrder 
                       fields:(NSString *)fields
                   startIndex:startIndex 
-                       count:count];
+                       count:count
+                  identifier:identifier];
 }
 
--(void)getMyProfileWithFields:(NSString *)fields{
-    httpClientManager.identifier = @"getMyProfileWithSortBy";
+-(void)getMyProfileWithFields:(NSString *)fields
+                   identifier:(NSString *)identifier{
+
     [self getFriendsByUserId:@"@me" 
                      groupId:@"@self" 
                       sortBy:nil 
                    sortOrder:nil 
                       fields:(NSString *)fields
                   startIndex:0 
-                       count:0];
+                       count:0
+                  identifier:@"getMyProfileWithFields"];
+    NSMutableDictionary * queryDict = [NSMutableDictionary dictionary];
+    [queryDict setObject:0 forKey:@"startIndex"];
+    [queryDict setObject:0 forKey:@"count"];
+    if (fields) {
+		[queryDict setObject:fields forKey:@"fields"];
+	} 
+    NSURL * url = [MGUtil buildAPIURL:PEOPLE_BASE_URL
+                                 path:[NSArray arrayWithObjects:
+                                       @"@me",
+                                       @"@self",
+                                       nil]
+                                query:queryDict];
+    
+	[httpClientManager get:@"getMyProfileWithFields" identifier:identifier url:url];
+
 }
 
 
@@ -115,25 +134,29 @@
 }
 
 -(void)mgHttpClientManager:(NSURLConnection *)conn didFinishLoading:(NSDictionary *)reply{
-	//NSLog(@"MGPeopleClient didFinishLoading");
-    id result = data;
+	NSData *data = [reply objectForKey:@"data"];
     NSString *contents = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
-	NSLog(@"MGPeopleClient didFinishLoading %@:%@",httpClientManager.identifier,contents);
-    
-    if(httpClientManager.identifier==@"getMyFriendsWithSortBy" ||
-       httpClientManager.identifier==@"getFriendsFriendsByUserId"){
+    NSString *identifier = [reply objectForKey:@"id"];
+    NSString *method = [reply objectForKey:@"method"];
+	NSLog(@"MGPeopleClient didFinishLoading %@:%@",identifier,contents);
+    id result = reply;
+    if(method==@"getMyFriendsWithSortBy"){
         NSDictionary * jsonDict = [contents JSONValue];
         NSArray * peopleArray = [MGPeople makeContentArrayFromEntryArray:[jsonDict objectForKey:@"entry"]];
         NSDictionary * responseDict = [NSDictionary dictionaryWithObjectsAndKeys:
-                                       peopleArray,@"entry",
+                                       peopleArray,@"data",
                                        [jsonDict objectForKey:@"itemsPerPage"], @"itemsPerPage", 
                                        [jsonDict objectForKey:@"startIndex"], @"startIndex", 
-                                       [jsonDict objectForKey:@"totalResults"], @"totalResults", 
+                                       [jsonDict objectForKey:@"totalResults"], @"totalResults",
+                                       identifier,@"id",
                                        nil];
         result = responseDict;
         //result = [MGVoice makeVoiceArrayFromResponseData:data];
-    }else if(httpClientManager.identifier==@"getMyProfileWithSortBy"){
-        result = [MGPeople makeContentFromResponseData:data];
+    }else if(method==@"getMyProfileWithFields"){
+        result = [NSDictionary dictionaryWithObjectsAndKeys:
+                  [MGPeople makeContentFromResponseData:data],@"data",
+                  identifier,@"id",nil];
+
     }
     
     

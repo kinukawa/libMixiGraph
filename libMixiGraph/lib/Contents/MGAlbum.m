@@ -123,7 +123,8 @@
 	[self.httpClientManager get:@"getComments" identifier:identifier url:requestUrl];
 }
 
--(void)postComment:(NSString *)comment withAccessKey:(NSString *)accessKey                      
+-(void)postComment:(NSString *)comment 
+     withAccessKey:(NSString *)accessKey                      
         identifier:(NSString *)identifier{
 
     NSMutableDictionary * queryDict = [NSMutableDictionary dictionary];
@@ -146,7 +147,8 @@
 } 
 
 
--(void)deleteCommentByComment:(MGComment *)comment withAccessKey:(NSString *)accessKey                     
+-(void)deleteCommentByComment:(MGComment *)comment 
+                withAccessKey:(NSString *)accessKey                     
                    identifier:(NSString *)identifier{
 
     NSMutableDictionary * queryDict = [NSMutableDictionary dictionary];

@@ -47,11 +47,15 @@
 
 -(void)getCommentsWithAccessKey:(NSString *)accessKey 
                      startIndex:(NSString *)startIndex
-                          count:(NSString *)count;
--(void)postComment:(NSString *)comment withAccessKey:(NSString *)accessKey;
+                          count:(NSString *)count
+                     identifier:(NSString *)identifier;
+-(void)postComment:(NSString *)comment
+     withAccessKey:(NSString *)accessKey                      
+        identifier:(NSString *)identifier;
 -(void)deleteCommentByComment:(MGComment *)comment 
-                withAccessKey:(NSString *)accessKey;
--(void)deleteAlbum;
+                withAccessKey:(NSString *)accessKey                     
+                   identifier:(NSString *)identifier;
+-(void)deleteAlbum:(NSString *)identifier;
 
 @property (nonatomic,assign) id delegate;
 

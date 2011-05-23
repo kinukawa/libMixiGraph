@@ -30,7 +30,7 @@
 	}
 	return self;
 }
-
+/*
 //日記の投稿
 -(void)postDiary:(NSString*)title body:(NSString*)body{
 	NSURL * url = [MGUtil buildAPIURL:@"http://api.mixi-platform.com/" 
@@ -48,10 +48,11 @@
 	[self.httpClientManager post:url param:[NSDictionary dictionaryWithObjectsAndKeys:
 								@"application/json",@"Content-type",nil] body:postData];
 }
-
+*/
 //
 //写真をサーバにPOSTする
 //
+/*
 -(void)postDiaryWithPhoto:(NSString*)title 
 					 body:(NSString*)body 
 					photo:(UIImage *)photo{
@@ -88,7 +89,7 @@
 	[httpClientManager post:url param:[NSDictionary dictionaryWithObjectsAndKeys:
 								contentType,@"Content-type",nil] body:postBody];
 }
-
+*/
 
 -(void)mghttpClientManager:(NSURLConnection *)conn didReceiveResponseError:(MGApiError *)error{
 	NSLog(@"didReceiveResponseError");
@@ -116,8 +117,8 @@
 
 -(void)mgHttpClientManager:(NSURLConnection *)conn didFinishLoading:(NSDictionary *)reply{
 	NSLog(@"didFinishLoading");
-	NSString *contents = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
-	NSLog(@"%@",contents);
+	//NSString *contents = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+	//NSLog(@"%@",contents);
 	/*if([delegate respondsToSelector:@selector(mgVoiceClient:didFinishPosting:)]){
 		[delegate mgVoiceClient:conn didFinishPosting:contents];
 	}*/

@@ -35,14 +35,25 @@
 //-(void)getMyProfile:(bool)status;
 
 //自分の友人一覧取得
+-(void)getFriendsByUserId:(NSString *)userId
+                  groupId:(NSString *)groupId
+                   sortBy:(NSString *)displayName 
+                sortOrder:(NSString *)sortOrder
+                   fields:(NSString *)fields
+               startIndex:(NSString *)startIndex
+                    count:(NSString *)count
+               identifier:(NSString *)identifier;
+    
+//自分の友人一欄取得
 -(void)getMyFriendsWithSortBy:(NSString *)displayName 
                     sortOrder:(NSString *)sortOrder
                        fields:(NSString *)fields
                    startIndex:(NSString *)startIndex
-                        count:(NSString *)count;
-    
-//自分のプロフィール取得
--(void)getMyProfileWithFields:(NSString *)fields;
+                        count:(NSString *)count
+                   identifier:(NSString *)identifier;
+
+-(void)getMyProfileWithFields:(NSString *)fields
+                   identifier:(NSString *)identifier;
 
 @property (nonatomic,assign) id delegate;
 
