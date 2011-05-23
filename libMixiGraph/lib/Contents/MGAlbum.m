@@ -98,7 +98,8 @@
 
 -(void)getCommentsWithAccessKey:(NSString *)accessKey 
                      startIndex:(NSString *)startIndex
-                          count:(NSString *)count{
+                          count:(NSString *)count
+                     identifier:(NSString *)identifier{
 
     NSMutableDictionary * queryDict = [NSMutableDictionary dictionary];
 	if (accessKey) {
@@ -122,7 +123,9 @@
 	[self.httpClientManager get:@"getComments" identifier:identifier url:requestUrl];
 }
 
--(void)postComment:(NSString *)comment withAccessKey:(NSString *)accessKey {
+-(void)postComment:(NSString *)comment withAccessKey:(NSString *)accessKey                      
+        identifier:(NSString *)identifier{
+
     NSMutableDictionary * queryDict = [NSMutableDictionary dictionary];
 	if (accessKey) {
 		[queryDict setObject:accessKey forKey:@"accessKey"];
@@ -143,7 +146,9 @@
 } 
 
 
--(void)deleteCommentByComment:(MGComment *)comment withAccessKey:(NSString *)accessKey{
+-(void)deleteCommentByComment:(MGComment *)comment withAccessKey:(NSString *)accessKey                     
+                   identifier:(NSString *)identifier{
+
     NSMutableDictionary * queryDict = [NSMutableDictionary dictionary];
 	if (accessKey) {
 		[queryDict setObject:accessKey forKey:@"accessKey"];
@@ -162,7 +167,8 @@
     
 }
 
--(void)deleteAlbum{
+-(void)deleteAlbum:(NSString *)identifier{
+
     NSURL * requestUrl = [MGUtil buildAPIURL:PHOTO_BASE_URL
                                         path:[NSArray arrayWithObjects:
                                               @"albums",
