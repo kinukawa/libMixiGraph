@@ -6,7 +6,7 @@ Objective-Cからmixi Graph APIを簡単に取り扱うことができる、便�
 
 ## INSTALLATION
 1. JSON Frameworkをインストールします。
-2. libMixiGraph / libMixiGraph / libフォルダを、iPhone/iPadプロジェクトに追加します。
+2. libMixiGraph / libMixiGraph / libフォルダを 、iPhone/iPadプロジェクトに追加します。
 
 ## SAMPLE
 [SAMPLE Project](https://github.com/kinukawa/libMixiGraph/tree/master/Sample)
