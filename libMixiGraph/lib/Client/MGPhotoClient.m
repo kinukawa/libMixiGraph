@@ -87,8 +87,9 @@
 }
 
 //最近友人が作成したアルバム一覧の取得
--(void)getRecentCreatedFriendsAlbumListWithStartIndex:(int)startIndex count:(int)count{
-    [self getRecentCreatedAlbumListByGroupId:@"@friends" startIndex:startIndex count:count];
+-(void)getRecentCreatedFriendsAlbumListWithStartIndex:(int)startIndex count:(int)count 
+                                           identifier:(NSString *)identifier{
+    [self getRecentCreatedAlbumListByGroupId:@"@friends" startIndex:startIndex count:count identifier:identifier];
 }
 
 //あるアルバムに登録されているフォトの一覧を取得
@@ -178,8 +179,9 @@
 }
 
 //最近友人が作成したフォト一覧の取得
--(void)getRecentCreatedFriendsPhotoListWithStartIndex:(int)startIndex count:(int)count{
-    [self getRecentCreatedPhotoListByGroupId:@"@friends" startIndex:startIndex count:count];
+-(void)getRecentCreatedFriendsPhotoListWithStartIndex:(int)startIndex count:(int)count
+                                           identifier:(NSString *)identifier{
+    [self getRecentCreatedPhotoListByGroupId:@"@friends" startIndex:startIndex count:count identifier:identifier];
 }
 
 //アルバム作成

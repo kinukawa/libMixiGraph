@@ -40,23 +40,26 @@
 -(void)getAlbumListByUserId:(NSString*)userId 
                 withAlbumId:(NSString*)albumId 
                  startIndex:(int)startIndex
-                      count:(int)count;
-
+                      count:(int)count
+                 identifier:(NSString *)identifier;
 //最近グループメンバーが作成したアルバム一覧の取得
 -(void)getRecentCreatedAlbumListByGroupId:(NSString*)groupId 
                                startIndex:(int)startIndex
-                                    count:(int)count;
+                                    count:(int)count
+                               identifier:(NSString *)identifier;
 
 //最近友人が作成したアルバム一覧の取得
 -(void)getRecentCreatedFriendsAlbumListWithStartIndex:(int)startIndex 
-                                                count:(int)count;
+                                                count:(int)count
+                                           identifier:(NSString *)identifier;
 
 //あるアルバムに登録されているフォトの一覧を取得
 -(void)getPhotoListByUserId:(NSString*)userId 
                     albumId:(NSString*)albumId
                   accessKey:(NSString*)accessKey
                  startIndex:(int)startIndex
-                      count:(int)count;
+                      count:(int)count
+                 identifier:(NSString *)identifier;
 
 //あるフォトの情報を取得
 -(void)getPhotoByUserId:(NSString*)userId 
@@ -64,27 +67,32 @@
             mediaItemId:(NSString*)mediaItemId
               accessKey:(NSString*)accessKey
              startIndex:(int)startIndex
-                  count:(int)count;
+                  count:(int)count
+             identifier:(NSString *)identifier;
 
 //最近グループメンバーが作成したフォト一覧の取得
 -(void)getRecentCreatedPhotoListByGroupId:(NSString*)groupId 
                                startIndex:(int)startIndex
-                                    count:(int)count;
+                                    count:(int)count
+                               identifier:(NSString *)identifier;
 
 //最近友人が作成したフォト一覧の取得
 -(void)getRecentCreatedFriendsPhotoListWithStartIndex:(int)startIndex 
-                                                count:(int)count;
+                                                count:(int)count
+                                           identifier:(NSString *)identifier;
 
 //アルバム作成
 -(void)makeAlbumWithTitle:(NSString *)title 
               description:(NSString *)description
                visibility:(NSString *)visibility
-                accessKey:(NSString *)accessKey;
+                accessKey:(NSString *)accessKey
+               identifier:(NSString *)identifier;
 
 //フォト投稿
 -(void)postPhoto:(UIImage *)image 
          albumId:(NSString *)albumId 
-           title:(NSString *)title ;
+           title:(NSString *)title
+      identifier:(NSString *)identifier;
     
 @end
 
