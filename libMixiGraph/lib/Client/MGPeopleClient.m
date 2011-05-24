@@ -92,17 +92,9 @@
 -(void)getMyProfileWithFields:(NSString *)fields
                    identifier:(NSString *)identifier{
 
-    [self getFriendsByUserId:@"@me" 
-                     groupId:@"@self" 
-                      sortBy:nil 
-                   sortOrder:nil 
-                      fields:(NSString *)fields
-                  startIndex:0 
-                       count:0
-                  identifier:@"getMyProfileWithFields"];
     NSMutableDictionary * queryDict = [NSMutableDictionary dictionary];
-    [queryDict setObject:0 forKey:@"startIndex"];
-    [queryDict setObject:0 forKey:@"count"];
+    [queryDict setObject:@"0" forKey:@"startIndex"];
+    [queryDict setObject:@"0" forKey:@"count"];
     if (fields) {
 		[queryDict setObject:fields forKey:@"fields"];
 	} 
@@ -140,7 +132,7 @@
     NSString *method = [reply objectForKey:@"method"];
 	NSLog(@"MGPeopleClient didFinishLoading %@:%@",identifier,contents);
     id result = reply;
-    if(method==@"getMyFriendsWithSortBy"){
+    if(method==@"getFriendsByUserId"){
         NSDictionary * jsonDict = [contents JSONValue];
         NSArray * peopleArray = [MGPeople makeContentArrayFromEntryArray:[jsonDict objectForKey:@"entry"]];
         NSDictionary * responseDict = [NSDictionary dictionaryWithObjectsAndKeys:
