@@ -65,108 +65,108 @@
 
 -(IBAction)pressGetAlbumButton{
     //photoClient.identifier = @"pressGetAlbumButton";
-    [photoClient getAlbumListByUserId:@"5fbcb9i8ysmdg" withAlbumId:nil startIndex:0 count:2];
+    [photoClient getAlbumListByUserId:@"5fbcb9i8ysmdg" withAlbumId:nil startIndex:0 count:2 identifier:@"pressGetAlbumButton"];
 }
 
 //最近友人が作成したアルバム一覧の取得
 -(IBAction)pressGetRecentCreatedAlbumButton{
     //photoClient.identifier = @"pressGetRecentCreatedAlbumButton";
-    [photoClient getRecentCreatedFriendsAlbumListWithStartIndex:0 count:0];
+    [photoClient getRecentCreatedFriendsAlbumListWithStartIndex:0 count:0 identifier:@"pressGetRecentCreatedAlbumButton"];
 }
 
 //あるアルバムに登録されているフォトの一覧を取得
 -(IBAction)pressGetPhotoListButton{
     //photoClient.identifier = @"pressGetPhotoListButton";
-    [photoClient getPhotoListByUserId:@"5fbcb9i8ysmdg" albumId:@"@default" accessKey:nil startIndex:0 count:0];
+    [photoClient getPhotoListByUserId:@"5fbcb9i8ysmdg" albumId:@"@default" accessKey:nil startIndex:0 count:0 identifier:@"pressGetPhotoListButton"];
 }
 
 //あるフォトの情報を取得
 -(IBAction)pressGetPhotoButton{
     //photoClient.identifier = @"pressGetPhotoButton";
-    [photoClient getPhotoByUserId:@"5fbcb9i8ysmdg" albumId:@"@default" mediaItemId:@"1078227913" accessKey:nil startIndex:0 count:0];
+    [photoClient getPhotoByUserId:@"5fbcb9i8ysmdg" albumId:@"@default" mediaItemId:@"1078227913" accessKey:nil startIndex:0 count:0 identifier:@"pressGetPhotoButton"];
 }
 
 //最近友人が作成したフォト一覧の取得
 -(IBAction)pressGetRecentCreatedPhotoButton{
     //photoClient.identifier = @"pressGetRecentCreatedPhotoButton";
-    [photoClient getRecentCreatedFriendsPhotoListWithStartIndex:0 count:0];
+    [photoClient getRecentCreatedFriendsPhotoListWithStartIndex:0 count:0 identifier:@"pressGetRecentCreatedPhotoButton"];
 }
 
 //アルバムコメント一覧の取得
 -(IBAction)pressGetAlbumCommentsButton{
     //self.testAlbum.identifier = @"pressGetAlbumCommentsButton";
-    [self.testAlbum getCommentsWithAccessKey:nil startIndex:0 count:0];
+    [self.testAlbum getCommentsWithAccessKey:nil startIndex:0 count:0 identifier:@"pressGetAlbumCommentsButton"];
 }
 
 //アルバムにコメント投稿
 -(IBAction)pressPostAlbumCommentsButton{
     //self.testAlbum.identifier = @"pressPostAlbumCommentsButton";
-    [self.testAlbum postComment:@"ほげふが++" withAccessKey:nil];
+    [self.testAlbum postComment:@"ほげふが++" withAccessKey:nil identifier:@"pressPostAlbumCommentsButton"];
 }
 
 //アルバムコメント削除
 -(IBAction)pressDeleteAlbumCommentsButton{
     //self.testAlbum.identifier = @"pressDeleteAlbumCommentsButton";
-    [self.testAlbum deleteCommentByComment:self.testComment withAccessKey:nil];
+    [self.testAlbum deleteCommentByComment:self.testComment withAccessKey:nil identifier:@"pressDeleteAlbumCommentsButton"];
 }
 
 //フォトコメント取得
 -(IBAction)pressGetPhotoCommentsButton{
     //self.testPhoto.identifier = @"pressGetPhotoCommentsButton";
-    [self.testPhoto getCommentsWithAccessKey:nil startIndex:0 count:0];
+    [self.testPhoto getCommentsWithAccessKey:nil startIndex:0 count:0 identifier:@"pressGetPhotoCommentsButton"];
 }
 
 //フォトコメント投稿
 -(IBAction)pressPostPhotoCommentsButton{
     //self.testPhoto.identifier = @"pressPostPhotoCommentsButton";
-    [self.testPhoto postComment:@"ほげふが++" withAccessKey:nil];
+    [self.testPhoto postComment:@"ほげふが++" withAccessKey:nil identifier:@"pressPostPhotoCommentsButton"];
 }
 
 //フォトコメント削除
 -(IBAction)pressDeletePhotoCommentsButton{
     //self.testPhoto.identifier = @"pressDeletePhotoCommentsButton";
-    [self.testPhoto deleteCommentByComment:testComment withAccessKey:nil];
+    [self.testPhoto deleteCommentByComment:testComment withAccessKey:nil identifier:@"pressDeletePhotoCommentsButton"];
 }
 //フォトイイネ取得
 -(IBAction)pressGetPhotoFavosButton{
     //self.testPhoto.identifier = @"pressGetPhotoFavosButton";
-    [self.testPhoto getFavoritesWithAccessKey:nil startIndex:0 count:0];
+    [self.testPhoto getFavoritesWithAccessKey:nil startIndex:0 count:0 identifier:@"pressGetPhotoFavosButton"];
 }
 
 //フォトイイネ投稿
 -(IBAction)pressPostPhotoFavosButton{
     //self.testPhoto.identifier = @"pressPostPhotoFavosButton";
-    [self.testPhoto postFavoriteWithAccessKey:nil];
+    [self.testPhoto postFavoriteWithAccessKey:nil identifier:@"pressPostPhotoFavosButton"];
 }
 
 //フォトイイネ削除
 -(IBAction)pressDeletePhotoFavosButton{
     //self.testPhoto.identifier = @"pressDeletePhotoFavosButton";
-    [self.testPhoto deleteFavoriteByUserId:@"5fbcb9i8ysmdg" withAccessKey:nil];
+    [self.testPhoto deleteFavoriteByUserId:@"5fbcb9i8ysmdg" withAccessKey:nil identifier:@"pressDeletePhotoFavosButton"];
 }
 
 //アルバム作成
 -(IBAction)pressMakeAlbumButton{
     //self.photoClient.identifier = @"pressMakeAlbumButton";
-    [self.photoClient makeAlbumWithTitle:@"ホゲアルバム+++" description:@"ほげほげ++" visibility:@"everyone" accessKey:nil];
+    [self.photoClient makeAlbumWithTitle:@"ホゲアルバム+++" description:@"ほげほげ++" visibility:@"everyone" accessKey:nil identifier:@"pressMakeAlbumButton"];
 }
 
 //アルバム削除
 -(IBAction)pressDeleteAlbumButton{
     //self.testAlbum.identifier = @"pressDeleteAlbumButton";
-    [self.testAlbum deleteAlbum];
+    [self.testAlbum deleteAlbum:@"pressDeleteAlbumButton"];
 }
 
 //フォト投稿
 -(IBAction)pressPostPhotoButton{
     //self.photoClient.identifier = @"pressPostPhotoButton";
-    [self.photoClient postPhoto:photoView.image albumId:@"@default" title:@"ほげふが++"];
+    [self.photoClient postPhoto:photoView.image albumId:@"@default" title:@"ほげふが++" identifier:@"pressPostPhotoButton"];
 }
 
 //フォト削除
 -(IBAction)pressDeletePhotoButton{
     //self.testPhoto.identifier = @"pressDeletePhotoButton";
-    [self.testPhoto deletePhoto];
+    [self.testPhoto deletePhoto:@"pressDeletePhotoButton"];
 }
 
 /////////////////////////////////
@@ -179,9 +179,10 @@
 }
 -(void)mgPhotoClient:(NSURLConnection *)conn didFinishLoading:(id)result{
     NSLog(@"mgPhotoClient didFinishLoading : %@",result);
-    if([photoClient.identifier isEqualToString:@"pressGetAlbumButton"]||
-       [photoClient.identifier isEqualToString:@"pressGetRecentCreatedAlbumButton"]){
-        NSArray * albumArray = (NSArray*)[result objectForKey:@"entry"];
+    NSString * identifier = [result objectForKey:@"id"];
+    if([identifier isEqualToString:@"pressGetAlbumButton"]||
+       [identifier isEqualToString:@"pressGetRecentCreatedAlbumButton"]){
+        NSArray * albumArray = (NSArray*)[result objectForKey:@"data"];
         for (MGAlbum * album in albumArray) {
             NSLog(@"%@",album.ownerDisplayName);
             NSLog(@"%@",album.url);
@@ -192,19 +193,19 @@
             self.testAlbum = [albumArray objectAtIndex:0];
             self.testAlbum.delegate = self;
         }
-    }else if([photoClient.identifier isEqualToString:@"pressGetPhotoListButton"] ||
-             [photoClient.identifier isEqualToString:@"pressGetRecentCreatedPhotoButton"]){
-        NSArray * photoArray = (NSArray*)[result objectForKey:@"entry"];
+    }else if([identifier isEqualToString:@"pressGetPhotoListButton"] ||
+             [identifier isEqualToString:@"pressGetRecentCreatedPhotoButton"]){
+        NSArray * photoArray = (NSArray*)[result objectForKey:@"data"];
         for (MGPhoto * photo in photoArray) {
             NSLog(@"%@",photo.ownerDisplayName);
             NSLog(@"%@",photo.url);
             NSLog(@"%@",photo.photoId);
             NSLog(@"%@",photo.title);
         }
-        self.testPhoto = [[result objectForKey:@"entry"]objectAtIndex:0];
+        self.testPhoto = [[result objectForKey:@"data"]objectAtIndex:0];
         self.testPhoto.delegate = self;
-    }else if([photoClient.identifier isEqualToString:@"pressGetPhotoButton"]){
-        MGPhoto * photo = (MGPhoto*)[result objectForKey:@"entry"];
+    }else if([identifier isEqualToString:@"pressGetPhotoButton"]){
+        MGPhoto * photo = (MGPhoto*)[result objectForKey:@"data"];
         NSLog(@"%@",photo.ownerDisplayName);
         NSLog(@"%@",photo.url);
         NSLog(@"%@",photo.photoId);
@@ -221,8 +222,9 @@
 }
 -(void)mgPhoto:(NSURLConnection *)conn didFinishLoading:(id)result{
     NSLog(@"mgPhoto didFinishLoading : %@",result);
-    if([testPhoto.identifier isEqualToString:@"pressGetPhotoCommentsButton"]){
-        NSArray * commentArray = [result objectForKey:@"entry"];
+    NSString * identifier = [result objectForKey:@"id"];
+    if([identifier isEqualToString:@"pressGetPhotoCommentsButton"]){
+        NSArray * commentArray = [result objectForKey:@"data"];
         if ([commentArray count]>0) {
             self.testComment = [commentArray objectAtIndex:0];            
         }
@@ -239,8 +241,9 @@
 }
 -(void)mgAlbum:(NSURLConnection *)conn didFinishLoading:(id)result{
     NSLog(@"mgAlbum didFinishLoading : %@",result);
-    if([testAlbum.identifier isEqualToString:@"pressGetAlbumCommentsButton"]){
-        NSArray * commentArray = [result objectForKey:@"entry"];
+    NSString * identifier = [result objectForKey:@"id"];
+    if([identifier isEqualToString:@"pressGetAlbumCommentsButton"]){
+        NSArray * commentArray = [result objectForKey:@"data"];
         if ([commentArray count]>0) {
             self.testComment = [commentArray objectAtIndex:0];            
         }
