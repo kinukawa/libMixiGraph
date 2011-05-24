@@ -145,12 +145,12 @@
     NSString * identifier = [result objectForKey:@"id"];
     if([identifier isEqualToString:@"pressUsersVoicesTestButton"] ||
        [identifier isEqualToString:@"pressFriendsTestButton"]){
-        if([result count]>0){
+        if([[result objectForKey:@"data"] count]>0){
             self.testVoice = [[result objectForKey:@"data"] objectAtIndex:0];
             self.testVoice.delegate = self;
         }
     }else if([identifier isEqualToString:@"pressVoiceDetailTestButton"]){
-        self.testVoice = result;
+        self.testVoice = [result objectForKey:@"data"];
         self.testVoice.delegate = self;
     }
 }
@@ -166,8 +166,8 @@
     NSString * identifier = [result objectForKey:@"id"];
     if([identifier isEqualToString:@"postComment"]){
     }else if([identifier isEqualToString:@"getComments"]){
-        if([result count]>0){
-            self.testComment = [result objectAtIndex:0];
+        if([[result objectForKey:@"data"] count]>0){
+            self.testComment = [[result objectForKey:@"data"] objectAtIndex:0];
         }
     }else if([identifier isEqualToString:@"getIine"]){
     }
