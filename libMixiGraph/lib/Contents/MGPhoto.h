@@ -52,15 +52,27 @@
 
 -(void)getCommentsWithAccessKey:(NSString *)accessKey 
                      startIndex:(NSString *)startIndex
-                          count:(NSString *)count;
--(void)postComment:(NSString *)comment withAccessKey:(NSString *)accessKey;
--(void)deleteCommentByComment:(MGComment *)comment withAccessKey:(NSString *)accessKey;
+                          count:(NSString *)count
+                     identifier:(NSString *)identifier;
+-(void)postComment:(NSString *)comment withAccessKey:(NSString *)accessKey
+        identifier:(NSString *)identifier;
+
+-(void)deleteCommentByComment:(MGComment *)comment withAccessKey:(NSString *)accessKey
+                   identifier:(NSString *)identifier;
+
 -(void)getFavoritesWithAccessKey:(NSString *)accessKey 
                       startIndex:(NSString *)startIndex
-                           count:(NSString *)count;
--(void)postFavoriteWithAccessKey:(NSString *)accessKey;
--(void)deleteFavoriteByUserId:(NSString *)uId withAccessKey:(NSString *)accessKey;
--(void)deletePhoto;
+                           count:(NSString *)count
+                      identifier:(NSString *)identifier;
+
+-(void)postFavoriteWithAccessKey:(NSString *)accessKey
+                      identifier:(NSString *)identifier;
+
+-(void)deleteFavoriteByUserId:(NSString *)uId withAccessKey:(NSString *)accessKey
+                   identifier:(NSString *)identifier;
+
+-(void)deletePhoto:(NSString *)identifier;
+
 
 @property (nonatomic,assign) id delegate;
 
