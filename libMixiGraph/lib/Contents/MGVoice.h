@@ -53,15 +53,26 @@
 }
 
 -(void)getCommentsWithStartIndex:(NSString *)startIndex
-                           count:(NSString *)count;
--(void)postComment:(NSString *)comment;
--(void)deleteCommentByComment:(MGComment *)comment;
+                           count:(NSString *)count
+                      identifier:(NSString *)identifier;
+-(void)postComment:(NSString *)comment
+        identifier:(NSString *)identifier;
+
+-(void)deleteCommentByComment:(MGComment *)comment
+                   identifier:(NSString *)identifier;
+
 -(void)getFavoritesWithStartIndex:(NSString *)startIndex
-                            count:(NSString *)count;
--(void)postFavorite;
--(void)deleteFavoriteByUserId:(NSString *)uId;
+                            count:(NSString *)count
+                       identifier:(NSString *)identifier;
+
+-(void)postFavorite:(NSString *)identifier;
+
+-(void)deleteFavoriteByUserId:(NSString *)uId
+                   identifier:(NSString *)identifier;
+
 //ボイスの削除
--(void)deleteVoice;
+-(void)deleteVoice:(NSString *)identifier;
+
 
 @property (nonatomic,assign) id delegate;
 //@property (nonatomic,retain) NSString * identifier;

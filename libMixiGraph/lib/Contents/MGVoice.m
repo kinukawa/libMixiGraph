@@ -225,25 +225,43 @@
 }
 
 -(void)mgHttpClientManager:(NSURLConnection *)conn didFinishLoading:(NSDictionary *)reply{
+    NSData *data = [reply objectForKey:@"data"];
     NSString *contents = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
-	NSLog(@"MGVoice didFinishLoading %@:%@",self.httpClientManager.identifier,contents);
-    id result = data;
-    if(self.httpClientManager.identifier==@"getComments"){
+    NSString *identifier = [reply objectForKey:@"id"];
+    NSString *method = [reply objectForKey:@"method"];
+	NSLog(@"MGVoice didFinishLoading %@:%@",identifier,contents);
+    
+    id result = reply;
+    if(method==@"getComments"){
         NSArray * entryArray = [contents JSONValue];
-        result = [MGVoice makeContentArrayFromEntryArray:entryArray];
-    }else if(self.httpClientManager.identifier==@"postComment"){
-        result = [MGComment makeCommentFromResponseData:data];
-    }else if(self.httpClientManager.identifier==@"deleteComment"){
-        result = [MGComment makeCommentFromResponseData:data];
-    }else if(self.httpClientManager.identifier==@"getFavorites"){
+        result = [NSDictionary dictionaryWithObjectsAndKeys:
+                  [MGVoice makeContentArrayFromEntryArray:entryArray],@"data",
+                  identifier,@"id",nil];
+    }else if(method==@"postComment"){
+        result = [NSDictionary dictionaryWithObjectsAndKeys:
+                  [MGComment makeCommentFromResponseData:data],@"data",
+                  identifier,@"id",nil];
+    }else if(method==@"deleteComment"){
+        result = [NSDictionary dictionaryWithObjectsAndKeys:
+                  [MGComment makeCommentFromResponseData:data],@"data",
+                  identifier,@"id",nil];
+    }else if(method==@"getFavorites"){
         NSArray * entryArray = [contents JSONValue];
-        result = [MGFavorite makeCommentArrayFromEntryArray:entryArray];
-    }else if(self.httpClientManager.identifier==@"postFavorite"){
-        result = [MGVoice makeContentFromResponseData:data];
-    }else if(self.httpClientManager.identifier==@"deleteFavorite"){
-        result = [MGFavorite makeFavoriteFromResponseData:data];
-    }else if(self.httpClientManager.identifier==@"deleteVoice"){
-        result = [MGVoice makeContentFromResponseData:data];
+        result = [NSDictionary dictionaryWithObjectsAndKeys:
+                  [MGFavorite makeCommentArrayFromEntryArray:entryArray],@"data",
+                  identifier,@"id",nil];
+    }else if(method==@"postFavorite"){
+        result = [NSDictionary dictionaryWithObjectsAndKeys:
+                  [MGVoice makeContentFromResponseData:data],@"data",
+                  identifier,@"id",nil];
+    }else if(method==@"deleteFavorite"){
+        result = [NSDictionary dictionaryWithObjectsAndKeys:
+                  [MGFavorite makeFavoriteFromResponseData:data],@"data",
+                  identifier,@"id",nil];
+    }else if(method==@"deleteVoice"){
+        result = [NSDictionary dictionaryWithObjectsAndKeys:
+                  [MGVoice makeContentFromResponseData:data],@"data",
+                  identifier,@"id",nil];
     }
     
 	if([delegate respondsToSelector:@selector(mgVoice:didFinishLoading:)]){
