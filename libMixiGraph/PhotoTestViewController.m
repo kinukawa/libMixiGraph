@@ -64,108 +64,108 @@
 
 
 -(IBAction)pressGetAlbumButton{
-    photoClient.identifier = @"pressGetAlbumButton";
+    //photoClient.identifier = @"pressGetAlbumButton";
     [photoClient getAlbumListByUserId:@"5fbcb9i8ysmdg" withAlbumId:nil startIndex:0 count:2];
 }
 
 //最近友人が作成したアルバム一覧の取得
 -(IBAction)pressGetRecentCreatedAlbumButton{
-    photoClient.identifier = @"pressGetRecentCreatedAlbumButton";
+    //photoClient.identifier = @"pressGetRecentCreatedAlbumButton";
     [photoClient getRecentCreatedFriendsAlbumListWithStartIndex:0 count:0];
 }
 
 //あるアルバムに登録されているフォトの一覧を取得
 -(IBAction)pressGetPhotoListButton{
-    photoClient.identifier = @"pressGetPhotoListButton";
+    //photoClient.identifier = @"pressGetPhotoListButton";
     [photoClient getPhotoListByUserId:@"5fbcb9i8ysmdg" albumId:@"@default" accessKey:nil startIndex:0 count:0];
 }
 
 //あるフォトの情報を取得
 -(IBAction)pressGetPhotoButton{
-    photoClient.identifier = @"pressGetPhotoButton";
+    //photoClient.identifier = @"pressGetPhotoButton";
     [photoClient getPhotoByUserId:@"5fbcb9i8ysmdg" albumId:@"@default" mediaItemId:@"1078227913" accessKey:nil startIndex:0 count:0];
 }
 
 //最近友人が作成したフォト一覧の取得
 -(IBAction)pressGetRecentCreatedPhotoButton{
-    photoClient.identifier = @"pressGetRecentCreatedPhotoButton";
+    //photoClient.identifier = @"pressGetRecentCreatedPhotoButton";
     [photoClient getRecentCreatedFriendsPhotoListWithStartIndex:0 count:0];
 }
 
 //アルバムコメント一覧の取得
 -(IBAction)pressGetAlbumCommentsButton{
-    self.testAlbum.identifier = @"pressGetAlbumCommentsButton";
+    //self.testAlbum.identifier = @"pressGetAlbumCommentsButton";
     [self.testAlbum getCommentsWithAccessKey:nil startIndex:0 count:0];
 }
 
 //アルバムにコメント投稿
 -(IBAction)pressPostAlbumCommentsButton{
-    self.testAlbum.identifier = @"pressPostAlbumCommentsButton";
+    //self.testAlbum.identifier = @"pressPostAlbumCommentsButton";
     [self.testAlbum postComment:@"ほげふが++" withAccessKey:nil];
 }
 
 //アルバムコメント削除
 -(IBAction)pressDeleteAlbumCommentsButton{
-    self.testAlbum.identifier = @"pressDeleteAlbumCommentsButton";
+    //self.testAlbum.identifier = @"pressDeleteAlbumCommentsButton";
     [self.testAlbum deleteCommentByComment:self.testComment withAccessKey:nil];
 }
 
 //フォトコメント取得
 -(IBAction)pressGetPhotoCommentsButton{
-    self.testPhoto.identifier = @"pressGetPhotoCommentsButton";
+    //self.testPhoto.identifier = @"pressGetPhotoCommentsButton";
     [self.testPhoto getCommentsWithAccessKey:nil startIndex:0 count:0];
 }
 
 //フォトコメント投稿
 -(IBAction)pressPostPhotoCommentsButton{
-    self.testPhoto.identifier = @"pressPostPhotoCommentsButton";
+    //self.testPhoto.identifier = @"pressPostPhotoCommentsButton";
     [self.testPhoto postComment:@"ほげふが++" withAccessKey:nil];
 }
 
 //フォトコメント削除
 -(IBAction)pressDeletePhotoCommentsButton{
-    self.testPhoto.identifier = @"pressDeletePhotoCommentsButton";
+    //self.testPhoto.identifier = @"pressDeletePhotoCommentsButton";
     [self.testPhoto deleteCommentByComment:testComment withAccessKey:nil];
 }
 //フォトイイネ取得
 -(IBAction)pressGetPhotoFavosButton{
-    self.testPhoto.identifier = @"pressGetPhotoFavosButton";
+    //self.testPhoto.identifier = @"pressGetPhotoFavosButton";
     [self.testPhoto getFavoritesWithAccessKey:nil startIndex:0 count:0];
 }
 
 //フォトイイネ投稿
 -(IBAction)pressPostPhotoFavosButton{
-    self.testPhoto.identifier = @"pressPostPhotoFavosButton";
+    //self.testPhoto.identifier = @"pressPostPhotoFavosButton";
     [self.testPhoto postFavoriteWithAccessKey:nil];
 }
 
 //フォトイイネ削除
 -(IBAction)pressDeletePhotoFavosButton{
-    self.testPhoto.identifier = @"pressDeletePhotoFavosButton";
+    //self.testPhoto.identifier = @"pressDeletePhotoFavosButton";
     [self.testPhoto deleteFavoriteByUserId:@"5fbcb9i8ysmdg" withAccessKey:nil];
 }
 
 //アルバム作成
 -(IBAction)pressMakeAlbumButton{
-    self.photoClient.identifier = @"pressMakeAlbumButton";
+    //self.photoClient.identifier = @"pressMakeAlbumButton";
     [self.photoClient makeAlbumWithTitle:@"ホゲアルバム+++" description:@"ほげほげ++" visibility:@"everyone" accessKey:nil];
 }
 
 //アルバム削除
 -(IBAction)pressDeleteAlbumButton{
-    self.testAlbum.identifier = @"pressDeleteAlbumButton";
+    //self.testAlbum.identifier = @"pressDeleteAlbumButton";
     [self.testAlbum deleteAlbum];
 }
 
 //フォト投稿
 -(IBAction)pressPostPhotoButton{
-    self.photoClient.identifier = @"pressPostPhotoButton";
+    //self.photoClient.identifier = @"pressPostPhotoButton";
     [self.photoClient postPhoto:photoView.image albumId:@"@default" title:@"ほげふが++"];
 }
 
 //フォト削除
 -(IBAction)pressDeletePhotoButton{
-    self.testPhoto.identifier = @"pressDeletePhotoButton";
+    //self.testPhoto.identifier = @"pressDeletePhotoButton";
     [self.testPhoto deletePhoto];
 }
 

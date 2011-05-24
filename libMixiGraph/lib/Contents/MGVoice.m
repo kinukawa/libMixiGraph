@@ -102,7 +102,8 @@
 }
 
 -(void)getCommentsWithStartIndex:(NSString *)startIndex
-                           count:(NSString *)count{
+                           count:(NSString *)count
+                      identifier:(NSString *)identifier{
     NSMutableDictionary * queryDict = [NSMutableDictionary dictionary];
 	if (startIndex) {
 		[queryDict setObject:startIndex forKey:@"startIndex"];
@@ -115,11 +116,13 @@
                                        self.postId,
                                        nil]
                                 query:queryDict];
-    self.httpClientManager.identifier = @"getComments";
-	[self.httpClientManager get:url];
+    //self.httpClientManager.identifier = @"getComments";
+    [self.httpClientManager get:@"getComments" identifier:identifier url:url];
 }
 
--(void)postComment:(NSString *)comment{
+-(void)postComment:(NSString *)comment 
+        identifier:(NSString *)identifier{
+
     NSURL * url = [MGUtil buildAPIURL:VOICE_REPLYS_URL
                                  path:[NSArray arrayWithObjects:
                                        self.postId,
@@ -128,11 +131,13 @@
     NSString * escapedString = [comment encodeURIComponent];
     NSData * body = [[NSString stringWithFormat:@"text=%@",escapedString] 
                      dataUsingEncoding:NSUTF8StringEncoding];
-    self.httpClientManager.identifier = @"postComment";
-	[self.httpClientManager post:url param:nil body:body];
+    //self.httpClientManager.identifier = @"postComment";
+	[self.httpClientManager post:@"postComment" identifier:identifier url:url param:nil body:body];
 } 
 
--(void)deleteCommentByComment:(MGComment *)comment{
+-(void)deleteCommentByComment:(MGComment *)comment
+                   identifier:(NSString *)identifier{
+
     NSURL * url = [MGUtil buildAPIURL:VOICE_REPLYS_URL
                                  path:[NSArray arrayWithObjects:
                                        @"destroy",
@@ -140,13 +145,15 @@
                                        comment.commentId,
                                        nil]
                                 query:nil];
-    self.httpClientManager.identifier = @"deleteComment";
-	[self.httpClientManager post:url param:nil body:nil];
+    //self.httpClientManager.identifier = @"deleteComment";
+	[self.httpClientManager post:@"deleteComment" identifier:identifier url:url param:nil body:nil];
 }
 
 
 -(void)getFavoritesWithStartIndex:(NSString *)startIndex
-                            count:(NSString *)count{
+                            count:(NSString *)count
+                       identifier:(NSString *)identifier{
+
     NSMutableDictionary * queryDict = [NSMutableDictionary dictionary];
 	if (startIndex) {
 		[queryDict setObject:startIndex forKey:@"startIndex"];
@@ -160,22 +167,25 @@
                                        self.postId,
                                        nil]
                                 query:queryDict];
-    self.httpClientManager.identifier = @"getFavorites";
-	[self.httpClientManager get:url];
+    //self.httpClientManager.identifier = @"getFavorites";
+	[self.httpClientManager get:@"getFavorites" identifier:identifier url:url];
 }
 
--(void)postFavorite{
+-(void)postFavorite:(NSString *)identifier{
+
     NSURL * url = [MGUtil buildAPIURL:VOICE_FAVORITES_URL
                                  path:[NSArray arrayWithObjects:
                                        @"create",
                                        self.postId,
                                        nil]
                                 query:nil];
-    self.httpClientManager.identifier = @"postFavorite";
-	[self.httpClientManager post:url param:nil body:nil];
+    //self.httpClientManager.identifier = @"postFavorite";
+	[self.httpClientManager post:@"postFavorite" identifier:identifier url:url param:nil body:nil];
 }
 
--(void)deleteFavoriteByUserId:(NSString *)uId{
+-(void)deleteFavoriteByUserId:(NSString *)uId
+                   identifier:(NSString *)identifier{
+
     NSURL * url = [MGUtil buildAPIURL:VOICE_FAVORITES_URL
                                  path:[NSArray arrayWithObjects:
                                        @"destroy",
@@ -183,20 +193,20 @@
                                        uId,
                                        nil]
                                 query:nil];
-    self.httpClientManager.identifier = @"deleteFavorite";
-	[self.httpClientManager post:url param:nil body:nil];
+    //self.httpClientManager.identifier = @"deleteFavorite";
+	[self.httpClientManager post:@"deleteFavorite" identifier:identifier url:url param:nil body:nil];
 }
 
 //ボイスの削除
--(void)deleteVoice{
+-(void)deleteVoice:(NSString *)identifier{
     NSURL * url = [MGUtil buildAPIURL:VOICE_BASE_URL
                                  path:[NSArray arrayWithObjects:
                                        @"destroy",
                                        self.postId,
                                        nil]
                                 query:nil];
-    self.httpClientManager.identifier = @"deleteVoice";
-	[self.httpClientManager post:url param:nil body:nil];
+    //self.httpClientManager.identifier = @"deleteVoice";
+	[self.httpClientManager post:@"deleteVoice" identifier:identifier url:url param:nil body:nil];
 }
 
 //////////////mgHttpClientManagerDelegate/////////////////////
