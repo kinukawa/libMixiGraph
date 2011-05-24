@@ -60,15 +60,15 @@
 }
 
 -(IBAction)pressMyFriendsButton{
-    peopleClient.identifier = @"pressMyFriendsButton";
+    //peopleClient.identifier = @"pressMyFriendsButton";
     [peopleClient getMyFriendsWithSortBy:nil 
                                sortOrder:nil 
-                                  fields:@"status" startIndex:@"0" count:@"0"];
+                                  fields:@"status" startIndex:@"0" count:@"0" identifier:@"pressMyFriendsButton"];
 }
 
 -(IBAction)pressMyProfileButton{
-    peopleClient.identifier = @"pressMyFriendsButton";
-    [peopleClient getMyProfileWithFields:@"status"];
+    //peopleClient.identifier = @"pressMyFriendsButton";
+    [peopleClient getMyProfileWithFields:@"status" identifier:@"pressMyFriendsButton"];
     
 }
 
@@ -84,7 +84,8 @@
 }
 -(void)mgPeopleClient:(NSURLConnection *)conn didFinishLoading:(id)result{
     NSLog(@"mgPeopleClient didFinishLoading : %@",result);
-    if([peopleClient.identifier isEqualToString:@"pressMyFriendsButton"]){
+    NSString * identifier = [result objectForKey:@"id"];
+    if([identifier isEqualToString:@"pressMyFriendsButton"]){
     }    
 }
 
