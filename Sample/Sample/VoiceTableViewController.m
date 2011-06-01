@@ -38,12 +38,11 @@
 }
 
 -(void)pressReloadButton{
-    [self.voiceClient getFriendsVoicesByGroupID:nil trimUser:NO attachPhoto:YES startIndex:0 count:0 usingSinceId:nil];
+    [self.voiceClient getFriendsVoicesByGroupID: nil trimUser:NO attachPhoto:YES startIndex:0 count:0 usingSinceId:nil identifier:0];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 }
 
 #pragma mark - MGVoiceClient delegate
-
 -(void)mgVoiceClient:(NSURLConnection *)conn didFailWithError:(NSError*)error{
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     
@@ -54,10 +53,10 @@
 }
 -(void)mgVoiceClient:(NSURLConnection *)conn didFinishLoading:(id)result{
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-    self.voiceArray = result;
+    self.voiceArray = [result objectForKey:@"data"];
     [self.tableView reloadData];
+    
 }
-
 
 #pragma mark - View lifecycle
 

@@ -28,7 +28,7 @@
 	
 @private
 	MGHttpClientManager * httpClientManager;
- 
+
 }
     
 +(id)makeContentFromResponseData:(NSData*)data;
