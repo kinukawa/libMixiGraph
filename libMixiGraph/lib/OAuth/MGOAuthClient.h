@@ -35,6 +35,7 @@
 }
 
 @property (nonatomic,assign) id delegate;
+@property (nonatomic,retain) UIWebView * authorizationWebView;
 
 -(void)showAuthorizationWebView:(UIView *)parentView;
 -(BOOL)refreshOAuthToken;

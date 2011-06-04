@@ -22,6 +22,7 @@
 
 @implementation MGOAuthClient
 @synthesize delegate;
+@synthesize authorizationWebView;
 
 -(id)init{
 	if((self = [super init])){
@@ -31,6 +32,7 @@
 }
 
 - (void) dealloc {
+    self.authorizationWebView = nil;
 	[super dealloc];
 }
 
@@ -58,23 +60,20 @@
 
 //AuthorizationCode取得のためのWebViewを表示
 -(void)showAuthorizationWebView:(UIView *)parentView{
-	authorizationWebView = [[UIWebView alloc] init];
-	authorizationWebView.delegate = self;
-	//authorizationWebView.frame = CGRectMake(0, 0, 320, 400);
-	authorizationWebView.frame = parentView.frame;
-	authorizationWebView.scalesPageToFit = YES;
-	[parentView addSubview:authorizationWebView];
+	self.authorizationWebView = [[[UIWebView alloc] init]autorelease];
+	self.authorizationWebView.delegate = self;
+    self.authorizationWebView.frame = CGRectMake(0, 0, parentView.frame.size.width, parentView.frame.size.height);
+	[parentView addSubview:self.authorizationWebView];
 	
-	//NSURL * url = [self buildAuthorizeURL:[NSArray arrayWithObjects:@"r_photo",@"w_photo",@"r_voice",@"w_voice",@"w_diary",@"r_profile",@"r_profile_status",nil] displayType:@"touch"];
 	NSURL * url = [self buildAuthorizeURL:[NSArray arrayWithObjects:OAUTH_SCOPES,nil] displayType:OAUTH_DISPLAY_TYPE];
 	
     NSURLRequest *req = [NSURLRequest requestWithURL:url];
-	[authorizationWebView loadRequest:req];	
+	[self.authorizationWebView loadRequest:req];	
 	
 	//WebViewの表示
-	[UIView beginAnimations:nil context:NULL];
-	authorizationWebView.alpha = 1.0;
-	[UIView commitAnimations];
+	//[UIView beginAnimations:nil context:NULL];
+	//authorizationWebView.alpha = 1.0;
+	//[UIView commitAnimations];
 }
 
 
@@ -141,9 +140,9 @@
     if([array count]>1){
 		NSString * q = [array objectAtIndex:0];
 		if([q isEqualToString: @"error"]){	//キャンセル時
-			authorizationWebView.hidden=YES;	//WebViewの破棄
-			authorizationWebView.delegate = nil;
-			[authorizationWebView release];
+			//self.authorizationWebView.hidden=YES;	//WebViewの破棄
+			//authorizationWebView.delegate = nil;
+			//[authorizationWebView release];
 			[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 			if([delegate respondsToSelector:@selector(mgOAuthClientError)]){
 				[delegate mgOAuthClientError];
@@ -151,9 +150,9 @@
 			return NO;
 		}
 		if([q isEqualToString: @"code"]){	//AuthorizationCodeだったら
-			authorizationWebView.hidden=YES;	//WebViewの破棄
-			authorizationWebView.delegate = nil;
-			[authorizationWebView release];
+			//self.authorizationWebView.hidden=YES;	//WebViewの破棄
+			//authorizationWebView.delegate = nil;
+			//[authorizationWebView release];
 			[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 			//NSLog(@"AuthorizationCode = [%@]",[array objectAtIndex:1]);
 			[self getOauthToken:[array objectAtIndex:1]];
