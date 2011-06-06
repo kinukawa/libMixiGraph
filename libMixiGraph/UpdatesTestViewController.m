@@ -36,7 +36,7 @@
 }
 
 -(IBAction)getMyFeed{
-    [updatesClient getUpdatesFeedByUserID:@"@me" groupId:@"@self" fields:nil count:@"100" updatedSince:nil device:nil identifier:@"getMyFeed"];
+    [updatesClient getUpdatesFeedByUserID:@"@me" groupId:@"@friends" fields:nil count:@"5" updatedSince:nil device:nil identifier:@"getMyFeed"];
 }
 
 #pragma mark - UpdatesClientDelegate

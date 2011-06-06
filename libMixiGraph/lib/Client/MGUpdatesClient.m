@@ -80,6 +80,11 @@
     
     id result = reply;
     if(method==@"getUserVoices"){
+        NSDictionary * entryDict = [contents JSONValue];
+        result = [NSDictionary dictionaryWithObjectsAndKeys:
+                  entryDict,@"data",
+                  identifier,@"id",nil];
+
     }
     
 	if([delegate respondsToSelector:@selector(mgUpdatesClient:didFinishLoading:)]){
