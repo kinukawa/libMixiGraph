@@ -29,6 +29,7 @@
 		9A4E72741342FD3700AEDB76 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4E72721342FD3700AEDB76 /* SettingsViewController.m */; };
 		9A4E72751342FD3700AEDB76 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A4E72731342FD3700AEDB76 /* SettingsViewController.xib */; };
 		9A4E727F1342FF6C00AEDB76 /* MGParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4E727E1342FF6C00AEDB76 /* MGParams.m */; };
+		9A95B8B0139C72C400636010 /* MGUpdatesClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95B8AF139C72C400636010 /* MGUpdatesClient.m */; };
 		9AD548241341D28B0072BDA6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AD548231341D28B0072BDA6 /* UIKit.framework */; };
 		9AD548261341D28B0072BDA6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AD548251341D28B0072BDA6 /* Foundation.framework */; };
 		9AD548281341D28B0072BDA6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AD548271341D28B0072BDA6 /* CoreGraphics.framework */; };
@@ -102,6 +103,8 @@
 		9A4E72731342FD3700AEDB76 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingsViewController.xib; path = ViewController/SettingsViewController.xib; sourceTree = "<group>"; };
 		9A4E727D1342FF6C00AEDB76 /* MGParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGParams.h; sourceTree = "<group>"; };
 		9A4E727E1342FF6C00AEDB76 /* MGParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGParams.m; sourceTree = "<group>"; };
+		9A95B8AE139C72C400636010 /* MGUpdatesClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGUpdatesClient.h; sourceTree = "<group>"; };
+		9A95B8AF139C72C400636010 /* MGUpdatesClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGUpdatesClient.m; sourceTree = "<group>"; };
 		9AD5481F1341D28B0072BDA6 /* libMixiGraph.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = libMixiGraph.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AD548231341D28B0072BDA6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9AD548251341D28B0072BDA6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -309,6 +312,8 @@
 				10DB177C136AA0C800AA0670 /* MGClientBase.m */,
 				1051AB80137FBD9D003EF53A /* MGHttpClientManager.h */,
 				1051AB81137FBD9D003EF53A /* MGHttpClientManager.m */,
+				9A95B8AE139C72C400636010 /* MGUpdatesClient.h */,
+				9A95B8AF139C72C400636010 /* MGUpdatesClient.m */,
 			);
 			path = Client;
 			sourceTree = "<group>";
@@ -452,6 +457,7 @@
 				1071995713768C6C004A1A67 /* MGVoice.m in Sources */,
 				1071995D13769E12004A1A67 /* NSString+Util.m in Sources */,
 				1051AB82137FBD9D003EF53A /* MGHttpClientManager.m in Sources */,
+				9A95B8B0139C72C400636010 /* MGUpdatesClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
