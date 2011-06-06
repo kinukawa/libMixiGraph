@@ -53,6 +53,7 @@
 		9AD548AD1341E65D0072BDA6 /* MGOAuthClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD548951341E65D0072BDA6 /* MGOAuthClient.m */; };
 		9AD548AE1341E65D0072BDA6 /* MGUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD548981341E65D0072BDA6 /* MGUserDefaults.m */; };
 		9AD548AF1341E65D0072BDA6 /* MGUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD5489A1341E65D0072BDA6 /* MGUtil.m */; };
+		9AF36073139CDA0900F676BE /* MGUpdates.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF36072139CDA0900F676BE /* MGUpdates.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -150,6 +151,8 @@
 		9AD548981341E65D0072BDA6 /* MGUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGUserDefaults.m; sourceTree = "<group>"; };
 		9AD548991341E65D0072BDA6 /* MGUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGUtil.h; sourceTree = "<group>"; };
 		9AD5489A1341E65D0072BDA6 /* MGUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGUtil.m; sourceTree = "<group>"; };
+		9AF36071139CDA0900F676BE /* MGUpdates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGUpdates.h; sourceTree = "<group>"; };
+		9AF36072139CDA0900F676BE /* MGUpdates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGUpdates.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +186,8 @@
 				1071994E13768C6C004A1A67 /* MGPhoto.m */,
 				1071994F13768C6C004A1A67 /* MGVoice.h */,
 				1071995013768C6C004A1A67 /* MGVoice.m */,
+				9AF36071139CDA0900F676BE /* MGUpdates.h */,
+				9AF36072139CDA0900F676BE /* MGUpdates.m */,
 			);
 			path = Contents;
 			sourceTree = "<group>";
@@ -468,6 +473,7 @@
 				1051AB82137FBD9D003EF53A /* MGHttpClientManager.m in Sources */,
 				9A95B8B0139C72C400636010 /* MGUpdatesClient.m in Sources */,
 				9A95B8B4139C78FA00636010 /* UpdatesTestViewController.m in Sources */,
+				9AF36073139CDA0900F676BE /* MGUpdates.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
