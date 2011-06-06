@@ -24,34 +24,35 @@
 	[super dealloc];
 }
 
-//あるユーザのつぶやき一覧の取得
--(void)getUserVoicesByUserID:(NSString *)userId 
-                    trimUser:(bool)trimUser 
-                 attachPhoto:(bool)attachPhoto
-                  startIndex:(NSString *)startIndex
-                       count:(NSString *)count
-                  identifier:(NSString *)identifier{
+//あるユーザの新着フィード取得
+-(void)getUpdatesFeedByUserID:(NSString *)userId 
+                      groupId:(NSString *)groupId
+                       fields:(NSString *)fields
+                        count:(NSString *)count
+                 updatedSince:(NSString *)updatedSince
+                       device:(NSString *)device
+                   identifier:(NSString *)identifier{
     NSMutableDictionary * queryDict = [NSMutableDictionary dictionary];
-	if (trimUser) {
-		[queryDict setObject:@"1" forKey:@"trim_user"];
-	}
-	if (attachPhoto) {
-		[queryDict setObject:@"1" forKey:@"attach_photo"];
-	}
-    if (startIndex) {
-		[queryDict setObject:startIndex forKey:@"startIndex"];
+    if (fields) {
+		[queryDict setObject:fields forKey:@"fields"];
 	} 
     if (count) {
 		[queryDict setObject:count forKey:@"count"];
 	}    
-	NSURL * url = [MGUtil buildAPIURL:VOICE_BASE_URL
+    if (updatedSince) {
+		[queryDict setObject:updatedSince forKey:@"updatedSince"];
+	} 
+    if (device) {
+		[queryDict setObject:device forKey:@"device"];
+	} 
+    
+	NSURL * url = [MGUtil buildAPIURL:UPDATES_BASE_URL
                                  path:[NSArray arrayWithObjects:
                                        userId,
-                                       @"user_timeline",
+                                       groupId,
                                        nil]
                                 query:queryDict];
-    //httpClientManager.identifier = @"getUserVoices";
-	[httpClientManager get:@"getUserVoices" identifier:identifier url:url];
+    [httpClientManager get:@"getUpdatesFeedByUserID" identifier:identifier url:url];
 }
 
 //////////////MGhttpClientManagerDelegate/////////////////////

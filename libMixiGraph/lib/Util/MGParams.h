@@ -10,7 +10,7 @@
 
 //OAuth constant definition
 #define OAUTH_REQUEST_URL   @"https://secure.mixi-platform.com/2/token"
-#define OAUTH_SCOPES        @"r_photo",@"w_photo",@"r_voice",@"w_voice",@"w_diary",@"r_profile",@"r_profile_status"
+#define OAUTH_SCOPES        @"r_photo",@"w_photo",@"r_voice",@"w_voice",@"w_diary",@"r_profile",@"r_profile_status",@"r_updates"
 #define OAUTH_DISPLAY_TYPE  @"touch"
 #define OAUTH_REFRESH_TOKEN @"refresh_token"
 #define OAUTH_ACCESS_TOKEN  @"access_token"
@@ -28,6 +28,8 @@
 #define PHOTO_BASE_URL      @"http://api.mixi-platform.com/2/photo/"
 #define PHOTO_REPLYS_URL    @"http://api.mixi-platform.com/2/photo/comments/"
 #define PHOTO_FAVORITES_URL @"http://api.mixi-platform.com/2/photo/favorites/mediaItems/"
+
+#define UPDATES_BASE_URL    @"http://api.mixi-platform.com/2/updates/"
 
 @interface MGParams : NSObject {
     

@@ -15,6 +15,15 @@
 }
 @property (nonatomic,assign) id delegate;
 
+//あるユーザの新着フィード取得
+-(void)getUpdatesFeedByUserID:(NSString *)userId 
+                      groupId:(NSString *)groupId
+                       fields:(NSString *)fields
+                        count:(NSString *)count
+                 updatedSince:(NSString *)updatedSince
+                       device:(NSString *)device
+                   identifier:(NSString *)identifier;
+
 @end
 
 @interface NSObject (MGUpdatesClientDelegate)
