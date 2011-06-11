@@ -109,4 +109,13 @@
 	[alert show];
 	[alert release];
 }
+
++(NSString *)createUniqueID{
+    CFUUIDRef uuid;
+    uuid = CFUUIDCreate(NULL);
+    NSString * uuidString = (NSString *)CFUUIDCreateString(NULL, uuid);
+    CFRelease(uuid);
+    return uuidString;
+}
+
 @end

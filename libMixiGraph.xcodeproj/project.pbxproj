@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		10279B8E13A35BA200091C5D /* SimpleHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 10279B8D13A35BA200091C5D /* SimpleHttpClient.m */; };
+		10279B9413A35D9B00091C5D /* MGHttpConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 10279B9313A35D9B00091C5D /* MGHttpConnector.m */; };
 		10303138135C897700C17326 /* image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 10303137135C897700C17326 /* image.jpg */; };
 		1030313B135DD2A200C17326 /* MGOAuthKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 1030313A135DD2A200C17326 /* MGOAuthKey.m */; };
 		10315B64136FF9A90077E490 /* PhotoTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10315B62136FF9A90077E490 /* PhotoTestViewController.m */; };
@@ -67,6 +69,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		10279B8C13A35BA200091C5D /* SimpleHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleHttpClient.h; sourceTree = "<group>"; };
+		10279B8D13A35BA200091C5D /* SimpleHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleHttpClient.m; sourceTree = "<group>"; };
+		10279B9213A35D9B00091C5D /* MGHttpConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGHttpConnector.h; sourceTree = "<group>"; };
+		10279B9313A35D9B00091C5D /* MGHttpConnector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGHttpConnector.m; sourceTree = "<group>"; };
 		10303137135C897700C17326 /* image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image.jpg; sourceTree = "<group>"; };
 		10303139135DD2A200C17326 /* MGOAuthKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGOAuthKey.h; path = libMixiGraph/lib/OAuth/MGOAuthKey.h; sourceTree = SOURCE_ROOT; };
 		1030313A135DD2A200C17326 /* MGOAuthKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MGOAuthKey.m; path = libMixiGraph/lib/OAuth/MGOAuthKey.m; sourceTree = SOURCE_ROOT; };
@@ -169,6 +175,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		10279B8B13A35BA200091C5D /* HttpManager */ = {
+			isa = PBXGroup;
+			children = (
+				10279B8C13A35BA200091C5D /* SimpleHttpClient.h */,
+				10279B8D13A35BA200091C5D /* SimpleHttpClient.m */,
+				10279B9213A35D9B00091C5D /* MGHttpConnector.h */,
+				10279B9313A35D9B00091C5D /* MGHttpConnector.m */,
+			);
+			name = HttpManager;
+			path = lib/HttpManager;
+			sourceTree = "<group>";
+		};
 		1071994213768C6B004A1A67 /* Contents */ = {
 			isa = PBXGroup;
 			children = (
@@ -255,6 +273,7 @@
 		9AD548291341D28B0072BDA6 /* libMixiGraph */ = {
 			isa = PBXGroup;
 			children = (
+				10279B8B13A35BA200091C5D /* HttpManager */,
 				9AD5486A1341E65D0072BDA6 /* JSON */,
 				9AD548761341E65D0072BDA6 /* lib */,
 				9AD548321341D28B0072BDA6 /* libMixiGraphAppDelegate.h */,
@@ -474,6 +493,8 @@
 				9A95B8B0139C72C400636010 /* MGUpdatesClient.m in Sources */,
 				9A95B8B4139C78FA00636010 /* UpdatesTestViewController.m in Sources */,
 				9AF36073139CDA0900F676BE /* MGUpdates.m in Sources */,
+				10279B8E13A35BA200091C5D /* SimpleHttpClient.m in Sources */,
+				10279B9413A35D9B00091C5D /* MGHttpConnector.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
