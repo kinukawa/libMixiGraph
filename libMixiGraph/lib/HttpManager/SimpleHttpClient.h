@@ -22,15 +22,27 @@ typedef enum {
     int networkState;
 	NSMutableData * buffer;
 	NSURLConnection *connection;
+    NSMutableURLRequest * request;
+    NSHTTPURLResponse *response;
+
 }
--(bool)get:(NSURL*)url;
--(void)cancel;
+
+-(bool)doRequest;
+-(BOOL)httpGet:(NSURL*)url;
+-(BOOL)httpPost:(NSURL*)url 
+      param:(NSDictionary *)param 
+	   body:(NSData*)body;
+-(BOOL)httpDelete:(NSURL*)url;
+-(void)httpCancel;
 
 @property (nonatomic,assign) id delegate;
 @property (nonatomic,retain) NSString * identifier;
 @property int networkState;
 @property (nonatomic,retain) NSMutableData * buffer;
 @property (nonatomic,retain) NSURLConnection *connection;
+@property (nonatomic,retain) NSMutableURLRequest * request;
+@property (nonatomic,retain) NSHTTPURLResponse *response;
+
 @end
 
 @interface NSObject (SimpleHttpClientDelegate)

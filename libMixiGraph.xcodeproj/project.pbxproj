@@ -141,8 +141,8 @@
 		9AD548751341E65D0072BDA6 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		9AD5487A1341E65D0072BDA6 /* MGDiaryClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGDiaryClient.h; sourceTree = "<group>"; };
 		9AD5487B1341E65D0072BDA6 /* MGDiaryClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGDiaryClient.m; sourceTree = "<group>"; };
-		9AD5487E1341E65D0072BDA6 /* MGHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGHttpClient.h; sourceTree = "<group>"; };
-		9AD5487F1341E65D0072BDA6 /* MGHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGHttpClient.m; sourceTree = "<group>"; };
+		9AD5487E1341E65D0072BDA6 /* MGHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGHttpClient.h; path = ../Client/MGHttpClient.h; sourceTree = "<group>"; };
+		9AD5487F1341E65D0072BDA6 /* MGHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MGHttpClient.m; path = ../Client/MGHttpClient.m; sourceTree = "<group>"; };
 		9AD548801341E65D0072BDA6 /* MGPeopleClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGPeopleClient.h; sourceTree = "<group>"; };
 		9AD548811341E65D0072BDA6 /* MGPeopleClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGPeopleClient.m; sourceTree = "<group>"; };
 		9AD548821341E65D0072BDA6 /* MGPhotoClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGPhotoClient.h; sourceTree = "<group>"; };
@@ -178,6 +178,8 @@
 		10279B8B13A35BA200091C5D /* HttpManager */ = {
 			isa = PBXGroup;
 			children = (
+				9AD5487E1341E65D0072BDA6 /* MGHttpClient.h */,
+				9AD5487F1341E65D0072BDA6 /* MGHttpClient.m */,
 				10279B8C13A35BA200091C5D /* SimpleHttpClient.h */,
 				10279B8D13A35BA200091C5D /* SimpleHttpClient.m */,
 				10279B9213A35D9B00091C5D /* MGHttpConnector.h */,
@@ -332,8 +334,6 @@
 			children = (
 				9AD5487A1341E65D0072BDA6 /* MGDiaryClient.h */,
 				9AD5487B1341E65D0072BDA6 /* MGDiaryClient.m */,
-				9AD5487E1341E65D0072BDA6 /* MGHttpClient.h */,
-				9AD5487F1341E65D0072BDA6 /* MGHttpClient.m */,
 				9AD548801341E65D0072BDA6 /* MGPeopleClient.h */,
 				9AD548811341E65D0072BDA6 /* MGPeopleClient.m */,
 				9AD548821341E65D0072BDA6 /* MGPhotoClient.h */,

@@ -16,6 +16,8 @@
 @synthesize identifier;
 @synthesize connection;
 @synthesize networkState;
+@synthesize request;
+@synthesize response;
 
 -(id)init{
 	if((self = [super init])){
@@ -31,23 +33,61 @@
 	[super dealloc];
 }
 
--(bool)get:(NSURL*)url{
-    NSURLRequest * request = [NSURLRequest requestWithURL:url];
-    if(!request){
-        return NO;
-    }
-    
-	self.connection = [NSURLConnection connectionWithRequest:request delegate:self];
+-(bool)doRequest{
+	self.connection = [NSURLConnection connectionWithRequest:self.request delegate:self];
     if (self.connection) {
         self.buffer = [NSMutableData data];
-        self.networkState = MIXINetworkStateInProgress;
+	    self.networkState = MIXINetworkStateInProgress;
 		return YES;
 	} else {
 		return NO;		
 	}	
 }
 
--(void)cancel{
+#pragma mark - set http requests
+
+-(BOOL)httpGet:(NSURL*)url{
+    self.request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30];
+	if(!self.request){
+        return NO;
+    }
+    [self.request setHTTPMethod:@"GET"];
+	
+    return YES;
+}
+
+-(BOOL)httpPost:(NSURL*)url 
+      param:(NSDictionary *)param 
+	   body:(NSData*)body{
+	
+    self.request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30];
+	
+    if(!self.request){
+        return NO;
+    }
+    [self.request setHTTPMethod:@"POST"];
+	
+	for (id key in param){
+		[self.request setValue:[param objectForKey:key] forHTTPHeaderField:key];		 
+	}
+	[self.request setHTTPBody:body];
+    
+    return YES;
+}
+
+-(BOOL)httpDelete:(NSURL*)url{
+	
+    self.request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30];
+	
+    if(!self.request){
+        return NO;
+    }
+    
+    [self.request setHTTPMethod:@"DELETE"];
+    return YES;
+}
+
+-(void)httpCancel{
     [connection cancel];
     self.networkState = MIXINetworkStateCanceled;
     if([delegate respondsToSelector:@selector(httpClientDidCancel:)]){
@@ -55,15 +95,12 @@
     }     
 }
 
+#pragma mark - NSURLConnection delegate method
+
 //レスポンス受信時に呼ばれる
 - (void)connection:(NSURLConnection *)conn didReceiveResponse:(NSURLResponse *)res {
-    NSHTTPURLResponse * httpRes = (NSHTTPURLResponse*)res;
-    NSLog(@"Received Response. Status Code: %d", [httpRes statusCode]);
-	NSLog(@"Expected ContentLength: %qi", [httpRes expectedContentLength]);
-	NSLog(@"MIMEType: %@", [httpRes MIMEType]);
-	NSLog(@"Suggested File Name: %@", [httpRes suggestedFilename]);
-	NSLog(@"Text Encoding Name: %@", [httpRes textEncodingName]);
-	NSLog(@"URL: %@", [httpRes URL]);
+    NSHTTPURLResponse *hres = (NSHTTPURLResponse *)res;
+    self.response = hres;	
     if([delegate respondsToSelector:@selector(httpClient:didReceiveResponse:)]){
         [delegate httpClient:self didReceiveResponse:res];
     }     
@@ -90,6 +127,13 @@
 //受信終了
 - (void)connectionDidFinishLoading:(NSURLConnection *)conn {
 	NSLog(@"Succeed!! Received %d bytes of data", [buffer length]);
+    NSLog(@"Received Response. Status Code: %d", [self.response statusCode]);
+	NSLog(@"Expected ContentLength: %qi", [self.response expectedContentLength]);
+	NSLog(@"MIMEType: %@", [self.response MIMEType]);
+	NSLog(@"Suggested File Name: %@", [self.response suggestedFilename]);
+	NSLog(@"Text Encoding Name: %@", [self.response textEncodingName]);
+	NSLog(@"URL: %@", [self.response URL]);
+    
 	self.networkState = MIXINetworkStateFinished;
     if([delegate respondsToSelector:@selector(httpClient:didFinishLoading:)]){
         [delegate httpClient:self didFinishLoading:self.buffer];

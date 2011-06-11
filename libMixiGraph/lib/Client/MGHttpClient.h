@@ -19,43 +19,18 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "SimpleHttpClient.h"
 #import "MGUserDefaults.h"
 #import "MGUtil.h"
 #import "MGApiError.h"
 #import "MGOAuthClient.h"
 
-@protocol MGHttpCliendDelegate;
-
-@interface MGHttpClient : NSObject {
-@public
-	id <MGHttpCliendDelegate> delegate;
-    NSString * identifier;
-    NSString * method;
-@private
-	NSMutableData * buffer;
-	NSMutableURLRequest * request;
-    NSHTTPURLResponse *response;
-    NSURLConnection *connection;
+@interface MGHttpClient : SimpleHttpClient {
 }
--(MGHttpClient *)initWithURLRequest:(NSMutableURLRequest*)req;
--(bool)doRequest;
 
-/*
--(void)post:(NSURL*)url param:(NSDictionary *)param body:(NSData*)body;
--(void)get:(NSURL*)url;
--(void)imagePost:(NSURL*)url image:(UIImage*)image;
--(void)delete:(NSURL*)url;
-*/
-@property (nonatomic,assign) id delegate;
-@property (nonatomic,retain) NSMutableURLRequest * request;
-@property (nonatomic,retain) NSMutableData * buffer;
-@property (nonatomic,retain) NSHTTPURLResponse *response;
-@property (nonatomic,retain) NSString * identifier;
-@property (nonatomic,retain) NSString * method;
-@property (nonatomic,retain) NSURLConnection *connection;
 @end
 
-@protocol MGHttpCliendDelegate<NSObject>
+@interface NSObject (MGHttpClientDelegate)
 -(void)mgHttpClient:(NSURLConnection *)conn httpClient:(MGHttpClient*)client didReceiveResponse:(NSURLResponse *)res;
 -(void)mgHttpClient:(NSURLConnection *)conn httpClient:(MGHttpClient*)client didReceiveData:(NSData *)receivedData;
 -(void)mgHttpClient:(NSURLConnection *)conn httpClient:(MGHttpClient*)client didFailWithError:(NSError*)error;

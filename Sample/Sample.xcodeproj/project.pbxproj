@@ -25,27 +25,6 @@
 		108068091376D51000FE71BA /* VoiceTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 108068071376D51000FE71BA /* VoiceTableViewController.xib */; };
 		1080680D1376D54500FE71BA /* PhotoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1080680B1376D54500FE71BA /* PhotoTableViewController.m */; };
 		1080680E1376D54500FE71BA /* PhotoTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1080680C1376D54500FE71BA /* PhotoTableViewController.xib */; };
-		1099E17C13966D6900993A48 /* MGAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 1099E15513966D6900993A48 /* MGAlbum.m */; };
-		1099E17D13966D6900993A48 /* MGComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 1099E15713966D6900993A48 /* MGComment.m */; };
-		1099E17E13966D6900993A48 /* MGContentBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 1099E15913966D6900993A48 /* MGContentBase.m */; };
-		1099E17F13966D6900993A48 /* MGFavorite.m in Sources */ = {isa = PBXBuildFile; fileRef = 1099E15B13966D6900993A48 /* MGFavorite.m */; };
-		1099E18013966D6900993A48 /* MGPeople.m in Sources */ = {isa = PBXBuildFile; fileRef = 1099E15D13966D6900993A48 /* MGPeople.m */; };
-		1099E18113966D6900993A48 /* MGPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 1099E15F13966D6900993A48 /* MGPhoto.m */; };
-		1099E18213966D6900993A48 /* MGVoice.m in Sources */ = {isa = PBXBuildFile; fileRef = 1099E16113966D6900993A48 /* MGVoice.m */; };
-		1099E18313966D6900993A48 /* MGDiaryClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 1099E16313966D6900993A48 /* MGDiaryClient.m */; };
-		1099E18413966D6900993A48 /* MGHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 1099E16513966D6900993A48 /* MGHttpClient.m */; };
-		1099E18513966D6900993A48 /* MGPeopleClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 1099E16713966D6900993A48 /* MGPeopleClient.m */; };
-		1099E18613966D6900993A48 /* MGPhotoClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 1099E16913966D6900993A48 /* MGPhotoClient.m */; };
-		1099E18713966D6900993A48 /* MGVoiceClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 1099E16B13966D6900993A48 /* MGVoiceClient.m */; };
-		1099E18813966D6900993A48 /* MGClientBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 1099E16D13966D6900993A48 /* MGClientBase.m */; };
-		1099E18913966D6900993A48 /* MGHttpClientManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1099E16F13966D6900993A48 /* MGHttpClientManager.m */; };
-		1099E18A13966D6900993A48 /* MGApiError.m in Sources */ = {isa = PBXBuildFile; fileRef = 1099E15113966D6900993A48 /* MGApiError.m */; };
-		1099E18B13966D6900993A48 /* MGOAuthKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 1099E17113966D6900993A48 /* MGOAuthKey.m */; };
-		1099E18C13966D6900993A48 /* MGOAuthClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 1099E17313966D6900993A48 /* MGOAuthClient.m */; };
-		1099E18D13966D6900993A48 /* MGUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 1099E17513966D6900993A48 /* MGUserDefaults.m */; };
-		1099E18E13966D6900993A48 /* MGUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 1099E17713966D6900993A48 /* MGUtil.m */; };
-		1099E18F13966D6900993A48 /* MGParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 1099E17913966D6900993A48 /* MGParams.m */; };
-		1099E19013966D6900993A48 /* NSString+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 1099E17B13966D6900993A48 /* NSString+Util.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,48 +60,6 @@
 		1080680B1376D54500FE71BA /* PhotoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoTableViewController.m; sourceTree = "<group>"; };
 		1080680C1376D54500FE71BA /* PhotoTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoTableViewController.xib; sourceTree = "<group>"; };
 		1099E14A13966CA900993A48 /* MGHttpClientManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MGHttpClientManager.m; path = ../../../../../../Users/kinukawa/project/iphone/libMixiGraph/libMixiGraph/lib/Client/MGHttpClientManager.m; sourceTree = "<group>"; };
-		1099E15013966D6900993A48 /* MGApiError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGApiError.h; sourceTree = "<group>"; };
-		1099E15113966D6900993A48 /* MGApiError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGApiError.m; sourceTree = "<group>"; };
-		1099E15413966D6900993A48 /* MGAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGAlbum.h; sourceTree = "<group>"; };
-		1099E15513966D6900993A48 /* MGAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGAlbum.m; sourceTree = "<group>"; };
-		1099E15613966D6900993A48 /* MGComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGComment.h; sourceTree = "<group>"; };
-		1099E15713966D6900993A48 /* MGComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGComment.m; sourceTree = "<group>"; };
-		1099E15813966D6900993A48 /* MGContentBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGContentBase.h; sourceTree = "<group>"; };
-		1099E15913966D6900993A48 /* MGContentBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGContentBase.m; sourceTree = "<group>"; };
-		1099E15A13966D6900993A48 /* MGFavorite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFavorite.h; sourceTree = "<group>"; };
-		1099E15B13966D6900993A48 /* MGFavorite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGFavorite.m; sourceTree = "<group>"; };
-		1099E15C13966D6900993A48 /* MGPeople.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGPeople.h; sourceTree = "<group>"; };
-		1099E15D13966D6900993A48 /* MGPeople.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGPeople.m; sourceTree = "<group>"; };
-		1099E15E13966D6900993A48 /* MGPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGPhoto.h; sourceTree = "<group>"; };
-		1099E15F13966D6900993A48 /* MGPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGPhoto.m; sourceTree = "<group>"; };
-		1099E16013966D6900993A48 /* MGVoice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGVoice.h; sourceTree = "<group>"; };
-		1099E16113966D6900993A48 /* MGVoice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGVoice.m; sourceTree = "<group>"; };
-		1099E16213966D6900993A48 /* MGDiaryClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGDiaryClient.h; sourceTree = "<group>"; };
-		1099E16313966D6900993A48 /* MGDiaryClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGDiaryClient.m; sourceTree = "<group>"; };
-		1099E16413966D6900993A48 /* MGHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGHttpClient.h; sourceTree = "<group>"; };
-		1099E16513966D6900993A48 /* MGHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGHttpClient.m; sourceTree = "<group>"; };
-		1099E16613966D6900993A48 /* MGPeopleClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGPeopleClient.h; sourceTree = "<group>"; };
-		1099E16713966D6900993A48 /* MGPeopleClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGPeopleClient.m; sourceTree = "<group>"; };
-		1099E16813966D6900993A48 /* MGPhotoClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGPhotoClient.h; sourceTree = "<group>"; };
-		1099E16913966D6900993A48 /* MGPhotoClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGPhotoClient.m; sourceTree = "<group>"; };
-		1099E16A13966D6900993A48 /* MGVoiceClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGVoiceClient.h; sourceTree = "<group>"; };
-		1099E16B13966D6900993A48 /* MGVoiceClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGVoiceClient.m; sourceTree = "<group>"; };
-		1099E16C13966D6900993A48 /* MGClientBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGClientBase.h; sourceTree = "<group>"; };
-		1099E16D13966D6900993A48 /* MGClientBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGClientBase.m; sourceTree = "<group>"; };
-		1099E16E13966D6900993A48 /* MGHttpClientManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGHttpClientManager.h; sourceTree = "<group>"; };
-		1099E16F13966D6900993A48 /* MGHttpClientManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGHttpClientManager.m; sourceTree = "<group>"; };
-		1099E17013966D6900993A48 /* MGOAuthKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGOAuthKey.h; sourceTree = "<group>"; };
-		1099E17113966D6900993A48 /* MGOAuthKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGOAuthKey.m; sourceTree = "<group>"; };
-		1099E17213966D6900993A48 /* MGOAuthClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGOAuthClient.h; sourceTree = "<group>"; };
-		1099E17313966D6900993A48 /* MGOAuthClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGOAuthClient.m; sourceTree = "<group>"; };
-		1099E17413966D6900993A48 /* MGUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGUserDefaults.h; sourceTree = "<group>"; };
-		1099E17513966D6900993A48 /* MGUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGUserDefaults.m; sourceTree = "<group>"; };
-		1099E17613966D6900993A48 /* MGUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGUtil.h; sourceTree = "<group>"; };
-		1099E17713966D6900993A48 /* MGUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGUtil.m; sourceTree = "<group>"; };
-		1099E17813966D6900993A48 /* MGParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGParams.h; sourceTree = "<group>"; };
-		1099E17913966D6900993A48 /* MGParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGParams.m; sourceTree = "<group>"; };
-		1099E17A13966D6900993A48 /* NSString+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Util.h"; sourceTree = "<group>"; };
-		1099E17B13966D6900993A48 /* NSString+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Util.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,7 +79,6 @@
 		1080676F1376D3CD00FE71BA = {
 			isa = PBXGroup;
 			children = (
-				1099E14D13966D6900993A48 /* lib */,
 				1099E14A13966CA900993A48 /* MGHttpClientManager.m */,
 				108067AB1376D44700FE71BA /* JSON */,
 				108067841376D3CE00FE71BA /* Sample */,
@@ -243,88 +179,6 @@
 			name = Photo;
 			sourceTree = "<group>";
 		};
-		1099E14D13966D6900993A48 /* lib */ = {
-			isa = PBXGroup;
-			children = (
-				1099E14E13966D6900993A48 /* Contents */,
-				1099E14F13966D6900993A48 /* Client */,
-				1099E15013966D6900993A48 /* MGApiError.h */,
-				1099E15113966D6900993A48 /* MGApiError.m */,
-				1099E15213966D6900993A48 /* OAuth */,
-				1099E15313966D6900993A48 /* Util */,
-			);
-			name = lib;
-			path = ../libMixiGraph/lib;
-			sourceTree = "<group>";
-		};
-		1099E14E13966D6900993A48 /* Contents */ = {
-			isa = PBXGroup;
-			children = (
-				1099E15413966D6900993A48 /* MGAlbum.h */,
-				1099E15513966D6900993A48 /* MGAlbum.m */,
-				1099E15613966D6900993A48 /* MGComment.h */,
-				1099E15713966D6900993A48 /* MGComment.m */,
-				1099E15813966D6900993A48 /* MGContentBase.h */,
-				1099E15913966D6900993A48 /* MGContentBase.m */,
-				1099E15A13966D6900993A48 /* MGFavorite.h */,
-				1099E15B13966D6900993A48 /* MGFavorite.m */,
-				1099E15C13966D6900993A48 /* MGPeople.h */,
-				1099E15D13966D6900993A48 /* MGPeople.m */,
-				1099E15E13966D6900993A48 /* MGPhoto.h */,
-				1099E15F13966D6900993A48 /* MGPhoto.m */,
-				1099E16013966D6900993A48 /* MGVoice.h */,
-				1099E16113966D6900993A48 /* MGVoice.m */,
-			);
-			path = Contents;
-			sourceTree = "<group>";
-		};
-		1099E14F13966D6900993A48 /* Client */ = {
-			isa = PBXGroup;
-			children = (
-				1099E16213966D6900993A48 /* MGDiaryClient.h */,
-				1099E16313966D6900993A48 /* MGDiaryClient.m */,
-				1099E16413966D6900993A48 /* MGHttpClient.h */,
-				1099E16513966D6900993A48 /* MGHttpClient.m */,
-				1099E16613966D6900993A48 /* MGPeopleClient.h */,
-				1099E16713966D6900993A48 /* MGPeopleClient.m */,
-				1099E16813966D6900993A48 /* MGPhotoClient.h */,
-				1099E16913966D6900993A48 /* MGPhotoClient.m */,
-				1099E16A13966D6900993A48 /* MGVoiceClient.h */,
-				1099E16B13966D6900993A48 /* MGVoiceClient.m */,
-				1099E16C13966D6900993A48 /* MGClientBase.h */,
-				1099E16D13966D6900993A48 /* MGClientBase.m */,
-				1099E16E13966D6900993A48 /* MGHttpClientManager.h */,
-				1099E16F13966D6900993A48 /* MGHttpClientManager.m */,
-			);
-			path = Client;
-			sourceTree = "<group>";
-		};
-		1099E15213966D6900993A48 /* OAuth */ = {
-			isa = PBXGroup;
-			children = (
-				1099E17013966D6900993A48 /* MGOAuthKey.h */,
-				1099E17113966D6900993A48 /* MGOAuthKey.m */,
-				1099E17213966D6900993A48 /* MGOAuthClient.h */,
-				1099E17313966D6900993A48 /* MGOAuthClient.m */,
-			);
-			path = OAuth;
-			sourceTree = "<group>";
-		};
-		1099E15313966D6900993A48 /* Util */ = {
-			isa = PBXGroup;
-			children = (
-				1099E17413966D6900993A48 /* MGUserDefaults.h */,
-				1099E17513966D6900993A48 /* MGUserDefaults.m */,
-				1099E17613966D6900993A48 /* MGUtil.h */,
-				1099E17713966D6900993A48 /* MGUtil.m */,
-				1099E17813966D6900993A48 /* MGParams.h */,
-				1099E17913966D6900993A48 /* MGParams.m */,
-				1099E17A13966D6900993A48 /* NSString+Util.h */,
-				1099E17B13966D6900993A48 /* NSString+Util.m */,
-			);
-			path = Util;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -397,27 +251,6 @@
 				108068031376D4DD00FE71BA /* OAuthLoginViewController.m in Sources */,
 				108068081376D51000FE71BA /* VoiceTableViewController.m in Sources */,
 				1080680D1376D54500FE71BA /* PhotoTableViewController.m in Sources */,
-				1099E17C13966D6900993A48 /* MGAlbum.m in Sources */,
-				1099E17D13966D6900993A48 /* MGComment.m in Sources */,
-				1099E17E13966D6900993A48 /* MGContentBase.m in Sources */,
-				1099E17F13966D6900993A48 /* MGFavorite.m in Sources */,
-				1099E18013966D6900993A48 /* MGPeople.m in Sources */,
-				1099E18113966D6900993A48 /* MGPhoto.m in Sources */,
-				1099E18213966D6900993A48 /* MGVoice.m in Sources */,
-				1099E18313966D6900993A48 /* MGDiaryClient.m in Sources */,
-				1099E18413966D6900993A48 /* MGHttpClient.m in Sources */,
-				1099E18513966D6900993A48 /* MGPeopleClient.m in Sources */,
-				1099E18613966D6900993A48 /* MGPhotoClient.m in Sources */,
-				1099E18713966D6900993A48 /* MGVoiceClient.m in Sources */,
-				1099E18813966D6900993A48 /* MGClientBase.m in Sources */,
-				1099E18913966D6900993A48 /* MGHttpClientManager.m in Sources */,
-				1099E18A13966D6900993A48 /* MGApiError.m in Sources */,
-				1099E18B13966D6900993A48 /* MGOAuthKey.m in Sources */,
-				1099E18C13966D6900993A48 /* MGOAuthClient.m in Sources */,
-				1099E18D13966D6900993A48 /* MGUserDefaults.m in Sources */,
-				1099E18E13966D6900993A48 /* MGUtil.m in Sources */,
-				1099E18F13966D6900993A48 /* MGParams.m in Sources */,
-				1099E19013966D6900993A48 /* NSString+Util.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

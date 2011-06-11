@@ -23,61 +23,65 @@
 
 @implementation MGHttpClient
 
-@synthesize delegate;
-@synthesize request;
-@synthesize buffer;
-@synthesize response;
-@synthesize identifier;
-@synthesize method;
-@synthesize connection;
-
 -(id)init{
 	if((self = [super init])){
     }
 	return self;
 }
 
--(MGHttpClient *)initWithURLRequest:(NSMutableURLRequest*)req{
-	if((self = [super init])){
-        self.request = req;
-    }
-	return self;
-}
-
 - (void) dealloc {
-    [self.connection cancel];
-    self.connection = nil;
-	self.request = nil;
-	self.buffer = nil;
-    self.identifier = nil;
-    self.method = nil;
 	[super dealloc];
 }
 
--(bool)doRequest{
-	self.connection = [NSURLConnection connectionWithRequest:self.request delegate:self];
-    if (self.connection) {
-        self.buffer = [NSMutableData data];
-		return YES;
-	} else {
-		return NO;		
-	}	
+#pragma mark - set http requests
+
+//get
+-(BOOL)httpGet:(NSURL*)url{
+    if([super httpGet:url]){    
+        NSString * accessToken = [NSString stringWithFormat:@"OAuth %@",[MGUserDefaults loadAccessToken]];
+        [self.request setValue:accessToken forHTTPHeaderField:@"Authorization"];
+        return YES;
+    }
+    return NO;
 }
 
-//レスポンス受信時に呼ばれる
-- (void)connection:(NSURLConnection *)conn didReceiveResponse:(NSURLResponse *)res {
-	NSHTTPURLResponse *hres = (NSHTTPURLResponse *)res;
-    self.response = hres;	
+
+-(BOOL)httpPost:(NSString *)method 
+        url:(NSURL*)url 
+      param:(NSDictionary *)param 
+	   body:(NSData*)body{
+    if([super httpPost:url param:param body:body]){
+        NSString * accessToken = [NSString stringWithFormat:@"OAuth %@",[MGUserDefaults loadAccessToken]];
+        [self.request setValue:accessToken forHTTPHeaderField:@"Authorization"];        
+        return YES;
+    }
+    return NO;
 }
 
-//レスポンスデータ受信
-- (void)connection:(NSURLConnection *)conn didReceiveData:(NSData *)receivedData {
-	[self.buffer appendData:receivedData];
-	if ([delegate respondsToSelector:@selector(mgHttpClient:httpClient:didReceiveData:)]) {
-		[delegate mgHttpClient:conn httpClient:self didReceiveData:receivedData];
-	}
+-(BOOL)httpDelete:(NSURL*)url{
+    if([super httpDelete:url]){
+        NSString * accessToken = [NSString stringWithFormat:@"OAuth %@",[MGUserDefaults loadAccessToken]];
+        [self.request setValue:accessToken forHTTPHeaderField:@"Authorization"];        
+        return YES;
+    }
+    return NO;
 }
 
+
+-(BOOL)httpImagePost:(NSURL*)url 
+		   image:(UIImage*)image{
+	
+	NSData* jpegData = UIImageJPEGRepresentation( image, 1.0 );
+	if([self httpPost:url
+		 param:[NSDictionary dictionaryWithObjectsAndKeys:
+				@"image/jpeg",@"Content-type",nil]
+             body:jpegData]){
+        return YES;
+    }
+    return NO;
+}
+
+#pragma mark - NSURLConnection delegate method
 
 //エラー受信
 -(void)connection:(NSURLConnection*)conn didFailWithError:(NSError*)error{
@@ -128,14 +132,6 @@
 //受信終了
 - (void)connectionDidFinishLoading:(NSURLConnection *)conn {
 	NSLog(@"Succeed!! Received %d bytes of data", [buffer length]);
-	
-    NSLog(@"Received Response. Status Code: %d", [response statusCode]);
-	NSLog(@"Expected ContentLength: %qi", [response expectedContentLength]);
-	NSLog(@"MIMEType: %@", [response MIMEType]);
-	NSLog(@"Suggested File Name: %@", [response suggestedFilename]);
-	NSLog(@"Text Encoding Name: %@", [response textEncodingName]);
-	NSLog(@"URL: %@", [response URL]);
-	
     if([response statusCode]==401){
         //リフレッシュ処理
         MGApiError * apiError = [self checkResponseError:[response allHeaderFields]];
