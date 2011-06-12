@@ -116,8 +116,10 @@
                                        self.postId,
                                        nil]
                                 query:queryDict];
-    //self.httpClientManager.identifier = @"getComments";
-    [self.httpClientManager get:@"getComments" identifier:identifier url:url];
+    
+    MGHttpClient * httpClinet = [[[MGHttpClient alloc]init]autorelease];
+    [httpClinet httpGet:url];
+    [self.httpConnector setHttpClient:httpClinet];
 }
 
 -(void)postComment:(NSString *)comment 
@@ -131,8 +133,11 @@
     NSString * escapedString = [comment encodeURIComponent];
     NSData * body = [[NSString stringWithFormat:@"text=%@",escapedString] 
                      dataUsingEncoding:NSUTF8StringEncoding];
-    //self.httpClientManager.identifier = @"postComment";
-	[self.httpClientManager post:@"postComment" identifier:identifier url:url param:nil body:body];
+    
+    MGHttpClient * httpClinet = [[[MGHttpClient alloc]init]autorelease];
+    [httpClinet httpPost:url param:nil body:body];
+    [self.httpConnector setHttpClient:httpClinet];
+
 } 
 
 -(void)deleteCommentByComment:(MGComment *)comment
@@ -145,8 +150,10 @@
                                        comment.commentId,
                                        nil]
                                 query:nil];
-    //self.httpClientManager.identifier = @"deleteComment";
-	[self.httpClientManager post:@"deleteComment" identifier:identifier url:url param:nil body:nil];
+
+    MGHttpClient * httpClinet = [[[MGHttpClient alloc]init]autorelease];
+    [httpClinet httpPost:url param:nil body:nil];
+    [self.httpConnector setHttpClient:httpClinet];
 }
 
 
@@ -167,8 +174,10 @@
                                        self.postId,
                                        nil]
                                 query:queryDict];
-    //self.httpClientManager.identifier = @"getFavorites";
-	[self.httpClientManager get:@"getFavorites" identifier:identifier url:url];
+
+    MGHttpClient * httpClinet = [[[MGHttpClient alloc]init]autorelease];
+    [httpClinet httpGet:url];
+    [self.httpConnector setHttpClient:httpClinet];
 }
 
 -(void)postFavorite:(NSString *)identifier{
@@ -179,8 +188,10 @@
                                        self.postId,
                                        nil]
                                 query:nil];
-    //self.httpClientManager.identifier = @"postFavorite";
-	[self.httpClientManager post:@"postFavorite" identifier:identifier url:url param:nil body:nil];
+
+    MGHttpClient * httpClinet = [[[MGHttpClient alloc]init]autorelease];
+    [httpClinet httpPost:url param:nil body:nil];
+    [self.httpConnector setHttpClient:httpClinet];
 }
 
 -(void)deleteFavoriteByUserId:(NSString *)uId
@@ -193,8 +204,10 @@
                                        uId,
                                        nil]
                                 query:nil];
-    //self.httpClientManager.identifier = @"deleteFavorite";
-	[self.httpClientManager post:@"deleteFavorite" identifier:identifier url:url param:nil body:nil];
+
+    MGHttpClient * httpClinet = [[[MGHttpClient alloc]init]autorelease];
+    [httpClinet httpPost:url param:nil body:nil];
+    [self.httpConnector setHttpClient:httpClinet];
 }
 
 //ボイスの削除
@@ -205,8 +218,10 @@
                                        self.postId,
                                        nil]
                                 query:nil];
-    //self.httpClientManager.identifier = @"deleteVoice";
-	[self.httpClientManager post:@"deleteVoice" identifier:identifier url:url param:nil body:nil];
+
+    MGHttpClient * httpClinet = [[[MGHttpClient alloc]init]autorelease];
+    [httpClinet httpPost:url param:nil body:nil];
+    [self.httpConnector setHttpClient:httpClinet];
 }
 
 //////////////mgHttpClientManagerDelegate/////////////////////

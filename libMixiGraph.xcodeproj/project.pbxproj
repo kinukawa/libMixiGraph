@@ -14,8 +14,6 @@
 		10279C0313A47ACD00091C5D /* ImageCacheReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 10279C0213A47ACD00091C5D /* ImageCacheReceiver.m */; };
 		10303138135C897700C17326 /* image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 10303137135C897700C17326 /* image.jpg */; };
 		1030313B135DD2A200C17326 /* MGOAuthKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 1030313A135DD2A200C17326 /* MGOAuthKey.m */; };
-		10315B64136FF9A90077E490 /* PhotoTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10315B62136FF9A90077E490 /* PhotoTestViewController.m */; };
-		10315B65136FF9A90077E490 /* PhotoTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10315B63136FF9A90077E490 /* PhotoTestViewController.xib */; };
 		1062C8001344D2AF005901A9 /* VoiceTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1062C7FE1344D2AF005901A9 /* VoiceTestViewController.m */; };
 		1062C8011344D2AF005901A9 /* VoiceTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1062C7FF1344D2AF005901A9 /* VoiceTestViewController.xib */; };
 		1071995213768C6C004A1A67 /* MGComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 1071994613768C6C004A1A67 /* MGComment.m */; };
@@ -25,13 +23,9 @@
 		1071995D13769E12004A1A67 /* NSString+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 1071995C13769E0F004A1A67 /* NSString+Util.m */; };
 		1071995F1376C268004A1A67 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1071995E1376C265004A1A67 /* README.md */; };
 		10DB177D136AA0C800AA0670 /* MGClientBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 10DB177C136AA0C800AA0670 /* MGClientBase.m */; };
-		10F3A3C4136D2EA8004702C4 /* PeopleTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F3A3C2136D2EA7004702C4 /* PeopleTestViewController.m */; };
-		10F3A3C5136D2EA8004702C4 /* PeopleTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10F3A3C3136D2EA8004702C4 /* PeopleTestViewController.xib */; };
 		9A4E72741342FD3700AEDB76 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4E72721342FD3700AEDB76 /* SettingsViewController.m */; };
 		9A4E72751342FD3700AEDB76 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A4E72731342FD3700AEDB76 /* SettingsViewController.xib */; };
 		9A4E727F1342FF6C00AEDB76 /* MGParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4E727E1342FF6C00AEDB76 /* MGParams.m */; };
-		9A95B8B4139C78FA00636010 /* UpdatesTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A95B8B2139C78F900636010 /* UpdatesTestViewController.m */; };
-		9A95B8B5139C78FA00636010 /* UpdatesTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A95B8B3139C78F900636010 /* UpdatesTestViewController.xib */; };
 		9AD548241341D28B0072BDA6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AD548231341D28B0072BDA6 /* UIKit.framework */; };
 		9AD548261341D28B0072BDA6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AD548251341D28B0072BDA6 /* Foundation.framework */; };
 		9AD548281341D28B0072BDA6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AD548271341D28B0072BDA6 /* CoreGraphics.framework */; };
@@ -76,9 +70,6 @@
 		10303137135C897700C17326 /* image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image.jpg; sourceTree = "<group>"; };
 		10303139135DD2A200C17326 /* MGOAuthKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGOAuthKey.h; path = libMixiGraph/lib/OAuth/MGOAuthKey.h; sourceTree = SOURCE_ROOT; };
 		1030313A135DD2A200C17326 /* MGOAuthKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MGOAuthKey.m; path = libMixiGraph/lib/OAuth/MGOAuthKey.m; sourceTree = SOURCE_ROOT; };
-		10315B61136FF9A90077E490 /* PhotoTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoTestViewController.h; sourceTree = "<group>"; };
-		10315B62136FF9A90077E490 /* PhotoTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoTestViewController.m; sourceTree = "<group>"; };
-		10315B63136FF9A90077E490 /* PhotoTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoTestViewController.xib; sourceTree = "<group>"; };
 		1062C7FD1344D2AF005901A9 /* VoiceTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoiceTestViewController.h; sourceTree = "<group>"; };
 		1062C7FE1344D2AF005901A9 /* VoiceTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoiceTestViewController.m; sourceTree = "<group>"; };
 		1062C7FF1344D2AF005901A9 /* VoiceTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VoiceTestViewController.xib; sourceTree = "<group>"; };
@@ -96,17 +87,11 @@
 		108067A41376D3CE00FE71BA /* Sample.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Sample.xcodeproj; path = Sample/Sample.xcodeproj; sourceTree = "<group>"; };
 		10DB177B136AA0C800AA0670 /* MGClientBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGClientBase.h; sourceTree = "<group>"; };
 		10DB177C136AA0C800AA0670 /* MGClientBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGClientBase.m; sourceTree = "<group>"; };
-		10F3A3C1136D2EA7004702C4 /* PeopleTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeopleTestViewController.h; sourceTree = "<group>"; };
-		10F3A3C2136D2EA7004702C4 /* PeopleTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeopleTestViewController.m; sourceTree = "<group>"; };
-		10F3A3C3136D2EA8004702C4 /* PeopleTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PeopleTestViewController.xib; sourceTree = "<group>"; };
 		9A4E72711342FD3700AEDB76 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = ViewController/SettingsViewController.h; sourceTree = "<group>"; };
 		9A4E72721342FD3700AEDB76 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = ViewController/SettingsViewController.m; sourceTree = "<group>"; };
 		9A4E72731342FD3700AEDB76 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingsViewController.xib; path = ViewController/SettingsViewController.xib; sourceTree = "<group>"; };
 		9A4E727D1342FF6C00AEDB76 /* MGParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGParams.h; sourceTree = "<group>"; };
 		9A4E727E1342FF6C00AEDB76 /* MGParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGParams.m; sourceTree = "<group>"; };
-		9A95B8B1139C78F900636010 /* UpdatesTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdatesTestViewController.h; sourceTree = "<group>"; };
-		9A95B8B2139C78F900636010 /* UpdatesTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdatesTestViewController.m; sourceTree = "<group>"; };
-		9A95B8B3139C78F900636010 /* UpdatesTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UpdatesTestViewController.xib; sourceTree = "<group>"; };
 		9AD5481F1341D28B0072BDA6 /* libMixiGraph.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = libMixiGraph.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AD548231341D28B0072BDA6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9AD548251341D28B0072BDA6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -226,15 +211,6 @@
 				1062C7FE1344D2AF005901A9 /* VoiceTestViewController.m */,
 				1062C7FF1344D2AF005901A9 /* VoiceTestViewController.xib */,
 				10303137135C897700C17326 /* image.jpg */,
-				10F3A3C1136D2EA7004702C4 /* PeopleTestViewController.h */,
-				10F3A3C2136D2EA7004702C4 /* PeopleTestViewController.m */,
-				10F3A3C3136D2EA8004702C4 /* PeopleTestViewController.xib */,
-				10315B61136FF9A90077E490 /* PhotoTestViewController.h */,
-				10315B62136FF9A90077E490 /* PhotoTestViewController.m */,
-				10315B63136FF9A90077E490 /* PhotoTestViewController.xib */,
-				9A95B8B1139C78F900636010 /* UpdatesTestViewController.h */,
-				9A95B8B2139C78F900636010 /* UpdatesTestViewController.m */,
-				9A95B8B3139C78F900636010 /* UpdatesTestViewController.xib */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -430,10 +406,7 @@
 				9A4E72751342FD3700AEDB76 /* SettingsViewController.xib in Resources */,
 				1062C8011344D2AF005901A9 /* VoiceTestViewController.xib in Resources */,
 				10303138135C897700C17326 /* image.jpg in Resources */,
-				10F3A3C5136D2EA8004702C4 /* PeopleTestViewController.xib in Resources */,
-				10315B65136FF9A90077E490 /* PhotoTestViewController.xib in Resources */,
 				1071995F1376C268004A1A67 /* README.md in Resources */,
-				9A95B8B5139C78FA00636010 /* UpdatesTestViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,14 +435,11 @@
 				1062C8001344D2AF005901A9 /* VoiceTestViewController.m in Sources */,
 				1030313B135DD2A200C17326 /* MGOAuthKey.m in Sources */,
 				10DB177D136AA0C800AA0670 /* MGClientBase.m in Sources */,
-				10F3A3C4136D2EA8004702C4 /* PeopleTestViewController.m in Sources */,
-				10315B64136FF9A90077E490 /* PhotoTestViewController.m in Sources */,
 				1071995213768C6C004A1A67 /* MGComment.m in Sources */,
 				1071995313768C6C004A1A67 /* MGContentBase.m in Sources */,
 				1071995413768C6C004A1A67 /* MGFavorite.m in Sources */,
 				1071995713768C6C004A1A67 /* MGVoice.m in Sources */,
 				1071995D13769E12004A1A67 /* NSString+Util.m in Sources */,
-				9A95B8B4139C78FA00636010 /* UpdatesTestViewController.m in Sources */,
 				10279B8E13A35BA200091C5D /* SimpleHttpClient.m in Sources */,
 				10279B9413A35D9B00091C5D /* MGHttpConnector.m in Sources */,
 				10279BFD13A47AA700091C5D /* HttpReceiver.m in Sources */,

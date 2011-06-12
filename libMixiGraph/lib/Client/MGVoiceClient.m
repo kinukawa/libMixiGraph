@@ -63,8 +63,10 @@
                                        @"user_timeline",
                                        nil]
                                 query:queryDict];
-    //httpClientManager.identifier = @"getUserVoices";
-	[httpClientManager get:@"getUserVoices" identifier:identifier url:url];
+    
+    MGHttpClient * httpClinet = [[[MGHttpClient alloc]init]autorelease];
+    [httpClinet httpGet:url];
+    [self.httpConnector setHttpClient:httpClinet];
 }
 
 
@@ -98,8 +100,10 @@
                                        @"user_timeline",
                                        nil]
                                 query:queryDict];
-    //httpClientManager.identifier = @"getUserVoicesUsingSinceId";
-	[httpClientManager get:@"getUserVoicesUsingSinceId" identifier:identifier url:url];
+
+    MGHttpClient * httpClinet = [[[MGHttpClient alloc]init]autorelease];
+    [httpClinet httpGet:url];
+    [self.httpConnector setHttpClient:httpClinet];
 }
 
 //友人のつぶやき一覧の取得
@@ -129,8 +133,10 @@
                                        groupID,
                                        nil]
                                 query:queryDict];
-    //httpClientManager.identifier = @"getFriendsVoices";
-	[httpClientManager get:@"getFriendsVoices" identifier:identifier url:url];
+
+    MGHttpClient * httpClinet = [[[MGHttpClient alloc]init]autorelease];
+    [httpClinet httpGet:url];
+    [self.httpConnector setHttpClient:httpClinet];
 }
 
 //友人のつぶやき一覧の取得
@@ -163,8 +169,10 @@
                                        groupID,
                                        nil]
                                 query:queryDict];
-    //httpClientManager.identifier = @"getFriendsVoicesUsingSinceId";
-	[httpClientManager get:@"getFriendsVoicesUsingSinceId" identifier:identifier url:url];
+
+    MGHttpClient * httpClinet = [[[MGHttpClient alloc]init]autorelease];
+    [httpClinet httpGet:url];
+    [self.httpConnector setHttpClient:httpClinet];
 }
 
 //ある特定のつぶやき情報の取得
@@ -185,8 +193,10 @@
                                        postId,
                                        nil]
                                 query:queryDict];
-    //httpClientManager.identifier = @"getVoiceInfo";
-	[httpClientManager get:@"getVoiceInfo" identifier:identifier url:url];
+
+    MGHttpClient * httpClinet = [[[MGHttpClient alloc]init]autorelease];
+    [httpClinet httpGet:url];
+    [self.httpConnector setHttpClient:httpClinet];
 }
 
 //ボイスの投稿
@@ -200,8 +210,10 @@
     NSString * escapedString = [text encodeURIComponent];
     NSData * body = [[NSString stringWithFormat:@"status=%@",escapedString] 
                      dataUsingEncoding:NSUTF8StringEncoding];
-    //httpClientManager.identifier = @"postVoice";
-	[httpClientManager post:@"postVoice" identifier:identifier url:url param:nil body:body];
+
+    MGHttpClient * httpClinet = [[[MGHttpClient alloc]init]autorelease];
+    [httpClinet httpPost:url param:nil body:body];
+    [self.httpConnector setHttpClient:httpClinet];
 }
 
 //フォトボイスの投稿
@@ -217,8 +229,10 @@
                                  path:[NSArray arrayWithObjects:
                                        nil]
 							  query:queryDict];
-	//httpClientManager.identifier = @"postVoice";
-	[httpClientManager imagePost:@"postVoice" identifier:identifier url:url image:image];
+    
+    MGHttpClient * httpClinet = [[[MGHttpClient alloc]init]autorelease];
+    [httpClinet httpImagePost:url image:image];
+    [self.httpConnector setHttpClient:httpClinet];
 }
 
 //////////////MGhttpClientManagerDelegate/////////////////////

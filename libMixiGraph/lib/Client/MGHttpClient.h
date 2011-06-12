@@ -28,6 +28,8 @@
 @interface MGHttpClient : SimpleHttpClient {
 }
 
+-(BOOL)httpImagePost:(NSURL*)url image:(UIImage*)image;
+
 @end
 
 @interface NSObject (MGHttpClientDelegate)
