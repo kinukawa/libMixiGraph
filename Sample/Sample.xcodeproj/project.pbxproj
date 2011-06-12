@@ -59,7 +59,6 @@
 		1080680A1376D54500FE71BA /* PhotoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoTableViewController.h; sourceTree = "<group>"; };
 		1080680B1376D54500FE71BA /* PhotoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoTableViewController.m; sourceTree = "<group>"; };
 		1080680C1376D54500FE71BA /* PhotoTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoTableViewController.xib; sourceTree = "<group>"; };
-		1099E14A13966CA900993A48 /* MGHttpClientManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MGHttpClientManager.m; path = ../../../../../../Users/kinukawa/project/iphone/libMixiGraph/libMixiGraph/lib/Client/MGHttpClientManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,7 +78,6 @@
 		1080676F1376D3CD00FE71BA = {
 			isa = PBXGroup;
 			children = (
-				1099E14A13966CA900993A48 /* MGHttpClientManager.m */,
 				108067AB1376D44700FE71BA /* JSON */,
 				108067841376D3CE00FE71BA /* Sample */,
 				1080677D1376D3CE00FE71BA /* Frameworks */,

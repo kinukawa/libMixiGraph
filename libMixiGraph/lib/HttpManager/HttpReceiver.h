@@ -7,15 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-
-typedef enum {
-    MIXIHttpReceiverTypeNormal = 0,
-    MIXIHttpReceiverTypeGraph,
-    MIXIHttpReceiverTypeCache,
-} MIXIHttpReceiverType;
+#import "SimpleHttpClient.h"
 
 @interface HttpReceiver : NSObject{
     
 }
-
+-(void)notifyDidReceiveResponse:(NSURLResponse *)response;
+-(void)notifyDidReceiveData:(NSData *)receivedData;
+-(void)notifyDidFailWithError:(NSError*)error;
+-(void)notifyDidFinishLoading:(SimpleHttpClient*)client;
 @end

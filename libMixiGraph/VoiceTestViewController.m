@@ -56,11 +56,34 @@
     self.commentTextField.delegate = self;
     
     NSNotificationCenter * center = [NSNotificationCenter defaultCenter];
-    [center addObserver:self selector:@selector(hogehuga:) name:NSStringFromClass([MGVoiceClient class]) object:nil];
+    [center addObserver:self 
+               selector:@selector(connectorMGRequestDidFinish:) 
+                   name:NSStringFromClass([MGVoiceClient class]) 
+                 object:nil];
+        
+    [center addObserver:self 
+               selector:@selector(connectorMGApiError:) 
+                   name:NSStringFromClass([MGApiError class]) 
+                 object:nil];
+    
+    [center addObserver:self 
+               selector:@selector(notifyDidFailWithError:) 
+                   name:@"notifyDidFailWithError" 
+                 object:nil];
 }
 
--(void)hogehuga:(id)data{
-    NSLog(@"%@",data);
+-(void)connectorMGRequestDidFinish:(NSNotification *)notification{
+    NSLog(@"%@",notification.name);
+}
+
+-(void)connectorMGApiError:(NSNotification *)notification{
+    NSLog(@"%@",notification);
+
+}
+
+-(void)notifyDidFailWithError:(NSNotification *)notification{
+    NSLog(@"%@",notification);
+    
 }
 
 - (void)viewDidUnload

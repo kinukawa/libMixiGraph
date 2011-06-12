@@ -22,8 +22,6 @@
 #import "SimpleHttpClient.h"
 #import "MGUserDefaults.h"
 #import "MGUtil.h"
-#import "MGApiError.h"
-#import "MGOAuthClient.h"
 
 @interface MGHttpClient : SimpleHttpClient {
     NSDictionary * sender;
@@ -32,9 +30,3 @@
 -(BOOL)httpImagePost:(NSURL*)url image:(UIImage*)image;
 @property (nonatomic,retain) NSDictionary * sender;
 @end
-
-@interface NSObject (MGHttpClientDelegate)
-//-(void)mgHttpClient:(NSURLConnection *)conn httpClient:(MGHttpClient*)client didFailWithAPIError:(MGApiError*)error;
-//-(void)mgHttpClient:(NSURLConnection *)conn httpClient:(MGHttpClient*)client didFinishLoading:(NSMutableData *)data;
-@end
-

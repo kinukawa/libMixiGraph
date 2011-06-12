@@ -22,6 +22,7 @@
 		1071995713768C6C004A1A67 /* MGVoice.m in Sources */ = {isa = PBXBuildFile; fileRef = 1071995013768C6C004A1A67 /* MGVoice.m */; };
 		1071995D13769E12004A1A67 /* NSString+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 1071995C13769E0F004A1A67 /* NSString+Util.m */; };
 		1071995F1376C268004A1A67 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1071995E1376C265004A1A67 /* README.md */; };
+		10A4EE9A13A4FF6300DC5E97 /* MGHttpManagerTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A4EE9913A4FF6200DC5E97 /* MGHttpManagerTypes.m */; };
 		10DB177D136AA0C800AA0670 /* MGClientBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 10DB177C136AA0C800AA0670 /* MGClientBase.m */; };
 		9A4E72741342FD3700AEDB76 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4E72721342FD3700AEDB76 /* SettingsViewController.m */; };
 		9A4E72751342FD3700AEDB76 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A4E72731342FD3700AEDB76 /* SettingsViewController.xib */; };
@@ -85,6 +86,8 @@
 		1071995C13769E0F004A1A67 /* NSString+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Util.m"; sourceTree = "<group>"; };
 		1071995E1376C265004A1A67 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		108067A41376D3CE00FE71BA /* Sample.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Sample.xcodeproj; path = Sample/Sample.xcodeproj; sourceTree = "<group>"; };
+		10A4EE9813A4FF6200DC5E97 /* MGHttpManagerTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGHttpManagerTypes.h; sourceTree = "<group>"; };
+		10A4EE9913A4FF6200DC5E97 /* MGHttpManagerTypes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGHttpManagerTypes.m; sourceTree = "<group>"; };
 		10DB177B136AA0C800AA0670 /* MGClientBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGClientBase.h; sourceTree = "<group>"; };
 		10DB177C136AA0C800AA0670 /* MGClientBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGClientBase.m; sourceTree = "<group>"; };
 		9A4E72711342FD3700AEDB76 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = ViewController/SettingsViewController.h; sourceTree = "<group>"; };
@@ -149,6 +152,8 @@
 				10279BFA13A479ED00091C5D /* Receiver */,
 				10279B9213A35D9B00091C5D /* MGHttpConnector.h */,
 				10279B9313A35D9B00091C5D /* MGHttpConnector.m */,
+				10A4EE9813A4FF6200DC5E97 /* MGHttpManagerTypes.h */,
+				10A4EE9913A4FF6200DC5E97 /* MGHttpManagerTypes.m */,
 			);
 			name = HttpManager;
 			path = lib/HttpManager;
@@ -445,6 +450,7 @@
 				10279BFD13A47AA700091C5D /* HttpReceiver.m in Sources */,
 				10279C0013A47AB900091C5D /* MGHttpReceiver.m in Sources */,
 				10279C0313A47ACD00091C5D /* ImageCacheReceiver.m in Sources */,
+				10A4EE9A13A4FF6300DC5E97 /* MGHttpManagerTypes.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

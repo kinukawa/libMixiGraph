@@ -7,15 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "HttpReceiver.h"
-
-typedef enum {
-    MIXINetworkStateNotConnected = 0,
-    MIXINetworkStateInProgress,
-    MIXINetworkStateFinished,
-    MIXINetworkStateError,
-    MIXINetworkStateCanceled,
-} MIXINetworkState;
+#import "MGHttpManagerTypes.h"
 
 @interface SimpleHttpClient : NSObject {
 	id delegate;

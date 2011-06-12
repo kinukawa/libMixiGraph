@@ -9,8 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "MGHttpClient.h"
 #import "HttpReceiver.h"
+#import "MGApiError.h"
 @interface MGHttpReceiver : HttpReceiver{
     
 }
--(void)notify:(id)client response:(id)response;
+-(void)notifyDidFinishLoading:(MGHttpClient *)client;
+-(void)notifyWithAPIError:(MGApiError *)error;
 @end

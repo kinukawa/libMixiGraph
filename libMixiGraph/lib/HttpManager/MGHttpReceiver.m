@@ -20,16 +20,23 @@
     return self;
 }
 
--(void)notify:(id)client response:(id)res{
-    
+-(void)notifyDidFinishLoading:(MGHttpClient *)client{
+    NSString *contents = [[[NSString alloc] initWithData:client.buffer encoding:NSUTF8StringEncoding] autorelease];
     MGHttpClient * httpClient = (MGHttpClient*)client;
     NSString * senderClassStr = [httpClient.sender objectForKey:@"class"];
     NSDictionary * userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
                                senderClassStr, @"class", 
                                [httpClient.sender objectForKey:@"selector"], @"selector",
-                               res, @"data",
+                               contents, @"data",
                                nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:senderClassStr object:self userInfo:userInfo];
+}
+
+-(void)notifyWithAPIError:(MGApiError *)error{
+    NSDictionary * userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+                               error, @"apiError",
+                               nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"MGApiError" object:self userInfo:userInfo];
 }
 
 @end

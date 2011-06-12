@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SimpleHttpClient.h"
 #import "MGUtil.h"
 #import "MGHttpReceiver.h"
+#import "MGOAuthClient.h"
 
 @interface MGHttpConnector : NSObject{
     NSMutableArray * httpClients;
