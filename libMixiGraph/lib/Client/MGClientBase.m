@@ -22,7 +22,6 @@
 
 
 @implementation MGClientBase
-//@synthesize identifier;
 @synthesize httpConnector;
 
 -(id)init{
@@ -38,17 +37,9 @@
     [super dealloc];
 }
 
-//////////////MGHttpClientDelegate/////////////////////
--(void)mgHttpClientManager:(NSURLConnection *)conn didFailWithError:(NSError*)error{
-	//NSLog(@"MGClientBase didFailWithError");
-}
-
--(void)mgHttpClientManager:(NSURLConnection *)conn didFailWithAPIError:(MGApiError*)error{
-	//NSLog(@"MGClientBase didFailWithAPIError");
-}
-
--(void)mgHttpClientManager:(NSURLConnection *)conn didFinishLoading:(NSDictionary *)reply{
-	//NSLog(@"MGClientBase didFailWithAPIError");
++(id)responsePerser:(id)response{
+	NSLog(@"Override me!");
+	return nil;
 }
 
 @end

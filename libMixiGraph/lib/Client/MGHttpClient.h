@@ -26,10 +26,11 @@
 #import "MGOAuthClient.h"
 
 @interface MGHttpClient : SimpleHttpClient {
+    NSDictionary * sender;
 }
-
+-(void)setSenderWithClass:(Class)class selector:(SEL)sel;
 -(BOOL)httpImagePost:(NSURL*)url image:(UIImage*)image;
-
+@property (nonatomic,retain) NSDictionary * sender;
 @end
 
 @interface NSObject (MGHttpClientDelegate)

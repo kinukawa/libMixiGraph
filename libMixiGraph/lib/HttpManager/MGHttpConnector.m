@@ -71,6 +71,18 @@
 
 -(void)httpClient:(SimpleHttpClient *)client didFinishLoading:(NSMutableData *)data{
     //通知する
+    NSString *contents = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+    
+    if (client.receiverType == MIXIHttpReceiverTypeNormal){
+    
+    }else if(client.receiverType == MIXIHttpReceiverTypeGraph){
+        MGHttpReceiver * receiver = [[[MGHttpReceiver alloc]init]autorelease];
+        [receiver notify:client response:contents];
+    }else if(client.receiverType == MIXIHttpReceiverTypeCache){
+        
+    }else{
+        
+    }
 }
 
 -(void)httpClientDidCancel:(SimpleHttpClient *)client{

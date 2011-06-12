@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "HttpReceiver.h"
 
 typedef enum {
     MIXINetworkStateNotConnected = 0,
@@ -24,7 +25,7 @@ typedef enum {
 	NSURLConnection *connection;
     NSMutableURLRequest * request;
     NSHTTPURLResponse *response;
-
+    MIXIHttpReceiverType receiverType;
 }
 
 -(bool)doRequest;
@@ -42,6 +43,7 @@ typedef enum {
 @property (nonatomic,retain) NSURLConnection *connection;
 @property (nonatomic,retain) NSMutableURLRequest * request;
 @property (nonatomic,retain) NSHTTPURLResponse *response;
+@property (nonatomic) MIXIHttpReceiverType receiverType;
 
 @end
 

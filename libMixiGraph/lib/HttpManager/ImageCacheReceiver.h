@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@interface ImageCacheReceiver : NSObject
+#import "HttpReceiver.h"
+@interface ImageCacheReceiver : HttpReceiver{
+    
+}
 
 @end

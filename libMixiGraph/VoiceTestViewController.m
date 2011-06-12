@@ -50,11 +50,17 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.voiceClient = [[[MGVoiceClient alloc]init]autorelease];
-    self.voiceClient.delegate = self;
     
     self.voiceTextField.delegate = self;
     self.voiceIDTextField.delegate = self;
     self.commentTextField.delegate = self;
+    
+    NSNotificationCenter * center = [NSNotificationCenter defaultCenter];
+    [center addObserver:self selector:@selector(hogehuga:) name:NSStringFromClass([MGVoiceClient class]) object:nil];
+}
+
+-(void)hogehuga:(id)data{
+    NSLog(@"%@",data);
 }
 
 - (void)viewDidUnload

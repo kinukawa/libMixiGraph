@@ -8,6 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-@interface HttpReceiver : NSObject
+typedef enum {
+    MIXIHttpReceiverTypeNormal = 0,
+    MIXIHttpReceiverTypeGraph,
+    MIXIHttpReceiverTypeCache,
+} MIXIHttpReceiverType;
+
+@interface HttpReceiver : NSObject{
+    
+}
 
 @end

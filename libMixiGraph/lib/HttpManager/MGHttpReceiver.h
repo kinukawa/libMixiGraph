@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@interface MGHttpReceiver : NSObject
-
+#import "MGHttpClient.h"
+#import "HttpReceiver.h"
+@interface MGHttpReceiver : HttpReceiver{
+    
+}
+-(void)notify:(id)client response:(id)response;
 @end

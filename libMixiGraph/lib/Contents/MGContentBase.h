@@ -23,16 +23,12 @@
 #import "MGHttpConnector.h"
 
 @interface MGContentBase : NSObject {
-@public	
-    //NSString * identifier;
-	
-@private
 	MGHttpConnector * httpConnector;
-
 }
     
 +(id)makeContentFromResponseData:(NSData*)data;
 +(NSArray *)makeContentArrayFromEntryArray:(NSArray*)dataArray;
+
 @property (nonatomic,retain) MGHttpConnector * httpConnector;
 
 @end

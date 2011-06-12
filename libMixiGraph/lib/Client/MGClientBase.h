@@ -21,11 +21,11 @@
 #import <Foundation/Foundation.h>
 #import "MGHttpConnector.h"
 
-
 @interface MGClientBase : NSObject {
     MGHttpConnector * httpConnector;
 }
 
-//@property (nonatomic,retain) NSString * identifier;
++(id)responsePerser:(id)response;
+
 @property (nonatomic,retain) MGHttpConnector * httpConnector;
 @end

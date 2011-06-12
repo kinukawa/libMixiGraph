@@ -29,13 +29,8 @@
 #import "MGUtil.h"
 #import "MGParams.h"
 
-@protocol MGVoiceClientDelegate;
-
 @interface MGVoiceClient : MGClientBase {
-@public	
-	id <MGVoiceClientDelegate> delegate;
 }
-@property (nonatomic,assign) id delegate;
 
 //あるユーザのつぶやき一覧の取得
 -(void)getUserVoicesByUserID:(NSString *)userId 
@@ -86,10 +81,4 @@
       identifier:(NSString *)identifier;
 
 
-@end
-
-@protocol MGVoiceClientDelegate<NSObject>
--(void)mgVoiceClient:(NSURLConnection *)conn didFailWithError:(NSError*)error;
--(void)mgVoiceClient:(NSURLConnection *)conn didFailWithAPIError:(MGApiError*)error;
--(void)mgVoiceClient:(NSURLConnection *)conn didFinishLoading:(id)result;
 @end

@@ -23,8 +23,6 @@
 
 @implementation MGVoiceClient
 
-@synthesize delegate;
-
 -(id)init{
 	if((self = [super init])){
 		//initialize
@@ -33,7 +31,6 @@
 }
 
 - (void) dealloc {
-    self.delegate = nil;
 	[super dealloc];
 }
 
@@ -66,6 +63,7 @@
     
     MGHttpClient * httpClinet = [[[MGHttpClient alloc]init]autorelease];
     [httpClinet httpGet:url];
+    [httpClinet setSenderWithClass:[self class] selector:_cmd];
     [self.httpConnector setHttpClient:httpClinet];
 }
 
@@ -103,6 +101,7 @@
 
     MGHttpClient * httpClinet = [[[MGHttpClient alloc]init]autorelease];
     [httpClinet httpGet:url];
+    [httpClinet setSenderWithClass:[self class] selector:_cmd];
     [self.httpConnector setHttpClient:httpClinet];
 }
 
@@ -136,6 +135,7 @@
 
     MGHttpClient * httpClinet = [[[MGHttpClient alloc]init]autorelease];
     [httpClinet httpGet:url];
+    [httpClinet setSenderWithClass:[self class] selector:_cmd];
     [self.httpConnector setHttpClient:httpClinet];
 }
 
@@ -172,6 +172,7 @@
 
     MGHttpClient * httpClinet = [[[MGHttpClient alloc]init]autorelease];
     [httpClinet httpGet:url];
+    [httpClinet setSenderWithClass:[self class] selector:_cmd];
     [self.httpConnector setHttpClient:httpClinet];
 }
 
@@ -196,6 +197,7 @@
 
     MGHttpClient * httpClinet = [[[MGHttpClient alloc]init]autorelease];
     [httpClinet httpGet:url];
+    [httpClinet setSenderWithClass:[self class] selector:_cmd];
     [self.httpConnector setHttpClient:httpClinet];
 }
 
@@ -213,6 +215,7 @@
 
     MGHttpClient * httpClinet = [[[MGHttpClient alloc]init]autorelease];
     [httpClinet httpPost:url param:nil body:body];
+    [httpClinet setSenderWithClass:[self class] selector:_cmd];
     [self.httpConnector setHttpClient:httpClinet];
 }
 
@@ -232,33 +235,18 @@
     
     MGHttpClient * httpClinet = [[[MGHttpClient alloc]init]autorelease];
     [httpClinet httpImagePost:url image:image];
+    [httpClinet setSenderWithClass:[self class] selector:_cmd];
     [self.httpConnector setHttpClient:httpClinet];
 }
 
-//////////////MGhttpClientManagerDelegate/////////////////////
-
--(void)mgHttpClientManager:(NSURLConnection *)conn didFailWithError:(NSError*)error{
-	NSLog(@"MGVoiceClient didFailWithError");
-	if([delegate respondsToSelector:@selector(mgVoiceClient:didFailWithError:)]){
-		[delegate mgVoiceClient:conn didFailWithError:error];
-	}
-}
-
--(void)mgHttpClientManager:(NSURLConnection *)conn didFailWithAPIError:(MGApiError*)error{
-	NSLog(@"MGVoiceClient didFailWithAPIError");
-	if([delegate respondsToSelector:@selector(mgVoiceClient:didFailWithAPIError:)]){
-		[delegate mgVoiceClient:conn didFailWithAPIError:error];
-	}    
-}
-
--(void)mgHttpClientManager:(NSURLConnection *)conn didFinishLoading:(NSDictionary *)reply{
-	NSData *data = [reply objectForKey:@"data"];
++(id)responsePerser:(id)response{
+	NSData *data = [response objectForKey:@"data"];
     NSString *contents = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
-    NSString *identifier = [reply objectForKey:@"id"];
-    NSString *method = [reply objectForKey:@"method"];
+    NSString *identifier = [response objectForKey:@"id"];
+    NSString *method = [response objectForKey:@"method"];
 	NSLog(@"MGVoiceClient didFinishLoading %@:%@",identifier,contents);
     
-    id result = reply;
+    id result = response;
     if(method==@"getUserVoices"){
         NSArray * entryArray = [contents JSONValue];
         result = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -293,9 +281,7 @@
                   identifier,@"id",nil];
     }
     
-	if([delegate respondsToSelector:@selector(mgVoiceClient:didFinishLoading:)]){
-        [delegate mgVoiceClient:conn didFinishLoading:result];
-    }
+	return result;
 }
 
 @end

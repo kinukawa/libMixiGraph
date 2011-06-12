@@ -22,15 +22,22 @@
 
 
 @implementation MGHttpClient
+@synthesize sender;
 
 -(id)init{
-	if((self = [super init])){
+	if(self = [super init]){
+        self.receiverType = MIXIHttpReceiverTypeGraph;
     }
 	return self;
 }
 
 - (void) dealloc {
+    self.sender = nil;
 	[super dealloc];
+}
+
+-(void)setSenderWithClass:(Class)class selector:(SEL)sel{
+    self.sender = [NSDictionary dictionaryWithObjectsAndKeys: NSStringFromClass(class), @"class", NSStringFromSelector(sel), @"selector", nil];
 }
 
 #pragma mark - set http requests

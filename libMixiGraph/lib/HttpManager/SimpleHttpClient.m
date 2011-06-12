@@ -18,9 +18,11 @@
 @synthesize networkState;
 @synthesize request;
 @synthesize response;
+@synthesize receiverType;
 
 -(id)init{
 	if((self = [super init])){
+        self.receiverType = MIXIHttpReceiverTypeNormal;
     }
 	return self;
 }
