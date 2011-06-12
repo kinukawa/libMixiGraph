@@ -19,17 +19,13 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "MGHttpClientManager.h"
+#import "MGHttpConnector.h"
 
 
 @interface MGClientBase : NSObject {
-//@public	
-//	NSString * identifier;
-//@private
-    MGHttpClientManager * httpClientManager;
+    MGHttpConnector * httpConnector;
 }
 
 //@property (nonatomic,retain) NSString * identifier;
-@property (nonatomic,retain) MGHttpClientManager * httpClientManager;
-
+@property (nonatomic,retain) MGHttpConnector * httpConnector;
 @end

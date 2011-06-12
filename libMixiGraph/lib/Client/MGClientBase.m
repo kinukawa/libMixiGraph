@@ -23,20 +23,18 @@
 
 @implementation MGClientBase
 //@synthesize identifier;
-@synthesize httpClientManager;
+@synthesize httpConnector;
 
 -(id)init{
 	if((self = [super init])){
 		//initialize
-        self.httpClientManager = [[[MGHttpClientManager alloc]init]autorelease];
-        self.httpClientManager.delegate = self;
+        self.httpConnector = [MGHttpConnector sharedConnector];
     }
 	return self;
 }
 
 - (void) dealloc {
-    self.httpClientManager = nil;
-    //self.identifier = nil;
+    self.httpConnector = nil;
     [super dealloc];
 }
 
