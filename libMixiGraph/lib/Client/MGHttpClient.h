@@ -31,10 +31,7 @@
 @end
 
 @interface NSObject (MGHttpClientDelegate)
--(void)mgHttpClient:(NSURLConnection *)conn httpClient:(MGHttpClient*)client didReceiveResponse:(NSURLResponse *)res;
--(void)mgHttpClient:(NSURLConnection *)conn httpClient:(MGHttpClient*)client didReceiveData:(NSData *)receivedData;
--(void)mgHttpClient:(NSURLConnection *)conn httpClient:(MGHttpClient*)client didFailWithError:(NSError*)error;
--(void)mgHttpClient:(NSURLConnection *)conn httpClient:(MGHttpClient*)client didFailWithAPIError:(MGApiError*)error;
--(void)mgHttpClient:(NSURLConnection *)conn httpClient:(MGHttpClient*)client didFinishLoading:(NSMutableData *)data;
+//-(void)mgHttpClient:(NSURLConnection *)conn httpClient:(MGHttpClient*)client didFailWithAPIError:(MGApiError*)error;
+//-(void)mgHttpClient:(NSURLConnection *)conn httpClient:(MGHttpClient*)client didFinishLoading:(NSMutableData *)data;
 @end
 

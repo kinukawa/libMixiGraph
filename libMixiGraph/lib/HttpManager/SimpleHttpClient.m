@@ -118,6 +118,11 @@
 //エラー受信
 -(void)connection:(NSURLConnection*)conn didFailWithError:(NSError*)error{
     self.networkState = MIXINetworkStateError;
+    NSLog(@"Connection failed! Error - %@ %d %@",
+		  [error domain],
+		  [error code],
+		  [error localizedDescription]);
+
 	if([delegate respondsToSelector:@selector(httpClient:didFailWithError:)]){
         [delegate httpClient:self didFailWithError:error];
     } 

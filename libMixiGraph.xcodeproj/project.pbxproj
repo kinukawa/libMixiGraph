@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		10279B8E13A35BA200091C5D /* SimpleHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 10279B8D13A35BA200091C5D /* SimpleHttpClient.m */; };
 		10279B9413A35D9B00091C5D /* MGHttpConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 10279B9313A35D9B00091C5D /* MGHttpConnector.m */; };
+		10279BFD13A47AA700091C5D /* HttpReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 10279BFC13A47AA700091C5D /* HttpReceiver.m */; };
+		10279C0013A47AB900091C5D /* MGHttpReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 10279BFF13A47AB900091C5D /* MGHttpReceiver.m */; };
+		10279C0313A47ACD00091C5D /* ImageCacheReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 10279C0213A47ACD00091C5D /* ImageCacheReceiver.m */; };
 		10303138135C897700C17326 /* image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 10303137135C897700C17326 /* image.jpg */; };
 		1030313B135DD2A200C17326 /* MGOAuthKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 1030313A135DD2A200C17326 /* MGOAuthKey.m */; };
 		10315B64136FF9A90077E490 /* PhotoTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10315B62136FF9A90077E490 /* PhotoTestViewController.m */; };
@@ -73,6 +76,12 @@
 		10279B8D13A35BA200091C5D /* SimpleHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleHttpClient.m; sourceTree = "<group>"; };
 		10279B9213A35D9B00091C5D /* MGHttpConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGHttpConnector.h; sourceTree = "<group>"; };
 		10279B9313A35D9B00091C5D /* MGHttpConnector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGHttpConnector.m; sourceTree = "<group>"; };
+		10279BFB13A47AA700091C5D /* HttpReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpReceiver.h; sourceTree = "<group>"; };
+		10279BFC13A47AA700091C5D /* HttpReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpReceiver.m; sourceTree = "<group>"; };
+		10279BFE13A47AB900091C5D /* MGHttpReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGHttpReceiver.h; sourceTree = "<group>"; };
+		10279BFF13A47AB900091C5D /* MGHttpReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGHttpReceiver.m; sourceTree = "<group>"; };
+		10279C0113A47ACD00091C5D /* ImageCacheReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCacheReceiver.h; sourceTree = "<group>"; };
+		10279C0213A47ACD00091C5D /* ImageCacheReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCacheReceiver.m; sourceTree = "<group>"; };
 		10303137135C897700C17326 /* image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image.jpg; sourceTree = "<group>"; };
 		10303139135DD2A200C17326 /* MGOAuthKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGOAuthKey.h; path = libMixiGraph/lib/OAuth/MGOAuthKey.h; sourceTree = SOURCE_ROOT; };
 		1030313A135DD2A200C17326 /* MGOAuthKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MGOAuthKey.m; path = libMixiGraph/lib/OAuth/MGOAuthKey.m; sourceTree = SOURCE_ROOT; };
@@ -178,6 +187,7 @@
 		10279B8B13A35BA200091C5D /* HttpManager */ = {
 			isa = PBXGroup;
 			children = (
+				10279BFA13A479ED00091C5D /* Receiver */,
 				9AD5487E1341E65D0072BDA6 /* MGHttpClient.h */,
 				9AD5487F1341E65D0072BDA6 /* MGHttpClient.m */,
 				10279B8C13A35BA200091C5D /* SimpleHttpClient.h */,
@@ -187,6 +197,19 @@
 			);
 			name = HttpManager;
 			path = lib/HttpManager;
+			sourceTree = "<group>";
+		};
+		10279BFA13A479ED00091C5D /* Receiver */ = {
+			isa = PBXGroup;
+			children = (
+				10279BFB13A47AA700091C5D /* HttpReceiver.h */,
+				10279BFC13A47AA700091C5D /* HttpReceiver.m */,
+				10279BFE13A47AB900091C5D /* MGHttpReceiver.h */,
+				10279BFF13A47AB900091C5D /* MGHttpReceiver.m */,
+				10279C0113A47ACD00091C5D /* ImageCacheReceiver.h */,
+				10279C0213A47ACD00091C5D /* ImageCacheReceiver.m */,
+			);
+			name = Receiver;
 			sourceTree = "<group>";
 		};
 		1071994213768C6B004A1A67 /* Contents */ = {
@@ -495,6 +518,9 @@
 				9AF36073139CDA0900F676BE /* MGUpdates.m in Sources */,
 				10279B8E13A35BA200091C5D /* SimpleHttpClient.m in Sources */,
 				10279B9413A35D9B00091C5D /* MGHttpConnector.m in Sources */,
+				10279BFD13A47AA700091C5D /* HttpReceiver.m in Sources */,
+				10279C0013A47AB900091C5D /* MGHttpReceiver.m in Sources */,
+				10279C0313A47ACD00091C5D /* ImageCacheReceiver.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

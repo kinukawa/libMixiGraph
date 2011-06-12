@@ -37,20 +37,12 @@
     httpClient.identifier = [MGUtil createUniqueID];
     httpClient.delegate = self;
     //リクエスト実行して
+    [httpClient doRequest];
     //保持
     [httpClients addObject:httpClient];
 }
 
 #pragma mark - http requests
-
--(void)enqueue:(NSString *)method identifier:(NSString *)identifier request:(NSMutableURLRequest *)req{
-    MGHttpClient * httpClient = [[[MGHttpClient alloc]initWithURLRequest:req]autorelease];
-    httpClient.delegate = self;
-    httpClient.method = method;
-    httpClient.identifier = identifier;
-    [httpClient doRequest];
-    [self.requestQueue addObject:httpClient];
-}
 
 -(void)cancelAllRequests{
     //前リクエストの停止と破棄

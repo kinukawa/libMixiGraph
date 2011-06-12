@@ -83,20 +83,6 @@
 
 #pragma mark - NSURLConnection delegate method
 
-//エラー受信
--(void)connection:(NSURLConnection*)conn didFailWithError:(NSError*)error{
-	NSLog(@"Connection failed! Error - %@ %d %@",
-		  [error domain],
-		  [error code],
-		  [error localizedDescription]);
-	self.buffer = nil;
-	
-	//ネットワークに接続されていない時
-    if ([delegate respondsToSelector:@selector(mgHttpClient:httpClient:didFailWithError:)]) {
-		[delegate mgHttpClient:conn httpClient:self didFailWithError:error];
-	}
-}
-
 -(void)retryRequest{
     NSLog(@"one more request!!!!!!");
     
@@ -129,6 +115,7 @@
 	return apiError;
 }
 
+/*
 //受信終了
 - (void)connectionDidFinishLoading:(NSURLConnection *)conn {
 	NSLog(@"Succeed!! Received %d bytes of data", [buffer length]);
@@ -171,5 +158,6 @@
     self.response = nil;
     return;
 }
+*/
 
 @end
