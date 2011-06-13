@@ -25,8 +25,8 @@
 @synthesize sender;
 
 -(id)init{
-	if(self = [super init]){
-        self.receiverType = MIXIHttpReceiverTypeGraph;
+	if((self = [super init])){
+	    self.receiverType = MIXIHttpReceiverTypeGraph;
     }
 	return self;
 }
