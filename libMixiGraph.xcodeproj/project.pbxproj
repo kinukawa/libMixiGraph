@@ -27,6 +27,7 @@
 		9A4E72741342FD3700AEDB76 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4E72721342FD3700AEDB76 /* SettingsViewController.m */; };
 		9A4E72751342FD3700AEDB76 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A4E72731342FD3700AEDB76 /* SettingsViewController.xib */; };
 		9A4E727F1342FF6C00AEDB76 /* MGParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4E727E1342FF6C00AEDB76 /* MGParams.m */; };
+		9AB7692E13A5DCE9009707A3 /* MGResponseParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB7692D13A5DCE9009707A3 /* MGResponseParser.m */; };
 		9AD548241341D28B0072BDA6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AD548231341D28B0072BDA6 /* UIKit.framework */; };
 		9AD548261341D28B0072BDA6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AD548251341D28B0072BDA6 /* Foundation.framework */; };
 		9AD548281341D28B0072BDA6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AD548271341D28B0072BDA6 /* CoreGraphics.framework */; };
@@ -95,6 +96,8 @@
 		9A4E72731342FD3700AEDB76 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingsViewController.xib; path = ViewController/SettingsViewController.xib; sourceTree = "<group>"; };
 		9A4E727D1342FF6C00AEDB76 /* MGParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGParams.h; sourceTree = "<group>"; };
 		9A4E727E1342FF6C00AEDB76 /* MGParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGParams.m; sourceTree = "<group>"; };
+		9AB7692C13A5DCE9009707A3 /* MGResponseParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGResponseParser.h; sourceTree = "<group>"; };
+		9AB7692D13A5DCE9009707A3 /* MGResponseParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGResponseParser.m; sourceTree = "<group>"; };
 		9AD5481F1341D28B0072BDA6 /* libMixiGraph.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = libMixiGraph.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AD548231341D28B0072BDA6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9AD548251341D28B0072BDA6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -145,18 +148,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		10279B8B13A35BA200091C5D /* HttpManager */ = {
+		10279B8B13A35BA200091C5D /* HttpConnector */ = {
 			isa = PBXGroup;
 			children = (
-				10279C0413A47B0D00091C5D /* HttpClient */,
 				10279BFA13A479ED00091C5D /* Receiver */,
+				10279C0413A47B0D00091C5D /* HttpClient */,
 				10279B9213A35D9B00091C5D /* MGHttpConnector.h */,
 				10279B9313A35D9B00091C5D /* MGHttpConnector.m */,
 				10A4EE9813A4FF6200DC5E97 /* MGHttpManagerTypes.h */,
 				10A4EE9913A4FF6200DC5E97 /* MGHttpManagerTypes.m */,
 			);
-			name = HttpManager;
-			path = lib/HttpManager;
+			name = HttpConnector;
+			path = HttpManager;
 			sourceTree = "<group>";
 		};
 		10279BFA13A479ED00091C5D /* Receiver */ = {
@@ -220,6 +223,15 @@
 			name = ViewController;
 			sourceTree = "<group>";
 		};
+		9AB7692813A5DC0B009707A3 /* HttpResponseParser */ = {
+			isa = PBXGroup;
+			children = (
+				9AB7692C13A5DCE9009707A3 /* MGResponseParser.h */,
+				9AB7692D13A5DCE9009707A3 /* MGResponseParser.m */,
+			);
+			name = HttpResponseParser;
+			sourceTree = "<group>";
+		};
 		9AD548141341D28B0072BDA6 = {
 			isa = PBXGroup;
 			children = (
@@ -252,7 +264,6 @@
 		9AD548291341D28B0072BDA6 /* libMixiGraph */ = {
 			isa = PBXGroup;
 			children = (
-				10279B8B13A35BA200091C5D /* HttpManager */,
 				9AD5486A1341E65D0072BDA6 /* JSON */,
 				9AD548761341E65D0072BDA6 /* lib */,
 				9AD548321341D28B0072BDA6 /* libMixiGraphAppDelegate.h */,
@@ -296,6 +307,8 @@
 		9AD548761341E65D0072BDA6 /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				9AB7692813A5DC0B009707A3 /* HttpResponseParser */,
+				10279B8B13A35BA200091C5D /* HttpConnector */,
 				1071994213768C6B004A1A67 /* Contents */,
 				9AD548771341E65D0072BDA6 /* Client */,
 				9AD548911341E65D0072BDA6 /* MGApiError.h */,
@@ -451,6 +464,7 @@
 				10279C0013A47AB900091C5D /* MGHttpReceiver.m in Sources */,
 				10279C0313A47ACD00091C5D /* ImageCacheReceiver.m in Sources */,
 				10A4EE9A13A4FF6300DC5E97 /* MGHttpManagerTypes.m in Sources */,
+				9AB7692E13A5DCE9009707A3 /* MGResponseParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

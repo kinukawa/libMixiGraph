@@ -37,7 +37,7 @@
     [super dealloc];
 }
 
-+(id)responsePerser:(id)response{
++(id)responseParser:(id)response{
 	NSLog(@"Override me!");
 	return nil;
 }

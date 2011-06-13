@@ -21,13 +21,13 @@
 }
 
 -(void)notifyDidFinishLoading:(MGHttpClient *)client{
-    NSString *contents = [[[NSString alloc] initWithData:client.buffer encoding:NSUTF8StringEncoding] autorelease];
+    //NSString *contents = [[[NSString alloc] initWithData:client.buffer encoding:NSUTF8StringEncoding] autorelease];
     MGHttpClient * httpClient = (MGHttpClient*)client;
     NSString * senderClassStr = [httpClient.sender objectForKey:@"class"];
     NSDictionary * userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
                                senderClassStr, @"class", 
                                [httpClient.sender objectForKey:@"selector"], @"selector",
-                               contents, @"data",
+                               client.buffer, @"data",
                                nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:senderClassStr object:self userInfo:userInfo];
 }

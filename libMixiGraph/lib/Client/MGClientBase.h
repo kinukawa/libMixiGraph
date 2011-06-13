@@ -25,7 +25,7 @@
     MGHttpConnector * httpConnector;
 }
 
-+(id)responsePerser:(id)response;
++(id)responseParser:(id)response;
 
 @property (nonatomic,retain) MGHttpConnector * httpConnector;
 @end

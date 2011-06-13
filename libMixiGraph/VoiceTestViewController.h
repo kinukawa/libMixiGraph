@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MGVoiceClient.h"
 #import "MGVoice.h"
+#import "MGResponseParser.h"
 
 @interface VoiceTestViewController : UIViewController<UITextFieldDelegate> {
     MGVoiceClient * voiceClient;

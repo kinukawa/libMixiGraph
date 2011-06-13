@@ -239,43 +239,43 @@
     [self.httpConnector setHttpClient:httpClinet];
 }
 
-+(id)responsePerser:(id)response{
-	NSData *data = [response objectForKey:@"data"];
-    NSString *contents = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
-    NSString *identifier = [response objectForKey:@"id"];
-    NSString *method = [response objectForKey:@"method"];
++(id)responseParser:(id)response{
+	NSData * data = [response objectForKey:@"data"];
+    NSString * contents = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+    NSString * identifier = [response objectForKey:@"id"];
+    NSString * selector = [response objectForKey:@"selector"];
 	NSLog(@"MGVoiceClient didFinishLoading %@:%@",identifier,contents);
     
     id result = response;
-    if(method==@"getUserVoices"){
+    if([selector isEqualToString:@"getUserVoicesByUserID:trimUser:attachPhoto:startIndex:count:identifier:"]){
         NSArray * entryArray = [contents JSONValue];
         result = [NSDictionary dictionaryWithObjectsAndKeys:
                                 [MGVoice makeContentArrayFromEntryArray:entryArray],@"data",
                                 identifier,@"id",nil];
-    }else if(method==@"getUserVoicesUsingSinceId"){
+    }else if([selector isEqualToString:@"getUserVoicesByUserID:trimUser:attachPhoto:startIndex:count:usingSinceId:identifier:"]){
         NSArray * entryArray = [contents JSONValue];
         result = [NSDictionary dictionaryWithObjectsAndKeys:
                   [MGVoice makeContentArrayFromEntryArray:entryArray],@"data",
                   identifier,@"id",nil];
-    }else if(method==@"getFriendsVoices"){
+    }else if([selector isEqualToString:@"getFriendsVoicesByGroupID:trimUser:attachPhoto:startIndex:count:identifier:"]){
         NSArray * entryArray = [contents JSONValue];
         result = [NSDictionary dictionaryWithObjectsAndKeys:
                   [MGVoice makeContentArrayFromEntryArray:entryArray],@"data",
                   identifier,@"id",nil];
-    }else if(method==@"getFriendsVoicesUsingSinceId"){
+    }else if([selector isEqualToString:@"getFriendsVoicesByGroupID:trimUser:attachPhoto:startIndex:count:usingSinceId:identifier:"]){
         NSArray * entryArray = [contents JSONValue];
         result = [NSDictionary dictionaryWithObjectsAndKeys:
                   [MGVoice makeContentArrayFromEntryArray:entryArray],@"data",
                   identifier,@"id",nil];
-    }else if(method==@"getVoiceInfo"){
+    }else if([selector isEqualToString:@"getVoiceInfoByPostID:trimUser:attachPhoto:identifier:"]){
         result = [NSDictionary dictionaryWithObjectsAndKeys:
                   [MGVoice makeContentFromResponseData:data],@"data",
                   identifier,@"id",nil];
-    }else if(method==@"postVoice"){
+    }else if([selector isEqualToString:@"postVoice:identifier:"]){
         result = [NSDictionary dictionaryWithObjectsAndKeys:
                   [MGVoice makeContentFromResponseData:data],@"data",
                   identifier,@"id",nil];
-    }else if(method==@"postPhotoVoice"){
+    }else if([selector isEqualToString:@"postVoice:withUIImage:identifier:"]){
         result = [NSDictionary dictionaryWithObjectsAndKeys:
                   [MGVoice makeContentFromResponseData:data],@"data",
                   identifier,@"id",nil];

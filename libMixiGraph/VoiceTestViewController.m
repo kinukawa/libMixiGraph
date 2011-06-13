@@ -73,7 +73,10 @@
 }
 
 -(void)connectorMGRequestDidFinish:(NSNotification *)notification{
-    NSLog(@"%@",notification.name);
+    
+    NSDictionary * userInfo = notification.userInfo;
+    id parsedData = [MGResponseParser parseVoiceClientResponse:userInfo];
+    NSLog(@"%@",parsedData);
 }
 
 -(void)connectorMGApiError:(NSNotification *)notification{
