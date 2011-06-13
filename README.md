@@ -1,5 +1,5 @@
 ## ABOUT
-Objective-Cからmixi Graph APIを簡単に取り扱うことができる、便利なライブラリを目指しています。
+Objective-Cからmixi Graph APIを簡単に取り扱うことができる便利なライブラリを目指しています。
 
 ## DEPENDENCIES
 [JSON Framework](http://stig.github.com/json-framework/)
