@@ -16,7 +16,7 @@
 }
 
 @property (nonatomic, readonly, getter = isNetworkAccessing) BOOL networkAccessing;
-
+@property (nonatomic, retain) NSMutableArray * httpClients;
 +(MGHttpConnector *)sharedConnector;
 -(void)setHttpClient:(SimpleHttpClient*)httpClient;
 -(void)cancelAllRequests;

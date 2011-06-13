@@ -9,15 +9,22 @@
 #import "MGHttpConnector.h"
 
 @implementation MGHttpConnector
+@synthesize httpClients;
 
 - (id)init
 {
     self = [super init];
     if (self) {
         // Initialization code here.
+        self.httpClients = [NSMutableArray array];
     }
     
     return self;
+}
+
+- (void) dealloc {
+    self.httpClients = nil;
+	[super dealloc];
 }
 
 //return singleton object
@@ -39,7 +46,7 @@
     //リクエスト実行して
     [httpClient doRequest];
     //保持
-    [httpClients addObject:httpClient];
+    [self.httpClients addObject:httpClient];
 }
 
 #pragma mark - http requests
@@ -134,7 +141,7 @@
 -(void)httpClient:(SimpleHttpClient *)client didFinishLoading:(NSMutableData *)data{
     //NSString *contents = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
     //NSLog(@"contents: %@", contents);
-    
+    [self.httpClients removeObject:client];
     if (client.receiverType == MIXIHttpReceiverTypeNormal){
         HttpReceiver * receiver = [[[HttpReceiver alloc]init]autorelease];
         [receiver notifyDidFinishLoading:client];
