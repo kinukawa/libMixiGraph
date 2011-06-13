@@ -19,6 +19,7 @@
 @synthesize request;
 @synthesize response;
 @synthesize receiverType;
+@synthesize requestID;
 
 -(id)init{
 	if((self = [super init])){
@@ -32,6 +33,7 @@
     self.connection = nil;
 	self.buffer = nil;
     self.identifier = nil;
+    self.requestID = nil;
 	[super dealloc];
 }
 

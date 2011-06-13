@@ -41,7 +41,7 @@
 }
 
 -(void)setHttpClient:(SimpleHttpClient*)httpClient{
-    httpClient.identifier = [MGUtil createUniqueID];
+    httpClient.requestID = [MGUtil createUniqueID];
     httpClient.delegate = self;
     //リクエスト実行して
     [httpClient doRequest];
@@ -53,6 +53,7 @@
 
 -(void)cancelAllRequests{
     //前リクエストの停止と破棄
+    
 }
 
 -(void)cancelRequestById:(NSString *)requestID{

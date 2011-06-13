@@ -28,6 +28,7 @@
                                senderClassStr, @"class", 
                                [httpClient.sender objectForKey:@"selector"], @"selector",
                                client.buffer, @"data",
+                               client.identifier,@"identifier",
                                nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:senderClassStr object:self userInfo:userInfo];
 }

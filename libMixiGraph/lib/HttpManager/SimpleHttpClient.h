@@ -12,6 +12,7 @@
 @interface SimpleHttpClient : NSObject {
 	id delegate;
     NSString * identifier;
+    NSString * requestID;
     int networkState;
 	NSMutableData * buffer;
 	NSURLConnection *connection;
@@ -30,6 +31,7 @@
 
 @property (nonatomic,assign) id delegate;
 @property (nonatomic,retain) NSString * identifier;
+@property (nonatomic,retain) NSString * requestID;
 @property int networkState;
 @property (nonatomic,retain) NSMutableData * buffer;
 @property (nonatomic,retain) NSURLConnection *connection;

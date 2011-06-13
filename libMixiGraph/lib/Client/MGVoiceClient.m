@@ -63,6 +63,8 @@
     
     MGHttpClient * httpClinet = [[[MGHttpClient alloc]init]autorelease];
     [httpClinet httpGet:url];
+    
+    httpClinet.identifier = identifier;
     [httpClinet setSenderWithClass:[self class] selector:_cmd];
     [self.httpConnector setHttpClient:httpClinet];
 }
@@ -101,6 +103,7 @@
 
     MGHttpClient * httpClinet = [[[MGHttpClient alloc]init]autorelease];
     [httpClinet httpGet:url];
+    httpClinet.identifier = identifier;
     [httpClinet setSenderWithClass:[self class] selector:_cmd];
     [self.httpConnector setHttpClient:httpClinet];
 }
@@ -135,6 +138,7 @@
 
     MGHttpClient * httpClinet = [[[MGHttpClient alloc]init]autorelease];
     [httpClinet httpGet:url];
+    httpClinet.identifier = identifier;
     [httpClinet setSenderWithClass:[self class] selector:_cmd];
     [self.httpConnector setHttpClient:httpClinet];
 }
@@ -172,6 +176,7 @@
 
     MGHttpClient * httpClinet = [[[MGHttpClient alloc]init]autorelease];
     [httpClinet httpGet:url];
+    httpClinet.identifier = identifier;
     [httpClinet setSenderWithClass:[self class] selector:_cmd];
     [self.httpConnector setHttpClient:httpClinet];
 }
@@ -197,6 +202,7 @@
 
     MGHttpClient * httpClinet = [[[MGHttpClient alloc]init]autorelease];
     [httpClinet httpGet:url];
+    httpClinet.identifier = identifier;
     [httpClinet setSenderWithClass:[self class] selector:_cmd];
     [self.httpConnector setHttpClient:httpClinet];
 }
@@ -215,6 +221,7 @@
 
     MGHttpClient * httpClinet = [[[MGHttpClient alloc]init]autorelease];
     [httpClinet httpPost:url param:nil body:body];
+    httpClinet.identifier = identifier;
     [httpClinet setSenderWithClass:[self class] selector:_cmd];
     [self.httpConnector setHttpClient:httpClinet];
 }
@@ -235,6 +242,7 @@
     
     MGHttpClient * httpClinet = [[[MGHttpClient alloc]init]autorelease];
     [httpClinet httpImagePost:url image:image];
+    httpClinet.identifier = identifier;
     [httpClinet setSenderWithClass:[self class] selector:_cmd];
     [self.httpConnector setHttpClient:httpClinet];
 }
@@ -242,7 +250,7 @@
 +(id)responseParser:(id)response{
 	NSData * data = [response objectForKey:@"data"];
     NSString * contents = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
-    NSString * identifier = [response objectForKey:@"id"];
+    NSString * identifier = [response objectForKey:@"identifier"];
     NSString * selector = [response objectForKey:@"selector"];
 	NSLog(@"MGVoiceClient didFinishLoading %@:%@",identifier,contents);
     
