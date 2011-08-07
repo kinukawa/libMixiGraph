@@ -7,7 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MGClientBase.h"
+#import "MGUtil.h"
+@interface MGCheckinClient : MGClientBase{
+    id delegate;
 
-@interface MGCheckinClient : NSObject
+}
 
+@end
+@interface NSObject (MGUpdatesClientDelegate)
+-(void)mgUpdatesClient:(NSURLConnection *)conn didFailWithError:(NSError*)error;
+-(void)mgUpdatesClient:(NSURLConnection *)conn didFailWithAPIError:(MGApiError*)error;
+-(void)mgUpdatesClient:(NSURLConnection *)conn didFinishLoading:(id)result;
 @end

@@ -25,35 +25,43 @@
 	[super dealloc];
 }
 
-//あるユーザのつぶやき一覧の取得
--(void)getUserVoicesByUserID:(NSString *)userId 
-                    trimUser:(bool)trimUser 
-                 attachPhoto:(bool)attachPhoto
-                  startIndex:(NSString *)startIndex
-                       count:(NSString *)count
-                  identifier:(NSString *)identifier{
+-(void)getAroundMySpotWithCenter:(NSString *)center 
+                          fields:(NSString *)fields 
+                               q:(NSString *)q 
+                         sinceId:(NSString *)sinceId
+                      startIndex:(NSString *)startIndex
+                           count:(NSString *)count
+                      identifier:(NSString *)identifier{
     NSMutableDictionary * queryDict = [NSMutableDictionary dictionary];
-	if (trimUser) {
-		[queryDict setObject:@"1" forKey:@"trim_user"];
+	if (center) {
+		[queryDict setObject:center forKey:@"center"];
 	}
-	if (attachPhoto) {
-		[queryDict setObject:@"1" forKey:@"attach_photo"];
+    if (fields) {
+		[queryDict setObject:fields forKey:@"fields"];
+	}
+    if (q) {
+		[queryDict setObject:q forKey:@"q"];
+	}
+    if (sinceId) {
+		[queryDict setObject:sinceId forKey:@"sinceId"];
 	}
     if (startIndex) {
 		[queryDict setObject:startIndex forKey:@"startIndex"];
-	} 
-    if (count) {
+	}
+    if (fields) {
 		[queryDict setObject:count forKey:@"count"];
-	}    
-	NSURL * url = [MGUtil buildAPIURL:VOICE_BASE_URL
+	}
+    
+    NSURL * url = [MGUtil buildAPIURL:CHECKIN_BASE_URL
                                  path:[NSArray arrayWithObjects:
-                                       userId,
-                                       @"user_timeline",
+                                       @"me",
+                                       @"self",
                                        nil]
                                 query:queryDict];
     //httpClientManager.identifier = @"getUserVoices";
-	[httpClientManager get:@"getUserVoices" identifier:identifier url:url];
+	[httpClientManager get:@"getAroundMySpotWithCenter" identifier:identifier url:url];
 }
+
 
 
 @end

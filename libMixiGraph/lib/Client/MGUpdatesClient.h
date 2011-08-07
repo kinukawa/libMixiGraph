@@ -16,18 +16,7 @@
 @property (nonatomic,assign) id delegate;
 
 //あるユーザの新着フィード取得
--(void)getUpdatesFeedByUserID:(NSString *)userId 
-                      groupId:(NSString *)groupId
-                       fields:(NSString *)fields
-                        count:(NSString *)count
-                 updatedSince:(NSString *)updatedSince
-                       device:(NSString *)device
-                   identifier:(NSString *)identifier;
-
-@end
-
-@interface NSObject (MGUpdatesClientDelegate)
--(void)mgUpdatesClient:(NSURLConnection *)conn didFailWithError:(NSError*)error;
--(void)mgUpdatesClient:(NSURLConnection *)conn didFailWithAPIError:(MGApiError*)error;
--(void)mgUpdatesClient:(NSURLConnection *)conn didFinishLoading:(id)result;
+-(void)postDiaryWithPhoto:(NSString*)title 
+					 body:(NSString*)body 
+					photo:(UIImage *)photo;
 @end
