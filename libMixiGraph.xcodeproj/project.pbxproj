@@ -14,6 +14,9 @@
 		1051AB82137FBD9D003EF53A /* MGHttpClientManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1051AB81137FBD9D003EF53A /* MGHttpClientManager.m */; };
 		1062C8001344D2AF005901A9 /* VoiceTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1062C7FE1344D2AF005901A9 /* VoiceTestViewController.m */; };
 		1062C8011344D2AF005901A9 /* VoiceTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1062C7FF1344D2AF005901A9 /* VoiceTestViewController.xib */; };
+		106EC22113EECC3C00CCD4E0 /* CheckinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 106EC21F13EECC3C00CCD4E0 /* CheckinViewController.m */; };
+		106EC22213EECC3C00CCD4E0 /* CheckinViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 106EC22013EECC3C00CCD4E0 /* CheckinViewController.xib */; };
+		106EC22513EECC5D00CCD4E0 /* MGCheckinClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 106EC22413EECC5D00CCD4E0 /* MGCheckinClient.m */; };
 		1071995113768C6C004A1A67 /* MGAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 1071994413768C6C004A1A67 /* MGAlbum.m */; };
 		1071995213768C6C004A1A67 /* MGComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 1071994613768C6C004A1A67 /* MGComment.m */; };
 		1071995313768C6C004A1A67 /* MGContentBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 1071994813768C6C004A1A67 /* MGContentBase.m */; };
@@ -78,6 +81,11 @@
 		1062C7FD1344D2AF005901A9 /* VoiceTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoiceTestViewController.h; sourceTree = "<group>"; };
 		1062C7FE1344D2AF005901A9 /* VoiceTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoiceTestViewController.m; sourceTree = "<group>"; };
 		1062C7FF1344D2AF005901A9 /* VoiceTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VoiceTestViewController.xib; sourceTree = "<group>"; };
+		106EC21E13EECC3C00CCD4E0 /* CheckinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckinViewController.h; sourceTree = "<group>"; };
+		106EC21F13EECC3C00CCD4E0 /* CheckinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckinViewController.m; sourceTree = "<group>"; };
+		106EC22013EECC3C00CCD4E0 /* CheckinViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckinViewController.xib; sourceTree = "<group>"; };
+		106EC22313EECC5D00CCD4E0 /* MGCheckinClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCheckinClient.h; sourceTree = "<group>"; };
+		106EC22413EECC5D00CCD4E0 /* MGCheckinClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCheckinClient.m; sourceTree = "<group>"; };
 		1071994313768C6C004A1A67 /* MGAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGAlbum.h; sourceTree = "<group>"; };
 		1071994413768C6C004A1A67 /* MGAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGAlbum.m; sourceTree = "<group>"; };
 		1071994513768C6C004A1A67 /* MGComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGComment.h; sourceTree = "<group>"; };
@@ -219,6 +227,9 @@
 				9A95B8B1139C78F900636010 /* UpdatesTestViewController.h */,
 				9A95B8B2139C78F900636010 /* UpdatesTestViewController.m */,
 				9A95B8B3139C78F900636010 /* UpdatesTestViewController.xib */,
+				106EC21E13EECC3C00CCD4E0 /* CheckinViewController.h */,
+				106EC21F13EECC3C00CCD4E0 /* CheckinViewController.m */,
+				106EC22013EECC3C00CCD4E0 /* CheckinViewController.xib */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -327,6 +338,8 @@
 				1051AB81137FBD9D003EF53A /* MGHttpClientManager.m */,
 				9A95B8AE139C72C400636010 /* MGUpdatesClient.h */,
 				9A95B8AF139C72C400636010 /* MGUpdatesClient.m */,
+				106EC22313EECC5D00CCD4E0 /* MGCheckinClient.h */,
+				106EC22413EECC5D00CCD4E0 /* MGCheckinClient.m */,
 			);
 			path = Client;
 			sourceTree = "<group>";
@@ -429,6 +442,7 @@
 				10315B65136FF9A90077E490 /* PhotoTestViewController.xib in Resources */,
 				1071995F1376C268004A1A67 /* README.md in Resources */,
 				9A95B8B5139C78FA00636010 /* UpdatesTestViewController.xib in Resources */,
+				106EC22213EECC3C00CCD4E0 /* CheckinViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,6 +488,8 @@
 				9A95B8B0139C72C400636010 /* MGUpdatesClient.m in Sources */,
 				9A95B8B4139C78FA00636010 /* UpdatesTestViewController.m in Sources */,
 				9AF36073139CDA0900F676BE /* MGUpdates.m in Sources */,
+				106EC22113EECC3C00CCD4E0 /* CheckinViewController.m in Sources */,
+				106EC22513EECC5D00CCD4E0 /* MGCheckinClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
